@@ -1,0 +1,23 @@
+@use "../../styles/partials/colors.scss" as color;
+@use "../../styles/partials/breakpoints.scss" as bp;
+
+.logo {
+  text-decoration: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: null;
+  width: 47rem;
+  display: flex;
+  justify-content: space-between;
+
+  &__icon {
+    width: 10rem;
+  }
+
+  &__text {
+    color: color.$green;
+    font-weight: 700;
+    font-size: 6rem;
+  }
+}

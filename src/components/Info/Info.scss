@@ -1,0 +1,86 @@
+@use "../../styles/partials/colors.scss" as color;
+@use "../../styles/partials/breakpoints.scss" as bp;
+
+.info-container {
+  width: 100%;
+
+  &--dark {
+    background-color: color.$black;
+  }
+  &--light {
+    background-color: color.$white;
+  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include bp.mobile {
+    padding: 15rem 6rem;
+    height: 91vh;
+    min-height: 150rem;
+  }
+
+  @include bp.tablet {
+    height: 91.5vh;
+    padding: 10rem 20rem;
+  }
+
+  @include bp.desktop {
+    height: 94vh;
+    padding: 10rem 20rem;
+  }
+}
+
+.info {
+  display: flex;
+  align-items: center;
+
+  @include bp.mobile {
+    flex-direction: column;
+    justify-content: center;
+    max-width: 100rem;
+  }
+  @include bp.tablet {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  @include bp.desktop {
+    flex-direction: row;
+    max-width: 255rem;
+  }
+
+  &__text {
+    @include bp.mobile {
+      width: 100%;
+    }
+    @include bp.tablet {
+      width: 48%;
+    }
+  }
+  &__image {
+    @include bp.mobile {
+      width: 100%;
+    }
+    @include bp.tablet {
+      width: 48%;
+    }
+  }
+
+  &--reverse {
+    @extend .info;
+    display: flex;
+    @include bp.mobile {
+      flex-direction: column;
+      justify-content: center;
+      max-width: 100rem;
+    }
+    @include bp.tablet {
+      flex-direction: row-reverse;
+      justify-content: space-between;
+    }
+    @include bp.desktop {
+      flex-direction: row-reverse;
+      max-width: 255rem;
+    }
+  }
+}

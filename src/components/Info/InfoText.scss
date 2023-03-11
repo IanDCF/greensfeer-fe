@@ -1,0 +1,80 @@
+@use "../../styles/partials/colors.scss" as color;
+@use "../../styles/partials/breakpoints.scss" as bp;
+
+.text-container {
+  width: 100%;
+
+  @include bp.mobile {
+    margin-bottom: 10rem;
+  }
+
+  @include bp.tablet {
+  }
+}
+
+.text {
+  &__topline {
+    margin: 0;
+    color: #01bf71;
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  &__headline {
+    margin: 0;
+    line-height: 1.1;
+    font-weight: 600;
+    color: color.$white;
+
+    @include bp.mobile {
+      margin-bottom: 16px;
+      font-size: 35px;
+    }
+    @include bp.tablet {
+      margin-bottom: 24px;
+      font-size: 45px;
+    }
+
+    @include bp.desktop {
+      margin-bottom: 24px;
+      font-size: 48px;
+    }
+
+    &--light {
+      color: color.$black;
+    }
+  }
+  &__description {
+    margin: 0;
+    max-width: 440px;
+    color: color.$lightgray;
+
+    @include bp.mobile {
+      margin-bottom: 16px;
+      font-size: 15px;
+      line-height: 18px;
+      max-width: 70rem;
+    }
+
+    @include bp.tablet {
+      margin-bottom: 24px;
+      font-size: 18px;
+      line-height: 24px;
+      max-width: 80rem;
+    }
+
+    @include bp.desktop {
+      margin-bottom: 35px;
+      max-width: 100rem;
+      font-size: 18px;
+      line-height: 24px;
+    }
+
+    &--light {
+      color: color.$black;
+    }
+  }
+}

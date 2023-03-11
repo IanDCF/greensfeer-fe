@@ -1,0 +1,14 @@
+@use "../../styles/partials/colors.scss" as color;
+@use "../../styles/partials/breakpoints.scss" as bp;
+
+.image-container {
+  display: flex;
+  width: 100%;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin: 0;
+}

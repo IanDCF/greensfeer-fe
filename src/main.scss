@@ -1,0 +1,22 @@
+@use "./styles/partials/fonts.scss" as *;
+@use "./styles/partials/colors.scss" as color;
+html,
+body {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Encode Sans Expanded", "Montserrat Alternates", sans-serif;
+  font-size: 4px;
+  background-color: color.$white-b;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+input,
+select,
+textarea,
+button {
+  font-family: inherit;
+}

@@ -1,0 +1,188 @@
+@use "../../styles/partials/colors.scss" as color;
+@use "../../styles/partials/breakpoints.scss" as bp;
+@use "../../styles/partials/fonts.scss" as *;
+
+.subscribe {
+  background-color: color.$black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  bp.mobile {
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+
+  bp.tablet {
+    overflow: scroll;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+  }
+
+  &__success {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    height: 100vh;
+    background: rgba(19, 24, 44, 0.8);
+    width: 100vw;
+    overflow: hidden;
+
+    img {
+      overflow: hidden;
+      border-radius: 15px;
+      @include bp.desktop {
+        width: 160rem;
+      }
+      @include bp.tablet {
+        width: 160rem;
+      }
+      @include bp.mobile {
+        width: 80rem;
+      }
+    }
+  }
+
+  &__logo {
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    height: 20rem;
+    width: 100%;
+    padding: 0 6rem;
+    max-width: 275rem;
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    margin-top: 20rem;
+    color: color.$white;
+    font-size: 5rem;
+    padding: 0 6rem;
+    max-width: 275rem;
+    height: 100vh;
+
+    @include bp.mobile {
+      justify-content: center;
+      min-height: 150rem;
+      width: 100%;
+    }
+    @include bp.tablet {
+      min-height: 175rem;
+      justify-content: center;
+      width: 100%;
+    }
+    @include bp.desktop {
+      min-height: none;
+      justify-content: center;
+      width: 100%;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 15px;
+    margin-bottom: 30rem;
+    max-width: 130rem;
+
+    @include bp.mobile {
+      margin-top: 8rem;
+      width: 100%;
+    }
+
+    @include bp.tablet {
+      margin-top: 8rem;
+      width: 100%;
+      padding: 8rem 10rem;
+      border: 0.1px solid rgba(1, 191, 112, 0.773);
+      box-shadow: rgba(1, 191, 112, 0.405) 0px 22px 70px 4px;
+    }
+
+    @include bp.desktop {
+      margin-top: none;
+    }
+  }
+
+  &__form-title-div {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__form-title {
+    font-weight: 500;
+    margin: 0 0 7rem 0;
+
+    @include bp.mobile {
+      font-size: 6.5rem;
+    }
+
+    @include bp.tablet {
+      font-size: 7.5rem;
+    }
+  }
+
+  &__form-label {
+    margin: 0 0 1rem 5rem;
+    @include bp.mobile {
+      font-size: 3.5rem;
+      font-weight: 400;
+    }
+
+    @include bp.tablet {
+      font-size: 4rem;
+      font-weight: 400;
+    }
+  }
+
+  &__form-input {
+    border-radius: 20px;
+    padding: 2rem 4rem;
+    border: 3px solid color.$green;
+    margin-bottom: 4rem;
+    &:focus {
+      outline-color: purple;
+      outline-width: 3px;
+    }
+  }
+
+  &__form-button {
+    background-color: color.$green;
+    color: color.$white;
+    font-size: 5rem;
+    padding: 2rem 3rem;
+    border-radius: 20px;
+    border: none;
+    margin: 3rem 0 3rem 0;
+    transition: 0.2s ease-in-out;
+    &:hover {
+      background-color: color.$black;
+      color: color.$green;
+      outline: 3px solid color.$green;
+      transition: 0.2s ease-in-out;
+    }
+  }
+  &__form-link {
+    text-align: center;
+    text-decoration: none;
+    color: color.$green;
+    font-size: 3.5rem;
+    &:hover {
+      color: purple;
+    }
+  }
+}

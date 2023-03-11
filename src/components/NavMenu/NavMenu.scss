@@ -1,0 +1,136 @@
+@use "../../styles/partials/colors.scss" as color;
+@use "../../styles/partials/breakpoints.scss" as bp;
+
+.nav-menu {
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  background-color: color.$black;
+  display: flex;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+  top: -100%;
+  &--open {
+    opacity: 100%;
+    top: 0;
+  }
+
+  @include bp.desktop {
+    display: none;
+  }
+
+  &__icon-div {
+    position: absolute;
+    top: 5.5rem;
+    right: 6rem;
+    background: transparent;
+    font-size: 8rem;
+    cursor: pointer;
+    outline: none;
+  }
+
+  &__icon {
+    color: color.$green;
+
+    &:hover {
+      color: color.$white;
+      transition: all 0.3s ease-in-out;
+    }
+  }
+
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__links {
+    width: 75rem;
+    height: 68rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__links-item {
+    margin-left: -11rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 6rem;
+      text-decoration: none;
+      list-style: none;
+      transition: 0.2s ease-in-out;
+      text-decoration: none;
+      color: color.$white;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        color: #01bf71;
+        transition: all 0.2s ease-in-out;
+      }
+    }
+  }
+
+  &__btn {
+    display: flex;
+    flex-direction: column;
+    height: 27rem;
+    justify-content: space-between;
+    margin-top: 20rem;
+  }
+
+  &__btn-reg {
+    text-decoration: none;
+    color: color.$green;
+    font-size: 5rem;
+    font-weight: 600;
+    background-color: none;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem 5.5rem 2.8rem 5.5rem;
+    // padding: 2.5rem 5.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      background-color: color.$green;
+      color: color.$black;
+      transition: all 0.2s ease-in-out;
+    }
+  }
+
+  &__btn-in {
+    text-decoration: none;
+    color: color.$green;
+    font-size: 5rem;
+    background-color: color.$black;
+    border: 1.5px solid color.$green;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem 5.5rem 2.8rem 5.5rem;
+    // padding: 2.5rem 5.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      background-color: #00ff9525;
+      color: color.$green;
+      transition: all 0.2s ease-in-out;
+    }
+  }
+}

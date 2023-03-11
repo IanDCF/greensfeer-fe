@@ -1,0 +1,42 @@
+[
+  {
+    "id": "discover",
+    "darkMode": true,
+    "topLine": "Discover",
+    "headLine": "Build A Network",
+    "description": "Connect with like-minded individuals and organizations committed to sustainability",
+    "buttonText": "Learn More",
+    "alt": "Online Presence Image",
+    "link": "https://www.youtube.com/@Greensfeer/playlists"
+  },
+  {
+    "id": "exchange",
+    "darkMode": false,
+    "topLine": "Exchange",
+    "headLine": "Buy & Sell",
+    "description": "Find carbon commodities or related products and services that work for you",
+    "buttonText": "Learn More",
+    "alt": "Global Reach Image",
+    "link": "https://www.youtube.com/@Greensfeer/playlists"
+  },
+  {
+    "id": "promote",
+    "darkMode": true,
+    "topLine": "Promote",
+    "headLine": "Products & Services",
+    "description": "Share your insights or latest developments and showcase your commitment to sustainability",
+    "buttonText": "Learn More",
+    "alt": "Global Reach Image",
+    "link": "https://www.youtube.com/@Greensfeer/playlists"
+  },
+  {
+    "id": "collaborate",
+    "darkMode": false,
+    "topLine": "Collaborate",
+    "headLine": "Partnerships",
+    "description": "Help us design a platform tailored to your needs, we help you reach your target audience",
+    "buttonText": "Learn More",
+    "alt": "Business Deal Image",
+    "link": "https://www.linkedin.com/company/greensfeer/about/"
+  }
+]

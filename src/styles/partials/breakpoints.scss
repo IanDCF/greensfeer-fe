@@ -1,0 +1,24 @@
+$mobile-max-width: 767px;
+$tablet-min-width: 768px;
+$desktop-min-width: 1024px;
+
+/* media query for mobile */
+@mixin mobile {
+  @media only screen and (max-width: $mobile-max-width) {
+    @content;
+  }
+}
+
+/* media query for tablet */
+@mixin tablet {
+  @media only screen and (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+/* media query for desktop */
+@mixin desktop {
+  @media only screen and (min-width: $desktop-min-width) {
+    @content;
+  }
+}
