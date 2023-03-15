@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import GreensfeerLogo from "../../assets/logos/greensfeer-logo.svg";
 import "./Register.scss";
 import { auth } from "../../firebase/firebase";
+import axios from "axios";
 
 import { createUserWithEmailAndPassword } from "firebase/auth";
 interface RegisterFormData {
@@ -48,25 +49,31 @@ const Register = () => {
     console.log(email, password);
 
     try {
+      // Create user with email and password using Firebase Authentication
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
 
-      const user_id = userCredential.user.uid;
+      // Get user ID from the user credential
+      const userId = userCredential.user.uid;
+
+      // Define the payload for the API call
       const payload = {
-        user_id,
-        email,
+        user_id: userId,
+        email: email,
       };
 
-      console.log("User registered successfully:", payload);
-      // writeUserData(uid, payload);
-      // navigate("/signin");
-    } catch (error: any) {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log({ errorCode, errorMessage });
+      // Make the API call using axios ** when user_route is ready
+      // const response = await axios.post("https://example.com/api", payload);
+
+      // Navigate to next page
+      // navigate("/register_info");
+
+      // console.log(response.data);
+    } catch (error) {
+      console.error(error);
     }
   };
   return (
