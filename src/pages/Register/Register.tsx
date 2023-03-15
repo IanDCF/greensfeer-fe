@@ -2,6 +2,14 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import GreensfeerLogo from "../../assets/logos/greensfeer-logo.svg";
 import "./Register.scss";
+import { auth } from "../../firebase/firebase";
+
+import { createUserWithEmailAndPassword } from "firebase/auth";
+interface RegisterFormData {
+  email: string;
+  password: string;
+  passwordConfirm: string;
+}
 
 const Register = () => {
   // const navigate = useNavigate();
@@ -16,38 +24,38 @@ const Register = () => {
     setIsChecked2(isChecked);
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   const first_name = e.target.email.value;
-  //   const last_name = e.target.password.value;
-  //   const email = e.target.email.value;
-  //   const password = e.target.password.value;
-  //   const passwordConfirm = e.target.passwordConfirm.value;
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const { email, password, passwordConfirm } = e.currentTarget
+      .elements as unknown as RegisterFormData;
 
-  //   if (password !== passwordConfirm) {
-  //     alert("Passwords don't match");
-  //   }
+    if (password !== passwordConfirm) {
+      alert("Passwords don't match");
+      return;
+    }
 
-  //   createUserWithEmailAndPassword(auth, email, password)
-  //     .then((userCredential) => {
-  //       // Handle Registered User
-  //       const uid = userCredential.user.uid;
-  //       const email = userCredential.user.email;
-  //       const payload = {
-  //         uid,
-  //         email,
-  //         first_name,
-  //         last_name,
-  //       };
-  //       writeUserData(uid, payload);
-  //       navigate("/signin");
-  //     })
-  //     .catch((error) => {
-  //       const errorCode = error.code;
-  //       const errorMessage = error.message;
-  //       console.log({ errorCode, errorMessage });
-  //     });
-  // };
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      const uid = userCredential.user.uid;
+      const payload = {
+        uid,
+        email,
+      };
+
+      console.log("User registered successfully:", payload);
+      // writeUserData(uid, payload);
+      // navigate("/signin");
+    } catch (error: any) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log({ errorCode, errorMessage });
+    }
+  };
   return (
     <div className="register">
       <div className="register__wrapper">
@@ -61,7 +69,7 @@ const Register = () => {
 
         <div className="register__title">Welcome to Greensfeer!</div>
 
-        <form className="register__form">
+        <form className="register__form" onSubmit={handleSubmit}>
           <div className="register__text">
             <label className="register__label" htmlFor="email">
               email
@@ -83,12 +91,12 @@ const Register = () => {
               placeholder="Enter a strong password"
               className="register__input"
             />
-            <label className="register__label" htmlFor="confirmPassword">
+            <label className="register__label" htmlFor="passwordConfirm">
               confirm password
             </label>
             <input
-              id="confirmPassword"
-              name="confirmPassword"
+              id="passwordConfirm"
+              name="passwordConfirm"
               type="password"
               placeholder="Confirm your password"
               className="register__input"
