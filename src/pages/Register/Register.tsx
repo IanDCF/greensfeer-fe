@@ -26,13 +26,26 @@ const Register = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const { email, password, passwordConfirm } = e.currentTarget
-      .elements as unknown as RegisterFormData;
+    const emailInput = e.currentTarget.elements.namedItem(
+      "email"
+    ) as HTMLInputElement;
+    const passwordInput = e.currentTarget.elements.namedItem(
+      "password"
+    ) as HTMLInputElement;
+    const passwordConfirmInput = e.currentTarget.elements.namedItem(
+      "passwordConfirm"
+    ) as HTMLInputElement;
+
+    const email = emailInput.value;
+    const password = passwordInput.value;
+    const passwordConfirm = passwordConfirmInput.value;
 
     if (password !== passwordConfirm) {
       alert("Passwords don't match");
       return;
     }
+
+    console.log(email, password);
 
     try {
       const userCredential = await createUserWithEmailAndPassword(
@@ -41,9 +54,9 @@ const Register = () => {
         password
       );
 
-      const uid = userCredential.user.uid;
+      const user_id = userCredential.user.uid;
       const payload = {
-        uid,
+        user_id,
         email,
       };
 
@@ -134,7 +147,7 @@ const Register = () => {
           <button className="register__button" type="submit">
             Get Started
           </button>
-          <Link to="/signin" className="register__link">
+          <Link to="#" className="register__link">
             Already have an account? Sign in
           </Link>
         </form>
