@@ -3,6 +3,7 @@ import Landing from "./pages/Landing/Landing";
 import NotFound from "./pages/NotFound/NotFound";
 import Register from "./pages/Register/Register";
 import RegisterInfo from "./pages/Register/RegisterInfo";
+import SignIn from "./pages/SignIn/SignIn";
 import Subscribe from "./pages/Subscribe/Subscribe";
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/subscribe" element={<Subscribe />} />
         <Route path="/register" element={<Register />} />
         <Route path="/register/info" element={<RegisterInfo />} />
+        <Route path="/signin" element={<SignIn />} />
       </Routes>
     </BrowserRouter>
   );
