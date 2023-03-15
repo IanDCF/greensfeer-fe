@@ -79,6 +79,11 @@
     margin-bottom: 1rem;
   }
 
+  &__boxes-push {
+    @extend .register__boxes;
+    width: 100%;
+  }
+
   &__checkbox {
   }
 
