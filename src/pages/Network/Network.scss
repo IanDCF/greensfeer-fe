@@ -1,0 +1,20 @@
+@use "../../styles/partials/colors.scss" as color;
+@use "../../styles/partials/breakpoints.scss" as bp;
+
+.network {
+  padding: 4rem 3rem;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3rem;
+  }
+
+  &__title {
+    font-size: 4rem;
+    color: color.$darkgray2;
+  }
+}
