@@ -1,0 +1,13 @@
+@use "./colors.scss" as color;
+@mixin card {
+  background-color: color.$gray;
+  width: 100%;
+}
+
+@mixin round-image {
+  border-radius: 50%;
+}
+
+@mixin rounded-border {
+  border-radius: 0.625rem;
+}

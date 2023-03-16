@@ -1,4 +1,5 @@
-export const ProfileHeader: React.FC = () => {
+import { FC } from "react";
+export const ProfileHeader: FC = () => {
   return (
     <div className="header">
       {/* banner, profile pic, name, headline, location */}
