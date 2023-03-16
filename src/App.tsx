@@ -6,6 +6,7 @@ import Register from "./pages/Register/Register";
 import RegisterInfo from "./pages/Register/RegisterInfo";
 import SignIn from "./pages/SignIn/SignIn";
 import Subscribe from "./pages/Subscribe/Subscribe";
+import { UserProfile } from "./pages/UserProfile/UserProfile";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/register/info" element={<RegisterInfo />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/network" element={<Network />} />
+        <Route path="/profile" element={<UserProfile />} />
       </Routes>
     </BrowserRouter>
   );
