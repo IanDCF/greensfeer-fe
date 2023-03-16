@@ -1,11 +1,19 @@
 @use "../../styles/partials/colors.scss" as color;
 @use "../../styles/partials/breakpoints.scss" as bp;
 
+.network-container {
+  height: 100vh;
+  position: relative;
+}
+.network-nav-bottom {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
 .network {
   padding: 3rem 3rem 0 3rem;
   display: flex;
   flex-direction: column;
-  height: 100vh;
 
   &__contacts {
     display: flex;
