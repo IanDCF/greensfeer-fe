@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Landing from "./pages/Landing/Landing";
+import Messages from "./pages/Messages/Messages";
 import Network from "./pages/Network/Network";
 import NotFound from "./pages/NotFound/NotFound";
 import Register from "./pages/Register/Register";
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/register/info" element={<RegisterInfo />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/network" element={<Network />} />
+        <Route path="/messages" element={<Messages />} />
       </Routes>
     </BrowserRouter>
   );

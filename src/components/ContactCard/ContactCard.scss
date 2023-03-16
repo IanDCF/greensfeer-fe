@@ -89,6 +89,8 @@
     background-color: color.$white;
     color: color.$black2;
     margin-bottom: 1.5rem;
+    width: 19rem;
+    text-align: center;
   }
 
   &__btn-green {
@@ -99,5 +101,7 @@
     padding: 1.5rem 2.5rem;
     color: color.$black2;
     background-color: color.$brightgreen;
+    width: 19rem;
+    text-align: center;
   }
 }
