@@ -52,17 +52,12 @@ const NavMenu: FC<NavMenuProps> = ({ open, toggle }) => {
         </ul>
 
         <div className="nav-menu__btn">
-          <Link to="/subscribe" className="nav-menu__btn-reg" onClick={toggle}>
-            Subscribe
+          <Link to="/register" className="nav-menu__btn-reg" onClick={toggle}>
+            Join Now
           </Link>
-          <a
-            href="https://www.youtube.com/@greensfeer/playlists"
-            rel="noreferrer"
-            className="nav-menu__btn-in"
-            target="_blank"
-          >
-            Learn
-          </a>
+          <Link to="/signin" className="nav-menu__btn-in">
+            Sign In
+          </Link>
         </div>
       </div>
     </aside>

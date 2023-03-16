@@ -1,14 +1,17 @@
-import { RxAvatar } from "react-icons/rx";
 import { AiOutlineMessage } from "react-icons/ai";
 import "./AppNavbar.scss";
 import Searchbar from "../Searchbar/Searchbar";
+import ProfilePhoto from "../../assets/images/Mohan-muruge.jpg";
 
 const AppNavbar = () => {
+  const photoStyle = {
+    background: `url(${ProfilePhoto}) center/cover no-repeat`,
+  };
   return (
     <header className="navbar">
       <nav className="navbar__wrapper">
         <div className="navbar__profile">
-          <RxAvatar className="navbar__icon" />
+          <div className="navbar__img" style={photoStyle}></div>
         </div>
         <div className="navbar__searchbar">
           <Searchbar />

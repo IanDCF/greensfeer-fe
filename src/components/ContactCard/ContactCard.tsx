@@ -21,14 +21,19 @@ const ContactCard = () => {
 
           <div className="contact-card__text">
             <p className="contact-card__location">Inuivk, NWT, Canada</p>
-            <p className="contact-card__connections">200 connections</p>
+            {/* <p className="contact-card__connections">200 connections</p> */}
           </div>
         </div>
       </div>
 
-      <div className="contact-card__controls">
+      {/* <div className="contact-card__controls">
         <div className="contact-card__btn-white">Decline</div>
         <div className="contact-card__btn-green">Accept</div>
+      </div> */}
+
+      <div className="contact-card__controls">
+        <div className="contact-card__label">Connection</div>
+        <div className="contact-card__btn-green">Message</div>
       </div>
     </div>
   );

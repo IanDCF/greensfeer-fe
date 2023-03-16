@@ -19,9 +19,7 @@ const Network = () => {
           </div>
         </div>
       </div>
-      <div className="network-nav-bottom">
-        <NavBottom />
-      </div>
+      <NavBottom />
     </div>
   );
 };

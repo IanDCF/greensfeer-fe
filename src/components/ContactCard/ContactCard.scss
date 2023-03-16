@@ -8,7 +8,7 @@
   padding: 1rem 1.5rem;
   display: flex;
   justify-content: space-between;
-  height: 17rem;
+  height: 20rem;
 
   &__user {
     display: flex;
@@ -22,8 +22,8 @@
 
   &__photo {
     position: relative;
-    width: 14rem;
-    height: 14rem;
+    width: 16rem;
+    height: 16rem;
     border-radius: 50%;
     margin-right: 2rem;
   }
@@ -42,25 +42,25 @@
 
   &__name {
     margin: 0;
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-weight: 500;
   }
 
   &__role {
     margin: 0;
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: 300;
   }
 
   &__location {
     margin: 0;
-    font-size: 2.2rem;
+    font-size: 2.5rem;
     font-weight: 200;
   }
 
   &__connections {
     margin: 0;
-    font-size: 2rem;
+    font-size: 2.3rem;
     font-weight: 600;
     color: color.$green;
   }
@@ -68,8 +68,16 @@
   &__controls {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
     height: 100%;
+    margin-left: 1.5rem;
+  }
+
+  &__label {
+    font-size: 2.5rem;
+    color: color.$nickel;
+    margin: 0 0 1rem 0;
   }
 
   &__btn-white {
@@ -77,9 +85,10 @@
     border-radius: 10rem;
     font-size: 3rem;
     font-weight: 500;
-    padding: 1rem 2rem;
+    padding: 1.5rem 2.5rem;
     background-color: color.$white;
     color: color.$black2;
+    margin-bottom: 1.5rem;
   }
 
   &__btn-green {
@@ -87,7 +96,7 @@
     border-radius: 10rem;
     font-size: 3rem;
     font-weight: 500;
-    padding: 1rem 2rem;
+    padding: 1.5rem 2.5rem;
     color: color.$black2;
     background-color: color.$brightgreen;
   }
