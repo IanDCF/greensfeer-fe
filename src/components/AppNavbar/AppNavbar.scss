@@ -1,0 +1,29 @@
+@use "../../styles/partials/colors.scss" as color;
+@use "../../styles/partials/breakpoints.scss" as bp;
+
+.navbar {
+  height: 12rem;
+  display: flex;
+  padding: 1.5rem 2.3rem;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+
+  &__wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  &__icon {
+    font-size: 9rem;
+    color: color.$charcoal;
+  }
+
+  &__searchbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+}
