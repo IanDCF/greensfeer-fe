@@ -2,7 +2,7 @@
 @use "../../styles/partials/breakpoints.scss" as bp;
 
 .navbar-bottom {
-  height: 12rem;
+  height: 14rem;
   display: flex;
   padding: 1.5rem 2.3rem;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
@@ -11,6 +11,7 @@
   bottom: 0;
   width: 100%;
   z-index: 10;
+  background-color: color.$white;
 }
 .navbar {
   height: 12rem;
@@ -22,6 +23,7 @@
   top: 0;
   width: 100%;
   z-index: 10;
+  background-color: color.$white;
 
   &__wrapper {
     display: flex;
@@ -48,6 +50,11 @@
   &__icon {
     font-size: 7rem;
     color: color.$nickel;
+  }
+
+  &__icon-newmsg {
+    @extend .navbar__icon;
+    font-size: 6rem;
   }
 
   &__searchbar {

@@ -1,0 +1,55 @@
+@use "../../styles/partials/colors.scss" as color;
+@use "../../styles/partials/breakpoints.scss" as bp;
+
+.messages-card {
+  background-color: color.$mint;
+  margin-bottom: 2rem;
+  border-radius: 1.7rem;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  height: 20rem;
+
+  &--selected {
+    border-left: 1rem solid color.$brightgreen;
+    background-color: #eef6ef;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  }
+  &__user {
+    display: flex;
+    height: 100%;
+  }
+
+  &__profile {
+    display: flex;
+    align-items: center;
+  }
+
+  &__photo {
+    position: relative;
+    width: 16rem;
+    height: 16rem;
+    border-radius: 50%;
+    margin-right: 2rem;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__name {
+    margin: 0;
+    font-size: 3.5rem;
+    font-weight: 500;
+  }
+
+  &__message {
+    font-size: 3rem;
+    font-weight: 300;
+    margin: 0;
+    margin-top: 2.2rem;
+    width: 52rem;
+  }
+}

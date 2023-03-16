@@ -1,0 +1,13 @@
+@use "../../styles/partials/colors.scss" as color;
+@use "../../styles/partials/breakpoints.scss" as bp;
+
+.messages-container {
+  margin-top: 12rem;
+}
+
+.messages {
+  padding: 3rem 3rem 0 3rem;
+  display: flex;
+  flex-direction: column;
+  z-index: 0;
+}
