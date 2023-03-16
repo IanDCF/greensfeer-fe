@@ -2,18 +2,14 @@
 @use "../../styles/partials/breakpoints.scss" as bp;
 
 .network-container {
-  height: 100vh;
-  position: relative;
+  margin-top: 12rem;
 }
-.network-nav-bottom {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}
+
 .network {
   padding: 3rem 3rem 0 3rem;
   display: flex;
   flex-direction: column;
+  z-index: 0;
 
   &__contacts {
     display: flex;
@@ -22,7 +18,7 @@
   }
 
   &__title {
-    font-size: 2.8rem;
+    font-size: 3.5rem;
     font-weight: 500;
     color: color.$darkgray2;
     margin-bottom: 1rem;

@@ -7,7 +7,7 @@ import { BsShop } from "react-icons/bs";
 
 const NavBottom = () => {
   return (
-    <footer className="navbar">
+    <footer className="navbar-bottom">
       <nav className="navbar__wrapper">
         <div className="navbar__div">
           <BsHouse className="navbar__icon" />
