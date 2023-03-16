@@ -1,7 +1,11 @@
-import React from "react";
+import AppNavbar from "../../components/AppNavbar/AppNavbar";
 
 const Network = () => {
-  return <div>Network</div>;
+  return (
+    <>
+      <AppNavbar />
+    </>
+  );
 };
 
 export default Network;
