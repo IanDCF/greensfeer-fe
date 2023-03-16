@@ -1,0 +1,13 @@
+{
+    "first_name":"T",
+    "last_name": "M",
+    "headline": "Web Developer",
+    "location":{
+        "city":"Kaslo",
+        "state_province":"BC",
+        "country":"Canada"
+    },
+    "profile_picture":"https://media.licdn.com/dms/image/D5635AQFuhaEYGr4ytw/profile-framedphoto-shrink_200_200/0/1668387302884?e=1679608800&v=beta&t=vQhaOyN3pksLyCOmOEyKQre_sznT2WxBDe1ZfAM7-2Y",
+    "profile_banner":"https://upload.wikimedia.org/wikipedia/commons/f/fe/Kaslo_boat.jpg",
+    "about":"Full stack dev for Greensfeer"
+}
