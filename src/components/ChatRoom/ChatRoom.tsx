@@ -24,7 +24,22 @@ const ChatRoom = () => {
         </nav>
       </header>
 
-      <section className="chatroom__messages"></section>
+      <section className="chatroom__messages">
+        <div className="chatroom__text chatroom__received">
+          Hey man what's going on today?
+        </div>
+        <div className="chatroom__text chatroom__sent">
+          not much man wanna grab a beer
+        </div>
+        <div className="chatroom__text chatroom__received">
+          jees man your twistin my arm, let's do it
+        </div>
+        <div className="chatroom__text chatroom__sent">
+          Same pub as last time?
+        </div>
+        <div className="chatroom__text chatroom__received">you got it</div>
+        <div className="chatroom__text chatroom__sent">see you at 8</div>
+      </section>
 
       <footer className="chatroom__footer">
         <div className="chatroom__icon">
