@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ChatRoom from "./components/ChatRoom/ChatRoom";
 import Landing from "./pages/Landing/Landing";
 import Messages from "./pages/Messages/Messages";
 import Network from "./pages/Network/Network";
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/network" element={<Network />} />
         <Route path="/messages" element={<Messages />} />
+        <Route path="/messages/chat" element={<ChatRoom />} />
       </Routes>
     </BrowserRouter>
   );
