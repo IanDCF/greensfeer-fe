@@ -3,6 +3,7 @@
 .header {
   @include mx.card;
   &__banner {
+    @include mx.card;
     @include mx.rounded-border;
   }
 }
@@ -10,5 +11,6 @@
   display: flex;
   &__photo {
     @include mx.round-image;
+    height: 4.5rem;
   }
 }

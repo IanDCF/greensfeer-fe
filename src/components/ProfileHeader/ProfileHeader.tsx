@@ -4,7 +4,7 @@ export const ProfileHeader: FC = ({ ProfileData }) => {
   return (
     <div className="header">
       {/* banner, profile pic, name, headline, location */}
-      <img src={ProfileData.profile_banner} className="banner" />
+      <img src={ProfileData.profile_banner} className="header__banner" />
       <div className="card">
         <div className="card__left">
           <img src={ProfileData.profile_picture} className="card__photo" />

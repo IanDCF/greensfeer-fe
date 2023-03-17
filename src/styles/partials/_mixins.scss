@@ -1,7 +1,7 @@
 @use "./colors.scss" as color;
 @mixin card {
-  background-color: color.$gray;
-  max-width: 100vw;
+  background-color: color.$mint;
+  max-width: 100%;
   @include rounded-border();
 }
 

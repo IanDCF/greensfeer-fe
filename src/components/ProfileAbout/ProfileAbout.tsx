@@ -1,11 +1,16 @@
-export const ProfileAbout: React.FC = () => {
+import "./ProfileAbout.scss";
+export const ProfileAbout: React.FC = ({ ProfileData }) => {
   const user = "";
   return (
     <div className="about">
       {/* optional rendering */}
       <h3 className="about__title">About</h3>
       <p className="about__text">
-        {user ? (user.about ? about : "Tell us about yourself") : ""}
+        {ProfileData
+          ? ProfileData.about
+            ? ProfileData.about
+            : "Tell us about yourself"
+          : ""}
       </p>
     </div>
   );
