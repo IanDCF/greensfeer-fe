@@ -1,6 +1,6 @@
 import "./MarketThumbnails.scss";
-import UserPosts from "../../data/UserPosts.json";
-export const MarketThumbnails: React.FC = ({ title }) => {
+// import UserPosts from "../../data/UserPosts.json";
+export const MarketThumbnails: React.FC = ({ title, posts }) => {
   const truncate = (string: string, maxLength: number) => {
     if (string.length > maxLength) {
       return string.substring(0, maxLength) + "...";
@@ -8,20 +8,26 @@ export const MarketThumbnails: React.FC = ({ title }) => {
       return string;
     }
   };
+  console.log(posts);
 
   return (
     <div className="posts">
       <h3 className="posts__title">{title}</h3>
       <div className="posts__cards">
-        {UserPosts.map((post) => (
-          <div key={post.created_at} className="card">
-            <div className="card__user">{post.author_id}</div>
-            <div className="card__timestamp">{post.created_at}</div>
-            <div className="card__content">{truncate(post.body, 90)}</div>
-          </div>
-        ))}
+        {posts
+          ? posts.map((post) => (
+              <div key={`${post.post_name}${post.company_id}`} className="card">
+                <div className="card__category">{post.post_category}</div>
+                <div className="card__name">{post.post_name}</div>
+                <div className="card__company">{post.company_id}</div>
+                <div className="card__price">
+                  {post.p ? post.p.total_price : ""}
+                </div>
+              </div>
+            ))
+          : "loading"}
         {/* map posts
-                each card: title, time since post, body preview
+                each card: post category, post name, company_id, optional p.total price
                 */}
       </div>
     </div>
