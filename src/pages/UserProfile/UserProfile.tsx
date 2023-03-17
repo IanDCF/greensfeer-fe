@@ -3,6 +3,7 @@ import { ProfileAbout } from "../../components/ProfileAbout/ProfileAbout";
 import { Affiliations } from "../../components/Affiliations/Affiliations";
 import { ContentPosts } from "../../components/ContentPosts/ContentPosts";
 import ProfileData from "../../data/UserProfile.json";
+import "./UserProfile.scss";
 
 interface ProfileProps {
   first_name: string;

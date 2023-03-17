@@ -5,15 +5,15 @@ export const ProfileHeader: FC = ({ ProfileData }) => {
     <div className="header">
       {/* banner, profile pic, name, headline, location */}
       <img src={ProfileData.profile_banner} className="header__banner" />
-      <div className="card">
-        <div className="card__left">
-          <img src={ProfileData.profile_picture} className="card__photo" />
+      <div className="user">
+        <div className="user__left">
+          <img src={ProfileData.profile_picture} className="user__photo" />
         </div>
-        <div className="card_right">
-          <h1 className="card__name">{`${ProfileData.first_name} ${ProfileData.last_name}`}</h1>
-          <p className="card__headline">{ProfileData.headline}</p>
-          <p className="card__location">{`${ProfileData.location.city}, ${ProfileData.location.state_province}, ${ProfileData.location.country}`}</p>
-          <p className="card__connections"></p>
+        <div className="user_right">
+          <h1 className="user__name">{`${ProfileData.first_name} ${ProfileData.last_name}`}</h1>
+          <p className="user__headline">{ProfileData.headline}</p>
+          <p className="user__location">{`${ProfileData.location.city}, ${ProfileData.location.state_province}, ${ProfileData.location.country}`}</p>
+          <p className="user__connections"></p>
         </div>
       </div>
     </div>

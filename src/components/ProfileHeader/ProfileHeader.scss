@@ -7,8 +7,9 @@
     @include mx.rounded-border;
   }
 }
-.card {
+.user {
   display: flex;
+  flex-direction: row;
   &__photo {
     @include mx.round-image;
     height: 18rem;
