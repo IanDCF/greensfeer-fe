@@ -8,8 +8,10 @@ import { useEffect, useState } from "react";
 import "./CompanyProfile.scss";
 
 const product = MarketPosts.filter((post) => post.p);
+const service = MarketPosts.filter((post) => !post.p);
 export const CompanyProfile: React.FC = () => {
   const [products, setProducts] = useState(product);
+  const [services, setServices] = useState(service);
   //   useEffect(setProducts(MarketPosts.filter((post) => post.p)), []);
   return (
     <>
@@ -18,7 +20,7 @@ export const CompanyProfile: React.FC = () => {
         <ProfileAbout ProfileData={ProfileData} />
         {/* <Affiliations /> */}
         <MarketThumbnails posts={products} title={"Products"} />
-        <MarketThumbnails title={"Services"} />
+        <MarketThumbnails posts={services} title={"Services"} />
       </div>
     </>
   );

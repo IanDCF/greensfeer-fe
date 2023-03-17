@@ -1,5 +1,4 @@
 import "./MarketThumbnails.scss";
-// import UserPosts from "../../data/UserPosts.json";
 export const MarketThumbnails: React.FC = ({ title, posts }) => {
   const truncate = (string: string, maxLength: number) => {
     if (string.length > maxLength) {
@@ -8,7 +7,6 @@ export const MarketThumbnails: React.FC = ({ title, posts }) => {
       return string;
     }
   };
-  console.log(posts);
 
   return (
     <div className="posts">
