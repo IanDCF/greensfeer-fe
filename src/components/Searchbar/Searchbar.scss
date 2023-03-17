@@ -1,0 +1,25 @@
+@use "../../styles/partials/colors.scss" as color;
+@use "../../styles/partials/breakpoints.scss" as bp;
+
+.search {
+  border: 0.2rem solid color.$nickel;
+  height: 7rem;
+  width: 95%;
+  border-radius: 15rem;
+  padding: 0 2.5rem;
+  display: flex;
+  align-items: center;
+
+  &__icon {
+    font-size: 4rem;
+    color: color.$nickel;
+    margin-right: 0.75rem;
+  }
+  &__input {
+    border: none;
+    outline: none;
+    font-size: 3.5rem;
+    font-weight: 300;
+    width: 100%;
+  }
+}
