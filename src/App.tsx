@@ -20,11 +20,8 @@ const App = () => {
         <Route path="/register/info" element={<RegisterInfo />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/network" element={<Network />} />
-<<<<<<< HEAD
-        <Route path="/profile" element={<UserProfile />} />
-=======
         <Route path="/messages" element={<Messages />} />
->>>>>>> features
+        <Route path="/profile" element={<UserProfile />} />
       </Routes>
     </BrowserRouter>
   );

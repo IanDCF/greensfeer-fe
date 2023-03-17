@@ -24,7 +24,7 @@ export const UserProfile: React.FC = () => {
     <>
       <AppNavbar />
       <div className="profile">
-        <ProfileHeader profileData={ProfileData} />
+        <ProfileHeader ProfileData={ProfileData} />
         <ProfileAbout />
         <Affiliations />
         <ContentPosts />

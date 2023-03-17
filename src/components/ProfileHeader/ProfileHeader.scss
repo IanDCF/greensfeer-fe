@@ -1,0 +1,14 @@
+@use "../../styles/partials/mixins" as mx;
+
+.header {
+  @include mx.card;
+  &__banner {
+    @include mx.rounded-border;
+  }
+}
+.card {
+  display: flex;
+  &__photo {
+    @include mx.round-image;
+  }
+}
