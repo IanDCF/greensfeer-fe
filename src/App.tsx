@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AppNavbar from "./components/AppNavbar/AppNavbar";
 import NavBottom from "./components/AppNavbar/NavBottom";
+import ChatRoom from "./components/ChatRoom/ChatRoom";
 import Landing from "./pages/Landing/Landing";
 import Messages from "./pages/Messages/Messages";
 import Network from "./pages/Network/Network";
@@ -25,6 +26,7 @@ const App = () => {
         <Route path="/network" element={<Network />} />
         <Route path="/messages" element={<Messages />} />
         <Route path="/profile" element={<UserProfile />} />
+        <Route path="/messages/chat" element={<ChatRoom />} />
       </Routes>
       <NavBottom />
     </BrowserRouter>
