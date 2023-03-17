@@ -11,6 +11,6 @@
   display: flex;
   &__photo {
     @include mx.round-image;
-    height: 4.5rem;
+    height: 18rem;
   }
 }

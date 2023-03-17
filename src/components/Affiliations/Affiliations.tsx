@@ -6,10 +6,13 @@ export const Affiliations: React.FC = () => {
       <h3 className="affiliations__title">Affiliations</h3>
       <div className="affiliations__cards">
         {UserConnections.map((connection) => (
-          <div className="connection">
+          <div
+            className="connection"
+            key={`${connection.first_name}${connection.location}`}
+          >
             <img
               src={connection.profile_picture}
-              className="connection_pic"
+              className="connection__pic"
               alt="profile picture"
             />
             <p className="connection__name">{connection.first_name}</p>
