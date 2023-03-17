@@ -13,7 +13,8 @@ const newUserDefault = {} as TNewUser;
 const Register = () => {
   const navigate = useNavigate();
   const { signUp } = useAuth();
-  const [newUser, setNewUser] = useState<TNewUser | null>(null);
+  const newUserDefault = {} as TNewUser
+  const [newUser, setNewUser] = useState<TNewUser>(newUserDefault);
   const [isChecked1, setIsChecked1] = useState(false);
   const [isChecked2, setIsChecked2] = useState(false);
   const [registerDone, setRegisterDone] = useState(false);
@@ -25,7 +26,7 @@ const Register = () => {
     // I need another state instead of loading
     //
     if (registerDoneInfo) validateUser();
-  }, [newUser]);
+  }, [registerDoneInfo]);
 
   const validateUser = async () => {
     const userValidation = newUserSchema.safeParse(newUser);
@@ -37,8 +38,8 @@ const Register = () => {
       const user = userValidation.data;
       try {
         const createdUser = await signUp(user.email, user.password);
+        setLoading(true);
         if (createdUser) {
-          setLoading(true);
           navigate("/youarebiutiful");
         }
         console.log(createdUser);
@@ -95,12 +96,10 @@ const Register = () => {
     }
     if (registerUserSchemValidation.success) {
       console.log("Setting User Registration part 1");
-      if (newUser) {
         setNewUser({ ...newUser, email, password, confirmPassword });
         setRegisterDone(true);
         setIsChecked1(false);
         setIsChecked2(false);
-      }
     }
   };
   const handleSecondSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -137,10 +136,9 @@ const Register = () => {
     }
     if (registerInfoValidation.success) {
       console.log("Setting up part 2");
-      if (newUser) {
         setNewUser({ ...newUser, firstName, secondName, rol });
         setRegisterDoneInfo(true);
-      }
+    
     }
   };
   return (
