@@ -11,6 +11,7 @@ import RegisterInfo from "./pages/Register/RegisterInfo";
 import SignIn from "./pages/SignIn/SignIn";
 import Subscribe from "./pages/Subscribe/Subscribe";
 import { UserProfile } from "./pages/UserProfile/UserProfile";
+import { CompanyProfile } from "./pages/CompanyProfile/CompanyProfile";
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
         <Route path="/messages" element={<Messages />} />
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/messages/chat" element={<ChatRoom />} />
+        <Route path="/company" element={<CompanyProfile />} />
       </Routes>
       <NavBottom />
     </BrowserRouter>
