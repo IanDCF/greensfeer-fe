@@ -1,57 +1,16 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import GreensfeerLogo from "../../assets/logos/greensfeer-logo.svg";
-import "./Register.scss";
+import "./RegisterInfo.scss";
 import { auth } from "../../firebase/firebase";
 import axios from "axios";
 
-interface RegisterFormData {
-  firstName: string;
-  lastName: string;
-  role: string;
+interface Props {
+  handleSubmit: any;
+  isChecked1: boolean;
+  handleCheckbox1: (isChecked: boolean) => void;
 }
-
-const RegisterInfo = () => {
-  // const navigate = useNavigate();
-  const [isChecked1, setIsChecked1] = useState(false);
-
-  const handleCheckbox1 = (isChecked: boolean) => {
-    setIsChecked1(isChecked);
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const firstNameInput = e.currentTarget.elements.namedItem(
-      "firstName"
-    ) as HTMLInputElement;
-    const lastNameInput = e.currentTarget.elements.namedItem(
-      "lastName"
-    ) as HTMLInputElement;
-    const roleInput = e.currentTarget.elements.namedItem(
-      "role"
-    ) as HTMLInputElement;
-
-    const firstName = firstNameInput.value;
-    const lastName = lastNameInput.value;
-    const role = roleInput.value;
-
-    console.log(firstName, lastName, role);
-
-    try {
-      // Define the payload for the API call
-      const payload = {};
-
-      // Make the API call using axios ** when user_route is ready
-      // const response = await axios.post("https://example.com/api", payload);
-
-      // Navigate to next page
-      // navigate("/register_info");
-
-      // console.log(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+const RegisterInfo = ({ handleSubmit, handleCheckbox1, isChecked1 }: Props) => {
   return (
     <div className="register">
       <div className="register__wrapper">
@@ -77,12 +36,12 @@ const RegisterInfo = () => {
               placeholder="Enter first name"
               className="register__input"
             />
-            <label className="register__label" htmlFor="lastName">
+            <label className="register__label" htmlFor="secondName">
               last name
             </label>
             <input
-              id="lastName"
-              name="lastName"
+              id="secondName"
+              name="secondName"
               type="text"
               placeholder="Enter last name"
               className="register__input"
