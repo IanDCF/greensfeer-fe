@@ -1,4 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import AppNavbar from "./components/AppNavbar/AppNavbar";
+import NavBottom from "./components/AppNavbar/NavBottom";
 import Landing from "./pages/Landing/Landing";
 import Messages from "./pages/Messages/Messages";
 import Network from "./pages/Network/Network";
@@ -12,6 +14,7 @@ import { UserProfile } from "./pages/UserProfile/UserProfile";
 const App = () => {
   return (
     <BrowserRouter>
+      <AppNavbar />
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="*" element={<NotFound />} />
@@ -23,6 +26,7 @@ const App = () => {
         <Route path="/messages" element={<Messages />} />
         <Route path="/profile" element={<UserProfile />} />
       </Routes>
+      <NavBottom />
     </BrowserRouter>
   );
 };
