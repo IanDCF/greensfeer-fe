@@ -117,7 +117,7 @@
     text-decoration: none;
     color: color.$green;
     font-size: 4rem;
-    font-weight: 600;
+    font-weight: 500;
     background-color: none;
     border-radius: 50px;
     display: flex;
@@ -136,6 +136,7 @@
 
   &__btn-in {
     text-decoration: none;
+    font-weight: 500;
     color: color.$green;
     font-size: 4rem;
     background-color: color.$black;

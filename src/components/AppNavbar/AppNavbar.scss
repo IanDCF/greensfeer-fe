@@ -1,12 +1,29 @@
 @use "../../styles/partials/colors.scss" as color;
 @use "../../styles/partials/breakpoints.scss" as bp;
 
+.navbar-bottom {
+  height: 14rem;
+  display: flex;
+  padding: 1.5rem 2.3rem;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 10;
+  background-color: color.$white;
+}
 .navbar {
   height: 12rem;
   display: flex;
   padding: 1.5rem 2.3rem;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  background-color: color.$white;
 
   &__wrapper {
     display: flex;
@@ -14,9 +31,30 @@
     justify-content: space-around;
   }
 
+  &__profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__img {
+    width: 7.4rem;
+    height: 7.4rem;
+    border-radius: 10rem;
+  }
+
+  &__message {
+    @extend .navbar__profile;
+  }
+
   &__icon {
-    font-size: 9rem;
-    color: color.$charcoal;
+    font-size: 7rem;
+    color: color.$nickel;
+  }
+
+  &__icon-newmsg {
+    @extend .navbar__icon;
+    font-size: 6rem;
   }
 
   &__searchbar {

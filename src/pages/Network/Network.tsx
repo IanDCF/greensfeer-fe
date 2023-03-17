@@ -8,20 +8,19 @@ const Network = () => {
       <AppNavbar />
       <div className="network">
         <div className="network__contacts">
-          <div className="network__title">Contacts</div>
+          <div className="network__title">Pending</div>
           <div className="network__pending">
-            <ContactCard />
-            <ContactCard />
+            <ContactCard pending={true} />
+            <ContactCard pending={true} />
           </div>
+          <div className="network__title">Contacts</div>
           <div className="network__connections">
-            <ContactCard />
-            <ContactCard />
+            <ContactCard pending={false} />
+            <ContactCard pending={false} />
           </div>
         </div>
       </div>
-      <div className="network-nav-bottom">
-        <NavBottom />
-      </div>
+      <NavBottom />
     </div>
   );
 };
