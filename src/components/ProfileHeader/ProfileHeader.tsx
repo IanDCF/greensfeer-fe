@@ -37,7 +37,9 @@ export const ProfileHeader: FC = ({ ProfileData }) => {
           </h1>
           <p className="user__headline">{ProfileData.headline}</p>
           <p className="user__location">{`${ProfileData.location.city}, ${ProfileData.location.state_province}, ${ProfileData.location.country}`}</p>
-          <p className="user__connections"></p>
+          <p className="user__connections">
+            {/* API call to get length of connections/affiliates */}
+          </p>
         </div>
       </div>
     </div>

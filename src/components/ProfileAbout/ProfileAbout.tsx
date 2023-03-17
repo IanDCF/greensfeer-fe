@@ -9,8 +9,8 @@ export const ProfileAbout: React.FC = ({ ProfileData }) => {
         {ProfileData
           ? ProfileData.about
             ? ProfileData.about
-            : "Tell us about yourself"
-          : ""}
+            : ProfileData.description
+          : "Tell us about yourself"}
       </p>
     </div>
   );
