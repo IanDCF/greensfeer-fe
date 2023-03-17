@@ -58,17 +58,12 @@ const Navbar: FC<NavbarProps> = ({ toggle }) => {
         </ul>
 
         <nav className="nav__btn">
-          <Link to="/subscribe" className="nav__btn-reg">
-            Subscribe
+          <Link to="/register" className="nav__btn-reg">
+            Join Now
           </Link>
-          <a
-            href="https://www.youtube.com/@greensfeer/playlists"
-            rel="noreferrer"
-            className="nav__btn-in"
-            target="_blank"
-          >
-            Learn
-          </a>
+          <Link to="/signin" className="nav__btn-in">
+            Sign In
+          </Link>
         </nav>
       </div>
     </nav>
