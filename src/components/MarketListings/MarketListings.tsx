@@ -1,4 +1,4 @@
-import "../PostThumbnail/PostThumbnail.scss";
+import "./MarketListings.scss";
 
 interface Post {
   post_name: string;
@@ -15,7 +15,7 @@ interface MarketThumbnailsProps {
   posts: Post[];
 }
 
-export const MarketThumbnails: React.FC<MarketThumbnailsProps> = ({
+export const MarketListings: React.FC<MarketThumbnailsProps> = ({
   title,
   posts,
 }) => {
