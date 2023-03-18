@@ -1,4 +1,6 @@
 @use "./colors.scss" as color;
+@use "./breakpoints.scss" as bp;
+
 @mixin card {
   background-color: color.$mint;
   max-width: 100%;

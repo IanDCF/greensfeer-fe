@@ -1,17 +1,68 @@
 @use "../../styles/partials/mixins" as mx;
+@use "../../styles/partials/colors" as color;
+@use "../../styles/partials/breakpoints.scss" as bp;
 
 .header {
-  @include mx.card;
-  &__banner {
-    @include mx.card;
-    @include mx.rounded-border;
-  }
-}
-.user {
+  // @include mx.card;
+  background-color: color.$mint;
+  max-width: 100%;
+  border-radius: 2.5rem;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  margin-bottom: 2rem;
+
+  &__banner {
+    // @include mx.card;
+    background-color: color.$mint;
+    max-width: 100%;
+    border-radius: 2.5rem;
+  }
+
+  &__details {
+    padding: 1.5rem;
+    display: flex;
+  }
+
   &__photo {
-    @include mx.round-image;
-    height: 18rem;
+    // @include mx.round-image;
+    border-radius: 50%;
+    position: relative;
+    width: 20rem;
+    height: 20rem;
+    margin-right: 2rem;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: color.$darkgray2;
+  }
+
+  &__name {
+    margin: 0;
+    font-size: 3.8rem;
+    font-weight: 600;
+  }
+
+  &__headline {
+    margin: 0;
+    font-size: 3rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+
+  &__location {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 200;
+    margin-bottom: 0.25rem;
+  }
+
+  &__connections {
+    margin: 0;
+    font-size: 2.3rem;
+    font-weight: 600;
+    color: color.$green;
   }
 }

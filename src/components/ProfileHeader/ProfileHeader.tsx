@@ -1,21 +1,55 @@
-import { FC } from "react";
 import "./ProfileHeader.scss";
-export const ProfileHeader: FC = ({ ProfileData }) => {
+import ProfileBanner from "../../assets/images/nature-banner-1.png";
+import ProfilePicture from "../../assets/images/headshot4.jpeg";
+interface ProfileHeaderProps {
+  ProfileData: ProfileProps;
+}
+
+interface ProfileProps {
+  first_name: string;
+  last_name: string;
+  headline: string;
+  location: {
+    city: string;
+    state_province: string;
+    country: string;
+  };
+  profile_picture: string;
+  profile_banner: string;
+  about: string;
+}
+
+export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
+  ProfileData,
+}) => {
+  const headshotStyle: React.CSSProperties = {
+    background: `url(${ProfilePicture}) center/cover no-repeat`,
+  };
+
   return (
-    <div className="header">
-      {/* banner, profile pic, name, headline, location */}
-      <img src={ProfileData.profile_banner} className="header__banner" />
-      <div className="user">
-        <div className="user__left">
-          <img src={ProfileData.profile_picture} className="user__photo" />
+    <header className="header">
+      <div className="banner-div">
+        <img
+          src={ProfileBanner}
+          alt="User Profile Banner"
+          className="header__banner"
+        />
+      </div>
+
+      <div className="header__details">
+        <div className="header__photo-div">
+          <div className="header__photo" style={headshotStyle} />
         </div>
-        <div className="user_right">
-          <h1 className="user__name">{`${ProfileData.first_name} ${ProfileData.last_name}`}</h1>
-          <p className="user__headline">{ProfileData.headline}</p>
-          <p className="user__location">{`${ProfileData.location.city}, ${ProfileData.location.state_province}, ${ProfileData.location.country}`}</p>
-          <p className="user__connections"></p>
+        <div className="header__info">
+          <h1 className="header__name">Nabil Furte</h1>
+          <p className="header__headline">
+            Project Developer @ India's Forest's
+          </p>
+          <p className="header__location">Denver, Colorado, USA</p>
+          <p className="header__connections">200 Connections</p>
         </div>
       </div>
-    </div>
+      {/* banner, profile pic, name, headline, location */}
+    </header>
   );
 };

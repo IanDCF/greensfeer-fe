@@ -1,12 +1,12 @@
 [
-    {
-        "profile_picture": "https://picsum.photos/200",
-        "first_name": "Tim",
-        "location":{"country":"USA"}
-    },
-    {
-        "profile_picture": "https://picsum.photos/200",
-        "first_name": "Margaret",
-        "location":{"country":"Canada"}
-    }      
+  {
+    "profile_picture": "https://picsum.photos/200",
+    "first_name": "Tesla",
+    "location": { "country": "Texas, USA" }
+  },
+  {
+    "profile_picture": "https://picsum.photos/200",
+    "first_name": "Microsoft",
+    "location": { "country": "Seattle, USA" }
+  }
 ]
