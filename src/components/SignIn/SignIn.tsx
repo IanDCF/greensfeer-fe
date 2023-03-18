@@ -1,52 +1,11 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import GreensfeerLogo from "../../assets/logos/greensfeer-logo.svg";
-import "../Register/Register.scss";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase/firebase";
 
-import { createUserWithEmailAndPassword } from "firebase/auth";
-interface RegisterFormData {
-  email: string;
-  password: string;
-  passwordConfirm: string;
+interface Props {
+  handleSubmit: any;
 }
 
-const SignIn = () => {
-  // const navigate = useNavigate();
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const emailInput = e.currentTarget.elements.namedItem(
-      "email"
-    ) as HTMLInputElement;
-    const passwordInput = e.currentTarget.elements.namedItem(
-      "password"
-    ) as HTMLInputElement;
-
-    const email = emailInput.value;
-    const password = passwordInput.value;
-
-    console.log(email, password);
-
-    try {
-      const currentUser = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-
-      const user = auth.currentUser;
-
-      if (user) {
-        console.log(`User ${currentUser.user.email} logged in successfully`);
-        // navigate("/home");
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
+const SignIn = ({ handleSubmit }: Props) => {
   return (
     <div className="register">
       <div className="register__wrapper">

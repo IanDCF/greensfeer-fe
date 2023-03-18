@@ -1,81 +1,20 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import GreensfeerLogo from "../../assets/logos/greensfeer-logo.svg";
 import "./Register.scss";
-import { auth } from "../../firebase/firebase";
-import axios from "axios";
-
-import { createUserWithEmailAndPassword } from "firebase/auth";
-interface RegisterFormData {
-  email: string;
-  password: string;
-  passwordConfirm: string;
+interface Props {
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  isChecked1: boolean;
+  handleCheckbox1: (isChecked: boolean) => void;
+  isChecked2: boolean;
+  handleCheckbox2: (isChecked: boolean) => void;
 }
-
-const Register = () => {
-  // const navigate = useNavigate();
-  const [isChecked1, setIsChecked1] = useState(false);
-  const [isChecked2, setIsChecked2] = useState(false);
-
-  const handleCheckbox1 = (isChecked: boolean) => {
-    setIsChecked1(isChecked);
-  };
-
-  const handleCheckbox2 = (isChecked: boolean) => {
-    setIsChecked2(isChecked);
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const emailInput = e.currentTarget.elements.namedItem(
-      "email"
-    ) as HTMLInputElement;
-    const passwordInput = e.currentTarget.elements.namedItem(
-      "password"
-    ) as HTMLInputElement;
-    const passwordConfirmInput = e.currentTarget.elements.namedItem(
-      "passwordConfirm"
-    ) as HTMLInputElement;
-
-    const email = emailInput.value;
-    const password = passwordInput.value;
-    const passwordConfirm = passwordConfirmInput.value;
-
-    if (password !== passwordConfirm) {
-      alert("Passwords don't match");
-      return;
-    }
-
-    console.log(email, password);
-
-    try {
-      // Create user with email and password using Firebase Authentication
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-
-      // Get user ID from the user credential
-      const userId = userCredential.user.uid;
-
-      // Define the payload for the API call
-      const payload = {
-        user_id: userId,
-        email: email,
-      };
-
-      // Make the API call using axios ** when user_route is ready
-      // const response = await axios.post("https://example.com/api", payload);
-
-      // Navigate to next page
-      // navigate("/register_info");
-
-      // console.log(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+const Register = ({
+  handleSubmit,
+  handleCheckbox1,
+  handleCheckbox2,
+  isChecked1,
+  isChecked2,
+}: Props) => {
   return (
     <div className="register">
       <div className="register__wrapper">
