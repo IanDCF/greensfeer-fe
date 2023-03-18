@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import AppNavbar from "./components/AppNavbar/AppNavbar";
 import NavBottom from "./components/AppNavbar/NavBottom";
 import ChatRoom from "./components/ChatRoom/ChatRoom";
@@ -16,7 +16,6 @@ import { CompanyProfile } from "./pages/CompanyProfile/CompanyProfile";
 const App = () => {
   return (
     <BrowserRouter>
-      <AppNavbar />
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="*" element={<NotFound />} />
@@ -30,8 +29,28 @@ const App = () => {
         <Route path="/messages/chat" element={<ChatRoom />} />
         <Route path="/company" element={<CompanyProfile />} />
       </Routes>
-      <NavBottom />
+      <Navigation />
     </BrowserRouter>
+  );
+};
+
+const Navigation = () => {
+  const location = useLocation();
+
+  const isNetworkPath = location.pathname.includes("/network");
+  const isMessagesPath = location.pathname.includes("/messages");
+  const isProfilePath = location.pathname.includes("/profile");
+  const isCompanyPath = location.pathname.includes("/company");
+
+  const shouldRenderNavBar =
+    isNetworkPath || isMessagesPath || isProfilePath || isCompanyPath;
+  const shouldRenderNavBottom = shouldRenderNavBar;
+
+  return (
+    <>
+      {shouldRenderNavBar && <AppNavbar />}
+      {shouldRenderNavBottom && <NavBottom />}
+    </>
   );
 };
 
