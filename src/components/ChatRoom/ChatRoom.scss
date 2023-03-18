@@ -3,18 +3,19 @@
 
 .chatroom {
   position: relative;
+  z-index: 20;
 
   &__header {
     height: 12rem;
     padding: 0rem 2.3rem;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-      rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
+      rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     width: 100%;
-    z-index: 10;
+
     background-color: color.$white;
     display: flex;
     align-items: center;
@@ -29,7 +30,6 @@
     font-size: 7rem;
     color: color.$darkgray2;
     display: flex;
-    align-items: center;
   }
 
   &__addressee {
@@ -52,34 +52,38 @@
     font-size: 7rem;
     color: color.$darkgray2;
     display: flex;
-    align-items: center;
   }
 
   &__messages {
     margin-top: 12rem;
+    margin-bottom: 16rem;
     padding: 3rem 3rem 0 3rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-start; /* align items to the top of the container */
     align-items: flex-start; /* align items to the left side of the container */
     z-index: 0;
+    background-color: #eaffed72;
+    height: 100vh;
   }
 
   &__text {
-    font-size: 3rem;
+    font-size: 3.3rem;
     padding: 2rem 3rem;
     border-radius: 15rem;
     margin-bottom: 2.5rem;
   }
 
   &__received {
-    background-color: color.$mint;
+    background-color: color.$brightgreen;
     margin-right: auto; /* push received messages to the left side */
   }
 
   &__sent {
-    background-color: rgb(232, 234, 237);
+    // background-color: rgb(223, 244, 244);
     margin-left: auto; /* push sent messages to the right side */
+    border: 0.5px solid color.$brightgreen;
+    background-color: color.$white;
   }
 
   &__footer {
@@ -87,14 +91,14 @@
     display: flex;
     justify-content: space-between;
     padding: 2rem 2.3rem;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-      rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
+      rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
     width: 100%;
-    z-index: 10;
+
     background-color: color.$white;
   }
 

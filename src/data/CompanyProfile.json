@@ -1,0 +1,12 @@
+{
+    "name":"Acme",
+    "headline": "from widgets to explosive tennis balls",
+    "location":{
+        "city":"Kaslo",
+        "state_province":"BC",
+        "country":"Canada"
+    },
+    "logo":"https://fastly.picsum.photos/id/525/200/200.jpg?hmac=_RnAIjIviTYNBh6qG-zjQg_m2UBgAnnh96jDb8ZDKSI",
+    "banner":"https://picsum.photos/340/90",
+    "description":"The corporation appears as the antagonistic force of Looney Tunes: Back in Action. The head offices of Acme are depicted, revealing it to be a multinational"
+}

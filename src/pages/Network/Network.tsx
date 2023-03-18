@@ -1,11 +1,10 @@
 import ContactCard from "../../components/ContactCard/ContactCard";
-import AppNavbar from "../../components/AppNavbar/AppNavbar";
+
 import "./Network.scss";
-import NavBottom from "../../components/AppNavbar/NavBottom";
+
 const Network = () => {
   return (
     <div className="network-container">
-      <AppNavbar />
       <div className="network">
         <div className="network__contacts">
           <div className="network__title">Pending</div>
@@ -20,7 +19,6 @@ const Network = () => {
           </div>
         </div>
       </div>
-      <NavBottom />
     </div>
   );
 };

@@ -2,8 +2,9 @@
 
 .user-profile-container {
   margin-top: 12rem;
+  margin-bottom: 15rem;
   padding: 3rem 3rem 0 3rem;
-  height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
 }
