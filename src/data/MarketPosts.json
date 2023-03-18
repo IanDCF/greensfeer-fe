@@ -1,0 +1,32 @@
+[
+    {
+        "post_name":"post",
+        "post_type":"Product",
+        "post_category":"Registered Carbon Credit",
+        "company_id":"ID001",
+        "p":{
+            "total_price":5000
+        }
+    },
+    {
+        "post_name":"2nd post",
+        "post_type":"Product",
+        "post_category":"Registered Carbon Credit",
+        "company_id":"ID001",
+        "p":{
+            "total_price":9001
+        }
+    },
+    {
+        "post_name":"Roadrunner catching service",
+        "post_type":"Service",
+        "post_category":"Consulting",
+        "company_id":"ID001"
+    },
+    {
+        "post_name":"Widget Calibration",
+        "post_type":"Service",
+        "post_category":"Consulting",
+        "company_id":"ID001"
+    }
+]
