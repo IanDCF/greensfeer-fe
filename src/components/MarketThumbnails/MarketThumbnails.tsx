@@ -1,4 +1,4 @@
-import "../ContentPosts/ContentPosts.scss";
+import "../PostThumbnail/PostThumbnail.scss";
 
 interface Post {
   post_name: string;

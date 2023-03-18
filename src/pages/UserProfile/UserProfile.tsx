@@ -1,6 +1,6 @@
 import { ProfileAbout } from "../../components/ProfileAbout/ProfileAbout";
 import { Affiliations } from "../../components/Affiliations/Affiliations";
-import { ContentPosts } from "../../components/ContentPosts/ContentPosts";
+import { PostThumbnail } from "../../components/PostThumbnail/PostThumbnail";
 import ProfileData from "../../data/UserProfile.json";
 import "./UserProfile.scss";
 import { ProfileHeader } from "../../components/ProfileHeader/ProfileHeader";
@@ -38,7 +38,7 @@ export const UserProfile: React.FC = () => {
         <ProfileHeader ProfileData={ProfileData} />
         <ProfileAbout ProfileData={ProfileData} />
         <Affiliations />
-        <ContentPosts />
+        <PostThumbnail />
       </div>
     </>
   );

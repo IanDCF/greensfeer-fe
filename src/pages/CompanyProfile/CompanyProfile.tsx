@@ -4,7 +4,7 @@ import { MarketThumbnails } from "../../components/MarketThumbnails/MarketThumbn
 import ProfileData from "../../data/CompanyProfile.json";
 import MarketPosts from "../../data/MarketPosts.json";
 import { useEffect, useState } from "react";
-import "./CompanyProfile.scss";
+import "../UserProfile/UserProfile.scss";
 
 interface MarketPost {
   post_name: string;
