@@ -13,7 +13,7 @@ const newUserDefault = {} as TNewUser;
 const Register = () => {
   const navigate = useNavigate();
   const { signUp } = useAuth();
-  const newUserDefault = {} as TNewUser
+  const newUserDefault = {} as TNewUser;
   const [newUser, setNewUser] = useState<TNewUser>(newUserDefault);
   const [isChecked1, setIsChecked1] = useState(false);
   const [isChecked2, setIsChecked2] = useState(false);
@@ -23,8 +23,6 @@ const Register = () => {
   const [error, setError] = useState<null | string>(null);
 
   useEffect(() => {
-    // I need another state instead of loading
-    //
     if (registerDoneInfo) validateUser();
   }, [registerDoneInfo]);
 
@@ -77,8 +75,7 @@ const Register = () => {
       confirmPassword,
     });
     if (!registerUserSchemValidation.success) {
-      const error = registerUserSchemValidation.error.errors; //We need to format the errors so we can pass the string
-      // to the setError
+      const error = registerUserSchemValidation.error.errors; //We need to format the errors so we can pass the string to the setError
       setError("There was some kind of problem with the inputs");
       console.log(error);
       return;
@@ -96,10 +93,10 @@ const Register = () => {
     }
     if (registerUserSchemValidation.success) {
       console.log("Setting User Registration part 1");
-        setNewUser({ ...newUser, email, password, confirmPassword });
-        setRegisterDone(true);
-        setIsChecked1(false);
-        setIsChecked2(false);
+      setNewUser({ ...newUser, email, password, confirmPassword });
+      setRegisterDone(true);
+      setIsChecked1(false);
+      setIsChecked2(false);
     }
   };
   const handleSecondSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -136,9 +133,8 @@ const Register = () => {
     }
     if (registerInfoValidation.success) {
       console.log("Setting up part 2");
-        setNewUser({ ...newUser, firstName, secondName, rol });
-        setRegisterDoneInfo(true);
-    
+      setNewUser({ ...newUser, firstName, secondName, rol });
+      setRegisterDoneInfo(true);
     }
   };
   return (
