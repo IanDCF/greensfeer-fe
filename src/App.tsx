@@ -7,7 +7,7 @@ import Messages from "./pages/Messages/Messages";
 import Network from "./pages/Network/Network";
 import NotFound from "./pages/NotFound/NotFound";
 import Register from "./pages/RegisterPage/RegisterPage";
-import SignIn from "./pages/SignIn/SignIn";
+import SignIn from "./pages/SignInPage/SignInPage";
 import Subscribe from "./pages/Subscribe/Subscribe";
 
 const App = () => {
