@@ -1,4 +1,4 @@
-import "./Affiliations.scss";
+import "./ProfileAffiliations.scss";
 import UserConnections from "../../data/UserConnections.json";
 import companyLogo1 from "../../assets/images/affiliation1.png";
 import companyLogo2 from "../../assets/images/affiliation2.png";
@@ -21,7 +21,7 @@ import companyLogo2 from "../../assets/images/affiliation2.png";
 //   about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
 // };
 
-export const Affiliations: React.FC = () => {
+export const ProfileAffiliations: React.FC = () => {
   const logoStyle1: React.CSSProperties = {
     background: `url(${companyLogo1}) center/cover no-repeat`,
   };

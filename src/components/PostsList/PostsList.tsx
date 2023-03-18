@@ -1,4 +1,4 @@
-import "./PostThumbnail.scss";
+import "./PostsList.scss";
 import UserPosts from "../../data/UserPosts.json";
 
 type Post = {
@@ -7,7 +7,7 @@ type Post = {
   body: string;
 };
 
-export const PostThumbnail: React.FC = () => {
+export const PostsList: React.FC = () => {
   const truncate = (string: string, maxLength: number) => {
     if (string.length > maxLength) {
       return string.substring(0, maxLength) + "...";

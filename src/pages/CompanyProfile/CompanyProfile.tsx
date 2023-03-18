@@ -1,7 +1,7 @@
 import { ProfileHeader } from "../../components/ProfileHeader/ProfileHeader";
 import { ProfileAbout } from "../../components/ProfileAbout/ProfileAbout";
-import { MarketThumbnails } from "../../components/MarketThumbnails/MarketThumbnails";
-import ProfileData from "../../data/CompanyProfile.json";
+import { MarketListings } from "../../components/MarketListings/MarketListings";
+import CompanyData from "../../data/CompanyProfile.json";
 import MarketPosts from "../../data/MarketPosts.json";
 import { useEffect, useState } from "react";
 import "../UserProfile/UserProfile.scss";
@@ -16,34 +16,19 @@ interface MarketPost {
   };
 }
 
-interface ProfileProps {
-  first_name: string;
-  last_name: string;
+interface CompanyProps {
+  name: string;
   headline: string;
   location: {
     city: string;
     state_province: string;
     country: string;
   };
-  profile_picture: string;
-  profile_banner: string;
+  logo: string;
+  banner: string;
   about: string;
 }
-export const CompanyProfile: React.FC = () => {
-  const ProfileData: ProfileProps = {
-    first_name: "John",
-    last_name: "Doe",
-    headline: "Software Engineer",
-    location: {
-      city: "New York",
-      state_province: "NY",
-      country: "USA",
-    },
-    profile_picture: "https://example.com/profile_picture.png",
-    profile_banner: "https://example.com/profile_banner.png",
-    about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  };
-
+export const CompanyProfile: React.FC<CompanyProps> = () => {
   const [products, setProducts] = useState<MarketPost[]>([]);
   const [services, setServices] = useState<MarketPost[]>([]);
 
@@ -55,11 +40,11 @@ export const CompanyProfile: React.FC = () => {
   return (
     <>
       <div className="user-profile-container">
-        <ProfileHeader ProfileData={ProfileData} />
-        <ProfileAbout ProfileData={ProfileData} />
+        <ProfileHeader CompanyData={CompanyData} user={false} />
+        <ProfileAbout CompanyData={CompanyData} user={false} />
         {/* <Affiliations /> */}
-        <MarketThumbnails posts={products} title={"Products"} />
-        <MarketThumbnails posts={services} title={"Services"} />
+        <MarketListings posts={products} title={"Products"} />
+        <MarketListings posts={services} title={"Services"} />
       </div>
     </>
   );

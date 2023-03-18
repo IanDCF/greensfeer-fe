@@ -1,6 +1,5 @@
 import "./ProfileAbout.scss";
-
-interface ProfileProps {
+interface UserProps {
   first_name: string;
   last_name: string;
   headline: string;
@@ -14,22 +13,42 @@ interface ProfileProps {
   about: string;
 }
 
-interface ProfileAboutProps {
-  ProfileData: ProfileProps;
+interface CompanyProps {
+  name: string;
+  headline: string;
+  location: {
+    city: string;
+    state_province: string;
+    country: string;
+  };
+  logo: string;
+  banner: string;
+  about: string;
 }
 
-export const ProfileAbout: React.FC<ProfileAboutProps> = ({ ProfileData }) => {
+interface ProfileAboutProps {
+  ProfileData: UserProps;
+  CompanyData: CompanyProps;
+  user: boolean;
+}
+
+export const ProfileAbout: React.FC<ProfileAboutProps> = ({
+  ProfileData,
+  CompanyData,
+  user,
+}) => {
   return (
     <div className="about">
-      {/* optional rendering */}
       <h3 className="about__title">About</h3>
-      <p className="about__text">
-        Highly experienced project developer in the Voluntary Carbon market,
-        with a track record of success spanning over 10 years. Currently working
-        with India's Forest, Nabil is a seasoned professional who has helped
-        numerous clients achieve their carbon offset goals through innovative
-        and sustainable projects.
-      </p>
+      {user ? (
+        <>
+          <p className="about__text">{`${ProfileData.about}`}</p>
+        </>
+      ) : (
+        <>
+          <p className="about__text">{`${CompanyData.about}`}</p>
+        </>
+      )}
     </div>
   );
 };
