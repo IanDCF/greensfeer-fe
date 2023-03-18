@@ -1,0 +1,83 @@
+@use "../../styles/partials/mixins" as mx;
+@use "../../styles/partials/colors.scss" as color;
+
+.posts {
+  background-color: color.$mint;
+  border-radius: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  padding: 2.5rem 2.5rem 1.5rem 2.5rem;
+  overflow: hidden;
+  overflow-x: scroll;
+  white-space: nowrap;
+  color: color.$darkgray2;
+  width: 100%;
+
+  &__title {
+    margin: 0 0 1.5rem 0;
+    font-size: 3.8rem;
+    font-weight: 500;
+  }
+
+  &__list {
+    display: flex;
+    overflow: hidden;
+    overflow-x: scroll;
+    white-space: nowrap;
+    padding-bottom: 2rem;
+
+    &::-webkit-scrollbar {
+      width: 5rem;
+    }
+
+    &::-ms-scrollbar {
+      width: 5rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: color.$brightgreen;
+      border-radius: 10px;
+    }
+
+    &::-ms-thumb {
+      background-color: color.$green;
+      border-radius: 10px;
+    }
+  }
+
+  &__card {
+    border-radius: 2.5rem;
+    border: 0.5px solid color.$brightgreen;
+    background-color: color.$white;
+    display: flex;
+    flex-direction: column;
+    height: 28rem;
+    width: 55rem;
+    margin-right: 3rem;
+    padding: 1.5rem;
+  }
+
+  &__user {
+    margin: 0;
+    font-size: 3rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
+  &__timestamp {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    color: color.$nickel;
+  }
+
+  &__content {
+    margin: 0;
+    font-size: 3rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    word-break: break-word;
+  }
+}
