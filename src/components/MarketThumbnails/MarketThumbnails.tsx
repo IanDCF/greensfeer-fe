@@ -1,5 +1,24 @@
-import "./MarketThumbnails.scss";
-export const MarketThumbnails: React.FC = ({ title, posts }) => {
+import "../ContentPosts/ContentPosts.scss";
+
+interface Post {
+  post_name: string;
+  post_type: string;
+  post_category: string;
+  company_id: string;
+  p?: {
+    total_price: number;
+  };
+}
+
+interface MarketThumbnailsProps {
+  title: string;
+  posts: Post[];
+}
+
+export const MarketThumbnails: React.FC<MarketThumbnailsProps> = ({
+  title,
+  posts,
+}) => {
   const truncate = (string: string, maxLength: number) => {
     if (string.length > maxLength) {
       return string.substring(0, maxLength) + "...";
@@ -11,14 +30,17 @@ export const MarketThumbnails: React.FC = ({ title, posts }) => {
   return (
     <div className="posts">
       <h3 className="posts__title">{title}</h3>
-      <div className="posts__cards">
+      <div className="posts__list">
         {posts
           ? posts.map((post) => (
-              <div key={`${post.post_name}${post.company_id}`} className="card">
-                <div className="card__category">{post.post_category}</div>
-                <div className="card__name">{post.post_name}</div>
-                <div className="card__company">{post.company_id}</div>
-                <div className="card__price">
+              <div
+                key={`${post.post_name}${post.company_id}`}
+                className="posts__card"
+              >
+                <div className="posts__timestamp">{post.post_category}</div>
+                <div className="posts__user">{post.post_name}</div>
+                <div className="posts__timestamp">{post.company_id}</div>
+                <div className="posts__content">
                   {post.p ? post.p.total_price : ""}
                 </div>
               </div>
