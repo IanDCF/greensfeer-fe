@@ -4,26 +4,27 @@ import { AiOutlineUsergroupAdd } from "react-icons/ai";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import { RiNotification4Line } from "react-icons/ri";
 import { BsShop } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const NavBottom = () => {
   return (
     <footer className="navbar-bottom">
       <nav className="navbar__wrapper">
-        <div className="navbar__div">
+        <Link to="/feed" className="navbar__div">
           <BsHouse className="navbar__icon" />
-        </div>
-        <div className="navbar__div">
+        </Link>
+        <Link to="/network" className="navbar__div">
           <AiOutlineUsergroupAdd className="navbar__icon" />
-        </div>
+        </Link>
         <div className="navbar__div">
           <IoMdAddCircleOutline className="navbar__icon" />
         </div>
-        <div className="navbar__div">
+        <Link to="/notifications" className="navbar__div">
           <RiNotification4Line className="navbar__icon" />
-        </div>
-        <div className="navbar__div">
+        </Link>
+        <Link to="/marketplace" className="navbar__div">
           <BsShop className="navbar__icon" />
-        </div>
+        </Link>
       </nav>
     </footer>
   );

@@ -1,4 +1,4 @@
-import { RiArrowGoBackLine } from "react-icons/ri";
+import { TbArrowBackUp } from "react-icons/tb";
 import { IoIosMore } from "react-icons/io";
 import { BiAddToQueue } from "react-icons/bi";
 import { TbSend } from "react-icons/tb";
@@ -10,7 +10,7 @@ const ChatRoom = () => {
       <header className="chatroom__header">
         <nav className="chatroom__wrapper">
           <div className="chatroom__return">
-            <RiArrowGoBackLine />
+            <TbArrowBackUp />
           </div>
 
           <div className="chatroom__addressee">

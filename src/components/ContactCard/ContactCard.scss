@@ -2,13 +2,14 @@
 @use "../../styles/partials/breakpoints.scss" as bp;
 
 .contact-card {
-  background-color: color.$mint;
   margin-bottom: 2rem;
-  border-radius: 1.7rem;
   padding: 1rem 1.5rem;
   display: flex;
   justify-content: space-between;
   height: 20rem;
+  background-color: color.$mint;
+  max-width: 100%;
+  border-radius: 2.5rem;
 
   &__user {
     display: flex;

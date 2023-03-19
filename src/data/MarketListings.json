@@ -1,0 +1,28 @@
+[
+  {
+    "post_name": "Carbon Romoval Amazon",
+    "post_type": "Product",
+    "post_category": "Registered Carbon Credit",
+    "company_id": "ID001",
+    "p": { "total_price": 12000 }
+  },
+  {
+    "post_name": "Renewable Energy",
+    "post_type": "Product",
+    "post_category": "Registered Carbon Credit",
+    "company_id": "ID002",
+    "p": { "total_price": 15000 }
+  },
+  {
+    "post_name": "Carbon Footprint Assessment",
+    "post_type": "Service",
+    "post_category": "Consulting",
+    "company_id": "ID003"
+  },
+  {
+    "post_name": "Carbon Offsetting Strategy",
+    "post_type": "Service",
+    "post_category": "Consulting",
+    "company_id": "ID004"
+  }
+]
