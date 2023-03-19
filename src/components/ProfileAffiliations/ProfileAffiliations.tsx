@@ -1,25 +1,13 @@
 import "./ProfileAffiliations.scss";
-import UserConnections from "../../data/UserConnections.json";
 import companyLogo1 from "../../assets/images/affiliation1.png";
 import companyLogo2 from "../../assets/images/affiliation2.png";
+import UserAffilliations from "../../data/UserAffiliations.json";
 
-// interface AffiliationsProps {
-//   ProfileData: ProfileProps;
+// interface UserAffiliations {
+//   logo: string;
+//   name: string;
+//   link: string;
 // }
-
-// const myProfileData: ProfileProps = {
-//   first_name: "John",
-//   last_name: "Doe",
-//   headline: "Software Developer",
-//   location: {
-//     city: "New York",
-//     state_province: "New York",
-//     country: "United States",
-//   },
-//   profile_picture: "https://example.com/profile.jpg",
-//   profile_banner: "https://example.com/banner.jpg",
-//   about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-// };
 
 export const ProfileAffiliations: React.FC = () => {
   const logoStyle1: React.CSSProperties = {

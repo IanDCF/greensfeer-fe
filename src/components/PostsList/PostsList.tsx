@@ -2,7 +2,8 @@ import "./PostsList.scss";
 import UserPosts from "../../data/UserPosts.json";
 
 type Post = {
-  author_id: string;
+  content_post_id: string;
+  title: string;
   created_at: string;
   body: string;
 };
@@ -21,10 +22,12 @@ export const PostsList: React.FC = () => {
       <h3 className="posts__title">Posts</h3>
       <div className="posts__list">
         {UserPosts.map((post: Post) => (
-          <div key={post.created_at} className="posts__card">
-            <p className="posts__user">{post.author_id}</p>
-            <p className="posts__timestamp">{post.created_at}</p>
-            <p className="posts__content">{truncate(post.body, 90)}</p>
+          <div key={post.content_post_id} className="posts__card">
+            <p className="posts__user">{post.title}</p>
+            <p className="posts__timestamp">
+              {new Date(post.created_at).toLocaleString()}
+            </p>
+            <p className="posts__content">{truncate(post.body, 60)}</p>
           </div>
         ))}
       </div>

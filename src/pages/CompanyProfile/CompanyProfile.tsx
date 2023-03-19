@@ -2,7 +2,7 @@ import { ProfileHeader } from "../../components/ProfileHeader/ProfileHeader";
 import { ProfileAbout } from "../../components/ProfileAbout/ProfileAbout";
 import { MarketListings } from "../../components/MarketListings/MarketListings";
 import CompanyData from "../../data/CompanyProfile.json";
-import MarketPosts from "../../data/MarketPosts.json";
+import MarketPosts from "../../data/MarketListings.json";
 import { useEffect, useState } from "react";
 import "../UserProfile/UserProfile.scss";
 
@@ -16,7 +16,7 @@ interface MarketPost {
   };
 }
 
-interface CompanyProps {
+interface CompanyData {
   name: string;
   headline: string;
   location: {
@@ -28,7 +28,8 @@ interface CompanyProps {
   banner: string;
   about: string;
 }
-export const CompanyProfile: React.FC<CompanyProps> = () => {
+
+export const CompanyProfile: React.FC = () => {
   const [products, setProducts] = useState<MarketPost[]>([]);
   const [services, setServices] = useState<MarketPost[]>([]);
 
