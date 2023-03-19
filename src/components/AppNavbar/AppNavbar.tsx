@@ -3,7 +3,7 @@ import "./AppNavbar.scss";
 import Searchbar from "../Searchbar/Searchbar";
 import ProfilePhoto from "../../assets/images/Mohan-muruge.jpg";
 import { FiEdit } from "react-icons/fi";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const AppNavbar: React.FC = () => {
   const photoStyle = {
@@ -16,16 +16,16 @@ const AppNavbar: React.FC = () => {
   return (
     <header className="navbar">
       <nav className="navbar__wrapper">
-        <div className="navbar__profile">
+        <Link to="/profile" className="navbar__profile">
           <div className="navbar__img" style={photoStyle}></div>
-        </div>
+        </Link>
         <div className="navbar__searchbar">
           <Searchbar />
         </div>
         {!isChatPath && (
-          <div className="navbar__message">
+          <Link to="/messages" className="navbar__message">
             <AiOutlineMessage className="navbar__icon" />
-          </div>
+          </Link>
         )}
         {isChatPath && (
           <div className="navbar__message">

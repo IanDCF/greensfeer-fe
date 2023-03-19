@@ -55,11 +55,13 @@
     flex-direction: column;
     height: 28rem;
     width: 55rem;
-    margin-right: 3rem;
-    padding: 1.5rem;
+    flex-basis: 55rem;
+    margin-right: 2.5rem;
+    padding: 1.5rem 2rem;
+    white-space: break-word;
   }
-
   &__user {
+    width: 100%;
     margin: 0;
     font-size: 3rem;
     font-weight: 500;
@@ -67,6 +69,7 @@
   }
 
   &__timestamp {
+    width: 100%;
     margin: 0;
     font-size: 2.5rem;
     font-weight: 300;
@@ -75,10 +78,11 @@
   }
 
   &__content {
+    width: 100%;
     margin: 0;
     font-size: 3rem;
     font-weight: 300;
     margin-bottom: 1rem;
-    word-break: break-word;
+    white-space: normal;
   }
 }

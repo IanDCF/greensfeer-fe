@@ -4,7 +4,7 @@ import { PostsList } from "../../components/PostsList/PostsList";
 import ProfileData from "../../data/UserProfile.json";
 import "./UserProfile.scss";
 import { ProfileHeader } from "../../components/ProfileHeader/ProfileHeader";
-interface UserProps {
+interface ProfileData {
   first_name: string;
   last_name: string;
   headline: string;
@@ -17,7 +17,7 @@ interface UserProps {
   profile_banner: string;
   about: string;
 }
-export const UserProfile: React.FC<UserProps> = () => {
+export const UserProfile: React.FC = () => {
   return (
     <>
       <div className="user-profile-container">
