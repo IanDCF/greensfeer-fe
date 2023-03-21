@@ -41,6 +41,7 @@ const App = () => {
         <Route path="/messages/chat" element={<ChatRoom />} />
         <Route path="/company" element={<CompanyProfile />} />
         <Route path="/marketplace" element={<Marketplace />} />
+        <Route path="/marketplace/item" element={<Marketplace />} />
       </Routes>
       <Navigation />
     </BrowserRouter>

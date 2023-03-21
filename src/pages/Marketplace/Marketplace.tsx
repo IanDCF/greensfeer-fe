@@ -1,11 +1,16 @@
-import MarketplaceList from "../../components/MarketplaceList/MarketplaceList";
-import MarketplaceControls from "../../components/MarketplaceControls/MarketplaceControls";
+import { useLocation } from "react-router-dom";
 import "./Marketplace.scss";
+import MarketplaceList from "../../components/MarketplaceList/MarketplaceList";
+import MarketplaceSelected from "../../components/MarketplaceSelected/MarketplaceSelected";
 
-const Marketplace = () => {
+const Marketplace: React.FC = () => {
+  const location = useLocation();
+  const path = location.pathname;
+
   return (
     <section className="marketplace-container">
-      <MarketplaceList />
+      {path === "/marketplace" && <MarketplaceList />}
+      {path === "/marketplace/item" && <MarketplaceSelected />}
     </section>
   );
 };
