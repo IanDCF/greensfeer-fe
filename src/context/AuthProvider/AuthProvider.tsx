@@ -1,3 +1,4 @@
+import axios from "axios";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
@@ -11,7 +12,7 @@ import { auth } from "../../firebase/firebase";
 
 interface InterfaceAuthProvider {
   currentUser: User | null;
-  signUp: (email: string, password: string) => Promise<UserCredential>;
+  signUp: (email: string, password: string) => UserCredential;
   login: (email: string, password: string) => Promise<UserCredential>;
   logout: () => Promise<void>;
 }
@@ -25,7 +26,20 @@ const useAuth = () => {
   return useContext(AuthContext);
 };
 const signUp = async (email: string, password: string) => {
-  return await createUserWithEmailAndPassword(auth, email, password);
+  const credentials = await createUserWithEmailAndPassword(
+    auth,
+    email,
+    password
+  );
+  const idToken = await credentials.user.getIdToken();
+  //refactor backend url to env
+  await axios.post(
+    "http://127.0.0.1:5001/greensfeer-db-dd101/us-central1/app/api/user/signUp",
+    { idToken }
+
+  );
+  //call database & create user
+  return credentials;
 };
 const login = (email: string, password: string) => {
   return signInWithEmailAndPassword(auth, email, password);

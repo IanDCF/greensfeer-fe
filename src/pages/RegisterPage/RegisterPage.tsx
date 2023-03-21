@@ -39,6 +39,7 @@ const Register = () => {
         setLoading(true);
         if (createdUser) {
           navigate("/youarebiutiful");
+          // navigate('/profile')
         }
         console.log(createdUser);
       } catch (error) {
@@ -134,6 +135,7 @@ const Register = () => {
     if (registerInfoValidation.success) {
       console.log("Setting up part 2");
       setNewUser({ ...newUser, firstName, secondName, rol });
+      //post firstName, secondName, rol to db
       setRegisterDoneInfo(true);
     }
   };
