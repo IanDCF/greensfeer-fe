@@ -1,0 +1,68 @@
+@use "../../styles/partials/colors.scss" as color;
+@use "../../styles/partials/breakpoints.scss" as bp;
+
+.marketplace-card {
+  margin-bottom: 2rem;
+  padding: 2rem 2rem;
+  display: flex;
+  justify-content: space-between;
+
+  background-color: color.$mint;
+  max-width: 100%;
+  border-radius: 2.5rem;
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    color: color.$charcoal;
+    font-size: 3rem;
+  }
+
+  &__post-type {
+    font-size: 2.8rem;
+    font-weight: 300;
+  }
+
+  &__post-name {
+    color: color.$darkgray2;
+    font-size: 4rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
+  &__company-name {
+    font-size: 3.2rem;
+    font-weight: 400;
+  }
+
+  &__location {
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: color.$green;
+  }
+
+  &__markers {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__badges {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 22rem;
+  }
+
+  &__badge {
+    width: 6rem;
+    height: 6rem;
+    background-color: rgb(197, 234, 195);
+  }
+
+  &__price {
+    font-size: 3.5rem;
+    font-weight: 500;
+  }
+}
