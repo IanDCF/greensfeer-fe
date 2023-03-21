@@ -13,6 +13,7 @@ import SignIn from "./pages/SignInPage/SignInPage";
 import Subscribe from "./pages/Subscribe/Subscribe";
 import { UserProfile } from "./pages/UserProfile/UserProfile";
 import { CompanyProfile } from "./pages/CompanyProfile/CompanyProfile";
+import Marketplace from "./pages/Marketplace/Marketplace";
 
 const App = () => {
   const { currentUser } = useAuth();
@@ -39,6 +40,7 @@ const App = () => {
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/messages/chat" element={<ChatRoom />} />
         <Route path="/company" element={<CompanyProfile />} />
+        <Route path="/marketplace" element={<Marketplace />} />
       </Routes>
       <Navigation />
     </BrowserRouter>
@@ -52,9 +54,14 @@ const Navigation = () => {
   const isMessagesPath = location.pathname.includes("/messages");
   const isProfilePath = location.pathname.includes("/profile");
   const isCompanyPath = location.pathname.includes("/company");
+  const isMarketplacePath = location.pathname.includes("/marketplace");
 
   const shouldRenderNavBar =
-    isNetworkPath || isMessagesPath || isProfilePath || isCompanyPath;
+    isNetworkPath ||
+    isMessagesPath ||
+    isProfilePath ||
+    isCompanyPath ||
+    isMarketplacePath;
   const shouldRenderNavBottom = shouldRenderNavBar;
 
   return (
