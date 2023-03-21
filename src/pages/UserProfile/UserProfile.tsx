@@ -21,48 +21,38 @@ interface ProfileData {
   profile_banner: string;
   about: string;
 }
+
 export const UserProfile: React.FC = () => {
-  const [profile, setProfile] = useState();
+  const [profile, setProfile] = useState<ProfileData | null>(null);
   const { currentUser } = useAuth();
-  const token = currentUser?.getIdToken();
-  // const [token, setToken] = useState();
-  // useEffect(
-  //   () => setToken(currentUser ? currentUser.getIdToken() : ""),
-  //   [currentUser]
-  // );
-  // if (currentUser) {
-  //   currentUser.getIdToken().then((idToken) => {
-  //     axios
-  //       .post("http://127.0.0.1:5001/greensfeer-db-dd101/us-central1/app", {
-  //         token: idToken,
-  //       }) //each backend request will require sending token
-  //       .then(console.log(currentUser));
-  //   });
-  // }
-  if (token) {
-    useEffect(() => {
-      axios
-        .get(
+  const [token, setToken] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function fetchProfile() {
+      if (currentUser) {
+        const token = await currentUser.getIdToken();
+        setToken(token);
+        const response = await axios.get(
           "http://127.0.0.1:5001/greensfeer-db-dd101/us-central1/app/api/user/current",
           {
             headers: {
-              bearerToken: `${token}`,
-              "Access-Control-Allow-Origin": "http://127.0.0.1:5173/profile",
+              bearerToken: token,
+              "Access-Control-Allow-Origin": "http://127.0.0.1:5173",
             },
           }
-        )
-        .then((profile) => {
-          console.log(profile);
-          setProfile(profile);
-        });
-    }, [token]);
-  }
+        );
+        setProfile(response.data);
+      }
+    }
+    fetchProfile();
+  }, [currentUser]);
+
   return (
     <>
       <div className="user-profile-container">
         <ProfileHeader ProfileData={ProfileData} user={true} />
         <ProfileAbout ProfileData={ProfileData} user={true} />
-        {currentUser ? console.log(currentUser.getIdToken()) : <p>no user</p>}
+        {profile && console.log(profile)}
         <ProfileAffiliations />
         <PostsList />
       </div>
