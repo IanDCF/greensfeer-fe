@@ -4,6 +4,7 @@ import Searchbar from "../Searchbar/Searchbar";
 import ProfilePhoto from "../../assets/images/Mohan-muruge.jpg";
 import { FiEdit } from "react-icons/fi";
 import { Link, useLocation } from "react-router-dom";
+import MarketplaceSearch from "../MarketplaceSearch/MarketplaceSearch";
 
 const AppNavbar: React.FC = () => {
   const photoStyle = {
@@ -12,6 +13,7 @@ const AppNavbar: React.FC = () => {
 
   const location = useLocation();
   const isChatPath = location.pathname.includes("/messages");
+  const isMarketplacePath = location.pathname.includes("/marketplace");
 
   return (
     <header className="navbar">
@@ -20,7 +22,7 @@ const AppNavbar: React.FC = () => {
           <div className="navbar__img" style={photoStyle}></div>
         </Link>
         <div className="navbar__searchbar">
-          <Searchbar />
+          {isMarketplacePath ? <MarketplaceSearch /> : <Searchbar />}
         </div>
         {!isChatPath && (
           <Link to="/messages" className="navbar__message">

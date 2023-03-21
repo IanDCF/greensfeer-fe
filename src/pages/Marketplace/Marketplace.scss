@@ -1,0 +1,9 @@
+@use "../../styles/partials/colors.scss" as color;
+@use "../../styles/partials/breakpoints.scss" as bp;
+
+.marketplace-container {
+  padding: 3rem 3rem 0 3rem;
+  display: flex;
+  flex-direction: column;
+  margin-top: 12rem;
+}
