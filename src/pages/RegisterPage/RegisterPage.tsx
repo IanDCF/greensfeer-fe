@@ -38,8 +38,8 @@ const Register = () => {
         const createdUser = await signUp(user.email, user.password);
         setLoading(true);
         if (createdUser) {
-          navigate("/youarebiutiful");
-          // navigate('/profile')
+          // navigate("/youarebiutiful");
+          navigate('/profile')
         }
         console.log(createdUser);
       } catch (error) {

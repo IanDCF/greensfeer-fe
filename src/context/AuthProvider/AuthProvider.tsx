@@ -12,7 +12,7 @@ import { auth } from "../../firebase/firebase";
 
 interface InterfaceAuthProvider {
   currentUser: User | null;
-  signUp: (email: string, password: string) => UserCredential;
+  signUp: (email: string, password: string) => Promise<UserCredential>;
   login: (email: string, password: string) => Promise<UserCredential>;
   logout: () => Promise<void>;
 }
@@ -36,7 +36,6 @@ const signUp = async (email: string, password: string) => {
   await axios.post(
     "http://127.0.0.1:5001/greensfeer-db-dd101/us-central1/app/api/user/signUp",
     { idToken }
-
   );
   //call database & create user
   return credentials;
