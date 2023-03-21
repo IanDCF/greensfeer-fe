@@ -7,8 +7,8 @@ import UserPicture from "../../assets/images/headshot4.jpeg";
 import CompanyBanner from "../../assets/images/nature-banner-2.png";
 import CompanyLogo from "../../assets/images/logo1.png";
 interface ProfileHeaderProps {
-  ProfileData: UserProps;
-  CompanyData: CompanyProps;
+  ProfileData?: UserProps;
+  CompanyData?: CompanyProps;
   user: boolean;
 }
 
@@ -71,20 +71,20 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
         </div>
         <div className="header__info">
           <h1 className="header__name">
-            {user && `${ProfileData.first_name} ${ProfileData.last_name}`}
-            {!user && `${CompanyData.name}`}
+            {user && `${ProfileData?.first_name} ${ProfileData?.last_name}`}
+            {!user && `${CompanyData?.name}`}
           </h1>
 
           {user ? (
             <>
-              <p className="header__headline">{`${ProfileData.headline}`}</p>
-              <p className="header__location">{`${ProfileData.location.city}, ${ProfileData.location.state_province}, ${ProfileData.location.country}`}</p>
+              <p className="header__headline">{`${ProfileData?.headline}`}</p>
+              <p className="header__location">{`${ProfileData?.location.city}, ${ProfileData?.location.state_province}, ${ProfileData?.location.country}`}</p>
               <p className="header__connections">200 Connections</p>
             </>
           ) : (
             <>
-              <p className="header__headline">{`${CompanyData.headline}`}</p>
-              <p className="header__location">{`${CompanyData.location.city}, ${CompanyData.location.state_province}, ${CompanyData.location.country}`}</p>
+              <p className="header__headline">{`${CompanyData?.headline}`}</p>
+              <p className="header__location">{`${CompanyData?.location.city}, ${CompanyData?.location.state_province}, ${CompanyData?.location.country}`}</p>
               <p className="header__connections">Verified</p>
             </>
           )}
