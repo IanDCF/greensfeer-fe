@@ -27,8 +27,8 @@ interface CompanyProps {
 }
 
 interface ProfileAboutProps {
-  ProfileData: UserProps;
-  CompanyData: CompanyProps;
+  ProfileData?: UserProps;
+  CompanyData?: CompanyProps;
   user: boolean;
 }
 
@@ -42,11 +42,11 @@ export const ProfileAbout: React.FC<ProfileAboutProps> = ({
       <h3 className="about__title">About</h3>
       {user ? (
         <>
-          <p className="about__text">{`${ProfileData.about}`}</p>
+          <p className="about__text">{`${ProfileData?.about}`}</p>
         </>
       ) : (
         <>
-          <p className="about__text">{`${CompanyData.about}`}</p>
+          <p className="about__text">{`${CompanyData?.about}`}</p>
         </>
       )}
     </div>
