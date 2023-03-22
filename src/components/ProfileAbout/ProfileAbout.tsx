@@ -40,14 +40,15 @@ export const ProfileAbout: React.FC<ProfileAboutProps> = ({
   return (
     <div className="about">
       <h3 className="about__title">About</h3>
-      {user ? (
+      {ProfileData ? (
         <>
           <p className="about__text">{`${ProfileData.about}`}</p>
         </>
       ) : (
-        <>
-          <p className="about__text">{`${CompanyData.about}`}</p>
-        </>
+        "loading"
+        // <>
+        //   <p className="about__text">{`${CompanyData.about}`}</p>
+        // </>
       )}
     </div>
   );

@@ -55,7 +55,6 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
   };
 
   return (
-    // <>{ProfileData? ProfileData.about:'loading'}</>
     <header className="header">
       <div className="banner-div">
         <img
