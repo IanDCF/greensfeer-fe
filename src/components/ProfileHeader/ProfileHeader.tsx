@@ -6,9 +6,10 @@ import UserBanner from "../../assets/images/nature-banner-1.png";
 import UserPicture from "../../assets/images/headshot4.jpeg";
 import CompanyBanner from "../../assets/images/nature-banner-2.png";
 import CompanyLogo from "../../assets/images/logo1.png";
+import { ICompany } from "customTypes";
 interface ProfileHeaderProps {
   ProfileData?: UserProps;
-  CompanyData?: CompanyProps;
+  CompanyData?: ICompany;
   user: boolean;
 }
 
@@ -26,19 +27,6 @@ interface UserProps {
   about: string;
 }
 
-interface CompanyProps {
-  name: string;
-  headline: string;
-  location: {
-    city: string;
-    state_province: string;
-    country: string;
-  };
-  logo: string;
-  banner: string;
-  about: string;
-}
-
 export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
   ProfileData,
   CompanyData,
@@ -49,14 +37,14 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
   };
 
   const logoStyle: React.CSSProperties = {
-    background: `url(${CompanyLogo}) center/cover no-repeat`,
+    background: `url(${CompanyData?.logo}) center/cover no-repeat`,
   };
 
   return (
     <header className="header">
       <div className="banner-div">
         <img
-          src={user ? UserBanner : CompanyBanner}
+          src={user ? UserBanner : CompanyData?.banner}
           alt="User Profile Banner"
           className="header__banner"
         />

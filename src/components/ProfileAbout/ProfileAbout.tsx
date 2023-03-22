@@ -1,3 +1,4 @@
+import { ICompany } from "customTypes";
 import "./ProfileAbout.scss";
 interface UserProps {
   first_name: string;
@@ -13,22 +14,9 @@ interface UserProps {
   about: string;
 }
 
-interface CompanyProps {
-  name: string;
-  headline: string;
-  location: {
-    city: string;
-    state_province: string;
-    country: string;
-  };
-  logo: string;
-  banner: string;
-  about: string;
-}
-
 interface ProfileAboutProps {
   ProfileData?: UserProps;
-  CompanyData?: CompanyProps;
+  CompanyData?: ICompany;
   user: boolean;
 }
 
