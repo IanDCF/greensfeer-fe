@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, matchPath } from "react-router-dom";
 import "./Marketplace.scss";
 import MarketplaceList from "../../components/MarketplaceList/MarketplaceList";
 import MarketplaceSelected from "../../components/MarketplaceSelected/MarketplaceSelected";
@@ -7,10 +7,17 @@ const Marketplace: React.FC = () => {
   const location = useLocation();
   const path = location.pathname;
 
+  const marketplaceListMatch = matchPath(path, "/marketplace");
+
+  const marketplaceItemSelectedMatch = matchPath(
+    location.pathname,
+    "/marketplace/item"
+  );
+
   return (
     <section className="marketplace-container">
-      {path === "/marketplace" && <MarketplaceList />}
-      {path === "/marketplace/item" && <MarketplaceSelected />}
+      {marketplaceItemSelectedMatch && <MarketplaceSelected />}
+      {marketplaceListMatch && <MarketplaceList />}
     </section>
   );
 };
