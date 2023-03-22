@@ -1,3 +1,4 @@
+import { ICompany } from "customTypes";
 import "./ProfileAbout.scss";
 interface UserProps {
   first_name: string;
@@ -13,22 +14,9 @@ interface UserProps {
   about: string;
 }
 
-interface CompanyProps {
-  name: string;
-  headline: string;
-  location: {
-    city: string;
-    state_province: string;
-    country: string;
-  };
-  logo: string;
-  banner: string;
-  about: string;
-}
-
 interface ProfileAboutProps {
-  ProfileData: UserProps;
-  CompanyData: CompanyProps;
+  ProfileData?: UserProps;
+  CompanyData?: ICompany;
   user: boolean;
 }
 
@@ -40,15 +28,14 @@ export const ProfileAbout: React.FC<ProfileAboutProps> = ({
   return (
     <div className="about">
       <h3 className="about__title">About</h3>
-      {ProfileData ? (
+      {user ? (
         <>
-          <p className="about__text">{`${ProfileData.about}`}</p>
+          <p className="about__text">{`${ProfileData?.about}`}</p>
         </>
       ) : (
-        "loading"
-        // <>
-        //   <p className="about__text">{`${CompanyData.about}`}</p>
-        // </>
+        <>
+          <p className="about__text">{`${CompanyData?.about}`}</p>
+        </>
       )}
     </div>
   );
