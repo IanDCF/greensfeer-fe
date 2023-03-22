@@ -38,7 +38,7 @@ const App = () => {
         <Route path="/messages" element={<Messages />} />
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/messages/chat" element={<ChatRoom />} />
-        <Route path="/company" element={<CompanyProfile />} />
+        <Route path="/company/:companyId" element={<CompanyProfile />} />
       </Routes>
       <Navigation />
     </BrowserRouter>
