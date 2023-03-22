@@ -1,0 +1,58 @@
+@use "../../styles/partials/colors.scss" as color;
+@use "../../styles/partials/breakpoints.scss" as bp;
+
+.control-btn {
+  text-decoration: none;
+  margin: 0;
+  white-space: nowrap;
+  outline: none;
+  border-radius: 50px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  @include bp.mobile {
+    font-size: 6.5rem;
+    font-weight: 300;
+
+    padding: 1.5rem 4.5rem;
+    &__icon {
+      font-size: 6.5rem;
+      display: flex;
+      align-items: center;
+      margin-left: 2rem;
+    }
+  }
+
+  @include bp.tablet {
+    font-size: 4rem;
+    max-width: 37rem;
+    padding: 2.5rem 5.5rem;
+  }
+
+  @include bp.desktop {
+    font-size: 4rem;
+    max-width: 40rem;
+    padding: 2.5rem 5.5rem;
+  }
+
+  &--green {
+    color: color.$black;
+    background-color: color.$green;
+    &:hover {
+      background-color: color.$white;
+      transition: all 0.2s ease-in-out;
+    }
+  }
+
+  &--black {
+    color: color.$white;
+    background-color: color.$black;
+    &:hover {
+      background-color: color.$green;
+      transition: all 0.2s ease-in-out;
+    }
+  }
+}
