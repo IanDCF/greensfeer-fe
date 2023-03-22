@@ -41,6 +41,7 @@ export const UserProfile: React.FC = () => {
             },
           }
         );
+        console.log(response.data);
         setProfile(response.data);
       }
     }
@@ -50,9 +51,9 @@ export const UserProfile: React.FC = () => {
   return (
     <>
       <div className="user-profile-container">
-        <ProfileHeader ProfileData={ProfileData} user={true} />
-        <ProfileAbout ProfileData={ProfileData} user={true} />
-        {profile && console.log(profile)}
+        <ProfileHeader ProfileData={profile} user={true} />
+        {/* <ProfileAbout ProfileData={profile} user={true} /> */}
+        {/* {profile && console.log(profile)} */}
         <ProfileAffiliations />
         <PostsList />
       </div>

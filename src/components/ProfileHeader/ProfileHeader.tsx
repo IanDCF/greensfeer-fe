@@ -45,7 +45,9 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
   user,
 }) => {
   const headshotStyle: React.CSSProperties = {
-    background: `url(${UserPicture}) center/cover no-repeat`,
+    background: `url(${
+      ProfileData ? ProfileData.profile_picture : UserPicture
+    }) center/cover no-repeat`,
   };
 
   const logoStyle: React.CSSProperties = {
@@ -53,10 +55,11 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
   };
 
   return (
+    // <>{ProfileData? ProfileData.about:'loading'}</>
     <header className="header">
       <div className="banner-div">
         <img
-          src={user ? UserBanner : CompanyBanner}
+          src={ProfileData ? ProfileData.profile_banner : "loading"}
           alt="User Profile Banner"
           className="header__banner"
         />
@@ -66,27 +69,30 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
         <div className="header__photo-div">
           <div
             className="header__photo"
-            style={user ? headshotStyle : logoStyle}
+            style={ProfileData ? headshotStyle : logoStyle}
           />
         </div>
         <div className="header__info">
           <h1 className="header__name">
-            {user && `${ProfileData.first_name} ${ProfileData.last_name}`}
+            {ProfileData
+              ? `${ProfileData.first_name} ${ProfileData.last_name}`
+              : "loading"}
             {!user && `${CompanyData.name}`}
           </h1>
 
-          {user ? (
+          {ProfileData ? (
             <>
               <p className="header__headline">{`${ProfileData.headline}`}</p>
               <p className="header__location">{`${ProfileData.location.city}, ${ProfileData.location.state_province}, ${ProfileData.location.country}`}</p>
               <p className="header__connections">200 Connections</p>
             </>
           ) : (
-            <>
-              <p className="header__headline">{`${CompanyData.headline}`}</p>
-              <p className="header__location">{`${CompanyData.location.city}, ${CompanyData.location.state_province}, ${CompanyData.location.country}`}</p>
-              <p className="header__connections">Verified</p>
-            </>
+            "loading"
+            //           <>
+            //             <p className="header__headline">{`${CompanyData.headline}`}</p>
+            //             <p className="header__location">{`${CompanyData.location.city}, ${CompanyData.location.state_province}, ${CompanyData.location.country}`}</p>
+            //             <p className="header__connections">Verified</p>
+            //           </>
           )}
         </div>
       </div>

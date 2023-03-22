@@ -39,7 +39,7 @@ const Register = () => {
         setLoading(true);
         if (createdUser) {
           // navigate("/youarebiutiful");
-          navigate('/profile')
+          navigate('/marketplace')
         }
         console.log(createdUser);
       } catch (error) {

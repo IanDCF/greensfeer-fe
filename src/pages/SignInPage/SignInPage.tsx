@@ -32,7 +32,7 @@ const SignIn = () => {
         const { user } = await login(email, password);
         if (user) {
           console.log(`User ${user.email} logged in successfully`);
-          navigate("/youarebiutiful");
+          navigate("/marketplace");
         }
       } catch (error) {
         console.error(error);
