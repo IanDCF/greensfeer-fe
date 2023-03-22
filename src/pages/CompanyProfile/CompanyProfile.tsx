@@ -5,44 +5,36 @@ import CompanyData from "../../data/CompanyProfile.json";
 import MarketPosts from "../../data/MarketListings.json";
 import { useEffect, useState } from "react";
 import "../UserProfile/UserProfile.scss";
-
-interface MarketPost {
-  post_name: string;
-  post_type: string;
-  post_category: string;
-  company_id: string;
-  p?: {
-    total_price: number;
-  };
-}
-
-interface CompanyData {
-  name: string;
-  headline: string;
-  location: {
-    city: string;
-    state_province: string;
-    country: string;
-  };
-  logo: string;
-  banner: string;
-  about: string;
-}
+import getMarketPost from "../../helpers/marketPostFetcher";
+import { ICompany, IMarketPost } from "customTypes";
+import { useParams } from "react-router-dom";
+import getCompany from "../../helpers/companyFetcher";
 
 export const CompanyProfile: React.FC = () => {
-  const [products, setProducts] = useState<MarketPost[]>([]);
-  const [services, setServices] = useState<MarketPost[]>([]);
-
+  const { companyId } = useParams();
+  const [products, setProducts] = useState<IMarketPost[]>([]);
+  const [services, setServices] = useState<IMarketPost[]>([]);
+  const [company, setCompany] = useState<ICompany>();
   useEffect(() => {
-    setProducts(MarketPosts.filter((post) => post.p));
-    setServices(MarketPosts.filter((post) => !post.p));
-  }, []);
+    const getData = async () => {
+      if (companyId) {
+        const companyData = await getCompany(companyId);
+        if (companyData) {
+          setCompany(companyData);
+          const marketPost = await getMarketPost(companyId);
+          setProducts(marketPost.filter((post) => post.p));
+          setServices(marketPost.filter((post) => !post.p));
+        }
+      }
+    };
+    getData();
+  }, [companyId]);
 
   return (
     <>
       <div className="user-profile-container">
-        <ProfileHeader CompanyData={CompanyData} user={false} />
-        <ProfileAbout CompanyData={CompanyData} user={false} />
+        <ProfileHeader CompanyData={company} user={false} />
+        <ProfileAbout CompanyData={company} user={false} />
         {/* <Affiliations /> */}
         <MarketListings posts={products} title={"Products"} />
         <MarketListings posts={services} title={"Services"} />
