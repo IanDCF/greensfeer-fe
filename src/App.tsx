@@ -14,6 +14,7 @@ import Subscribe from "./pages/Subscribe/Subscribe";
 import { UserProfile } from "./pages/UserProfile/UserProfile";
 import { CompanyProfile } from "./pages/CompanyProfile/CompanyProfile";
 import Marketplace from "./pages/Marketplace/Marketplace";
+import CreateCompany from "./pages/CreateCompany/CreateCompany";
 
 const App = () => {
   const { currentUser } = useAuth();
@@ -41,6 +42,9 @@ const App = () => {
         <Route path="/messages/chat" element={<ChatRoom />} />
         <Route path="/company" element={<CompanyProfile />} />
         <Route path="/marketplace" element={<Marketplace />} />
+        <Route path="/marketplace/item" element={<Marketplace />} />
+        <Route path="/create-company/step1" element={<CreateCompany />} />
+        <Route path="/create-company/step2" element={<CreateCompany />} />
       </Routes>
       <Navigation />
     </BrowserRouter>

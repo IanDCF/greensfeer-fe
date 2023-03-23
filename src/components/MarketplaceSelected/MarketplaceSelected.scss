@@ -1,2 +1,159 @@
 @use "../../styles/partials/colors.scss" as color;
 @use "../../styles/partials/breakpoints.scss" as bp;
+
+.marketplace-select {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15rem;
+
+  &__banner {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  &__img {
+    width: 100%;
+    border-radius: 2.5rem;
+  }
+
+  &__body {
+    padding: 2rem 2rem;
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    background-color: color.$mint;
+    width: 100%;
+    border-radius: 2.5rem;
+    color: color.$charcoal;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__ep-type {
+    font-size: 3.5rem;
+    font-weight: 300;
+  }
+
+  &__post-name {
+    font-size: 5.5rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
+  &__company {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  &__company-name {
+    font-size: 4rem;
+    font-weight: 400;
+  }
+
+  &__verified-icon {
+    margin-left: 2rem;
+    width: 4rem;
+  }
+
+  &__location {
+    font-size: 3rem;
+    font-weight: 600;
+    color: color.$green;
+    margin-bottom: 2rem;
+  }
+
+  &__date-listed {
+    font-size: 3rem;
+    font-weight: 300;
+    color: color.$nickel;
+    margin-bottom: 7rem;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 7rem;
+  }
+
+  &__title {
+    font-size: 4rem;
+    font-weight: 600;
+    margin-bottom: 2.5rem;
+  }
+
+  &__description-text {
+    font-size: 4rem;
+    font-weight: 300;
+    color: color.$darkgray2;
+  }
+
+  &__goals {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 7rem;
+  }
+
+  &__goals-display {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__goal {
+    margin-right: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  &__goal-icon {
+    width: 18rem;
+    border-radius: 2.5rem;
+  }
+
+  &__certifications {
+    margin-bottom: 7rem;
+  }
+
+  &__certifications-display {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__certification {
+    white-space: nowrap;
+    border: 1px solid color.$brightgreen;
+    background-color: color.$brightgreen;
+    font-size: 3rem;
+    font-weight: 500;
+    padding: 1rem 2rem;
+    border-radius: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  &__photos {
+    margin-bottom: 7rem;
+  }
+
+  &__photos-display {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__photo {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__photo-img {
+    width: 90%;
+    border-radius: 2.5rem;
+  }
+}
