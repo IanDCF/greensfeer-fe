@@ -47,25 +47,28 @@ const CompanyForm2 = () => {
             />
           </div>
           <div className="create-company__input-div">
-            <label className="create-company__label-text" htmlFor="linkedin">
-              linkedin
+            <label className="create-company__label-text" htmlFor="email">
+              email
             </label>
             <input
-              id="linkedin"
+              id="email"
               type="text"
               className="create-company__input"
-              placeholder="Add your LinkedIn URL"
+              placeholder="Your Company Email"
             />
           </div>
           <div className="create-company__input-div">
-            <label className="create-company__label-text" htmlFor="otherLinks">
-              other links
+            <label
+              className="create-company__label-text"
+              htmlFor="companyWebsite"
+            >
+              website
             </label>
             <input
-              id="otherLinks"
+              id="companyWebsite"
               type="text"
               className="create-company__input"
-              placeholder="Do you blog? Add it!"
+              placeholder="Your Company Website"
             />
           </div>
           <div className="create-company__input-offering">
@@ -80,7 +83,11 @@ const CompanyForm2 = () => {
       </div>
       <div className="create-company__controls">
         <ControlButton dark={true} text="Cancel" link="/create-company/step1" />
-        <ControlButton dark={false} text="Next" link="/create-company/step2" />
+        <ControlButton
+          dark={false}
+          text="Submit"
+          link="/create-company/step2"
+        />
       </div>
     </form>
   );

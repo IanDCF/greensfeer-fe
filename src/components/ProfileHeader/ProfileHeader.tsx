@@ -6,9 +6,9 @@ import UserBanner from "../../assets/images/nature-banner-1.png";
 import UserPicture from "../../assets/images/headshot4.jpeg";
 import CompanyBanner from "../../assets/images/nature-banner-2.png";
 import CompanyLogo from "../../assets/images/logo1.png";
-import { ICompany } from "customTypes";
+import { ICompany, IUser } from "customTypes";
 interface ProfileHeaderProps {
-  ProfileData?: UserProps;
+  ProfileData?: IUser;
   CompanyData?: ICompany;
   user: boolean;
 }
@@ -18,9 +18,9 @@ interface UserProps {
   last_name: string;
   headline: string;
   location: {
-    city: string,
-    state_province: string,
-    country: string,
+    city: string;
+    state_province: string;
+    country: string;
   };
   profile_picture: string;
   profile_banner: string;

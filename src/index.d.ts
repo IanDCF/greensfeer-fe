@@ -72,6 +72,16 @@ declare module "customTypes" {
     headline: string;
     about: string;
   }
+
+  interface IUser {
+    first_name: string;
+    last_name: string;
+    headline: string;
+    location: Location;
+    profile_picture: string;
+    profile_banner: string;
+    about: string;
+  }
 }
 
 module.exports = {
