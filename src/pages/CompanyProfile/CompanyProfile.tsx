@@ -26,7 +26,7 @@ export const CompanyProfile: React.FC = () => {
             setServices(marketPost.filter((post) => !post.p));
           }
         } else {
-          navigate("/home");
+          navigate("/404");
         }
       }
     };
