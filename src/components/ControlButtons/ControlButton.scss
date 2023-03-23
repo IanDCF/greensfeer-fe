@@ -50,6 +50,7 @@
   &--black {
     color: color.$white;
     background-color: color.$black;
+    margin-right: 2rem;
     &:hover {
       background-color: color.$green;
       transition: all 0.2s ease-in-out;
