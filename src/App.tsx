@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import AppNavbar from "./components/AppNavbar/AppNavbar";
 import NavBottom from "./components/AppNavbar/NavBottom";
@@ -15,6 +14,7 @@ import { UserProfile } from "./pages/UserProfile/UserProfile";
 import { CompanyProfile } from "./pages/CompanyProfile/CompanyProfile";
 import Marketplace from "./pages/Marketplace/Marketplace";
 import CreateCompany from "./pages/CreateCompany/CreateCompany";
+import CreateListing from "./pages/CreateListing/CreateListing";
 
 const App = () => {
   const { currentUser } = useAuth();
@@ -45,6 +45,9 @@ const App = () => {
         <Route path="/marketplace/item" element={<Marketplace />} />
         <Route path="/create-company/step1" element={<CreateCompany />} />
         <Route path="/create-company/step2" element={<CreateCompany />} />
+        <Route path="/create-listing/step1" element={<CreateListing />} />
+        <Route path="/create-listing/step2" element={<CreateListing />} />
+        <Route path="/create-listing/step3" element={<CreateListing />} />
       </Routes>
       <Navigation />
     </BrowserRouter>
