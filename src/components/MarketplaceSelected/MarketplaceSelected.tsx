@@ -1,15 +1,15 @@
-import CompanyBanner from "../../assets/images/nature-banner-2.png";
+import CompanyBanner from "/assets/images/nature-banner-2.png";
 import CompanyLogo from "../../assets/images/logo1.png";
 import "./MarketplaceSelected.scss";
-import VerifiedIcon from "../../assets/logos/greensfeer-logo.png";
-import sdg1 from "../../assets/icons/sdg1.png";
-import sdg2 from "../../assets/icons/sdg2.png";
-import sdg3 from "../../assets/icons/sdg3.png";
-import sdg4 from "../../assets/icons/sdg4.png";
-import sdg5 from "../../assets/icons/sdg5.png";
-import sdg6 from "../../assets/icons/sdg6.png";
-import sdg7 from "../../assets/icons/sdg7.png";
-import CoralReef from "../../assets/images/coralreef.png";
+import VerifiedIcon from "/assets/logos/greensfeer-logo.png";
+import sdg1 from "/assets/icons/sdg1.png";
+import sdg2 from "/assets/icons/sdg2.png";
+import sdg3 from "/assets/icons/sdg3.png";
+import sdg4 from "/assets/icons/sdg4.png";
+import sdg5 from "/assets/icons/sdg5.png";
+import sdg6 from "/assets/icons/sdg6.png";
+import sdg7 from "/assets/icons/sdg7.png";
+import CoralReef from "/assets/images/coralreef.png";
 
 const MarketplaceSelected = () => {
   return (

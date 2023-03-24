@@ -1,6 +1,6 @@
 import "./ProfileAffiliations.scss";
-import companyLogo1 from "../../assets/images/affiliation1.png";
-import companyLogo2 from "../../assets/images/affiliation2.png";
+import companyLogo1 from "/assets/images/affiliation1.png";
+import companyLogo2 from "/assets/images/affiliation2.png";
 import UserAffilliations from "../../data/UserAffiliations.json";
 
 // interface UserAffiliations {

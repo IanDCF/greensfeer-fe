@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import GreensfeerLogo from "../../assets/logos/greensfeer-logo.svg";
+import GreensfeerLogo from "/assets/logos/greensfeer-logo.svg";
 import "./Register.scss";
 interface Props {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;

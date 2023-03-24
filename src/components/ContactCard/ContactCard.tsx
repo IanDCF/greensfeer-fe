@@ -1,5 +1,5 @@
 import "./ContactCard.scss";
-import ProfilePhoto from "../../assets/images/Mohan-muruge.jpg";
+import ProfilePhoto from "/assets/images/Mohan-muruge.jpg";
 interface ContactCardProps {
   pending: boolean;
 }

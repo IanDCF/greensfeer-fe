@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { MdKeyboardArrowRight, MdArrowForward } from "react-icons/md";
 import { NavLink } from "react-router-dom";
-import Video from "../../assets/videos/video.mp4";
+import Video from "/assets/videos/video.mp4";
 import "./Hero.scss";
 
 const Hero: React.FC = () => {

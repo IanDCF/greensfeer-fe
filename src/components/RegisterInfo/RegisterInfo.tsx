@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import GreensfeerLogo from "../../assets/logos/greensfeer-logo.svg";
+import GreensfeerLogo from "/assets/logos/greensfeer-logo.svg";
 import "./RegisterInfo.scss";
 import { auth } from "../../firebase/firebase";
 import axios from "axios";

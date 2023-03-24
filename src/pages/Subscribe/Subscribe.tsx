@@ -3,7 +3,7 @@ import "./Subscribe.scss";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-import SVG from "../../assets/images/greensfeer-registration-success.svg";
+import SVG from "/assets/images/greensfeer-registration-success.svg";
 
 type SubscribeFormInputs = {
   firstName: string;

@@ -1,5 +1,5 @@
 import "./CreateCompany.scss";
-import logo from "../../assets/logos/greensfeer-logo.png";
+import logo from "/assets/logos/greensfeer-logo.png";
 import { BsCamera } from "react-icons/bs";
 import ControlButton from "../../components/ControlButtons/ControlButton";
 

@@ -1,7 +1,7 @@
 import { AiOutlineMessage } from "react-icons/ai";
 import "./AppNavbar.scss";
 import Searchbar from "../Searchbar/Searchbar";
-import ProfilePhoto from "../../assets/images/Mohan-muruge.jpg";
+import ProfilePhoto from "/assets/images/Mohan-muruge.jpg";
 import { FiEdit } from "react-icons/fi";
 import { Link, useLocation } from "react-router-dom";
 import MarketplaceSearch from "../MarketplaceSearch/MarketplaceSearch";

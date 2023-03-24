@@ -2,10 +2,10 @@ import "./ProfileHeader.scss";
 // Make sure Profile Picture and Banner are extracted from
 // ProfileData once we manage to retrieve those urls from
 // Firebase Storage Bucket
-import UserBanner from "../../assets/images/nature-banner-1.png";
-import UserPicture from "../../assets/images/headshot4.jpeg";
-import CompanyBanner from "../../assets/images/nature-banner-2.png";
-import CompanyLogo from "../../assets/images/logo1.png";
+import UserBanner from "/assets/images/nature-banner-1.png";
+import UserPicture from "/assets/images/headshot4.jpeg";
+import CompanyBanner from "/assets/images/nature-banner-2.png";
+import CompanyLogo from "/assets/images/logo1.png";
 import { ICompany } from "customTypes";
 interface ProfileHeaderProps {
   ProfileData?: UserProps;

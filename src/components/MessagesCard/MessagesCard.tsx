@@ -1,5 +1,5 @@
 import "./MessagesCard.scss";
-import ProfilePhoto from "../../assets/images/Mohan-muruge.jpg";
+import ProfilePhoto from "/assets/images/Mohan-muruge.jpg";
 import inboxList from "./MessagesData.json";
 
 const MessagesCard: React.FC = () => {

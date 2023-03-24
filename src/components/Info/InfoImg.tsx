@@ -1,8 +1,8 @@
 import React from "react";
-import P1 from "../../assets/images/connected-world.png";
-import P2 from "../../assets/images/business-deal.png";
-import P3 from "../../assets/images/online-ad.png";
-import P4 from "../../assets/images/build-websites.png";
+import P1 from "/assets/images/connected-world.png";
+import P2 from "/assets/images/business-deal.png";
+import P3 from "/assets/images/online-ad.png";
+import P4 from "/assets/images/build-websites.png";
 import "./InfoImg.scss";
 
 interface Props {
