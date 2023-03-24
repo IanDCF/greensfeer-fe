@@ -18,9 +18,9 @@ interface UserProps {
   last_name: string;
   headline: string;
   location: {
-    city: string,
-    state_province: string,
-    country: string,
+    city: string;
+    state_province: string;
+    country: string;
   };
   profile_picture: string;
   profile_banner: string;
@@ -66,7 +66,10 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
           {user ? (
             <>
               <p className="header__headline">{`${ProfileData?.headline}`}</p>
-              <p className="header__location">{`${ProfileData?.location.city}, ${ProfileData?.location.state_province}, ${ProfileData?.location.country}`}</p>
+              <p className="header__location">
+                {ProfileData?.location &&
+                  `${ProfileData.location?.city}, ${ProfileData.location?.state_province}, ${ProfileData.location?.country}`}
+              </p>
               <p className="header__connections">200 Connections</p>
             </>
           ) : (
