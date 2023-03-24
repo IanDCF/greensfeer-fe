@@ -1,21 +1,8 @@
-import { ICompany } from "customTypes";
+import { ICompany, IUser } from "customTypes";
 import "./ProfileAbout.scss";
-interface UserProps {
-  first_name: string;
-  last_name: string;
-  headline: string;
-  location: {
-    city: string;
-    state_province: string;
-    country: string;
-  };
-  profile_picture: string;
-  profile_banner: string;
-  about: string;
-}
 
 interface ProfileAboutProps {
-  ProfileData?: UserProps;
+  ProfileData?: IUser;
   CompanyData?: ICompany;
   user: boolean;
 }
@@ -34,7 +21,7 @@ export const ProfileAbout: React.FC<ProfileAboutProps> = ({
         </>
       ) : (
         <>
-          <p className="about__text">{`${CompanyData?.about}`}</p>
+          <p className="about__text">{`${CompanyData?.description}`}</p>
         </>
       )}
     </div>
