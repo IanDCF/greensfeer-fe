@@ -21,7 +21,7 @@ export const ProfileAbout: React.FC<ProfileAboutProps> = ({
         </>
       ) : (
         <>
-          <p className="about__text">{`${CompanyData?.about}`}</p>
+          <p className="about__text">{`${CompanyData?.description}`}</p>
         </>
       )}
     </div>

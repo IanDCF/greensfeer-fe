@@ -33,7 +33,7 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
   user,
 }) => {
   const headshotStyle: React.CSSProperties = {
-    background: `url(${UserPicture}) center/cover no-repeat`,
+    background: `url(${ProfileData?.profile_picture}) center/cover no-repeat`,
   };
 
   const logoStyle: React.CSSProperties = {
@@ -44,7 +44,7 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
     <header className="header">
       <div className="banner-div">
         <img
-          src={user ? UserBanner : CompanyData?.banner}
+          src={user ? ProfileData?.profile_banner : CompanyData?.banner}
           alt="User Profile Banner"
           className="header__banner"
         />
@@ -66,7 +66,10 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
           {user ? (
             <>
               <p className="header__headline">{`${ProfileData?.headline}`}</p>
-              <p className="header__location">{`${ProfileData?.location.city}, ${ProfileData?.location.state_province}, ${ProfileData?.location.country}`}</p>
+              <p className="header__location">
+                {ProfileData?.location &&
+                  `${ProfileData.location?.city}, ${ProfileData.location?.state_province}, ${ProfileData.location?.country}`}
+              </p>
               <p className="header__connections">200 Connections</p>
             </>
           ) : (
