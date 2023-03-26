@@ -1,18 +1,30 @@
 import { z } from "zod";
 
-const registerCompany1Schema = z.object({
+const registerCompanySchema = z.object({
   banner: z.optional(z.string().trim().url()),
   logo: z.optional(z.string().trim().url()),
   name: z.optional(z.string().trim()),
   sector: z.string().trim(),
   marketRole: z.string().trim().min(6),
   location: z.optional(z.string().trim()),
-
 });
 
-const registerCompany2Schema = z.object({
+const registerCompanyDetailSchema = z.object({
   headline: z.optional(z.string().trim()),
   about: z.optional(z.string().trim()),
   email: z.optional(z.string().trim().toLowerCase().email()),
   website: z.optional(z.string().trim().url()),
 });
+
+const newCompanySchema = registerCompanySchema.merge(
+  registerCompanyDetailSchema
+);
+
+export type TRegisterCompany1Schema = z.infer<typeof registerCompanySchema>;
+export type TNewCompany = z.infer<typeof newCompanySchema>;
+export type TRegisterCompanyDetailSchema = z.infer<
+  typeof registerCompanyDetailSchema
+>;
+
+export { registerCompanySchema, registerCompanyDetailSchema };
+export default newCompanySchema;

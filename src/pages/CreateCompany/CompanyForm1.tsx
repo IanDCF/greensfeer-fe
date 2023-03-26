@@ -2,10 +2,22 @@ import "./CreateCompany.scss";
 import logo from "../../assets/logos/greensfeer-logo.png";
 import { BsCamera } from "react-icons/bs";
 import ControlButton from "../../components/ControlButtons/ControlButton";
+import getAllCompanies from "../../helpers/allCompanyFetcher";
+import { compile } from "sass";
+interface Props {
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+}
 
-const CompanyForm1 = () => {
+const CompanyForm1 = ({ handleSubmit }: Props) => {
+  getAllCompanies().then((res) => {
+    const found = res.find((company) => company.name === "Greensfeer");
+    if (found) {
+      console.log(found);
+    }
+  });
+
   return (
-    <form className="create-company__form">
+    <form className="create-company__form" onSubmit={handleSubmit}>
       <div className="create-company__logo">
         <img
           src={logo}
@@ -22,6 +34,13 @@ const CompanyForm1 = () => {
             <div className="create-company__label">logo</div>
             <div className="create-company__icon">
               <BsCamera />
+              <label htmlFor="logo"></label>
+              <input
+                type="file"
+                name="logo"
+                accept="image/*"
+                style={{ opacity: 0 }}
+              ></input>
             </div>
           </div>
           <div className="create-company__company-banner">
@@ -36,6 +55,7 @@ const CompanyForm1 = () => {
             <label className="create-company__label-text">company name</label>
             <input
               type="text"
+              name="name"
               className="create-company__input"
               placeholder="What do you go by?"
             />
@@ -44,6 +64,7 @@ const CompanyForm1 = () => {
             <label className="create-company__label-text">sector*</label>
             <input
               type="text"
+              name="sector"
               className="create-company__input"
               placeholder="What sector are you in?"
             />
@@ -57,7 +78,7 @@ const CompanyForm1 = () => {
               name="marketRole"
               className="create-company__input"
             >
-              <option disabled selected>
+              <option defaultValue={"Select market role"}>
                 Select market role
               </option>
               <option value="Project Developer">Project Developer</option>
@@ -75,6 +96,7 @@ const CompanyForm1 = () => {
             <label className="create-company__label-text">location*</label>
             <input
               type="text"
+              name="location"
               className="create-company__input"
               placeholder="Where are you located?"
             />
@@ -86,7 +108,15 @@ const CompanyForm1 = () => {
       </div>
       <div className="create-company__controls">
         <ControlButton dark={true} text="Cancel" link="/marketplace" />
-        <ControlButton dark={false} text="Next" link="/create-company/step2" />
+        <ControlButton
+          dark={false}
+          text="Next"
+          // type="submit"
+          link="/create-company/step2"
+        />
+        <button className="create-company__button" type="submit">
+          Next &gt;
+        </button>
       </div>
     </form>
   );
