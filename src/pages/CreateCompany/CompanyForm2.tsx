@@ -4,10 +4,13 @@ import { BsCamera } from "react-icons/bs";
 import ControlButton from "../../components/ControlButtons/ControlButton";
 import { TbArrowBackUp } from "react-icons/tb";
 import { Link } from "react-router-dom";
+interface Props {
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+}
 
-const CompanyForm2 = () => {
+const CompanyForm2 = ({ handleSubmit }: Props) => {
   return (
-    <form className="create-company__form">
+    <form className="create-company__form" onSubmit={handleSubmit}>
       {/* Back btn has to change state to display previous page */}
       <div className="create-company__back-btn">
         <TbArrowBackUp />
@@ -92,6 +95,7 @@ const CompanyForm2 = () => {
           text="Submit"
           link="/create-company/step2"
         />
+        <button type="submit">Submit</button>
       </div>
     </form>
   );

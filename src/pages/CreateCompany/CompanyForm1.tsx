@@ -9,13 +9,7 @@ interface Props {
 }
 
 const CompanyForm1 = ({ handleSubmit }: Props) => {
-  getAllCompanies().then((res) => {
-    const found = res.find((company) => company.name === "Greensfeer");
-    if (found) {
-      console.log(found);
-    }
-  });
-
+ 
   return (
     <form className="create-company__form" onSubmit={handleSubmit}>
       <div className="create-company__logo">
@@ -47,6 +41,13 @@ const CompanyForm1 = ({ handleSubmit }: Props) => {
             <div className="create-company__label">banner</div>
             <div className="create-company__icon">
               <BsCamera />
+              <label htmlFor="banner"></label>
+              <input
+                type="file"
+                name="banner"
+                accept="image/*"
+                style={{ opacity: 0 }}
+              ></input>
             </div>
           </div>
         </div>

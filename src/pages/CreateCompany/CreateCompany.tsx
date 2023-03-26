@@ -1,7 +1,8 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { matchPath, useLocation, useNavigate } from "react-router-dom";
 import newCompanySchema, {
+  registerCompanyDetailSchema,
   registerCompanySchema,
   TNewCompany,
 } from "../../schemas/CompanySchema";
@@ -18,6 +19,11 @@ const CreateCompany: React.FC = () => {
   const newCompanyDefault = {} as TNewCompany;
   const [newCompany, setNewCompany] = useState<TNewCompany>(newCompanyDefault);
   const [stepOneDone, setStepOneDone] = useState(false);
+  const [stepTwoDone, setStepTwoDone] = useState(false);
+
+  useEffect(() => {
+    if (stepTwoDone) validateCompany();
+  }, [stepTwoDone]);
 
   const validateCompany = async () => {
     const companyValidation = newCompanySchema.safeParse(newCompany);
@@ -28,8 +34,9 @@ const CreateCompany: React.FC = () => {
       const company = companyValidation.data;
       try {
         //send post req?
-        companyCreator(newCompany);
-        // .then((res)=>{ set res.data.company_id to newCompanyId})
+        companyCreator(newCompany).then((res) => {
+          console.log(res.data);
+        });
         // navigate(`/company/${newCompanyId}`);
       } catch (error) {
         console.log(`catched error: ${error}`);
@@ -54,19 +61,23 @@ const CreateCompany: React.FC = () => {
     const logoInput = e.currentTarget.elements.namedItem(
       "logo"
     ) as HTMLInputElement;
-    // const bannerInput = e.currentTarget.elements.namedItem("banner");
+    const bannerInput = e.currentTarget.elements.namedItem(
+      "banner"
+    ) as HTMLInputElement;
 
     const name = nameInput.value;
     const sector = sectorInput.value;
-    const marketRole = marketRoleInput.value;
+    const market_role = marketRoleInput.value;
     const location = locationInput.value;
     const logo = logoInput.value;
+    const banner = bannerInput.value;
     const registerCompanySchemaValidation = registerCompanySchema.safeParse({
       name,
       sector,
-      marketRole,
+      market_role,
       location,
       logo,
+      banner,
     });
 
     //get request for company where form input name matches existing company name
@@ -94,21 +105,60 @@ const CreateCompany: React.FC = () => {
       setNewCompany({
         ...newCompany,
         name,
-        marketRole,
+        market_role,
         sector,
         location,
         logo,
+        banner,
       });
       setStepOneDone(true);
       navigate("/create-company/step2");
-    
     }
     console.log("Form 1 submitted");
     // Correctly checks company name against database & saves form fields to state
   };
 
-  const handleSubmitFormTwo = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSecondSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const headlineInput = e.currentTarget.elements.namedItem(
+      "headline"
+    ) as HTMLInputElement;
+    const aboutInput = e.currentTarget.elements.namedItem(
+      "about"
+    ) as HTMLInputElement;
+    const emailInput = e.currentTarget.elements.namedItem(
+      "email"
+    ) as HTMLInputElement;
+    const websiteInput = e.currentTarget.elements.namedItem(
+      "website"
+    ) as HTMLInputElement;
+
+    const headline = headlineInput.value;
+    const about = aboutInput.value;
+    const email = emailInput.value;
+    const website = websiteInput.value;
+    const registerCompanyDetailValidation =
+      registerCompanyDetailSchema.safeParse({
+        headline,
+        about,
+        email,
+        website,
+      });
+
+    if (!registerCompanyDetailValidation.success) {
+      const error = registerCompanyDetailValidation.error.errors;
+      console.log(error);
+    }
+    if (registerCompanyDetailValidation.success) {
+      setNewCompany({
+        ...newCompany,
+        headline,
+        about,
+        email,
+        website,
+      });
+    }
+    setStepTwoDone(true);
     console.log("Form 2 submitted");
     // Perform the necessary actions for form 2 submission
   };
@@ -121,7 +171,9 @@ const CreateCompany: React.FC = () => {
       {!stepOneDone && createCompany1 && (
         <CompanyForm1 handleSubmit={handleFirstSubmit} />
       )}
-      {stepOneDone && createCompany2 && <CompanyForm2 />}
+      {stepOneDone && createCompany2 && (
+        <CompanyForm2 handleSubmit={handleSecondSubmit} />
+      )}
     </section>
   );
 };
