@@ -9,7 +9,19 @@ declare module "customTypes" {
     link: string;
     alt: string;
   }
-
+  export interface IUser {
+    uid: string;
+    profile_banner?: null;
+    about?: string;
+    last_name: string;
+    created_at: Timestamp;
+    profile_picture?: null;
+    location: Location;
+    linkedin?: null;
+    first_name: string;
+    headline?: null;
+    email: string;
+  }
   export interface IMarketPost {
     image: string;
     link: string;
