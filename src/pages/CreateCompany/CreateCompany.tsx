@@ -17,7 +17,7 @@ const CreateCompany: React.FC = () => {
   const path = location.pathname;
   const newCompanyDefault = {} as TNewCompany;
   const [newCompany, setNewCompany] = useState<TNewCompany>(newCompanyDefault);
-  const [hasUniqueName, setHasUniqueName] = useState(false);
+  const [stepOneDone, setStepOneDone] = useState(false);
 
   const validateCompany = async () => {
     const companyValidation = newCompanySchema.safeParse(newCompany);
@@ -99,9 +99,12 @@ const CreateCompany: React.FC = () => {
         location,
         logo,
       });
+      setStepOneDone(true);
+      navigate("/create-company/step2");
+    
     }
-    // Perform the necessary actions for form 1 submission
     console.log("Form 1 submitted");
+    // Correctly checks company name against database & saves form fields to state
   };
 
   const handleSubmitFormTwo = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -115,8 +118,10 @@ const CreateCompany: React.FC = () => {
 
   return (
     <section className="create-company">
-      {createCompany1 && <CompanyForm1 handleSubmit={handleFirstSubmit} />}
-      {createCompany2 && <CompanyForm2 />}
+      {!stepOneDone && createCompany1 && (
+        <CompanyForm1 handleSubmit={handleFirstSubmit} />
+      )}
+      {stepOneDone && createCompany2 && <CompanyForm2 />}
     </section>
   );
 };

@@ -31,6 +31,7 @@ const CompanyForm2 = () => {
             <input
               id="headline"
               type="text"
+              name="headline"
               className="create-company__input"
               placeholder="Give us your best tagline!"
             />
@@ -42,6 +43,7 @@ const CompanyForm2 = () => {
             <input
               id="about"
               type="text"
+              name="about"
               className="create-company__input"
               placeholder="What's your mission?"
             />
@@ -52,6 +54,7 @@ const CompanyForm2 = () => {
             </label>
             <input
               id="email"
+              name="email"
               type="text"
               className="create-company__input"
               placeholder="Your Company Email"
@@ -67,6 +70,7 @@ const CompanyForm2 = () => {
             <input
               id="companyWebsite"
               type="text"
+              name="website"
               className="create-company__input"
               placeholder="Your Company Website"
             />
