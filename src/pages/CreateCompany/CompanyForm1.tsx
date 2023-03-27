@@ -4,12 +4,14 @@ import { BsCamera } from "react-icons/bs";
 import ControlButton from "../../components/ControlButtons/ControlButton";
 import getAllCompanies from "../../helpers/allCompanyFetcher";
 import { compile } from "sass";
+import React from "react";
 interface Props {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  handlePic: (e: React.FormEvent<HTMLInputElement>) => void;
+  handleBanner: (e: React.FormEvent<HTMLInputElement>) => void;
 }
 
-const CompanyForm1 = ({ handleSubmit }: Props) => {
- 
+const CompanyForm1 = ({ handleSubmit, handlePic, handleBanner }: Props) => {
   return (
     <form className="create-company__form" onSubmit={handleSubmit}>
       <div className="create-company__logo">
@@ -33,6 +35,7 @@ const CompanyForm1 = ({ handleSubmit }: Props) => {
                 type="file"
                 name="logo"
                 accept="image/*"
+                onChange={handlePic}
                 style={{ opacity: 0 }}
               ></input>
             </div>
@@ -45,6 +48,7 @@ const CompanyForm1 = ({ handleSubmit }: Props) => {
               <input
                 type="file"
                 name="banner"
+                onChange={handleBanner}
                 accept="image/*"
                 style={{ opacity: 0 }}
               ></input>

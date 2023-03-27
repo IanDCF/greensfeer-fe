@@ -11,8 +11,9 @@ import CompanyForm2 from "./CompanyForm2";
 import "./CreateCompany.scss";
 import companyCreator from "../../helpers/companyCreator";
 import getAllCompanies from "../../helpers/allCompanyFetcher";
-
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 const CreateCompany: React.FC = () => {
+  const storage = getStorage();
   const location = useLocation();
   const navigate = useNavigate();
   const path = location.pathname;
@@ -20,6 +21,47 @@ const CreateCompany: React.FC = () => {
   const [newCompany, setNewCompany] = useState<TNewCompany>(newCompanyDefault);
   const [stepOneDone, setStepOneDone] = useState(false);
   const [stepTwoDone, setStepTwoDone] = useState(false);
+  //create state to store file
+  const [profilePic, setProfilePic] = useState<File>();
+  const [profileUrl, setProfileUrl] = useState("");
+  const [bannerPic, setBannerPic] = useState<File>();
+  const [bannerUrl, setBannerUrl] = useState("");
+
+  const handlePic = (e: React.FormEvent<HTMLInputElement>) => {
+    const target = e.target as HTMLInputElement;
+    const pic: File = (target.files as FileList)[0];
+    setProfilePic(pic);
+  };
+  const handleBanner = (e: React.FormEvent<HTMLInputElement>) => {
+    const target = e.target as HTMLInputElement;
+    const pic: File = (target.files as FileList)[0];
+    setBannerPic(pic);
+  };
+  useEffect(() => {
+    if (profilePic) {
+      const newPicRef = ref(storage, `${profilePic.name}`);
+
+      const upload = async () => {
+        const toCloud = await uploadBytes(newPicRef, profilePic);
+        const url = await getDownloadURL(newPicRef);
+        setProfileUrl(url);
+      };
+      upload();
+    }
+  }, [profilePic]);
+  useEffect(() => {
+    if (bannerPic) {
+      const newPicRef = ref(storage, `${bannerPic.name}`);
+
+      const upload = async () => {
+        const toCloud = await uploadBytes(newPicRef, bannerPic);
+        const url = await getDownloadURL(newPicRef);
+        setBannerUrl(url);
+      };
+      upload();
+    }
+  }, [bannerPic]);
+  //this upoads picture successfully but does not return a path with token
 
   useEffect(() => {
     if (stepTwoDone) validateCompany();
@@ -62,19 +104,13 @@ const CreateCompany: React.FC = () => {
     const locationInput = e.currentTarget.elements.namedItem(
       "location"
     ) as HTMLInputElement;
-    const logoInput = e.currentTarget.elements.namedItem(
-      "logo"
-    ) as HTMLInputElement;
-    const bannerInput = e.currentTarget.elements.namedItem(
-      "banner"
-    ) as HTMLInputElement;
 
     const name = nameInput.value;
     const sector = sectorInput.value;
     const market_role = marketRoleInput.value;
     const location = locationInput.value;
-    const logo = logoInput.value;
-    const banner = bannerInput.value;
+    const logo = profileUrl;
+    const banner = bannerUrl;
     const registerCompanySchemaValidation = registerCompanySchema.safeParse({
       name,
       sector,
@@ -173,7 +209,11 @@ const CreateCompany: React.FC = () => {
   return (
     <section className="create-company">
       {!stepOneDone && createCompany1 && (
-        <CompanyForm1 handleSubmit={handleFirstSubmit} />
+        <CompanyForm1
+          handleSubmit={handleFirstSubmit}
+          handlePic={handlePic}
+          handleBanner={handleBanner}
+        />
       )}
       {stepOneDone && createCompany2 && (
         <CompanyForm2 handleSubmit={handleSecondSubmit} />
