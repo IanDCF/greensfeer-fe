@@ -40,13 +40,13 @@ const CompanyForm2 = ({ handleSubmit }: Props) => {
             />
           </div>
           <div className="create-company__input-div">
-            <label className="create-company__label-text" htmlFor="about">
-              about
+            <label className="create-company__label-text" htmlFor="description">
+              description
             </label>
             <input
-              id="about"
+              id="description"
               type="text"
-              name="about"
+              name="description"
               className="create-company__input"
               placeholder="What's your mission?"
             />

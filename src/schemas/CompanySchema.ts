@@ -11,7 +11,7 @@ const registerCompanySchema = z.object({
 
 const registerCompanyDetailSchema = z.object({
   headline: z.optional(z.string().trim()),
-  about: z.optional(z.string().trim()),
+  description: z.optional(z.string().trim()),
   email: z.optional(z.string().trim().toLowerCase().email()),
   website: z.optional(z.string().trim()),
 });

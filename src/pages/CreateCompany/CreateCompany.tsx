@@ -34,9 +34,13 @@ const CreateCompany: React.FC = () => {
       const company = companyValidation.data;
       try {
         //send post req?
-        companyCreator(newCompany).then((res) => {
-          console.log(res.data);
-        });
+        companyCreator(newCompany)
+          .then((res) => {
+            return res.data.message;
+          })
+          .then((companyId) => {
+            navigate(`/company/${companyId}`);
+          });
         // navigate(`/company/${newCompanyId}`);
       } catch (error) {
         console.log(`catched error: ${error}`);
@@ -123,8 +127,8 @@ const CreateCompany: React.FC = () => {
     const headlineInput = e.currentTarget.elements.namedItem(
       "headline"
     ) as HTMLInputElement;
-    const aboutInput = e.currentTarget.elements.namedItem(
-      "about"
+    const descriptionInput = e.currentTarget.elements.namedItem(
+      "description"
     ) as HTMLInputElement;
     const emailInput = e.currentTarget.elements.namedItem(
       "email"
@@ -134,13 +138,13 @@ const CreateCompany: React.FC = () => {
     ) as HTMLInputElement;
 
     const headline = headlineInput.value;
-    const about = aboutInput.value;
+    const description = descriptionInput.value;
     const email = emailInput.value;
     const website = websiteInput.value;
     const registerCompanyDetailValidation =
       registerCompanyDetailSchema.safeParse({
         headline,
-        about,
+        description,
         email,
         website,
       });
@@ -153,7 +157,7 @@ const CreateCompany: React.FC = () => {
       setNewCompany({
         ...newCompany,
         headline,
-        about,
+        description,
         email,
         website,
       });

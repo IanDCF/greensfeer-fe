@@ -82,7 +82,7 @@ declare module "customTypes" {
     email: string;
     website: string;
     headline: string;
-    about: string;
+    description: string;
   }
 
   interface IUser {
