@@ -89,6 +89,7 @@
     align-items: center;
     justify-content: center;
     font-size: 12rem;
+    width: 18rem;
   }
 
   &__company-banner {
@@ -147,5 +148,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  &__button {
+    margin-top: 1rem;
+    padding: 1.3rem 4rem;
+    border-radius: 15rem;
+    border: none;
+    background-color: color.$green;
+    color: color.$black;
+    cursor: pointer;
+    transition: all 0.3s ease;
   }
 }

@@ -4,10 +4,13 @@ import { BsCamera } from "react-icons/bs";
 import ControlButton from "../../components/ControlButtons/ControlButton";
 import { TbArrowBackUp } from "react-icons/tb";
 import { Link } from "react-router-dom";
+interface Props {
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+}
 
-const CompanyForm2 = () => {
+const CompanyForm2 = ({ handleSubmit }: Props) => {
   return (
-    <form className="create-company__form">
+    <form className="create-company__form" onSubmit={handleSubmit}>
       {/* Back btn has to change state to display previous page */}
       <div className="create-company__back-btn">
         <TbArrowBackUp />
@@ -31,41 +34,48 @@ const CompanyForm2 = () => {
             <input
               id="headline"
               type="text"
+              name="headline"
               className="create-company__input"
               placeholder="Give us your best tagline!"
             />
           </div>
           <div className="create-company__input-div">
-            <label className="create-company__label-text" htmlFor="about">
-              about
+            <label className="create-company__label-text" htmlFor="description">
+              description
             </label>
             <input
-              id="about"
+              id="description"
               type="text"
+              name="description"
               className="create-company__input"
               placeholder="What's your mission?"
             />
           </div>
           <div className="create-company__input-div">
-            <label className="create-company__label-text" htmlFor="linkedin">
-              linkedin
+            <label className="create-company__label-text" htmlFor="email">
+              email
             </label>
             <input
-              id="linkedin"
+              id="email"
+              name="email"
               type="text"
               className="create-company__input"
-              placeholder="Add your LinkedIn URL"
+              placeholder="Your Company Email"
             />
           </div>
           <div className="create-company__input-div">
-            <label className="create-company__label-text" htmlFor="otherLinks">
-              other links
+            <label
+              className="create-company__label-text"
+              htmlFor="companyWebsite"
+            >
+              website
             </label>
             <input
-              id="otherLinks"
+              id="companyWebsite"
               type="text"
+              name="website"
               className="create-company__input"
-              placeholder="Do you blog? Add it!"
+              placeholder="Your Company Website"
             />
           </div>
           <div className="create-company__input-offering">
@@ -80,7 +90,12 @@ const CompanyForm2 = () => {
       </div>
       <div className="create-company__controls">
         <ControlButton dark={true} text="Cancel" link="/create-company/step1" />
-        <ControlButton dark={false} text="Next" link="/create-company/step2" />
+        <ControlButton
+          dark={false}
+          text="Submit"
+          link="/create-company/step2"
+        />
+        <button type="submit">Submit</button>
       </div>
     </form>
   );
