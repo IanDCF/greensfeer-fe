@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 const registerListingSchema = z.object({
-  post_type: z.optional(z.literal("Product" || "Service")),
+  post_type: z.optional(z.string()),
   post_name: z.optional(z.string().trim()),
   // FIXME: could tighten up sector with z.literal, populate options
   sector: z.optional(z.string().trim()),
