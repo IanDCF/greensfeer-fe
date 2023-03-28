@@ -83,7 +83,7 @@ const CompanyForm1 = ({ handleSubmit, handlePic, handleBanner }: Props) => {
               name="marketRole"
               className="create-company__input"
             >
-              <option defaultValue={"Select market role"}>
+              <option hidden defaultValue={"Select market role"}>
                 Select market role
               </option>
               <option value="Project Developer">Project Developer</option>

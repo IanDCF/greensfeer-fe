@@ -18,34 +18,28 @@ const ListingForm1 = () => {
       <div className="create-listing__input-fields">
         <div className="create-listing__text-input">
           <div className="create-company__input-div">
-            <label
-              className="create-company__label-text"
-              htmlFor="offeringType"
-            >
+            <label className="create-company__label-text" htmlFor="post_type">
               offering type*
             </label>
             <select
-              id="offeringType"
-              name="offeringType"
+              id="post_type"
+              name="post_type"
               className="create-company__input"
             >
-              <option disabled selected>
+              <option hidden={true} defaultValue={"Select an option"}>
                 Select an option
               </option>
-              <option value="Project">Project</option>
+              <option value="Product">Product</option>
               <option value="Service">Service</option>
             </select>
           </div>
           <div className="create-listing__input-div">
-            <label
-              className="create-listing__label-text"
-              htmlFor="listingTitle"
-            >
+            <label className="create-listing__label-text" htmlFor="post_name">
               title*
             </label>
             <input
-              id="listingTitle"
-              name="listingTitle"
+              id="post_name"
+              name="post_name"
               type="text"
               className="create-listing__input"
               placeholder="Title of your listing"
@@ -56,7 +50,8 @@ const ListingForm1 = () => {
               sector*
             </label>
             <select id="sector" name="sector" className="create-company__input">
-              <option disabled selected>
+              {/* FIXME: Back end currently does not handle sector */}
+              <option hidden={true} defaultValue={"Select a secotr"}>
                 Select a sector
               </option>
               <option value="All">All</option>
@@ -117,7 +112,8 @@ const ListingForm1 = () => {
               description
             </label>
             <textarea
-              id="otherLinks"
+              id="description"
+              name="description"
               className="create-listing__input-textarea"
               placeholder="Tell us about your listing"
             />

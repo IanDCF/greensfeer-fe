@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { matchPath, useLocation, useNavigate } from "react-router-dom";
 import newCompanySchema, {
@@ -12,6 +11,7 @@ import "./CreateCompany.scss";
 import companyCreator from "../../helpers/companyCreator";
 import getAllCompanies from "../../helpers/allCompanyFetcher";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+
 const CreateCompany: React.FC = () => {
   const storage = getStorage();
   const location = useLocation();

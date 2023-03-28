@@ -37,8 +37,8 @@ const ListingForm3 = () => {
               name="verificationStandard"
               className="create-listing__input"
             >
-              <option disabled selected>
-                Select a standard
+              <option hidden={true} defaultValue={"Select a Standard"}>
+                Select a Standard
               </option>
               <option value="ACR">American Carbon Registry (ACR)</option>
               <option value="BioCarbon">BioCarbon Partners (BCP)</option>
@@ -82,18 +82,19 @@ const ListingForm3 = () => {
           </div>
 
           <div className="create-listing__input-div">
-            <label className="create-listing__label-text" htmlFor="methodology">
+            <label className="create-listing__label-text" htmlFor="methodology_id">
               methodology id
             </label>
             <input
-              id="methodology"
-              name="methodology"
+              id="methodology_id"
+              name="methodology_id"
               type="text"
               className="create-listing__input"
               placeholder="Enter methodology id"
             />
           </div>
           <div className="create-listing__input-div">
+            {/* FIXME: current back end design doesn't have place for vintage */}
             <label className="create-listing__label-text" htmlFor="vintage">
               vintage
             </label>
@@ -111,6 +112,7 @@ const ListingForm3 = () => {
           </div>
           <div className="create-listing__price-inputs">
             <div className="create-listing__currency">
+              {/* FIXME: current back end does not have field for currency */}
               <label className="create-listing__label" htmlFor="currency">
                 currency
               </label>
