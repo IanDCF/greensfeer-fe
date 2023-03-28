@@ -1,22 +1,52 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import GreensfeerLogo from "../../assets/logos/greensfeer-logo.svg";
-import "./Register.scss";
-import { auth } from "../../firebase/firebase";
-import axios from "axios";
+import React, { useCallback, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import RegisterForm1 from "./RegisterForm1";
+import RegisterForm2 from "./RegisterForm2";
+import newUserSchema, {
+  type TNewUser,
+  registerInfoUserSchema,
+  registerUserSchema,
+} from "../../schemas/UserSchema";
+import { useAuth } from "../../context/AuthProvider/AuthProvider";
 
-import { createUserWithEmailAndPassword } from "firebase/auth";
-interface RegisterFormData {
-  email: string;
-  password: string;
-  passwordConfirm: string;
-}
-
+const newUserDefault = {} as TNewUser;
 const Register = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
+  const { signUp } = useAuth();
+  const newUserDefault = {} as TNewUser;
+  const [newUser, setNewUser] = useState<TNewUser>(newUserDefault);
   const [isChecked1, setIsChecked1] = useState(false);
   const [isChecked2, setIsChecked2] = useState(false);
+  const [registerDone, setRegisterDone] = useState(false);
+  const [registerDoneInfo, setRegisterDoneInfo] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<null | string>(null);
 
+  useEffect(() => {
+    if (registerDoneInfo) validateUser();
+  }, [registerDoneInfo]);
+
+  const validateUser = async () => {
+    const userValidation = newUserSchema.safeParse(newUser);
+    if (!userValidation.success) {
+      setError(error);
+      console.log(userValidation.error.errors);
+    }
+    if (userValidation.success) {
+      const user = userValidation.data;
+      try {
+        const createdUser = await signUp(user.email, user.password);
+        setLoading(true);
+        if (createdUser) {
+          // navigate("/youarebiutiful");
+          navigate("/marketplace");
+        }
+        console.log(createdUser);
+      } catch (error) {
+        console.log("catched error : ", error);
+      }
+    }
+  };
   const handleCheckbox1 = (isChecked: boolean) => {
     setIsChecked1(isChecked);
   };
@@ -25,7 +55,7 @@ const Register = () => {
     setIsChecked2(isChecked);
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleFirstSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const emailInput = e.currentTarget.elements.namedItem(
       "email"
@@ -33,133 +63,102 @@ const Register = () => {
     const passwordInput = e.currentTarget.elements.namedItem(
       "password"
     ) as HTMLInputElement;
-    const passwordConfirmInput = e.currentTarget.elements.namedItem(
+    const confirmPasswordInput = e.currentTarget.elements.namedItem(
       "passwordConfirm"
     ) as HTMLInputElement;
 
     const email = emailInput.value;
     const password = passwordInput.value;
-    const passwordConfirm = passwordConfirmInput.value;
-
-    if (password !== passwordConfirm) {
-      alert("Passwords don't match");
+    const confirmPassword = confirmPasswordInput.value;
+    const registerUserSchemValidation = registerUserSchema.safeParse({
+      email,
+      password,
+      confirmPassword,
+    });
+    if (!registerUserSchemValidation.success) {
+      const error = registerUserSchemValidation.error.errors; //We need to format the errors so we can pass the string to the setError
+      setError("There was some kind of problem with the inputs");
+      console.log(error);
       return;
     }
+    if (password !== confirmPassword) {
+      alert("Passwords don't match");
+      setError("Passwords don't match");
+      console.log(error);
+      return;
+    }
+    if (!isChecked1 || !isChecked2) {
+      setError("You need to accept all the fields");
+      console.log(error);
+      return;
+    }
+    if (registerUserSchemValidation.success) {
+      console.log("Setting User Registration part 1");
+      setNewUser({ ...newUser, email, password, confirmPassword });
+      setRegisterDone(true);
+      setIsChecked1(false);
+      setIsChecked2(false);
+    }
+  };
+  const handleSecondSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const firstNameInput = e.currentTarget.elements.namedItem(
+      "firstName"
+    ) as HTMLInputElement;
+    const secondNameInput = e.currentTarget.elements.namedItem(
+      "secondName"
+    ) as HTMLInputElement;
+    const rolInput = e.currentTarget.elements.namedItem(
+      "role"
+    ) as HTMLInputElement;
 
-    console.log(email, password);
-
-    try {
-      // Create user with email and password using Firebase Authentication
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-
-      // Get user ID from the user credential
-      const userId = userCredential.user.uid;
-
-      // Define the payload for the API call
-      const payload = {
-        user_id: userId,
-        email: email,
-      };
-
-      // Make the API call using axios ** when user_route is ready
-      // const response = await axios.post("https://example.com/api", payload);
-
-      // Navigate to next page
-      // navigate("/register_info");
-
-      // console.log(response.data);
-    } catch (error) {
-      console.error(error);
+    const firstName = firstNameInput.value;
+    const secondName = secondNameInput.value;
+    const rol = rolInput.value;
+    const registerInfoValidation = registerInfoUserSchema.safeParse({
+      firstName,
+      secondName,
+      rol,
+    });
+    if (!registerInfoValidation.success) {
+      const error = registerInfoValidation.error.errors; //We need to format the errors so we can pass the string
+      // to the setError
+      setError("There was some kind of problem with the inputs");
+      console.log(error);
+      return;
+    }
+    if (!isChecked1) {
+      setError("You need to accept all the fields");
+      console.log(error);
+      return;
+    }
+    if (registerInfoValidation.success) {
+      console.log("Setting up part 2");
+      setNewUser({ ...newUser, firstName, secondName, rol });
+      //post firstName, secondName, rol to db
+      setRegisterDoneInfo(true);
     }
   };
   return (
-    <div className="register">
-      <div className="register__wrapper">
-        <div className="register__logo">
-          <img
-            className="register__img"
-            src={GreensfeerLogo}
-            alt="Greensfeer Logo"
-          />
-        </div>
-
-        <div className="register__title">Welcome to Greensfeer!</div>
-
-        <form className="register__form" onSubmit={handleSubmit}>
-          <div className="register__text">
-            <label className="register__label" htmlFor="email">
-              email
-            </label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              placeholder="Enter your email address"
-              className="register__input"
-            />
-            <label className="register__label" htmlFor="password">
-              password
-            </label>
-            <input
-              id="password"
-              name="password"
-              type="password"
-              placeholder="Enter a strong password"
-              className="register__input"
-            />
-            <label className="register__label" htmlFor="passwordConfirm">
-              confirm password
-            </label>
-            <input
-              id="passwordConfirm"
-              name="passwordConfirm"
-              type="password"
-              placeholder="Confirm your password"
-              className="register__input"
-            />
-          </div>
-
-          <div className="register__preferences">
-            <div className="register__boxes">
-              <input
-                id="captcha"
-                className="register__checkbox"
-                type="checkbox"
-                checked={isChecked1}
-                onChange={(e) => handleCheckbox1(e.target.checked)}
-              />
-              <label className="register__label-checkbox" htmlFor="captcha">
-                I am not an AI bot
-              </label>
-            </div>
-
-            <div className="register__boxes">
-              <input
-                id="newsBox"
-                className="register__checkbox"
-                type="checkbox"
-                checked={isChecked2}
-                onChange={(e) => handleCheckbox2(e.target.checked)}
-              />
-              <label className="register__label-checkbox" htmlFor="newsBox">
-                I'd like to subscribe to Greensfeer's newsletter
-              </label>
-            </div>
-          </div>
-
-          <button className="register__button" type="submit">
-            Get Started
-          </button>
-          <Link to="#" className="register__link">
-            Already have an account? Sign in
-          </Link>
-        </form>
-      </div>
-    </div>
+    <section className="register">
+      {!registerDone && (
+        <RegisterForm1
+          handleSubmit={handleFirstSubmit}
+          handleCheckbox1={handleCheckbox1}
+          handleCheckbox2={handleCheckbox2}
+          isChecked1={isChecked1}
+          isChecked2={isChecked2}
+        />
+      )}
+      {registerDone && !loading && (
+        <RegisterForm2
+          handleSubmit={handleSecondSubmit}
+          handleCheckbox1={handleCheckbox1}
+          isChecked1={isChecked1}
+        />
+      )}
+      {loading && <div style={{ fontSize: "15rem" }}>Loading...</div>}
+    </section>
   );
 };
 
