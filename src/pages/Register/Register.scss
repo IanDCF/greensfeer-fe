@@ -8,12 +8,29 @@
   height: 100vh;
   width: 100%;
 
+  @include bp.desktop {
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/greensfeer-db-dd101.appspot.com/o/trees.jpeg?alt=media&token=334171df-d0f4-40a9-9262-e585dc897712");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  }
+
   &__wrapper {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
+    background-color: color.$white;
     @include bp.mobile {
       width: 100%;
       height: 100vh;
@@ -22,6 +39,12 @@
     @include bp.tablet {
       width: 95rem;
       height: 175rem;
+    }
+
+    @include bp.desktop {
+      width: 146rem;
+      height: 165.5rem;
+      border-radius: 8px;
     }
   }
 
@@ -39,6 +62,12 @@
       top: 6rem;
       left: 2.5rem;
     }
+
+    @include bp.desktop {
+      font-size: 8rem;
+      top: 2rem;
+      left: 2rem;
+    }
   }
 
   &__logo {
@@ -49,6 +78,10 @@
     @include bp.tablet {
       margin-bottom: 8rem;
     }
+
+    @include bp.desktop {
+      margin-bottom: 3.5rem;
+    }
   }
 
   &__img {
@@ -58,6 +91,10 @@
 
     @include bp.tablet {
       width: 28rem;
+    }
+
+    @include bp.desktop {
+      width: 18.5rem;
     }
   }
 
@@ -75,6 +112,11 @@
 
     @include bp.tablet {
       font-size: 8rem;
+      margin-bottom: 8rem;
+    }
+
+    @include bp.tablet {
+      font-size: 6.3rem;
       margin-bottom: 8rem;
     }
   }
@@ -117,6 +159,12 @@
         margin-bottom: 4rem;
       }
     }
+
+    @include bp.desktop {
+      height: 11rem;
+      width: 61rem;
+      margin-bottom: 4rem;
+    }
   }
 
   &__label {
@@ -134,6 +182,12 @@
       top: -2.5rem;
       left: 6rem;
       font-size: 3.2rem;
+    }
+
+    @include bp.desktop {
+      top: -2rem;
+      left: 6rem;
+      font-size: 2.5rem;
     }
   }
 
@@ -153,6 +207,11 @@
       font-size: 4rem;
       font-weight: 300;
     }
+
+    @include bp.desktop {
+      font-size: 3.5rem;
+      font-weight: 300;
+    }
   }
 
   &__preferences {
@@ -169,6 +228,11 @@
       width: 75rem;
       margin-bottom: 12rem;
     }
+
+    @include bp.desktop {
+      width: 50rem;
+      margin-bottom: 1rem;
+    }
   }
 
   &__boxes {
@@ -181,6 +245,10 @@
 
     @include bp.tablet {
       margin-bottom: 2rem;
+    }
+
+    @include bp.desktop {
+      margin-bottom: 1.5rem;
     }
   }
 
@@ -214,6 +282,13 @@
     @include bp.tablet {
       width: 61rem;
       height: 15rem;
+      font-size: 6.5rem;
+    }
+
+    @include bp.desktop {
+      width: auto;
+      padding: 0 6rem;
+      height: 12rem;
       font-size: 6.5rem;
     }
 
