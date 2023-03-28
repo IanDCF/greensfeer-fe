@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import GreensfeerLogo from "../../assets/logos/greensfeer-logo.svg";
 import "./Register.scss";
+import { TbArrowBackUp } from "react-icons/tb";
 
 interface Props {
   handleSubmit: any;
@@ -8,9 +9,17 @@ interface Props {
   handleCheckbox1: (isChecked: boolean) => void;
 }
 
-const RegisterInfo = ({ handleSubmit, handleCheckbox1, isChecked1 }: Props) => {
+const RegisterForm2 = ({
+  handleSubmit,
+  handleCheckbox1,
+  isChecked1,
+}: Props) => {
   return (
     <div className="register__wrapper">
+      {/* This back arrow should send the user back to the first Form */}
+      <div className="register__back-btn">
+        <TbArrowBackUp />
+      </div>
       <div className="register__logo">
         <img
           className="register__img"
@@ -19,7 +28,7 @@ const RegisterInfo = ({ handleSubmit, handleCheckbox1, isChecked1 }: Props) => {
         />
       </div>
 
-      <div className="register__heading">Welcome to Greensfeer!</div>
+      <div className="register__heading">Welcome to Greensfeer</div>
 
       <form className="register__form" onSubmit={handleSubmit}>
         <div className="register__text">
@@ -52,18 +61,35 @@ const RegisterInfo = ({ handleSubmit, handleCheckbox1, isChecked1 }: Props) => {
               I am a
             </label>
             <select id="role" name="role" className="register__input">
-              <option defaultValue={"Tell us who you are"}>
+              <option disabled defaultValue={"Tell us who you are"}>
                 Tell us who you are
               </option>
+              <option value="Project Aggregator">Project Aggregator</option>
+              <option value="Broker">Broker</option>
+              <option value="Buyer">Buyer</option>
+              <option value="Carbon Consultant">Carbon Consultant</option>
+              <option value="Credit Assurer">Credit Assurer</option>
+              <option value="Credit Issuer">Credit Issuer</option>
+              <option value="Exchange Operator">Exchange Operator</option>
+              <option value="Legal Advisor">Legal Advisor</option>
+              <option value="Market Analyst">Market Analyst</option>
+              <option value="Offset Fund Manager">Offset Fund Manager</option>
+              <option value="Offset Standard Setter">
+                Offset Standard Setter
+              </option>
               <option value="Project Developer">Project Developer</option>
-              <option value="Sponsor">Sponsor / Investor</option>
-              <option value="Carbon Consultancy">Carbon Consultant</option>
+              <option value="Project Financier">
+                Project Financier/ Investor
+              </option>
+              <option value="Registry Operator">Registry Operator</option>
+              <option value="Retailer">Retailer</option>
+              <option value="Risk Manager">Risk Manager</option>
+              <option value="Seller">Seller</option>
+              <option value="Third Party Auditor">Third Party Auditor</option>
               <option value="Third Party Validator">
-                Third-party Validator
+                Third Party Validator
               </option>
-              <option value="Verification & Validation Body">
-                Verification & Validation Body
-              </option>
+              <option value="Third Party Verifier">Third Party Verifier</option>
             </select>
           </div>
         </div>
@@ -94,4 +120,4 @@ const RegisterInfo = ({ handleSubmit, handleCheckbox1, isChecked1 }: Props) => {
   );
 };
 
-export default RegisterInfo;
+export default RegisterForm2;
