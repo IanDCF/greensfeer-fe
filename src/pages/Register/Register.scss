@@ -13,22 +13,52 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    height: 100vh;
+
+    @include bp.mobile {
+      width: 100%;
+      height: 100vh;
+    }
+
+    @include bp.tablet {
+      width: 95rem;
+      height: 175rem;
+    }
   }
 
   &__back-btn {
-    font-size: 8rem;
     position: absolute;
-    top: 2rem;
-    left: 3rem;
+
+    @include bp.mobile {
+      font-size: 6rem;
+      top: 2rem;
+      left: 2.5rem;
+    }
+
+    @include bp.tablet {
+      font-size: 8rem;
+      top: 6rem;
+      left: 2.5rem;
+    }
   }
 
   &__logo {
-    margin-bottom: 1.5rem;
+    @include bp.mobile {
+      margin-bottom: 1.5rem;
+    }
+
+    @include bp.tablet {
+      margin-bottom: 8rem;
+    }
   }
+
   &__img {
-    width: 18.5rem;
+    @include bp.mobile {
+      width: 18.5rem;
+    }
+
+    @include bp.tablet {
+      width: 28rem;
+    }
   }
 
   &__heading {
@@ -36,10 +66,17 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: 6rem;
-    margin-bottom: 1rem;
     font-weight: 300;
-    margin-bottom: 6rem;
+
+    @include bp.mobile {
+      font-size: 6rem;
+      margin-bottom: 6rem;
+    }
+
+    @include bp.tablet {
+      font-size: 8rem;
+      margin-bottom: 8rem;
+    }
   }
 
   &__form {
@@ -62,44 +99,89 @@
     position: relative;
     border: 1px solid color.$green;
     border-radius: 12rem;
-    height: 11rem;
-    width: 61rem;
     display: flex;
     align-items: center;
-    padding-left: 4rem;
-    padding-right: 1.5rem;
-    margin-bottom: 4rem;
+    padding: 0 4rem 0 6rem;
+
+    @include bp.mobile {
+      height: 11rem;
+      width: 61rem;
+      margin-bottom: 4rem;
+    }
+
+    @include bp.tablet {
+      height: 15rem;
+      width: 100%;
+      margin-bottom: 8rem;
+      &:last-child {
+        margin-bottom: 4rem;
+      }
+    }
   }
 
   &__label {
     position: absolute;
-    top: -2rem;
-    left: 6rem;
     background-color: color.$white;
     padding: 0 0.75rem;
-    font-size: 2.5rem;
+
+    @include bp.mobile {
+      top: -2rem;
+      left: 6rem;
+      font-size: 2.5rem;
+    }
+
+    @include bp.tablet {
+      top: -2.5rem;
+      left: 6rem;
+      font-size: 3.2rem;
+    }
   }
 
   &__input {
     width: 100%;
     border: none;
     outline: none;
-    font-size: 3.5rem;
-    font-weight: 300;
     color: color.$nickel;
+    background-color: none;
+
+    @include bp.mobile {
+      font-size: 3.5rem;
+      font-weight: 300;
+    }
+
+    @include bp.tablet {
+      font-size: 4rem;
+      font-weight: 300;
+    }
   }
 
   &__preferences {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 50rem;
+
+    @include bp.mobile {
+      width: 50rem;
+      margin-bottom: 1rem;
+    }
+
+    @include bp.tablet {
+      width: 75rem;
+      margin-bottom: 12rem;
+    }
   }
 
   &__boxes {
     display: flex;
     align-items: center;
-    margin-bottom: 1.5rem;
+
+    @include bp.mobile {
+      margin-bottom: 1.5rem;
+    }
+
+    @include bp.tablet {
+      margin-bottom: 2rem;
+    }
   }
 
   &__boxes-push {
@@ -115,17 +197,25 @@
   }
 
   &__button {
-    margin-top: 1rem;
-    padding: 0 6rem;
-    height: 12rem;
     border-radius: 15rem;
     border: none;
     background-color: color.$green;
     color: color.$black;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-size: 6.5rem;
     font-weight: 300;
+
+    @include bp.mobile {
+      padding: 0 6rem;
+      height: 12rem;
+      font-size: 6.5rem;
+    }
+
+    @include bp.tablet {
+      width: 61rem;
+      height: 15rem;
+      font-size: 6.5rem;
+    }
 
     &:hover {
       background-color: color.$black;

@@ -10,7 +10,7 @@ interface Props {
   handleCheckbox2: (isChecked: boolean) => void;
 }
 
-const Register = ({
+const RegisterForm1 = ({
   handleSubmit,
   handleCheckbox1,
   handleCheckbox2,
@@ -27,7 +27,7 @@ const Register = ({
         />
       </div>
 
-      <div className="register__heading">Welcome to Greensfeer!</div>
+      <div className="register__heading">Welcome to Greensfeer</div>
 
       <form className="register__form" onSubmit={handleSubmit}>
         <div className="register__text">
@@ -108,4 +108,4 @@ const Register = ({
   );
 };
 
-export default Register;
+export default RegisterForm1;
