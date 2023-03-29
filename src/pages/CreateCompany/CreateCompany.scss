@@ -3,34 +3,99 @@
 
 .create-company {
   display: flex;
-  flex-direction: column;
-  padding: 3.5rem 3rem 0 3rem;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+
+  @include bp.desktop {
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/greensfeer-db-dd101.appspot.com/o/trees.jpeg?alt=media&token=334171df-d0f4-40a9-9262-e585dc897712");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  }
 
   &__form {
+    position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    height: 100vh;
+    justify-content: center;
+    background-color: color.$white;
+    @include bp.mobile {
+      width: 100%;
+      height: 100vh;
+    }
+
+    @include bp.tablet {
+      width: 95rem;
+      height: 175rem;
+    }
+
+    @include bp.desktop {
+      width: 146rem;
+      height: 165.5rem;
+      border-radius: 8px;
+    }
   }
 
   &__back-btn {
-    font-size: 6rem;
     position: absolute;
-    top: 2rem;
-    left: 2.5rem;
+
+    @include bp.mobile {
+      font-size: 6rem;
+      top: 2rem;
+      left: 2.5rem;
+    }
+
+    @include bp.tablet {
+      font-size: 8rem;
+      top: 6rem;
+      left: 2.5rem;
+    }
+
+    @include bp.desktop {
+      font-size: 8rem;
+      top: 2rem;
+      left: 2rem;
+    }
   }
 
   &__logo {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 4rem;
+    @include bp.mobile {
+      margin-bottom: 1.5rem;
+    }
+
+    @include bp.tablet {
+      margin-bottom: 8rem;
+    }
+
+    @include bp.desktop {
+      margin-bottom: 3.5rem;
+    }
   }
 
   &__logo-img {
-    width: 11rem;
+    @include bp.mobile {
+      width: 9.25rem;
+    }
+
+    @include bp.tablet {
+      width: 28rem;
+    }
+
+    @include bp.desktop {
+      width: 9.25rem;
+    }
   }
 
   &__heading {
@@ -38,9 +103,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: 4.5rem;
     font-weight: 300;
     text-align: center;
+    font-size: 4.5rem;
     width: 62rem;
     margin-bottom: 8rem;
   }
@@ -51,7 +116,6 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-
     font-size: 3rem;
   }
 
@@ -73,6 +137,7 @@
     align-items: center;
     justify-content: center;
     margin-right: 4rem;
+    position: relative;
   }
 
   &__label {
@@ -90,6 +155,14 @@
     justify-content: center;
     font-size: 12rem;
     width: 18rem;
+  }
+
+  &__input-file {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
   }
 
   &__company-banner {
