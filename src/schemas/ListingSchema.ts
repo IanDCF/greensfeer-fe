@@ -23,9 +23,9 @@ const registerListingOptionalSchema = z.object({
   price_per_credit: z.optional(z.string().trim()),
 });
 
-const newListingSchema = registerListingSchema.merge(
-  registerListingDetailSchema
-);
+const newListingSchema = registerListingSchema
+  .merge(registerListingDetailSchema)
+  .merge(registerListingOptionalSchema);
 
 export type TRegisterListing1Schema = z.infer<typeof registerListingSchema>;
 export type TNewListing = z.infer<typeof newListingSchema>;

@@ -11,9 +11,11 @@ import newListingSchema, {
   registerListingOptionalSchema,
 } from "../../schemas/ListingSchema";
 import createMarketPost from "../../helpers/marketPostCreator";
+import getAffiliation from "../../helpers/affiliationFetcher";
 import { useAuth } from "../../context/AuthProvider/AuthProvider";
 
 const CreateListing = () => {
+  getAffiliation();
   // create market post as current user
   /* FIXME: Market post tied to a company mechanism
   solutions: 
@@ -36,17 +38,43 @@ const CreateListing = () => {
   // listingDetailDone
   const [stepTwoDone, setStepTwoDone] = useState<boolean>(false);
   // listingOptionalDone
-  const [optionalDone, setOptionalDone] = useState<boolean>(false);
+  const [productDetailDone, setProductDetailDone] = useState<boolean>(false);
 
   // validate post
   useEffect(() => {
     if (newMarketPost.post_type === "Service") {
       // validate & run axios.post
+      const newListing = validateListing();
+      //check user via token, return user id & company id
+      if (currentUser) {
+        const token = currentUser.getIdToken();
+      }
+      const service = {
+        post_name: newListing.post_name,
+        post_type: newListing.post_type,
+        post_category: newListing.service_type,
+        description: newListing.description,
+        link: newListing.link,
+        location: newListing.location,
+        // user_id
+        // company_id
+        // contact
+      };
     }
     if (newMarketPost.post_type === "Product") {
       //validate & run axios.post
     }
-  }, [stepTwoDone, optionalDone]);
+  }, [stepTwoDone, productDetailDone]);
+
+  const validateListing = async () => {
+    const listingValidation = newListingSchema.safeParse(newMarketPost);
+    if (!listingValidation.success) {
+      console.log(listingValidation.error.errors);
+    }
+    if (listingValidation.success) {
+      return listingValidation.data;
+    }
+  };
 
   // first submit
   const handleFirstSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -146,6 +174,50 @@ const CreateListing = () => {
   };
 
   // third submit
+  const handleProductSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const verification_standardInput = e.currentTarget.elements.namedItem(
+      "verification_standard"
+    ) as HTMLInputElement;
+    const methodology_idInput = e.currentTarget.elements.namedItem(
+      "methodology_id"
+    ) as HTMLInputElement;
+    const vintage_yearInput = e.currentTarget.elements.namedItem(
+      "vintage_year"
+    ) as HTMLInputElement;
+    const price_per_creditInput = e.currentTarget.elements.namedItem(
+      "price_per_credit"
+    ) as HTMLInputElement;
+
+    const verification_standard = verification_standardInput.value;
+    const methodology_id = methodology_idInput.value;
+    const vintage_year = vintage_yearInput.value;
+    const price_per_credit = price_per_creditInput.value;
+
+    const registerListingOptionalValidation =
+      registerListingOptionalSchema.safeParse({
+        verification_standard,
+        methodology_id,
+        vintage_year,
+        price_per_credit,
+      });
+
+    if (!registerListingOptionalValidation.success) {
+      const error = registerListingOptionalValidation.error.errors;
+      console.log(error);
+      return;
+    }
+    if (registerListingOptionalValidation.success) {
+      setNewMarketPost({
+        ...newMarketPost,
+        verification_standard,
+        methodology_id,
+        vintage_year,
+        price_per_credit,
+      });
+      setProductDetailDone(true);
+    }
+  };
 
   return (
     <section className="create-listing">
@@ -156,7 +228,9 @@ const CreateListing = () => {
         <ListingForm2 handleSubmit={handleSecondSubmit} />
       )}
       {/* ListingForm3 is only required if a the listing is for a product */}
-      {stepTwoDone && createListing3 && <ListingForm3 />}
+      {stepTwoDone && createListing3 && (
+        <ListingForm3 handleSubmit={handleProductSubmit} />
+      )}
       {/* FIXME: ensure to parseint vintage_year & price_per_credit */}
     </section>
   );
