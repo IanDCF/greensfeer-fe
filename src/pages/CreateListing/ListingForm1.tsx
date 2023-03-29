@@ -3,10 +3,13 @@ import logo from "../../assets/logos/greensfeer-logo.png";
 import ControlButton from "../../components/ControlButtons/ControlButton";
 import { TbArrowBackUp } from "react-icons/tb";
 import { Link } from "react-router-dom";
+interface Props {
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+}
 
-const ListingForm1 = () => {
+const ListingForm1 = ({ handleSubmit }: Props) => {
   return (
-    <form className="create-listing__form">
+    <form className="create-listing__form" onSubmit={handleSubmit}>
       <div className="create-listing__logo">
         <img
           src={logo}
@@ -126,6 +129,9 @@ const ListingForm1 = () => {
       <div className="create-listing__controls">
         <ControlButton dark={true} text="Cancel" link="/company" />
         <ControlButton dark={false} text="Next" link="/create-listing/step2" />
+        <button className="create-company__button" type="submit">
+          Next &gt;
+        </button>
       </div>
     </form>
   );

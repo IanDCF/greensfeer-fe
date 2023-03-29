@@ -3,10 +3,13 @@ import logo from "../../assets/logos/greensfeer-logo.png";
 import ControlButton from "../../components/ControlButtons/ControlButton";
 import { TbArrowBackUp } from "react-icons/tb";
 import { Link } from "react-router-dom";
+interface Props {
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+}
 
-const ListingForm2 = () => {
+const ListingForm2 = ({ handleSubmit }: Props) => {
   return (
-    <form className="create-listing__form">
+    <form className="create-listing__form" onSubmit={handleSubmit}>
       {/* Back btn has to change state to display previous page */}
       <div className="create-company__back-btn">
         <TbArrowBackUp />
@@ -116,9 +119,12 @@ const ListingForm2 = () => {
             </select>
           </div>
 
-{/* FIXME: back end does not support entering service type yet */}
+          {/* FIXME: back end does not support entering service type yet */}
           <div className="create-company__input-div">
-            <label className="create-company__label-text" htmlFor="service_type">
+            <label
+              className="create-company__label-text"
+              htmlFor="service_type"
+            >
               service type*
             </label>
             <select
@@ -197,6 +203,9 @@ const ListingForm2 = () => {
       <div className="create-listing__controls">
         <ControlButton dark={true} text="Cancel" link="/company" />
         <ControlButton dark={false} text="Next" link="/create-listing/step3" />
+        <button className="create-company__button" type="submit">
+          Submit Service/Continue to Product Detail &gt;
+        </button>
       </div>
     </form>
   );
