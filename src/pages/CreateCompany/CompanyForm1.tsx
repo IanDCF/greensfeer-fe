@@ -31,38 +31,40 @@ const CompanyForm1 = ({ handleSubmit, handlePic, handleBanner }: Props) => {
             <div className="create-company__icon">
               <BsCamera />
               <label htmlFor="logo"></label>
-              <input
-                type="file"
-                name="logo"
-                accept="image/*"
-                onChange={handlePic}
-                style={{ opacity: 0 }}
-              ></input>
             </div>
+            <input
+              type="file"
+              name="logo"
+              accept="image/*"
+              onChange={handlePic}
+              style={{ opacity: 0 }}
+              className="create-company__input-file"
+            />
           </div>
           <div className="create-company__company-banner">
             <div className="create-company__label">banner</div>
             <div className="create-company__icon">
               <BsCamera />
               <label htmlFor="banner"></label>
-              <input
-                type="file"
-                name="banner"
-                onChange={handleBanner}
-                accept="image/*"
-                style={{ opacity: 0 }}
-              ></input>
             </div>
+            <input
+              type="file"
+              name="banner"
+              onChange={handleBanner}
+              accept="image/*"
+              style={{ opacity: 0 }}
+              className="create-company__input-file"
+            />
           </div>
         </div>
         <div className="create-company__text-input">
           <div className="create-company__input-div">
-            <label className="create-company__label-text">company name</label>
+            <label className="create-company__label-text">company name*</label>
             <input
               type="text"
               name="name"
               className="create-company__input"
-              placeholder="What do you go by?"
+              placeholder="Enter company name"
             />
           </div>
           <div className="create-company__input-div">
@@ -112,16 +114,13 @@ const CompanyForm1 = ({ handleSubmit, handlePic, handleBanner }: Props) => {
         </div>
       </div>
       <div className="create-company__controls">
-        <ControlButton dark={true} text="Cancel" link="/marketplace" />
         <ControlButton
-          dark={false}
-          text="Next"
-          // type="submit"
-          link="/create-company/step2"
+          dark={true}
+          text="Cancel"
+          link="/marketplace"
+          btnType="link"
         />
-        <button className="create-company__button" type="submit">
-          Next &gt;
-        </button>
+        <ControlButton dark={false} text="Next" btnType="submit" />
       </div>
     </form>
   );
