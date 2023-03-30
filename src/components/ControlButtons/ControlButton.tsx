@@ -37,7 +37,10 @@ const ControlButton: React.FC<Props> = ({ dark, text, link, btnType }) => {
         }`}
       >
         <div className="control-btn__text">{text}</div>
-        <div className="control-btn__icon">
+        <div
+          className="control-btn__icon"
+          style={!text ? { display: "none" } : {}}
+        >
           {text === "Back" && <TbArrowBackUp />}
           {text === "Cancel" && <FaTimes />}
           {text === "Next" && <HiArrowNarrowRight />}
