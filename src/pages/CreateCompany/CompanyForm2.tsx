@@ -1,9 +1,7 @@
 import "./CreateCompany.scss";
 import logo from "../../assets/logos/greensfeer-logo.png";
-import { BsCamera } from "react-icons/bs";
 import ControlButton from "../../components/ControlButtons/ControlButton";
 import { TbArrowBackUp } from "react-icons/tb";
-import { Link } from "react-router-dom";
 interface Props {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }

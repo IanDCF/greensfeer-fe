@@ -3,34 +3,99 @@
 
 .create-listing {
   display: flex;
-  flex-direction: column;
-  padding: 3.5rem 3rem 0 3rem;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+
+  @include bp.desktop {
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/greensfeer-db-dd101.appspot.com/o/trees.jpeg?alt=media&token=334171df-d0f4-40a9-9262-e585dc897712");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  }
 
   &__form {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    height: 100vh;
+    justify-content: center;
+    background-color: color.$white;
+    @include bp.mobile {
+      width: 100%;
+      height: 100vh;
+    }
+
+    @include bp.tablet {
+      width: 95rem;
+      height: 175rem;
+    }
+
+    @include bp.desktop {
+      position: relative;
+      width: 146rem;
+      height: 165.5rem;
+      border-radius: 8px;
+    }
   }
 
   &__back-btn {
-    font-size: 8rem;
     position: absolute;
-    top: 2rem;
-    left: 3rem;
+
+    @include bp.mobile {
+      font-size: 6rem;
+      top: 2rem;
+      left: 2.5rem;
+    }
+
+    @include bp.tablet {
+      font-size: 8rem;
+      top: 6rem;
+      left: 2.5rem;
+    }
+
+    @include bp.desktop {
+      font-size: 8rem;
+      top: 2rem;
+      left: 2rem;
+    }
   }
 
   &__logo {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 4rem;
+    @include bp.mobile {
+      margin-bottom: 2.5rem;
+    }
+
+    @include bp.tablet {
+      margin-bottom: 10rem;
+    }
+
+    @include bp.desktop {
+      margin-bottom: 3.5rem;
+    }
   }
 
   &__logo-img {
-    width: 11rem;
+    @include bp.mobile {
+      width: 9.25rem;
+    }
+
+    @include bp.tablet {
+      width: 28rem;
+    }
+
+    @include bp.desktop {
+      width: 9.25rem;
+    }
   }
 
   &__heading {
@@ -38,11 +103,89 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: 4.5rem;
     font-weight: 300;
     text-align: center;
-    width: 62rem;
-    margin-bottom: 8rem;
+
+    @include bp.mobile {
+      font-size: 4.5rem;
+      width: 62rem;
+      margin-bottom: 8rem;
+    }
+
+    @include bp.tablet {
+      font-size: 5.5rem;
+      width: 70rem;
+      margin-bottom: 14rem;
+    }
+
+    @include bp.desktop {
+      font-size: 5rem;
+      width: 62rem;
+      margin-bottom: 8rem;
+    }
+  }
+
+  &__img-upload {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    @include bp.mobile {
+      margin-bottom: 5rem;
+    }
+
+    @include bp.tablet {
+      margin-bottom: 10rem;
+    }
+
+    @include bp.desktop {
+      margin-bottom: 5rem;
+    }
+  }
+
+  &__company-logo {
+    border: 1.25px solid color.$green;
+    border-radius: 2.5rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    @include bp.mobile {
+      width: 18.25rem;
+      height: 15.75rem;
+      margin-right: 3rem;
+    }
+
+    @include bp.tablet {
+      width: 35.5rem;
+      height: 18rem;
+      margin-right: 7rem;
+    }
+
+    @include bp.desktop {
+      width: 18.25rem;
+      height: 15.75rem;
+      margin-right: 3rem;
+    }
+  }
+
+  &__company-banner {
+    @extend .create-listing__company-logo;
+    margin-right: 0;
+    @include bp.mobile {
+      width: 39.25rem;
+    }
+
+    @include bp.tablet {
+      width: 52rem;
+    }
+
+    @include bp.desktop {
+      width: 39.25rem;
+    }
   }
 
   &__input-fields {
@@ -54,46 +197,28 @@
     font-size: 3rem;
   }
 
-  &__img-upload {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    margin-bottom: 7rem;
-  }
-
-  &__company-logo {
-    border: 1px solid color.$green;
-    border-radius: 2.5rem;
-    width: 20rem;
-    height: 19rem;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 4rem;
-  }
-
   &__label {
     position: absolute;
-    top: -2.5rem;
-    left: 1.5rem;
     background-color: color.$white;
     padding: 0 0.75rem;
-    font-size: 3rem;
-  }
 
-  &__icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12rem;
-  }
+    @include bp.mobile {
+      top: -2rem;
+      left: 2rem;
+      font-size: 2.5rem;
+    }
 
-  &__company-banner {
-    @extend .create-listing__company-logo;
-    width: 45rem;
-    margin-right: 0;
+    @include bp.tablet {
+      top: -2.5rem;
+      left: 2rem;
+      font-size: 3.2rem;
+    }
+
+    @include bp.desktop {
+      top: -2rem;
+      left: 2rem;
+      font-size: 2.5rem;
+    }
   }
 
   &__text-input {
@@ -107,36 +232,87 @@
   &__input-div {
     position: relative;
     border: 1px solid color.$green;
-    padding: 3rem 6rem;
-    border-radius: 6rem;
-    width: 69rem;
-    margin-bottom: 3.5rem;
+    border-radius: 12rem;
+    display: flex;
+    align-items: center;
+    padding: 0 4rem 0 6rem;
+
+    @include bp.mobile {
+      height: 11rem;
+      width: 61rem;
+      margin-bottom: 4rem;
+      &:last-child {
+        margin-bottom: 2rem;
+      }
+    }
+
+    @include bp.tablet {
+      height: 15rem;
+      width: 100%;
+      margin-bottom: 8rem;
+      &:last-child {
+        margin-bottom: 4rem;
+      }
+    }
+
+    @include bp.desktop {
+      height: 11rem;
+      width: 61rem;
+      margin-bottom: 4rem;
+    }
   }
 
-  &__input-offering {
+  &__input-div-textarea {
     @extend .create-listing__input-div;
-    width: 72.7rem;
+    border-radius: 5rem;
+    height: 30rem;
   }
 
   &__label-text {
     @extend .create-listing__label;
-    left: 5rem;
+    @include bp.mobile {
+      left: 6rem;
+    }
+
+    @include bp.tablet {
+      left: 6rem;
+    }
+
+    @include bp.desktop {
+      left: 6rem;
+    }
   }
 
   &__input {
     width: 100%;
     border: none;
     outline: none;
-    font-size: 4.5rem;
-    font-weight: 300;
     color: color.$nickel;
+    background-color: none;
+
+    @include bp.mobile {
+      font-size: 3.5rem;
+      font-weight: 300;
+    }
+
+    @include bp.tablet {
+      font-size: 4rem;
+      font-weight: 300;
+    }
+
+    @include bp.desktop {
+      font-size: 3.5rem;
+      font-weight: 300;
+    }
   }
 
   &__input-textarea {
     @extend .create-listing__input;
     resize: none;
-    width: 100%;
-    height: 100%;
+    width: 95%;
+    height: 80%;
+    display: flex;
+    align-items: center;
   }
 
   &__offering {
@@ -152,13 +328,34 @@
   &__currency {
     @extend .create-listing__company-logo;
     padding: 0 2rem;
-    width: 28rem;
+
+    @include bp.mobile {
+      width: 28.75rem;
+    }
+
+    @include bp.tablet {
+      width: 30rem;
+    }
+
+    @include bp.desktop {
+      width: 28.75rem;
+    }
   }
 
   &__price {
     @extend .create-listing__company-banner;
     padding: 0 2rem;
-    width: 36.5rem;
+    @include bp.mobile {
+      width: 28.75rem;
+    }
+
+    @include bp.tablet {
+      width: 60rem;
+    }
+
+    @include bp.desktop {
+      width: 28.75rem;
+    }
   }
 
   &__required-text {

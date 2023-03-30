@@ -112,7 +112,7 @@ const ListingForm1 = () => {
             </select>
           </div>
 
-          <div className="create-listing__input-div">
+          <div className="create-listing__input-div-textarea">
             <label className="create-listing__label-text" htmlFor="description">
               description
             </label>
@@ -123,13 +123,23 @@ const ListingForm1 = () => {
             />
           </div>
         </div>
-        <div className="create-listing__required-text">
-          * required input field
-        </div>
+      </div>
+      <div className="create-listing__required-text">
+        * required input field
       </div>
       <div className="create-listing__controls">
-        <ControlButton dark={true} text="Cancel" link="/company" />
-        <ControlButton dark={false} text="Next" link="/create-listing/step2" />
+        <ControlButton
+          dark={true}
+          text="Cancel"
+          link="/company"
+          btnType="link"
+        />
+        <ControlButton
+          dark={false}
+          text="Next"
+          link="/create-listing/step2"
+          btnType="submit"
+        />
       </div>
     </form>
   );
