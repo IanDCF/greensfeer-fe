@@ -12,37 +12,48 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  font-weight: 300;
 
-  @include bp.mobile {
-    font-size: 6.5rem;
-    font-weight: 300;
+  &__icon {
+    display: flex;
+    align-items: center;
+    margin-left: 3rem;
 
-    padding: 1.5rem 4.5rem;
-    &__icon {
+    @include bp.mobile {
       font-size: 6.5rem;
-      display: flex;
-      align-items: center;
-      margin-left: 2rem;
+    }
+
+    @include bp.tablet {
+      font-size: 5rem;
+    }
+
+    @include bp.desktop {
+      font-size: 6.5rem;
     }
   }
 
+  @include bp.mobile {
+    font-size: 6.5rem;
+    padding: 1.5rem 4.5rem;
+  }
+
   @include bp.tablet {
-    font-size: 4rem;
+    font-size: 5rem;
     max-width: 37rem;
-    padding: 2.5rem 5.5rem;
+    padding: 3rem 6rem;
   }
 
   @include bp.desktop {
-    font-size: 4rem;
-    max-width: 40rem;
-    padding: 2.5rem 5.5rem;
+    font-size: 6.5rem;
+    padding: 1.5rem 4.5rem;
   }
 
   &--green {
     color: color.$black;
     background-color: color.$green;
     &:hover {
-      background-color: color.$white;
+      background-color: color.$black;
+      color: color.$white;
       transition: all 0.2s ease-in-out;
     }
   }
@@ -50,7 +61,18 @@
   &--black {
     color: color.$white;
     background-color: color.$black;
-    margin-right: 2rem;
+
+    @include bp.mobile {
+      margin-right: 2rem;
+    }
+
+    @include bp.tablet {
+      margin-right: 6rem;
+    }
+
+    @include bp.desktop {
+      margin-right: 2rem;
+    }
     &:hover {
       background-color: color.$green;
       transition: all 0.2s ease-in-out;

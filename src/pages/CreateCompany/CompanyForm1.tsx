@@ -9,9 +9,17 @@ interface Props {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   handlePic: (e: React.FormEvent<HTMLInputElement>) => void;
   handleBanner: (e: React.FormEvent<HTMLInputElement>) => void;
+  isChecked1: boolean;
+  handleCheckbox1: (isChecked: boolean) => void;
 }
 
-const CompanyForm1 = ({ handleSubmit, handlePic, handleBanner }: Props) => {
+const CompanyForm1 = ({
+  handleSubmit,
+  handlePic,
+  handleBanner,
+  handleCheckbox1,
+  isChecked1,
+}: Props) => {
   return (
     <form className="create-company__form" onSubmit={handleSubmit}>
       <div className="create-company__logo">
@@ -31,38 +39,40 @@ const CompanyForm1 = ({ handleSubmit, handlePic, handleBanner }: Props) => {
             <div className="create-company__icon">
               <BsCamera />
               <label htmlFor="logo"></label>
-              <input
-                type="file"
-                name="logo"
-                accept="image/*"
-                onChange={handlePic}
-                style={{ opacity: 0 }}
-              ></input>
             </div>
+            <input
+              type="file"
+              name="logo"
+              accept="image/*"
+              onChange={handlePic}
+              style={{ opacity: 0 }}
+              className="create-company__input-file"
+            />
           </div>
           <div className="create-company__company-banner">
             <div className="create-company__label">banner</div>
             <div className="create-company__icon">
               <BsCamera />
               <label htmlFor="banner"></label>
-              <input
-                type="file"
-                name="banner"
-                onChange={handleBanner}
-                accept="image/*"
-                style={{ opacity: 0 }}
-              ></input>
             </div>
+            <input
+              type="file"
+              name="banner"
+              onChange={handleBanner}
+              accept="image/*"
+              style={{ opacity: 0 }}
+              className="create-company__input-file"
+            />
           </div>
         </div>
         <div className="create-company__text-input">
           <div className="create-company__input-div">
-            <label className="create-company__label-text">company name</label>
+            <label className="create-company__label-text">company name*</label>
             <input
               type="text"
               name="name"
               className="create-company__input"
-              placeholder="What do you go by?"
+              placeholder="Enter company name"
             />
           </div>
           <div className="create-company__input-div">
@@ -111,17 +121,30 @@ const CompanyForm1 = ({ handleSubmit, handlePic, handleBanner }: Props) => {
           * required input field
         </div>
       </div>
+
+      <div className="create-company__preferences">
+        <div className="create-company__boxes">
+          <input
+            id="pushNotifications"
+            className="create-company__checkbox"
+            type="checkbox"
+            checked={isChecked1}
+            onChange={(e) => handleCheckbox1(e.target.checked)}
+          />
+          <label className="create-company__label-checkbox" htmlFor="captcha">
+            I certify that I am an authorized representative of this
+            organization
+          </label>
+        </div>
+      </div>
       <div className="create-company__controls">
-        <ControlButton dark={true} text="Cancel" link="/marketplace" />
         <ControlButton
-          dark={false}
-          text="Next"
-          // type="submit"
-          link="/create-company/step2"
+          dark={true}
+          text="Cancel"
+          link="/marketplace"
+          btnType="link"
         />
-        <button className="create-company__button" type="submit">
-          Next &gt;
-        </button>
+        <ControlButton dark={false} text="Next" btnType="submit" />
       </div>
     </form>
   );

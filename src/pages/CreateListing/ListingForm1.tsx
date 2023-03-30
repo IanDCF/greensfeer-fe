@@ -110,7 +110,7 @@ const ListingForm1 = ({ handleSubmit }: Props) => {
             </select>
           </div>
 
-          <div className="create-listing__input-div">
+          <div className="create-listing__input-div-textarea">
             <label className="create-listing__label-text" htmlFor="description">
               description
             </label>
@@ -122,16 +122,23 @@ const ListingForm1 = ({ handleSubmit }: Props) => {
             />
           </div>
         </div>
-        <div className="create-listing__required-text">
-          * required input field
-        </div>
+      </div>
+      <div className="create-listing__required-text">
+        * required input field
       </div>
       <div className="create-listing__controls">
-        <ControlButton dark={true} text="Cancel" link="/company" />
-        <ControlButton dark={false} text="Next" link="/create-listing/step2" />
-        <button className="create-company__button" type="submit">
-          Next &gt;
-        </button>
+        <ControlButton
+          dark={true}
+          text="Cancel"
+          link="/company"
+          btnType="link"
+        />
+        <ControlButton
+          dark={false}
+          text="Next"
+          link="/create-listing/step2"
+          btnType="submit"
+        />
       </div>
     </form>
   );

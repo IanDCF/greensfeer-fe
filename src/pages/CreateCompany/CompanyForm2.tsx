@@ -1,9 +1,7 @@
 import "./CreateCompany.scss";
 import logo from "../../assets/logos/greensfeer-logo.png";
-import { BsCamera } from "react-icons/bs";
 import ControlButton from "../../components/ControlButtons/ControlButton";
 import { TbArrowBackUp } from "react-icons/tb";
-import { Link } from "react-router-dom";
 interface Props {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }
@@ -23,7 +21,7 @@ const CompanyForm2 = ({ handleSubmit }: Props) => {
         />
       </div>
       <div className="create-company__heading">
-        Round out your profile with a few extra details, or skip
+        Round out your profile with a few extra details
       </div>
       <div className="create-company__input-fields">
         <div className="create-company__text-input">
@@ -53,35 +51,27 @@ const CompanyForm2 = ({ handleSubmit }: Props) => {
           </div>
           <div className="create-company__input-div">
             <label className="create-company__label-text" htmlFor="email">
-              email
+              email*
             </label>
             <input
               id="email"
               name="email"
               type="text"
               className="create-company__input"
-              placeholder="Your Company Email"
+              placeholder="Enter email address"
             />
           </div>
           <div className="create-company__input-div">
-            <label
-              className="create-company__label-text"
-              htmlFor="companyWebsite"
-            >
-              website
+            <label className="create-company__label-text" htmlFor="website">
+              website*
             </label>
             <input
-              id="companyWebsite"
+              id="website"
               type="text"
               name="website"
               className="create-company__input"
-              placeholder="Your Company Website"
+              placeholder="Enter company website"
             />
-          </div>
-          <div className="create-company__input-offering">
-            <div id="addOffering" className="create-company__offering">
-              Add a Product or Service
-            </div>
           </div>
         </div>
         <div className="create-company__required-text">
@@ -89,13 +79,13 @@ const CompanyForm2 = ({ handleSubmit }: Props) => {
         </div>
       </div>
       <div className="create-company__controls">
-        <ControlButton dark={true} text="Cancel" link="/create-company/step1" />
         <ControlButton
-          dark={false}
-          text="Submit"
-          link="/create-company/step2"
+          dark={true}
+          text="Cancel"
+          link="/create-company/step1"
+          btnType="link"
         />
-        <button type="submit">Submit</button>
+        <ControlButton dark={false} text="Create" btnType="submit" />
       </div>
     </form>
   );
