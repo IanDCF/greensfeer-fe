@@ -3,10 +3,12 @@ import logo from "../../assets/logos/greensfeer-logo.png";
 import ControlButton from "../../components/ControlButtons/ControlButton";
 import { TbArrowBackUp } from "react-icons/tb";
 import { Link } from "react-router-dom";
-
-const ListingForm3 = () => {
+interface Props {
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+}
+const ListingForm3 = ({ handleSubmit }: Props) => {
   return (
-    <form className="create-listing__form">
+    <form className="create-listing__form" onSubmit={handleSubmit}>
       {/* Back btn has to change state to display previous page */}
       <div className="create-listing__back-btn">
         <TbArrowBackUp />
@@ -28,17 +30,17 @@ const ListingForm3 = () => {
           <div className="create-listing__input-div">
             <label
               className="create-listing__label-text"
-              htmlFor="verificationStandard"
+              htmlFor="verification_standard"
             >
               verification standard
             </label>
             <select
-              id="verificationStandard"
-              name="verificationStandard"
+              id="verification_standard"
+              name="verification_standard"
               className="create-listing__input"
             >
-              <option disabled selected>
-                Select a standard
+              <option hidden={true} defaultValue={"Select a Standard"}>
+                Select a Standard
               </option>
               <option value="ACR">American Carbon Registry (ACR)</option>
               <option value="BioCarbon">BioCarbon Partners (BCP)</option>
@@ -82,24 +84,31 @@ const ListingForm3 = () => {
           </div>
 
           <div className="create-listing__input-div">
-            <label className="create-listing__label-text" htmlFor="methodology">
+            <label
+              className="create-listing__label-text"
+              htmlFor="methodology_id"
+            >
               methodology id
             </label>
             <input
-              id="methodology"
-              name="methodology"
+              id="methodology_id"
+              name="methodology_id"
               type="text"
               className="create-listing__input"
               placeholder="Enter methodology id"
             />
           </div>
           <div className="create-listing__input-div">
-            <label className="create-listing__label-text" htmlFor="vintage">
+            {/* FIXME: current back end design doesn't have place for vintage_year */}
+            <label
+              className="create-listing__label-text"
+              htmlFor="vintage_year"
+            >
               vintage
             </label>
             <select
-              id="vintage"
-              name="vintage"
+              id="vintage_year"
+              name="vintage_year"
               className="create-listing__input"
             >
               {Array.from({ length: 19 }, (_, i) => 2023 - i).map((year) => (
@@ -111,6 +120,7 @@ const ListingForm3 = () => {
           </div>
           <div className="create-listing__price-inputs">
             <div className="create-listing__currency">
+              {/* FIXME: current back end does not have field for currency */}
               <label className="create-listing__label" htmlFor="currency">
                 currency
               </label>
@@ -131,13 +141,16 @@ const ListingForm3 = () => {
             </div>
 
             <div className="create-listing__price">
-              <label className="create-listing__label" htmlFor="price">
+              <label
+                className="create-listing__label"
+                htmlFor="price_per_credit"
+              >
                 price
               </label>
               <div className="create-listing__price-input">
                 <input
-                  id="price"
-                  name="price"
+                  id="price_per_credit"
+                  name="price_per_credit"
                   type="number"
                   step="0.01"
                   min="0"
@@ -156,6 +169,9 @@ const ListingForm3 = () => {
       <div className="create-listing__controls">
         <ControlButton dark={true} text="Cancel" link="/company" />
         <ControlButton dark={false} text="Post" link="/create-listing/step3" />
+        <button className="create-company__button" type="submit">
+          Submit &gt;
+        </button>
       </div>
     </form>
   );
