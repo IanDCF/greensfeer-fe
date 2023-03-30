@@ -26,6 +26,7 @@ const CreateCompany: React.FC = () => {
   const [profileUrl, setProfileUrl] = useState("");
   const [bannerPic, setBannerPic] = useState<File>();
   const [bannerUrl, setBannerUrl] = useState("");
+  const [isChecked1, setIsChecked1] = useState(false);
 
   const handlePic = (e: React.FormEvent<HTMLInputElement>) => {
     const target = e.target as HTMLInputElement;
@@ -203,6 +204,10 @@ const CreateCompany: React.FC = () => {
     // Perform the necessary actions for form 2 submission
   };
 
+  const handleCheckbox1 = (isChecked: boolean) => {
+    setIsChecked1(isChecked);
+  };
+
   const createCompany1 = matchPath(path, "/create-company/step1");
   const createCompany2 = matchPath(path, "/create-company/step2");
 
@@ -213,6 +218,8 @@ const CreateCompany: React.FC = () => {
           handleSubmit={handleFirstSubmit}
           handlePic={handlePic}
           handleBanner={handleBanner}
+          handleCheckbox1={handleCheckbox1}
+          isChecked1={isChecked1}
         />
       )}
       {stepOneDone && createCompany2 && (
