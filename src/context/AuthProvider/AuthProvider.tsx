@@ -1,4 +1,5 @@
 import axios from "axios";
+import { IUser } from "customTypes";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
@@ -8,11 +9,18 @@ import {
   type UserCredential,
 } from "firebase/auth";
 import React, { useContext, createContext, useEffect, useState } from "react";
+import entryForSignUp, { createUser } from "../../helpers/userFetcher";
 import { auth } from "../../firebase/firebase";
 
 interface InterfaceAuthProvider {
   currentUser: User | null;
-  signUp: (email: string, password: string) => Promise<UserCredential>;
+  signUp: (
+    email: string,
+    password: string,
+    firstName: string,
+    secondName: string,
+    role: string
+  ) => Promise<IUser | null>;
   login: (email: string, password: string) => Promise<UserCredential>;
   logout: () => Promise<void>;
 }
@@ -25,7 +33,13 @@ const AuthContext = createContext({} as InterfaceAuthProvider);
 const useAuth = () => {
   return useContext(AuthContext);
 };
-const signUp = async (email: string, password: string) => {
+const signUp = async (
+  email: string,
+  password: string,
+  firstName: string,
+  secondName: string,
+  role: string
+) => {
   const credentials = await createUserWithEmailAndPassword(
     auth,
     email,
@@ -33,12 +47,10 @@ const signUp = async (email: string, password: string) => {
   );
   const idToken = await credentials.user.getIdToken();
   //refactor backend url to env
-  await axios.post(
-    "http://127.0.0.1:5001/greensfeer-db-dd101/us-central1/app/api/user/signUp",
-    { idToken }
-  );
+  await entryForSignUp(idToken);
+
   //call database & create user
-  return credentials;
+  return await createUser(firstName, secondName, role, idToken);
 };
 const login = (email: string, password: string) => {
   return signInWithEmailAndPassword(auth, email, password);
