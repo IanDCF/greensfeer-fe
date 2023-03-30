@@ -45,9 +45,8 @@ const CreateListing = () => {
     console.log("in effect");
     const validateAndPost = async () => {
       console.log("in validate");
-      const { user_id, company_id } = await getAffiliation();
-      const company = await getCompany(company_id);
-      console.log(`${user_id}\n${company_id}\n${company}`);
+      const affiliation = await getAffiliation(currentUser);
+      const company = await getCompany(affiliation.company_id);
       if (newMarketPost.post_type === "Service") {
         // validate & run axios.post
         const newListing = await validateListing();
@@ -62,15 +61,36 @@ const CreateListing = () => {
           description: newListing?.description,
           link: newListing?.link,
           location: newListing?.location,
-          user_id,
-          company_id,
-          // email contact
+          user_id: affiliation.user_id,
+          company_id: affiliation.company_id,
+          contact: company?.email,
         };
+        //post service
+        createMarketPost(service);
+      }
+      if (productDetailDone && newMarketPost.post_type === "Product") {
+        //validate & run axios.post
+        const newListing = await validateListing();
+        const product = {
+          post_name: newListing?.post_name,
+          post_type: newListing?.post_type,
+          post_category: newListing?.service_type,
+          description: newListing?.description,
+          link: newListing?.link,
+          location: newListing?.location,
+          user_id: affiliation.user_id,
+          company_id: affiliation.company_id,
+          contact: company?.email,
+          p: {
+            methodology: newListing?.methodology,
+            verification_standard: newListing?.verification_standard,
+            vintage_year: newListing?.vintage_year,
+            price_per_credit: newListing?.price_per_credit,
+          },
+        };
+        createMarketPost(product);
       }
     };
-    if (newMarketPost.post_type === "Product") {
-      //validate & run axios.post
-    }
     validateAndPost();
   }, [stepTwoDone, productDetailDone]);
 

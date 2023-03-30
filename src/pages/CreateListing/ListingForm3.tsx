@@ -169,6 +169,9 @@ const ListingForm3 = ({ handleSubmit }: Props) => {
       <div className="create-listing__controls">
         <ControlButton dark={true} text="Cancel" link="/company" />
         <ControlButton dark={false} text="Post" link="/create-listing/step3" />
+        <button className="create-company__button" type="submit">
+          Submit &gt;
+        </button>
       </div>
     </form>
   );

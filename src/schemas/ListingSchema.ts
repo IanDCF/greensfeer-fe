@@ -5,7 +5,7 @@ const registerListingSchema = z.object({
   post_name: z.optional(z.string().trim()),
   // FIXME: could tighten up sector with z.literal, populate options
   sector: z.optional(z.string().trim()),
-  description: z.string().trim(),
+  description: z.optional(z.string().trim()),
 });
 
 const registerListingDetailSchema = z.object({
