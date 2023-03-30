@@ -35,10 +35,15 @@ const Register = () => {
     if (userValidation.success) {
       const user = userValidation.data;
       try {
-        const createdUser = await signUp(user.email, user.password);
+        const createdUser = await signUp(
+          user.email,
+          user.password,
+          user.firstName,
+          user.secondName,
+          user.role
+        );
         setLoading(true);
         if (createdUser) {
-          // navigate("/youarebiutiful");
           navigate("/marketplace");
         }
         console.log(createdUser);
@@ -114,11 +119,11 @@ const Register = () => {
 
     const firstName = firstNameInput.value;
     const secondName = secondNameInput.value;
-    const rol = rolInput.value;
+    const role = rolInput.value;
     const registerInfoValidation = registerInfoUserSchema.safeParse({
       firstName,
       secondName,
-      rol,
+      role,
     });
     if (!registerInfoValidation.success) {
       const error = registerInfoValidation.error.errors; //We need to format the errors so we can pass the string
@@ -134,8 +139,7 @@ const Register = () => {
     }
     if (registerInfoValidation.success) {
       console.log("Setting up part 2");
-      setNewUser({ ...newUser, firstName, secondName, rol });
-      //post firstName, secondName, rol to db
+      setNewUser({ ...newUser, firstName, secondName, role });
       setRegisterDoneInfo(true);
     }
   };
