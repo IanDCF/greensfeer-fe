@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthProvider/AuthProvider";
 import { sigInSchema } from "../../schemas/UserSchema";
-import SignInComponent from "../../components/SignIn/SignIn";
+import SignInForm from "./SignInForm";
 
 const SignIn = () => {
   const [error, setError] = useState<string | null>(null);
@@ -40,7 +40,11 @@ const SignIn = () => {
     }
   };
 
-  return <>{<SignInComponent handleSubmit={handleSubmit} />}</>;
+  return (
+    <section className="register">
+      <SignInForm handleSubmit={handleSubmit} />
+    </section>
+  );
 };
 
 export default SignIn;

@@ -8,7 +8,7 @@ import Messages from "./pages/Messages/Messages";
 import Network from "./pages/Network/Network";
 import NotFound from "./pages/NotFound/NotFound";
 import Register from "./pages/Register/Register";
-import SignIn from "./pages/SignInPage/SignInPage";
+import SignIn from "./pages/SignIn/SignIn";
 import Subscribe from "./pages/Subscribe/Subscribe";
 import { UserProfile } from "./pages/UserProfile/UserProfile";
 import { CompanyProfile } from "./pages/CompanyProfile/CompanyProfile";

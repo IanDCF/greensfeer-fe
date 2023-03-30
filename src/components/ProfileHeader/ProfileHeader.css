@@ -1,0 +1,60 @@
+/* Primary Colors */
+/* From Pallete */
+/* Secondary Colors */
+/* From Pallete 2*/
+/* media query for mobile */
+/* media query for tablet */
+/* media query for desktop */
+.header {
+  background-color: #eef6ef;
+  max-width: 100%;
+  border-radius: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+.header__banner {
+  background-color: #eef6ef;
+  max-width: 100%;
+  border-radius: 2.5rem;
+}
+.header__details {
+  padding: 1.5rem;
+  display: flex;
+}
+.header__photo {
+  border-radius: 50%;
+  position: relative;
+  width: 20rem;
+  height: 20rem;
+  margin-right: 2rem;
+}
+.header__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #343434;
+}
+.header__name {
+  margin: 0;
+  font-size: 3.8rem;
+  font-weight: 600;
+}
+.header__headline {
+  margin: 0;
+  font-size: 3rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+.header__location {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: 200;
+  margin-bottom: 0.25rem;
+}
+.header__connections {
+  margin: 0;
+  font-size: 2.3rem;
+  font-weight: 600;
+  color: #01bf71;
+}/*# sourceMappingURL=ProfileHeader.css.map */

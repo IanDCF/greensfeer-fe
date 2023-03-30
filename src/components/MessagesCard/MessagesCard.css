@@ -1,0 +1,54 @@
+/* Primary Colors */
+/* From Pallete */
+/* Secondary Colors */
+/* From Pallete 2*/
+/* media query for mobile */
+/* media query for tablet */
+/* media query for desktop */
+.messages-card {
+  margin-bottom: 2rem;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  height: 20rem;
+  background-color: #eef6ef;
+  max-width: 100%;
+  border-radius: 2.5rem;
+}
+.messages-card--selected {
+  border-left: 1rem solid #94e592;
+  background-color: #eef6ef;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.messages-card__user {
+  display: flex;
+  height: 100%;
+}
+.messages-card__profile {
+  display: flex;
+  align-items: center;
+}
+.messages-card__photo {
+  position: relative;
+  width: 16rem;
+  height: 16rem;
+  border-radius: 50%;
+  margin-right: 2rem;
+}
+.messages-card__details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.messages-card__name {
+  margin: 0;
+  font-size: 3.5rem;
+  font-weight: 500;
+}
+.messages-card__message {
+  font-size: 3rem;
+  font-weight: 300;
+  margin: 0;
+  margin-top: 2.2rem;
+  width: 52rem;
+}/*# sourceMappingURL=MessagesCard.css.map */

@@ -1,0 +1,98 @@
+/* Primary Colors */
+/* From Pallete */
+/* Secondary Colors */
+/* From Pallete 2*/
+/* media query for mobile */
+/* media query for tablet */
+/* media query for desktop */
+.contact-card {
+  margin-bottom: 2rem;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  height: 20rem;
+  background-color: #eef6ef;
+  max-width: 100%;
+  border-radius: 2.5rem;
+}
+.contact-card__user {
+  display: flex;
+  height: 100%;
+}
+.contact-card__profile {
+  display: flex;
+  align-items: center;
+}
+.contact-card__photo {
+  position: relative;
+  width: 16rem;
+  height: 16rem;
+  border-radius: 50%;
+  margin-right: 2rem;
+}
+.contact-card__details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.contact-card__text {
+  display: flex;
+  flex-direction: column;
+}
+.contact-card__name {
+  margin: 0;
+  font-size: 3.5rem;
+  font-weight: 500;
+}
+.contact-card__role {
+  margin: 0;
+  font-size: 3rem;
+  font-weight: 300;
+}
+.contact-card__location {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: 200;
+}
+.contact-card__connections {
+  margin: 0;
+  font-size: 2.3rem;
+  font-weight: 600;
+  color: #01bf71;
+}
+.contact-card__controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-left: 1.5rem;
+}
+.contact-card__label {
+  font-size: 2.5rem;
+  color: #6d7275;
+  margin: 0 0 1rem 0;
+}
+.contact-card__btn-white {
+  border: 0.3rem solid #72b370;
+  border-radius: 10rem;
+  font-size: 3rem;
+  font-weight: 500;
+  padding: 1.5rem 2.5rem;
+  background-color: #ffffff;
+  color: #070707;
+  margin-bottom: 1.5rem;
+  width: 19rem;
+  text-align: center;
+}
+.contact-card__btn-green {
+  border: 0.3rem solid #070707;
+  border-radius: 10rem;
+  font-size: 3rem;
+  font-weight: 500;
+  padding: 1.5rem 2.5rem;
+  color: #070707;
+  background-color: #94e592;
+  width: 19rem;
+  text-align: center;
+}/*# sourceMappingURL=ContactCard.css.map */

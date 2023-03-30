@@ -1,0 +1,56 @@
+/* Primary Colors */
+/* From Pallete */
+/* Secondary Colors */
+/* From Pallete 2*/
+/* media query for mobile */
+/* media query for tablet */
+/* media query for desktop */
+.btn {
+  text-decoration: none;
+  margin: 0;
+  white-space: nowrap;
+  outline: none;
+  border-radius: 50px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+@media only screen and (max-width: 767px) {
+  .btn {
+    font-size: 3.5rem;
+    max-width: 30rem;
+    padding: 2.5rem 4rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .btn {
+    font-size: 4rem;
+    max-width: 37rem;
+    padding: 2.5rem 5.5rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .btn {
+    font-size: 4rem;
+    max-width: 40rem;
+    padding: 2.5rem 5.5rem;
+  }
+}
+.btn--dark {
+  color: #07020d;
+  background-color: #01bf71;
+}
+.btn--dark:hover {
+  background-color: #ffffff;
+  transition: all 0.2s ease-in-out;
+}
+.btn--light {
+  color: #ffffff;
+  background-color: #07020d;
+}
+.btn--light:hover {
+  background-color: #01bf71;
+  transition: all 0.2s ease-in-out;
+}/*# sourceMappingURL=Button.css.map */

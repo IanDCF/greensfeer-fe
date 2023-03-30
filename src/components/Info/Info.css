@@ -1,0 +1,104 @@
+/* Primary Colors */
+/* From Pallete */
+/* Secondary Colors */
+/* From Pallete 2*/
+/* media query for mobile */
+/* media query for tablet */
+/* media query for desktop */
+.info-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.info-container--dark {
+  background-color: #07020d;
+}
+.info-container--light {
+  background-color: #ffffff;
+}
+@media only screen and (max-width: 767px) {
+  .info-container {
+    padding: 15rem 6rem;
+    height: 91vh;
+    min-height: 150rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .info-container {
+    height: 91.5vh;
+    padding: 10rem 20rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .info-container {
+    height: 94vh;
+    padding: 10rem 20rem;
+  }
+}
+
+.info, .info--reverse {
+  display: flex;
+  align-items: center;
+}
+@media only screen and (max-width: 767px) {
+  .info, .info--reverse {
+    flex-direction: column;
+    justify-content: center;
+    max-width: 100rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .info, .info--reverse {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .info, .info--reverse {
+    flex-direction: row;
+    max-width: 255rem;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .info__text {
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .info__text {
+    width: 48%;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .info__image {
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .info__image {
+    width: 48%;
+  }
+}
+.info--reverse {
+  display: flex;
+}
+@media only screen and (max-width: 767px) {
+  .info--reverse {
+    flex-direction: column;
+    justify-content: center;
+    max-width: 100rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .info--reverse {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .info--reverse {
+    flex-direction: row-reverse;
+    max-width: 255rem;
+  }
+}/*# sourceMappingURL=Info.css.map */

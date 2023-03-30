@@ -1,0 +1,28 @@
+/* Primary Colors */
+/* From Pallete */
+/* Secondary Colors */
+/* From Pallete 2*/
+/* media query for mobile */
+/* media query for tablet */
+/* media query for desktop */
+.search {
+  border: 0.2rem solid #6d7275;
+  height: 7rem;
+  width: 95%;
+  border-radius: 15rem;
+  padding: 0 2.5rem;
+  display: flex;
+  align-items: center;
+}
+.search__icon {
+  font-size: 4rem;
+  color: #6d7275;
+  margin-right: 0.75rem;
+}
+.search__input {
+  border: none;
+  outline: none;
+  font-size: 3.5rem;
+  font-weight: 300;
+  width: 100%;
+}/*# sourceMappingURL=Searchbar.css.map */

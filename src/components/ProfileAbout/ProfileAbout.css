@@ -1,0 +1,28 @@
+/* Primary Colors */
+/* From Pallete */
+/* Secondary Colors */
+/* From Pallete 2*/
+/* media query for mobile */
+/* media query for tablet */
+/* media query for desktop */
+.about {
+  background-color: #eef6ef;
+  max-width: 100%;
+  border-radius: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  padding: 2.5rem;
+  color: #343434;
+}
+.about__title {
+  margin: 0 0 1.5rem 0;
+  font-size: 3.8rem;
+  font-weight: 500;
+}
+.about__text {
+  margin: 0;
+  font-size: 2.9rem;
+  font-weight: 300;
+  line-height: 4.2rem;
+}/*# sourceMappingURL=ProfileAbout.css.map */

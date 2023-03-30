@@ -1,0 +1,112 @@
+/* Primary Colors */
+/* From Pallete */
+/* Secondary Colors */
+/* From Pallete 2*/
+/* media query for mobile */
+/* media query for tablet */
+/* media query for desktop */
+.chatroom {
+  position: relative;
+  z-index: 20;
+}
+.chatroom__header {
+  height: 12rem;
+  padding: 0rem 2.3rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+}
+.chatroom__wrapper {
+  display: flex;
+  width: 100%;
+}
+.chatroom__return {
+  font-size: 7rem;
+  color: #373f51;
+  display: flex;
+}
+.chatroom__addressee {
+  margin: 0 2rem;
+  width: 100%;
+}
+.chatroom__name {
+  font-size: 4.3rem;
+  font-weight: 500;
+  color: #373f51;
+}
+.chatroom__details {
+  font-size: 2.7rem;
+  color: #373f51;
+}
+.chatroom__options {
+  font-size: 7rem;
+  color: #373f51;
+  display: flex;
+}
+.chatroom__messages {
+  margin-top: 12rem;
+  margin-bottom: 16rem;
+  padding: 3rem 3rem 0 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* align items to the top of the container */
+  align-items: flex-start; /* align items to the left side of the container */
+  z-index: 0;
+  background-color: rgba(234, 255, 237, 0.4470588235);
+  height: 100vh;
+}
+.chatroom__text {
+  font-size: 3.3rem;
+  padding: 2rem 3rem;
+  border-radius: 15rem;
+  margin-bottom: 2.5rem;
+}
+.chatroom__received {
+  background-color: #94e592;
+  margin-right: auto; /* push received messages to the left side */
+}
+.chatroom__sent {
+  margin-left: auto; /* push sent messages to the right side */
+  border: 0.5px solid #94e592;
+  background-color: #ffffff;
+}
+.chatroom__footer {
+  height: 15rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 2.3rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: #ffffff;
+}
+.chatroom__icon {
+  font-size: 7rem;
+  color: #373f51;
+}
+.chatroom__textbox {
+  border: 0.2rem solid #6d7275;
+  height: 7rem;
+  width: 100%;
+  margin: 0 3rem;
+  border-radius: 15rem;
+  padding: 0 2.5rem;
+  display: flex;
+  align-items: center;
+}
+.chatroom__input {
+  border: none;
+  outline: none;
+  font-size: 3.5rem;
+  font-weight: 300;
+  width: 100%;
+}/*# sourceMappingURL=ChatRoom.css.map */
