@@ -9,9 +9,17 @@ interface Props {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   handlePic: (e: React.FormEvent<HTMLInputElement>) => void;
   handleBanner: (e: React.FormEvent<HTMLInputElement>) => void;
+  isChecked1: boolean;
+  handleCheckbox1: (isChecked: boolean) => void;
 }
 
-const CompanyForm1 = ({ handleSubmit, handlePic, handleBanner }: Props) => {
+const CompanyForm1 = ({
+  handleSubmit,
+  handlePic,
+  handleBanner,
+  handleCheckbox1,
+  isChecked1,
+}: Props) => {
   return (
     <form className="create-company__form" onSubmit={handleSubmit}>
       <div className="create-company__logo">
@@ -111,6 +119,22 @@ const CompanyForm1 = ({ handleSubmit, handlePic, handleBanner }: Props) => {
         </div>
         <div className="create-company__required-text">
           * required input field
+        </div>
+      </div>
+
+      <div className="create-company__preferences">
+        <div className="create-company__boxes">
+          <input
+            id="pushNotifications"
+            className="create-company__checkbox"
+            type="checkbox"
+            checked={isChecked1}
+            onChange={(e) => handleCheckbox1(e.target.checked)}
+          />
+          <label className="create-company__label-checkbox" htmlFor="captcha">
+            I certify that I am an authorized representative of this
+            organization
+          </label>
         </div>
       </div>
       <div className="create-company__controls">

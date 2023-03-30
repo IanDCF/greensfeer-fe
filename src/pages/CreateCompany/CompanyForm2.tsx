@@ -23,7 +23,7 @@ const CompanyForm2 = ({ handleSubmit }: Props) => {
         />
       </div>
       <div className="create-company__heading">
-        Round out your profile with a few extra details, or skip
+        Round out your profile with a few extra details
       </div>
       <div className="create-company__input-fields">
         <div className="create-company__text-input">
@@ -53,32 +53,27 @@ const CompanyForm2 = ({ handleSubmit }: Props) => {
           </div>
           <div className="create-company__input-div">
             <label className="create-company__label-text" htmlFor="email">
-              email
+              email*
             </label>
             <input
               id="email"
               name="email"
               type="text"
               className="create-company__input"
-              placeholder="Your Company Email"
+              placeholder="Enter email address"
             />
           </div>
           <div className="create-company__input-div">
             <label className="create-company__label-text" htmlFor="website">
-              website
+              website*
             </label>
             <input
               id="website"
               type="text"
               name="website"
               className="create-company__input"
-              placeholder="Your Company Website"
+              placeholder="Enter company website"
             />
-          </div>
-          <div className="create-company__input-offering">
-            <div id="addOffering" className="create-company__offering">
-              Add a Product or Service
-            </div>
           </div>
         </div>
         <div className="create-company__required-text">

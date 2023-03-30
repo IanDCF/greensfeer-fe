@@ -61,7 +61,7 @@ const RegisterForm2 = ({
               I am a
             </label>
             <select id="role" name="role" className="register__input">
-              <option disabled defaultValue={"Tell us who you are"}>
+              <option disabled selected>
                 Tell us who you are
               </option>
               <option value="Project Aggregator">Project Aggregator</option>
