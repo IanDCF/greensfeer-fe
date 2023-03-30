@@ -12,10 +12,10 @@ import newListingSchema, {
 } from "../../schemas/ListingSchema";
 import createMarketPost from "../../helpers/marketPostCreator";
 import getAffiliation from "../../helpers/affiliationFetcher";
+import getCompany from "../../helpers/companyFetcher";
 import { useAuth } from "../../context/AuthProvider/AuthProvider";
 
 const CreateListing = () => {
-  getAffiliation();
   // create market post as current user
   /* FIXME: Market post tied to a company mechanism
   solutions: 
@@ -42,28 +42,36 @@ const CreateListing = () => {
 
   // validate post
   useEffect(() => {
-    if (newMarketPost.post_type === "Service") {
-      // validate & run axios.post
-      const newListing = validateListing();
-      //check user via token, return user id & company id
-      if (currentUser) {
-        const token = currentUser.getIdToken();
+    console.log("in effect");
+    const validateAndPost = async () => {
+      console.log("in validate");
+      const { user_id, company_id } = await getAffiliation();
+      const company = await getCompany(company_id);
+      console.log(`${user_id}\n${company_id}\n${company}`);
+      if (newMarketPost.post_type === "Service") {
+        // validate & run axios.post
+        const newListing = await validateListing();
+        //check user via token, return user id & company id
+        if (currentUser) {
+          const token = await currentUser.getIdToken();
+        }
+        const service = {
+          post_name: newListing?.post_name,
+          post_type: newListing?.post_type,
+          post_category: newListing?.service_type,
+          description: newListing?.description,
+          link: newListing?.link,
+          location: newListing?.location,
+          user_id,
+          company_id,
+          // email contact
+        };
       }
-      const service = {
-        post_name: newListing.post_name,
-        post_type: newListing.post_type,
-        post_category: newListing.service_type,
-        description: newListing.description,
-        link: newListing.link,
-        location: newListing.location,
-        // user_id
-        // company_id
-        // contact
-      };
-    }
+    };
     if (newMarketPost.post_type === "Product") {
       //validate & run axios.post
     }
+    validateAndPost();
   }, [stepTwoDone, productDetailDone]);
 
   const validateListing = async () => {
