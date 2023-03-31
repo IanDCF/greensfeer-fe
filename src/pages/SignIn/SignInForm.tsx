@@ -1,26 +1,27 @@
 import { Link } from "react-router-dom";
 import GreensfeerLogo from "../../assets/logos/greensfeer-logo.svg";
+import "../Register/Register.scss";
 
 interface Props {
   handleSubmit: any;
 }
 
-const SignIn = ({ handleSubmit }: Props) => {
+const SignInForm = ({ handleSubmit }: Props) => {
   return (
-    <div className="register">
-      <div className="register__wrapper">
-        <div className="register__logo">
-          <img
-            className="register__img"
-            src={GreensfeerLogo}
-            alt="Greensfeer Logo"
-          />
-        </div>
+    <div className="register__wrapper">
+      <div className="register__logo">
+        <img
+          className="register__img"
+          src={GreensfeerLogo}
+          alt="Greensfeer Logo"
+        />
+      </div>
 
-        <div className="register__title">Welcome back!</div>
+      <div className="register__heading">Welcome back!</div>
 
-        <form className="register__form" onSubmit={handleSubmit}>
-          <div className="register__text">
+      <form className="register__form" onSubmit={handleSubmit}>
+        <div className="register__text">
+          <div className="register__input-div">
             <label className="register__label" htmlFor="email">
               email
             </label>
@@ -31,6 +32,8 @@ const SignIn = ({ handleSubmit }: Props) => {
               placeholder="Enter email address"
               className="register__input"
             />
+          </div>
+          <div className="register__input-div">
             <label className="register__label" htmlFor="password">
               password
             </label>
@@ -42,18 +45,14 @@ const SignIn = ({ handleSubmit }: Props) => {
               className="register__input"
             />
           </div>
+        </div>
 
-          <Link to="#" className="register__link">
-            Forgot your email or password?
-          </Link>
-
-          <button className="register__button" type="submit">
-            Sign In
-          </button>
-        </form>
-      </div>
+        <button className="register__button" type="submit">
+          Sign In
+        </button>
+      </form>
     </div>
   );
 };
 
-export default SignIn;
+export default SignInForm;

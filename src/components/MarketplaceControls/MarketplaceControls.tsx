@@ -1,6 +1,6 @@
 import "./MarketplaceControls.scss";
 import { IoFilterSharp } from "react-icons/io5";
-import MarketplaceSearch from "../MarketplaceSearch/MarketplaceSearch";
+import MarketplaceSearch from "../Searchbar/MarketplaceSearch";
 const MarketplaceControls = () => {
   return (
     <header className="marketplace-controls">

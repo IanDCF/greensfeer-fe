@@ -5,31 +5,89 @@
 .header {
   // @include mx.card;
   background-color: color.$mint;
-  max-width: 100%;
+  width: 100%;
   border-radius: 2.5rem;
   display: flex;
   flex-direction: column;
-  margin-bottom: 2rem;
+
+  @include bp.mobile {
+    margin-bottom: 2.5rem;
+  }
+
+  @include bp.tablet {
+    margin-bottom: 3rem;
+  }
+
+  @include bp.desktop {
+    margin-bottom: 3rem;
+    max-width: 1024px;
+  }
 
   &__banner {
     // @include mx.card;
     background-color: color.$mint;
     max-width: 100%;
-    border-radius: 2.5rem;
+    border-radius: 0rem 0rem 2.5rem 2.5rem;
+    object-fit: cover;
   }
 
   &__details {
-    padding: 1.5rem;
     display: flex;
+    align-items: center;
+
+    @include bp.mobile {
+      padding: 1.5rem;
+    }
+
+    @include bp.tablet {
+      padding: 2.5rem 3rem;
+    }
+
+    @include bp.desktop {
+      padding: 2.5rem 4.5rem;
+    }
   }
 
   &__photo {
     // @include mx.round-image;
     border-radius: 50%;
     position: relative;
-    width: 20rem;
-    height: 20rem;
-    margin-right: 2rem;
+
+    @include bp.mobile {
+      width: 19.5rem;
+      height: 19.5rem;
+      margin-right: 2rem;
+    }
+
+    @include bp.tablet {
+      width: 27.5rem;
+      height: 27.5rem;
+      margin-right: 4.5rem;
+    }
+
+    @include bp.desktop {
+      width: 35rem;
+      height: 35rem;
+      margin-right: 5rem;
+    }
+  }
+
+  &__photo-icon {
+    @extend .header__photo;
+    color: color.$charcoal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include bp.mobile {
+      font-size: 19.5rem;
+    }
+    @include bp.tablet {
+      font-size: 27.5rem;
+    }
+    @include bp.desktop {
+      font-size: 35rem;
+    }
   }
 
   &__info {
@@ -41,28 +99,87 @@
 
   &__name {
     margin: 0;
-    font-size: 3.8rem;
-    font-weight: 600;
+
+    @include bp.mobile {
+      font-size: 4.2rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    @include bp.tablet {
+      font-size: 7rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    @include bp.desktop {
+      font-size: 7rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
   }
 
   &__headline {
     margin: 0;
-    font-size: 3rem;
-    font-weight: 300;
-    margin-bottom: 1rem;
+
+    @include bp.mobile {
+      font-size: 3.3rem;
+      font-weight: 300;
+      margin-bottom: 0.75rem;
+    }
+
+    @include bp.tablet {
+      font-size: 4rem;
+      font-weight: 300;
+      margin-bottom: 1rem;
+    }
+
+    @include bp.desktop {
+      font-size: 4rem;
+      font-weight: 300;
+      margin-bottom: 1rem;
+    }
   }
 
   &__location {
     margin: 0;
-    font-size: 2.5rem;
-    font-weight: 200;
-    margin-bottom: 0.25rem;
+
+    @include bp.mobile {
+      font-size: 2.8rem;
+      font-weight: 200;
+      margin-bottom: 0.5rem;
+    }
+
+    @include bp.tablet {
+      font-size: 3.3rem;
+      font-weight: 200;
+      margin-bottom: 0.75rem;
+    }
+
+    @include bp.desktop {
+      font-size: 3.3rem;
+      font-weight: 200;
+      margin-bottom: 0.75rem;
+    }
   }
 
   &__connections {
     margin: 0;
-    font-size: 2.3rem;
-    font-weight: 600;
     color: color.$green;
+
+    @include bp.mobile {
+      font-size: 2.7rem;
+      font-weight: 400;
+    }
+
+    @include bp.tablet {
+      font-size: 3rem;
+      font-weight: 400;
+    }
+
+    @include bp.desktop {
+      font-size: 3rem;
+      font-weight: 400;
+    }
   }
 }
