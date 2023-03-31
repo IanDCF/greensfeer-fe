@@ -50,7 +50,7 @@ const signUp = async (
   await entryForSignUp(idToken);
 
   //call database & create user
-  return await createUser(firstName, secondName, role, idToken);
+  return await createUser(email, firstName, secondName, role, idToken);
 };
 const login = (email: string, password: string) => {
   return signInWithEmailAndPassword(auth, email, password);

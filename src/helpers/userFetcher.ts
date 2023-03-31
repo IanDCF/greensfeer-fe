@@ -11,6 +11,7 @@ const entryForSignUp = async (idToken: string) => {
   }
 };
 const createUser = async (
+  email: string,
   firstName: string,
   secondName: string,
   role: string,
@@ -23,6 +24,7 @@ const createUser = async (
       last_name: secondName,
       role,
       idToken,
+      email,
     });
     if (status !== 201) return null;
     return data as IUser;
@@ -31,5 +33,17 @@ const createUser = async (
     throw new Error(error as string);
   }
 };
-export { createUser };
+
+const allUsers = async () => {
+  const URL_BASE = import.meta.env.VITE_REACT_APP_BASE_URL;
+  try {
+    const { data, status } = await axios.get(`${URL_BASE}/user/`);
+    if (status !== 200) return null;
+    return data as IUser[];
+  } catch (error) {
+    console.log(error);
+    throw new Error(error as string);
+  }
+};
+export { createUser, allUsers };
 export default entryForSignUp;

@@ -8,8 +8,8 @@ import newUserSchema, {
   registerUserSchema,
 } from "../../schemas/UserSchema";
 import { useAuth } from "../../context/AuthProvider/AuthProvider";
+import { allUsers } from "../../helpers/userFetcher";
 
-const newUserDefault = {} as TNewUser;
 const Register = () => {
   const navigate = useNavigate();
   const { signUp } = useAuth();
@@ -27,6 +27,7 @@ const Register = () => {
   }, [registerDoneInfo]);
 
   const validateUser = async () => {
+    console.log("Creating user:", newUser);
     const userValidation = newUserSchema.safeParse(newUser);
     if (!userValidation.success) {
       setError(error);
@@ -60,7 +61,7 @@ const Register = () => {
     setIsChecked2(isChecked);
   };
 
-  const handleFirstSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleFirstSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const emailInput = e.currentTarget.elements.namedItem(
       "email"
@@ -80,6 +81,24 @@ const Register = () => {
       password,
       confirmPassword,
     });
+    const emailIsAvailable = async (email: string) => {
+      console.log(`Checking if email value: ${email}`);
+      const users = await allUsers();
+      console.log(users);
+      const found = users?.find((user) => user.email === email);
+      console.log(found);
+      if (found) {
+        setError("Email not available");
+        return false;
+      }
+      return true;
+    };
+    //I just need to make sure that this conditional works so the error raises if there is an email already
+    if (await emailIsAvailable(email)) {
+      setError("User already exists");
+      return;
+    }
+
     if (!registerUserSchemValidation.success) {
       const error = registerUserSchemValidation.error.errors; //We need to format the errors so we can pass the string to the setError
       setError("There was some kind of problem with the inputs");
@@ -145,6 +164,7 @@ const Register = () => {
   };
   return (
     <section className="register">
+      {/* {error && <>{"Error (still need to format errors):" + error}</>} */}
       {!registerDone && (
         <RegisterForm1
           handleSubmit={handleFirstSubmit}
