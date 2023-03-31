@@ -15,3 +15,24 @@ const getAffiliation = async (uid:string) => {
 };
 
 export default getAffiliation;
+
+const newUserAffiliation = async (companyId:string, uid:string, admin:boolean, posting:boolean)=>{
+  const URL_BASE = import.meta.env.VITE_REACT_APP_BASE_URL;
+  try {
+    const {data,status} = await axios.post(`${URL_BASE}/new`,{
+      company_id:companyId,
+      admin,
+      posting,
+      user_id:uid
+
+    })
+    if (status !== 201) return null;
+    //Need to add the Affiliations Types to data
+    return data ;
+  } catch (error) {
+    console.log(error);
+    throw new Error(error as string);
+  }
+}
+
+export {newUserAffiliation}

@@ -11,11 +11,14 @@ import "./CreateCompany.scss";
 import companyCreator from "../../helpers/companyCreator";
 import getAllCompanies from "../../helpers/allCompanyFetcher";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { useAuth } from "../../context/AuthProvider/AuthProvider";
+import { newUserAffiliation } from "../../helpers/affiliationFetcher";
 
 const CreateCompany: React.FC = () => {
   const storage = getStorage();
   const location = useLocation();
   const navigate = useNavigate();
+  const {currentUser} = useAuth()
   const path = location.pathname;
   const newCompanyDefault = {} as TNewCompany;
   const [newCompany, setNewCompany] = useState<TNewCompany>(newCompanyDefault);
@@ -82,6 +85,11 @@ const CreateCompany: React.FC = () => {
             return res.data.message;
           })
           .then((companyId) => {
+            //Add user and company to affiliation
+            if (currentUser){
+              const newUserAffi = newUserAffiliation(companyId, currentUser?.uid, true, true)
+              console.log("New affiliation added: ",newUserAffi )
+            }
             navigate(`/company/${companyId}`);
           });
         // navigate(`/company/${newCompanyId}`);
