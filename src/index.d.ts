@@ -11,11 +11,11 @@ declare module "customTypes" {
   }
   export interface IUser {
     uid: string;
-    profile_banner?: null;
+    profile_banner?: undefined;
     about?: string;
     last_name: string;
     created_at: Timestamp;
-    profile_picture?: null;
+    profile_picture?: undefined;
     location: Location;
     linkedin?: null;
     first_name: string;

@@ -3,10 +3,13 @@ import logo from "../../assets/logos/greensfeer-logo.png";
 import ControlButton from "../../components/ControlButtons/ControlButton";
 import { TbArrowBackUp } from "react-icons/tb";
 import { Link } from "react-router-dom";
+interface Props {
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+}
 
-const ListingForm2 = () => {
+const ListingForm2 = ({ handleSubmit }: Props) => {
   return (
-    <form className="create-listing__form">
+    <form className="create-listing__form" onSubmit={handleSubmit}>
       {/* Back btn has to change state to display previous page */}
       <div className="create-company__back-btn">
         <TbArrowBackUp />
@@ -24,18 +27,17 @@ const ListingForm2 = () => {
           {/* We need conditional rendering here
           depending on whether the state holds a product or a service */}
           <div className="create-company__input-div">
-            <label className="create-company__label-text" htmlFor="projectType">
+            <label className="create-company__label-text" htmlFor="methodology">
               project type*
             </label>
             <select
-              id="projectType"
-              name="projectType"
+              id="methodology"
+              name="methodology"
               className="create-company__input"
             >
-              <option disabled selected>
-                Select a project
+              <option hidden={true} defaultValue={"Select Project Type"}>
+                Select Project Type
               </option>
-              <option disabled>Project Types:</option>
               <option value="Agroforestry">Agroforestry</option>
               <option value="Biomass Energy Generation">
                 Biomass Energy Generation
@@ -117,17 +119,21 @@ const ListingForm2 = () => {
             </select>
           </div>
 
+          {/* FIXME: back end does not support entering service type yet */}
           <div className="create-company__input-div">
-            <label className="create-company__label-text" htmlFor="serviceType">
+            <label
+              className="create-company__label-text"
+              htmlFor="service_type"
+            >
               service type*
             </label>
             <select
-              id="serviceType"
-              name="serviceType"
+              id="service_type"
+              name="service_type"
               className="create-company__input"
             >
-              <option disabled selected>
-                Select a service
+              <option hidden={true} defaultValue={"Select a Service"}>
+                Select a Service
               </option>
               <option value="API Provider">API Provider</option>
               <option value="Broker">Broker</option>
@@ -197,6 +203,9 @@ const ListingForm2 = () => {
       <div className="create-listing__controls">
         <ControlButton dark={true} text="Cancel" link="/company" />
         <ControlButton dark={false} text="Next" link="/create-listing/step3" />
+        <button className="create-company__button" type="submit">
+          Submit Service/Continue to Product Detail &gt;
+        </button>
       </div>
     </form>
   );
