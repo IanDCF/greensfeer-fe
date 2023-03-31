@@ -7,11 +7,13 @@ import { useAuth } from "../../context/AuthProvider/AuthProvider";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { IUser } from "customTypes";
+import UserModal from "../../components/Modal/Modal";
 
 export const UserProfile: React.FC = () => {
   const [profile, setProfile] = useState<IUser>();
   const { currentUser } = useAuth();
   const [token, setToken] = useState<string>();
+  const [openCompanyModal, setOpenCompanyModal] = useState<boolean>(true);
 
   useEffect(() => {
     async function fetchProfile() {
@@ -42,6 +44,8 @@ export const UserProfile: React.FC = () => {
         {/* {profile && console.log(profile)} */}
         <ProfileAffiliations />
         {/* <PostsList /> */}
+        <PostsList />
+        <UserModal open={openCompanyModal} />
       </div>
     </>
   );
