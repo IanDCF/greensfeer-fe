@@ -7,6 +7,11 @@ import UserPicture from "../../assets/images/headshot4.jpeg";
 import CompanyBanner from "../../assets/images/nature-banner-2.png";
 import CompanyLogo from "../../assets/images/logo1.png";
 import { ICompany, IUser } from "customTypes";
+import PlaceholderBanner from "../../assets/images/placeholder-banner.png";
+import PlaceholderPhoto from "../../assets/images/placeholder-photo.png";
+import PlaceholderLogo from "../../assets/images/placeholder-logo.png";
+import { FaUserCircle } from "react-icons/fa";
+import { AiOutlineGlobal } from "react-icons/ai";
 interface ProfileHeaderProps {
   ProfileData?: IUser;
   CompanyData?: ICompany;
@@ -44,7 +49,11 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
     <header className="header">
       <div className="banner-div">
         <img
-          src={user ? ProfileData?.profile_banner : CompanyData?.banner}
+          src={
+            (user && ProfileData?.profile_banner) ||
+            CompanyData?.banner ||
+            PlaceholderBanner
+          }
           alt="User Profile Banner"
           className="header__banner"
         />
@@ -52,14 +61,26 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
 
       <div className="header__details">
         <div className="header__photo-div">
-          <div
-            className="header__photo"
-            style={user ? headshotStyle : logoStyle}
-          />
+          {ProfileData?.profile_picture || CompanyData?.logo ? (
+            <div
+              className="header__photo"
+              style={user ? headshotStyle : logoStyle}
+            />
+          ) : user ? (
+            <div className="header__photo-icon">
+              <FaUserCircle />
+            </div>
+          ) : (
+            <div className="header__photo-icon">
+              <AiOutlineGlobal />
+            </div>
+          )}
         </div>
         <div className="header__info">
           <h1 className="header__name">
-            {user && `${ProfileData?.first_name} ${ProfileData?.last_name}`}
+            {user
+              ? `${ProfileData?.first_name} ${ProfileData?.last_name}`
+              : `${ProfileData?.email}`}
             {!user && `${CompanyData?.name}`}
           </h1>
 
@@ -70,7 +91,9 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
                 {ProfileData?.location &&
                   `${ProfileData.location?.city}, ${ProfileData.location?.state_province}, ${ProfileData.location?.country}`}
               </p>
-              <p className="header__connections">200 Connections</p>
+              <p className="header__connections">
+                Member since March 15th 2023
+              </p>
             </>
           ) : (
             <>
