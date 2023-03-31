@@ -25,6 +25,7 @@ const createUser = async (
       role,
       idToken,
       email,
+      headline:role
     });
     if (status !== 201) return null;
     return data as IUser;
