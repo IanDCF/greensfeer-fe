@@ -2,7 +2,7 @@ import "./AppNav.scss";
 import Searchbar from "../Searchbar/Searchbar";
 import PlaceholderPhoto from "../../assets/images/placeholder-photo.png";
 import { Link, useLocation } from "react-router-dom";
-import MarketplaceSearch from "../MarketplaceSearch/MarketplaceSearch";
+import MarketplaceSearch from "../Searchbar/MarketplaceSearch";
 import Logo from "../../assets/logos/greensfeer-logo.png";
 import { FaUserCircle } from "react-icons/fa";
 import { AiOutlineUsergroupAdd } from "react-icons/ai";
@@ -26,24 +26,24 @@ const AppNav: React.FC = () => {
         <div className="appnav__searchbar">
           {isMarketplacePath ? <MarketplaceSearch /> : <Searchbar />}
         </div>
-        <Link to="/messages" className="appnav__link">
-          <AiOutlineMessage className="appnav__icon" />
-        </Link>
-        <Link to="/messages" className="appnav__link">
-          <AiOutlineUsergroupAdd className="appnav__icon" />
-        </Link>
-        <Link to="/messages" className="appnav__link">
-          <RiNotification4Line className="appnav__icon" />
-        </Link>
+        <div className="appnav__links">
+          <Link to="/messages" className="appnav__link">
+            <AiOutlineMessage className="appnav__icon" />
+          </Link>
+          <Link to="/messages" className="appnav__link">
+            <AiOutlineUsergroupAdd className="appnav__icon" />
+          </Link>
+          <Link to="/messages" className="appnav__link">
+            <RiNotification4Line className="appnav__icon" />
+          </Link>
 
-        <Link to="/profile" className="appnav__link">
-          {/* render conditionally: user profile picture or placeholder icon*/}
-          {/* <div className="appnav__img" style={photoStyle}
+          <Link to="/profile" className="appnav__link">
+            {/* render conditionally: user profile picture or placeholder icon*/}
+            {/* <div className="appnav__img" style={photoStyle}
            /> */}
-          <div className="appnav__img">
-            <FaUserCircle />
-          </div>
-        </Link>
+            <FaUserCircle className="appnav__icon" />
+          </Link>
+        </div>
       </nav>
     </header>
   );

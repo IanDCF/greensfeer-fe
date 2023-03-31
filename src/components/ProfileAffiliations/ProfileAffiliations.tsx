@@ -27,7 +27,6 @@ export const ProfileAffiliations: React.FC = () => {
           <div className="affiliations__logo-div">
             <div className="affiliations__logo" style={logoStyle2} />
           </div>
-
           <p className="affiliations__name">Tesla</p>
         </div>
 
@@ -35,7 +34,6 @@ export const ProfileAffiliations: React.FC = () => {
           <div className="affiliations__logo-div">
             <div className="affiliations__logo" style={logoStyle1} />
           </div>
-
           <p className="affiliations__name">Microsoft</p>
         </div>
 
@@ -44,10 +42,8 @@ export const ProfileAffiliations: React.FC = () => {
             to="/create-company/step1"
             className="affiliations__logo-div-add"
           >
-            {/* <div className="affiliations__logo" style={logoStyle1} /> */}
             <IoIosAdd />
           </Link>
-
           <p className="affiliations__name">Add New</p>
         </div>
       </div>

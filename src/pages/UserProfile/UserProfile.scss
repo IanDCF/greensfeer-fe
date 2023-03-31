@@ -1,10 +1,26 @@
 @use "../../main.scss";
+@use "../../styles/partials/colors.scss" as color;
+@use "../../styles/partials/breakpoints.scss" as bp;
 
 .user-profile-container {
-  margin-top: 13rem;
-  margin-bottom: 15rem;
-  padding: 0rem 3.5rem 0 3.5rem;
   display: flex;
   flex-direction: column;
-  overflow-y: scroll;
+
+  @include bp.mobile {
+    margin-top: 13rem;
+    margin-bottom: 15rem;
+    padding: 0rem 3.5rem 0 3.5rem;
+  }
+
+  @include bp.tablet {
+    margin-top: 13.4rem;
+    padding: 0rem 7rem 0 7rem;
+  }
+
+  @include bp.desktop {
+    margin-top: 13.4rem;
+    padding: 0rem 10rem 0 10rem;
+    justify-content: center;
+    align-items: center;
+  }
 }

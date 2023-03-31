@@ -7,18 +7,16 @@ import "./Navigation.scss";
 const Navigation = () => {
   const location = useLocation();
 
-  const isNetworkPath = location.pathname.includes("/network");
-  const isMessagesPath = location.pathname.includes("/messages");
+  // const isNetworkPath = location.pathname.includes("/network");
+  // const isMessagesPath = location.pathname.includes("/messages");
   const isProfilePath = location.pathname.includes("/profile");
   const isCompanyPath = location.pathname.includes("/company");
   const isMarketplacePath = location.pathname.includes("/marketplace");
 
   const shouldRenderNavBar =
-    isNetworkPath ||
-    isMessagesPath ||
-    isProfilePath ||
-    isCompanyPath ||
-    isMarketplacePath;
+    // isNetworkPath ||
+    // isMessagesPath ||
+    isProfilePath || isCompanyPath || isMarketplacePath;
   const shouldRenderNavBottom = shouldRenderNavBar;
 
   return (
@@ -28,7 +26,7 @@ const Navigation = () => {
         {shouldRenderNavBottom && <AppNavMobileBottom />}
       </div>
       <div className="navigation__tablet-desktop">
-        <AppNav />
+        {shouldRenderNavBar && <AppNav />}
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import "./MarketListings.scss";
+import "../PostsList/PostsList.scss";
 
 interface Post {
   post_name: string;

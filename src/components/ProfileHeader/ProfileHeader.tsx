@@ -91,7 +91,9 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
                 {ProfileData?.location &&
                   `${ProfileData.location?.city}, ${ProfileData.location?.state_province}, ${ProfileData.location?.country}`}
               </p>
-              <p className="header__connections">Joined 03/29/2023</p>
+              <p className="header__connections">
+                Member since March 15th 2023
+              </p>
             </>
           ) : (
             <>

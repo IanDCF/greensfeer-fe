@@ -4,11 +4,20 @@
 .search {
   border: 0.25rem solid color.$charcoal;
   height: 9rem;
-  width: 94%;
   border-radius: 15rem;
-  padding: 0 2.5rem;
+  padding: 0 4rem;
   display: flex;
   align-items: center;
+
+  @include bp.mobile {
+    width: 94%;
+  }
+  @include bp.tablet {
+    width: 78%;
+  }
+  @include bp.desktop {
+    width: 92%;
+  }
 
   &__icon {
     font-size: 4rem;
