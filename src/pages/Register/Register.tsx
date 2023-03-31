@@ -81,20 +81,23 @@ const Register = () => {
       password,
       confirmPassword,
     });
-    const emailIsAvailable = async (email: string) => {
+    const checkEmailAvailability = async (email: string) => {
       console.log(`Checking if email value: ${email}`);
       const users = await allUsers();
-      console.log(users);
+      console.log(users)
       const found = users?.find((user) => user.email === email);
-      console.log(found);
       if (found) {
+        console.log("Email not available")
         setError("Email not available");
         return false;
       }
+      console.log("Email available! :)")
       return true;
     };
+
+    const emailIsAvailable = await checkEmailAvailability(email)
     //I just need to make sure that this conditional works so the error raises if there is an email already
-    if (await emailIsAvailable(email)) {
+    if (!emailIsAvailable) {
       setError("User already exists");
       return;
     }
