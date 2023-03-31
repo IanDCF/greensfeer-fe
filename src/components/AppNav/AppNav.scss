@@ -1,22 +1,9 @@
 @use "../../styles/partials/colors.scss" as color;
 @use "../../styles/partials/breakpoints.scss" as bp;
 
-.navbar-bottom {
-  height: 14rem;
+.appnav {
   display: flex;
-  padding: 1.5rem 2.3rem;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
-    rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  z-index: 10;
-  background-color: color.$white;
-}
-.navbar {
-  height: 12rem;
-  display: flex;
-  padding: 1.5rem 2.3rem;
+  padding: 2.5rem 3rem 1.5rem 3rem;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
     rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
   position: fixed;
@@ -31,29 +18,27 @@
     justify-content: space-around;
   }
 
-  &__profile {
+  &__link {
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
 
   &__img {
-    width: 7.4rem;
-    height: 7.4rem;
+    width: 8.5rem;
+    height: 8.5rem;
     border-radius: 10rem;
-  }
-
-  &__message {
-    @extend .navbar__profile;
+    font-size: 8.5rem;
+    color: color.$charcoal;
   }
 
   &__icon {
-    font-size: 7rem;
+    font-size: 8.5rem;
     color: color.$charcoal;
   }
 
   &__icon-newmsg {
-    @extend .navbar__icon;
+    @extend .appnav__icon;
     font-size: 6rem;
   }
 

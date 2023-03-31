@@ -6,7 +6,7 @@
   border-radius: 2.5rem;
   display: flex;
   flex-direction: column;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   padding: 2.5rem 2.5rem 1.5rem 2.5rem;
   overflow: hidden;
   overflow-x: scroll;
@@ -17,7 +17,7 @@
 
   &__title {
     margin: 0 0 1.5rem 0;
-    font-size: 3.8rem;
+    font-size: 4rem;
     font-weight: 500;
   }
 
@@ -29,11 +29,11 @@
     padding-bottom: 2rem;
 
     &::-webkit-scrollbar {
-      width: 5rem;
+      width: 1rem;
     }
 
     &::-ms-scrollbar {
-      width: 5rem;
+      width: 1rem;
     }
 
     &::-webkit-scrollbar-thumb {
@@ -49,14 +49,15 @@
 
   &__card {
     border-radius: 2.5rem;
-    border: 0.5px solid color.$brightgreen;
+    // border: 0.5px solid color.$brightgreen;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     background-color: color.$white;
     display: flex;
     flex-direction: column;
     height: 28rem;
     width: 55rem;
     flex-basis: 55rem;
-    margin-right: 2.5rem;
+    margin-right: 4rem;
     padding: 1.5rem 2rem;
     white-space: break-word;
   }

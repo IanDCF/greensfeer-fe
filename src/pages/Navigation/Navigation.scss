@@ -1,0 +1,18 @@
+@use "../../styles/partials/colors.scss" as color;
+@use "../../styles/partials/breakpoints.scss" as bp;
+
+.navigation {
+  &__mobile {
+    @include bp.tablet {
+      display: none;
+    }
+    @include bp.desktop {
+      display: none;
+    }
+  }
+  &__tablet-desktop {
+    @include bp.mobile {
+      display: none;
+    }
+  }
+}

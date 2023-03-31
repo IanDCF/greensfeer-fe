@@ -1,6 +1,4 @@
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import AppNavbar from "./components/AppNavbar/AppNavbar";
-import NavBottom from "./components/AppNavbar/NavBottom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useAuth } from "./context/AuthProvider/AuthProvider";
 import ChatRoom from "./components/ChatRoom/ChatRoom";
 import Landing from "./pages/Landing/Landing";
@@ -15,6 +13,7 @@ import { CompanyProfile } from "./pages/CompanyProfile/CompanyProfile";
 import Marketplace from "./pages/Marketplace/Marketplace";
 import CreateCompany from "./pages/CreateCompany/CreateCompany";
 import CreateListing from "./pages/CreateListing/CreateListing";
+import Navigation from "./pages/Navigation/Navigation";
 
 const App = () => {
   const { currentUser } = useAuth();
@@ -24,16 +23,6 @@ const App = () => {
         <Route path="/" element={<Landing />} />
         <Route path="/subscribe" element={<Subscribe />} />
         <Route path="/register" element={<Register />} />
-        <Route
-          path="/youarebiutiful"
-          element={
-            <div style={{ fontSize: "15rem" }}>
-              You are biutifullll {"<3"}
-              <br />
-              {currentUser?.email} with id: {currentUser?.uid}
-            </div>
-          }
-        />
         <Route path="*" element={<NotFound />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/network" element={<Network />} />
@@ -51,31 +40,6 @@ const App = () => {
       </Routes>
       <Navigation />
     </BrowserRouter>
-  );
-};
-
-const Navigation = () => {
-  const location = useLocation();
-
-  const isNetworkPath = location.pathname.includes("/network");
-  const isMessagesPath = location.pathname.includes("/messages");
-  const isProfilePath = location.pathname.includes("/profile");
-  const isCompanyPath = location.pathname.includes("/company");
-  const isMarketplacePath = location.pathname.includes("/marketplace");
-
-  const shouldRenderNavBar =
-    isNetworkPath ||
-    isMessagesPath ||
-    isProfilePath ||
-    isCompanyPath ||
-    isMarketplacePath;
-  const shouldRenderNavBottom = shouldRenderNavBar;
-
-  return (
-    <>
-      {shouldRenderNavBar && <AppNavbar />}
-      {shouldRenderNavBottom && <NavBottom />}
-    </>
   );
 };
 
