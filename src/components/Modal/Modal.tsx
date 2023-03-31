@@ -1,13 +1,17 @@
 import { matchPath } from "react-router-dom";
 import ControlButton from "../ControlButtons/ControlButton";
-
 import "./Modal.scss";
+
+interface Props {
+  open: boolean;
+}
 
 // open function: render the page on true
 //close function: axios.patch user company modal seen: true
 // navigate to proper destination
-const UserModal: React.FC = () => {
+const Modal: React.FC<Props> = ({ open }) => {
   const onProfile = matchPath(location.pathname, "/profile");
+  if (!open) return <></>;
   return (
     <div className="modal-container">
       <div
@@ -37,4 +41,4 @@ const UserModal: React.FC = () => {
   );
 };
 
-export default UserModal;
+export default Modal;
