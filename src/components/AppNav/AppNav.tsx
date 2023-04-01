@@ -5,9 +5,9 @@ import { Link, useLocation } from "react-router-dom";
 import MarketplaceSearch from "../Searchbar/MarketplaceSearch";
 import Logo from "../../assets/logos/greensfeer-logo.png";
 import { FaUserCircle } from "react-icons/fa";
-import { AiOutlineUsergroupAdd } from "react-icons/ai";
-import { RiNotification4Line } from "react-icons/ri";
+import { HiOutlineUserGroup } from "react-icons/hi";
 import { AiOutlineMessage } from "react-icons/ai";
+import { IoMdNotificationsOutline } from "react-icons/io";
 
 const AppNav: React.FC = () => {
   const photoStyle = {
@@ -27,14 +27,14 @@ const AppNav: React.FC = () => {
           {isMarketplacePath ? <MarketplaceSearch /> : <Searchbar />}
         </div>
         <div className="appnav__links">
-          <Link to="/messages" className="appnav__link">
+          <Link to="#" className="appnav__link">
             <AiOutlineMessage className="appnav__icon" />
           </Link>
-          <Link to="/messages" className="appnav__link">
-            <AiOutlineUsergroupAdd className="appnav__icon" />
+          <Link to="#" className="appnav__link">
+            <HiOutlineUserGroup className="appnav__icon" />
           </Link>
-          <Link to="/messages" className="appnav__link">
-            <RiNotification4Line className="appnav__icon" />
+          <Link to="#" className="appnav__link">
+            <IoMdNotificationsOutline className="appnav__icon" />
           </Link>
 
           <Link to="/profile" className="appnav__link">

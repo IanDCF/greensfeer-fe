@@ -1,8 +1,6 @@
-// import { AiOutlineMessage } from "react-icons/ai";
 import "./AppNavMobile.scss";
 import Searchbar from "../Searchbar/Searchbar";
 import PlaceholderPhoto from "../../assets/images/placeholder-photo.png";
-// import { FiEdit } from "react-icons/fi";
 import { Link, useLocation } from "react-router-dom";
 import MarketplaceSearch from "../Searchbar/MarketplaceSearch";
 import Logo from "../../assets/logos/greensfeer-logo.png";

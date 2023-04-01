@@ -2,7 +2,7 @@
 @use "../../styles/partials/breakpoints.scss" as bp;
 
 .search {
-  border: 0.25rem solid color.$charcoal;
+  border: 0.25rem solid color.$romansilver;
   height: 9rem;
   border-radius: 15rem;
   padding: 0 4rem;
@@ -21,7 +21,7 @@
 
   &__icon {
     font-size: 4rem;
-    color: color.$charcoal;
+    color: color.$romansilver;
     margin-right: 0.75rem;
   }
   &__input {
@@ -30,9 +30,9 @@
     font-size: 3.5rem;
     font-weight: 300;
     width: 100%;
-    color: color.$charcoal;
+    color: color.$romansilver;
     ::placeholder {
-      color: color.$charcoal;
+      color: color.$romansilver;
     }
   }
 }

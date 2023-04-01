@@ -18,19 +18,19 @@ interface ProfileHeaderProps {
   user: boolean;
 }
 
-interface UserProps {
-  first_name: string;
-  last_name: string;
-  headline: string;
-  location: {
-    city: string;
-    state_province: string;
-    country: string;
-  };
-  profile_picture: string;
-  profile_banner: string;
-  about: string;
-}
+// interface UserProps {
+//   first_name: string;
+//   last_name: string;
+//   headline: string;
+//   location: {
+//     city: string;
+//     state_province: string;
+//     country: string;
+//   };
+//   profile_picture: string;
+//   profile_banner: string;
+//   about: string;
+// }
 
 export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
   ProfileData,
@@ -78,9 +78,7 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
         </div>
         <div className="header__info">
           <h1 className="header__name">
-            {user
-              ? `${ProfileData?.first_name} ${ProfileData?.last_name}`
-              : `${ProfileData?.email}`}
+            {user && `${ProfileData?.first_name} ${ProfileData?.last_name}`}
             {!user && `${CompanyData?.name}`}
           </h1>
 
