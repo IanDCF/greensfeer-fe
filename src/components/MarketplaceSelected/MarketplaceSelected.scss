@@ -5,6 +5,17 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 15rem;
+  @include bp.mobile {
+    width: 100%;
+  }
+
+  @include bp.tablet {
+    width: 58%;
+  }
+
+  @include bp.desktop {
+    width: 58%;
+  }
 
   &__banner {
     width: 100%;

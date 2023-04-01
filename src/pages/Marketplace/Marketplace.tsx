@@ -42,12 +42,18 @@ const Marketplace: React.FC = () => {
   );
 
   return (
-    <section className="marketplace-container">
-      {marketplaceItemSelectedMatch && (
+    <div className="marketplace-container">
+      <section className="marketplace-container__mobile">
+        {marketplaceItemSelectedMatch && (
+          <MarketplaceSelected Post={selectedPost} />
+        )}
+        {marketplaceListMatch && <MarketplaceList Posts={marketPosts} />}
+      </section>
+      <section className="marketplace-container__tablet-desktop">
+        <MarketplaceList Posts={marketPosts} />
         <MarketplaceSelected Post={selectedPost} />
-      )}
-      {marketplaceListMatch && <MarketplaceList Posts={marketPosts} />}
-    </section>
+      </section>
+    </div>
   );
 };
 

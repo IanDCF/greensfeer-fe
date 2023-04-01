@@ -53,6 +53,7 @@
     overflow: auto;
     white-space: nowrap;
     padding: 1rem 2rem 3rem 2rem;
+    overflow-y: hidden;
 
     &::-webkit-scrollbar {
       width: 5px;

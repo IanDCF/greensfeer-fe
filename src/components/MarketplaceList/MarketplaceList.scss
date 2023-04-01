@@ -4,4 +4,16 @@
 .marketplace-list {
   display: flex;
   flex-direction: column;
+
+  @include bp.mobile {
+    width: 100%;
+  }
+
+  @include bp.tablet {
+    width: 40%;
+  }
+
+  @include bp.desktop {
+    width: 40%;
+  }
 }
