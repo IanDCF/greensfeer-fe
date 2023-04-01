@@ -1,6 +1,6 @@
 import { ProfileHeader } from "../../components/ProfileHeader/ProfileHeader";
 import { ProfileAbout } from "../../components/ProfileAbout/ProfileAbout";
-import { MarketListings } from "../../components/MarketListings/MarketListings";
+import { MarketListings } from "../../components/CompanyListings/CompanyListings";
 import { useEffect, useState } from "react";
 import "../UserProfile/UserProfile.scss";
 import getMarketPost from "../../helpers/marketPostFetcher";
@@ -40,7 +40,7 @@ export const CompanyProfile: React.FC = () => {
           <ProfileHeader CompanyData={company} user={false} />
           <ProfileAbout CompanyData={company} user={false} />
           {/* <Affiliations /> */}
-          <MarketListings posts={products} title={"Products"} />
+          <MarketListings posts={products} title={"Projects"} />
           <MarketListings posts={services} title={"Services"} />
         </div>
       )}

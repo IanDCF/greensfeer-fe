@@ -8,7 +8,6 @@
   border-radius: 2.5rem;
   display: flex;
   flex-direction: column;
-
   color: color.$darkgray2;
 
   @include bp.mobile {
@@ -99,6 +98,10 @@
     background-color: color.$white;
     width: 19rem;
     height: 19rem;
+
+    &:hover {
+      box-shadow: rgb(121, 183, 120) 0px 3px 8px;
+    }
 
     @include bp.mobile {
       margin-bottom: 1rem;

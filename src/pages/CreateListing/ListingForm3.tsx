@@ -155,7 +155,7 @@ const ListingForm3 = ({ handleSubmit }: Props) => {
                   step="0.01"
                   min="0"
                   className="create-listing__input"
-                  placeholder="Per credit"
+                  placeholder="Per tCO2"
                   required
                 />
               </div>
@@ -167,11 +167,18 @@ const ListingForm3 = ({ handleSubmit }: Props) => {
         </div>
       </div>
       <div className="create-listing__controls">
-        <ControlButton dark={true} text="Cancel" link="/company" />
-        <ControlButton dark={false} text="Post" link="/create-listing/step3" />
-        <button className="create-company__button" type="submit">
-          Submit &gt;
-        </button>
+        <ControlButton
+          dark={true}
+          text="Cancel"
+          link="/company"
+          btnType="link"
+        />
+        <ControlButton
+          dark={false}
+          text="Post"
+          link="/create-listing/step3"
+          btnType="submit"
+        />
       </div>
     </form>
   );
