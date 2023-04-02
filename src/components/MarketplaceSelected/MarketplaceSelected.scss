@@ -4,17 +4,55 @@
 .marketplace-select {
   display: flex;
   flex-direction: column;
-  margin-bottom: 15rem;
+
   @include bp.mobile {
     width: 100%;
+    padding-top: 2.75rem;
   }
 
   @include bp.tablet {
     width: 58%;
+    height: 100vh;
+    overflow-y: scroll;
+    padding-top: 16rem;
+    padding-bottom: 30rem;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+      height: 7px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: rgb(255, 255, 255);
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: rgba(0, 0, 0, 0);
+      border-radius: 10px;
+    }
   }
 
   @include bp.desktop {
     width: 58%;
+    overflow-y: scroll;
+    padding-top: 17rem;
+    padding-bottom: 23rem;
+    margin-bottom: 15rem;
+    &::-webkit-scrollbar {
+      width: 5px;
+      height: 7px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: rgb(255, 255, 255);
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: rgba(0, 0, 0, 0);
+      border-radius: 10px;
+    }
   }
 
   &__banner {
@@ -28,7 +66,6 @@
   }
 
   &__body {
-    padding: 2rem 2rem;
     margin-bottom: 3rem;
     display: flex;
     flex-direction: column;

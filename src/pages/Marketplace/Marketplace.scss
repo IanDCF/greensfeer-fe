@@ -2,13 +2,23 @@
 @use "../../styles/partials/breakpoints.scss" as bp;
 
 .marketplace-container {
+  @include bp.mobile {
+    margin-top: 13rem;
+  }
+
+  @include bp.tablet {
+    margin-top: 13.5rem;
+  }
+
+  @include bp.desktop {
+    margin-top: 13.5rem;
+  }
+
   &__mobile {
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin-top: 13rem;
-    padding: 3.5rem 3rem 15rem 3rem;
-
+    padding: 0rem 3rem 15rem 3rem;
     @include bp.tablet {
       display: none;
     }
@@ -20,13 +30,19 @@
   &__tablet-desktop {
     margin: 0 auto;
     display: flex;
-    margin-top: 13.5rem;
-    padding: 3.5rem 3rem 3rem 3rem;
+    flex-direction: column;
+    padding: 0rem 3rem 3rem 3rem;
     max-width: 1024px;
-    justify-content: space-between;
-
+    height: 90vh;
+    overflow: hidden;
     @include bp.mobile {
       display: none;
     }
+  }
+
+  &__explorer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
 }

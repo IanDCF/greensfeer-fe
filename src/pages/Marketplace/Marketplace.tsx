@@ -6,6 +6,7 @@ import allMarketPosts from "../../helpers/allMarketFetcher";
 import { useState, useEffect } from "react";
 import { IMarketPost } from "customTypes";
 import selectMarketPost from "../../helpers/selectedMarketFetcher";
+import FilterBar from "../../components/FilterBar/FilterBar";
 
 const Marketplace: React.FC = () => {
   const [marketPosts, setMarketPosts] = useState<IMarketPost[]>([]);
@@ -42,18 +43,30 @@ const Marketplace: React.FC = () => {
   );
 
   return (
-    <div className="marketplace-container">
+    <body className="marketplace-container">
       <section className="marketplace-container__mobile">
         {marketplaceItemSelectedMatch && (
           <MarketplaceSelected Post={selectedPost} />
         )}
-        {marketplaceListMatch && <MarketplaceList Posts={marketPosts} />}
+        {marketplaceListMatch && (
+          <>
+            <FilterBar />
+            <MarketplaceList Posts={marketPosts} />
+          </>
+        )}
       </section>
       <section className="marketplace-container__tablet-desktop">
-        <MarketplaceList Posts={marketPosts} />
-        <MarketplaceSelected Post={selectedPost} />
+        <div className="marketplace-container__filter-bar">
+          <FilterBar />
+        </div>
+
+        <div className="marketplace-container__explorer">
+          {" "}
+          <MarketplaceList Posts={marketPosts} />
+          <MarketplaceSelected Post={selectedPost} />
+        </div>
       </section>
-    </div>
+    </body>
   );
 };
 

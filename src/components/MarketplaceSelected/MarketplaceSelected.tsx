@@ -18,15 +18,15 @@ interface Post {
 const MarketplaceSelected: React.FC<Post> = ({ Post }) => {
   return (
     <section className="marketplace-select">
-      <div className="marketplace-select__banner">
-        <img
-          src={CompanyBanner}
-          alt="Company Banner"
-          className="marketplace-select__img"
-        />
-      </div>
-
       <div className="marketplace-select__body">
+        <div className="marketplace-select__banner">
+          <img
+            src={CompanyBanner}
+            alt="Company Banner"
+            className="marketplace-select__img"
+          />
+        </div>
+
         <div className="marketplace-select__details">
           <div className="marketplace-select__ep-type">
             EP Type: {Post?.p?.ep_type}

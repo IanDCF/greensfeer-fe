@@ -7,10 +7,16 @@
   height: 30rem;
   display: flex;
   justify-content: space-between;
-
   background-color: color.$mint;
   max-width: 100%;
   border-radius: 2.5rem;
+  cursor: pointer;
+
+  @include bp.desktop {
+    &:hover {
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+  }
 
   &__details {
     display: flex;

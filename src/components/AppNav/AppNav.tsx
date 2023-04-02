@@ -20,12 +20,15 @@ const AppNav: React.FC = () => {
   return (
     <header className="appnav">
       <nav className="appnav__wrapper">
+        {/* <div className="appnav__search"> */}
         <Link to="/marketplace" className="appnav__link">
           <img className="appnav__img" src={Logo} />
         </Link>
         <div className="appnav__searchbar">
           {isMarketplacePath ? <MarketplaceSearch /> : <Searchbar />}
         </div>
+        {/* </div> */}
+
         <div className="appnav__links">
           <Link to="#" className="appnav__link">
             <AiOutlineMessage className="appnav__icon" />
