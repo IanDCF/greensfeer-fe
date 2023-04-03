@@ -125,13 +125,17 @@ const CompanyForm1 = ({
       <div className="create-company__preferences">
         <div className="create-company__boxes">
           <input
-            id="pushNotifications"
+            id="representative"
             className="create-company__checkbox"
             type="checkbox"
+            name="representative"
             checked={isChecked1}
             onChange={(e) => handleCheckbox1(e.target.checked)}
           />
-          <label className="create-company__label-checkbox" htmlFor="captcha">
+          <label
+            className="create-company__label-checkbox"
+            htmlFor="representative"
+          >
             I certify that I am an authorized representative of this
             organization
           </label>
