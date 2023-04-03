@@ -8,8 +8,8 @@ import newUserSchema, {
   registerUserSchema,
 } from "../../schemas/UserSchema";
 import { useAuth } from "../../context/AuthProvider/AuthProvider";
+import { allUsers } from "../../helpers/userFetcher";
 
-const newUserDefault = {} as TNewUser;
 const Register = () => {
   const navigate = useNavigate();
   const { signUp } = useAuth();
@@ -27,6 +27,7 @@ const Register = () => {
   }, [registerDoneInfo]);
 
   const validateUser = async () => {
+    console.log("Creating user:", newUser);
     const userValidation = newUserSchema.safeParse(newUser);
     if (!userValidation.success) {
       setError(error);
@@ -35,10 +36,15 @@ const Register = () => {
     if (userValidation.success) {
       const user = userValidation.data;
       try {
-        const createdUser = await signUp(user.email, user.password);
+        const createdUser = await signUp(
+          user.email,
+          user.password,
+          user.firstName,
+          user.secondName,
+          user.role
+        );
         setLoading(true);
         if (createdUser) {
-          // navigate("/youarebiutiful");
           navigate("/marketplace");
         }
         console.log(createdUser);
@@ -55,7 +61,7 @@ const Register = () => {
     setIsChecked2(isChecked);
   };
 
-  const handleFirstSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleFirstSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const emailInput = e.currentTarget.elements.namedItem(
       "email"
@@ -75,6 +81,27 @@ const Register = () => {
       password,
       confirmPassword,
     });
+    const checkEmailAvailability = async (email: string) => {
+      console.log(`Checking if email value: ${email}`);
+      const users = await allUsers();
+      console.log(users)
+      const found = users?.find((user) => user.email === email);
+      if (found) {
+        console.log("Email not available")
+        setError("Email not available");
+        return false;
+      }
+      console.log("Email available! :)")
+      return true;
+    };
+
+    const emailIsAvailable = await checkEmailAvailability(email)
+    //I just need to make sure that this conditional works so the error raises if there is an email already
+    if (!emailIsAvailable) {
+      setError("User already exists");
+      return;
+    }
+
     if (!registerUserSchemValidation.success) {
       const error = registerUserSchemValidation.error.errors; //We need to format the errors so we can pass the string to the setError
       setError("There was some kind of problem with the inputs");
@@ -114,11 +141,11 @@ const Register = () => {
 
     const firstName = firstNameInput.value;
     const secondName = secondNameInput.value;
-    const rol = rolInput.value;
+    const role = rolInput.value;
     const registerInfoValidation = registerInfoUserSchema.safeParse({
       firstName,
       secondName,
-      rol,
+      role,
     });
     if (!registerInfoValidation.success) {
       const error = registerInfoValidation.error.errors; //We need to format the errors so we can pass the string
@@ -134,13 +161,13 @@ const Register = () => {
     }
     if (registerInfoValidation.success) {
       console.log("Setting up part 2");
-      setNewUser({ ...newUser, firstName, secondName, rol });
-      //post firstName, secondName, rol to db
+      setNewUser({ ...newUser, firstName, secondName, role });
       setRegisterDoneInfo(true);
     }
   };
   return (
     <section className="register">
+      {/* {error && <>{"Error (still need to format errors):" + error}</>} */}
       {!registerDone && (
         <RegisterForm1
           handleSubmit={handleFirstSubmit}
