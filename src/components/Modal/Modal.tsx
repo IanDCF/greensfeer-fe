@@ -1,17 +1,11 @@
-<<<<<<< HEAD
 import { MouseEventHandler } from "react";
-=======
->>>>>>> 3f1e2f3 (fix: move UserModal to Modal)
 import { matchPath } from "react-router-dom";
 import ControlButton from "../ControlButtons/ControlButton";
 import "./Modal.scss";
 
 interface Props {
   open: boolean;
-<<<<<<< HEAD
   clickHandler: MouseEventHandler
-=======
->>>>>>> 3f1e2f3 (fix: move UserModal to Modal)
 }
 
 // open function: render the page on true
