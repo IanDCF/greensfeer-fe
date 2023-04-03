@@ -8,6 +8,7 @@ interface Props {
   handleCheckbox1: (isChecked: boolean) => void;
   isChecked2: boolean;
   handleCheckbox2: (isChecked: boolean) => void;
+  error: null | string;
 }
 
 const RegisterForm1 = ({
@@ -16,6 +17,7 @@ const RegisterForm1 = ({
   handleCheckbox2,
   isChecked1,
   isChecked2,
+  error,
 }: Props) => {
   return (
     <div className="register__wrapper">
@@ -67,6 +69,7 @@ const RegisterForm1 = ({
               className="register__input"
             />
           </div>
+          {error ? <div className="register__error">{`${error}`}</div> : ""}
         </div>
 
         <div className="register__preferences">
