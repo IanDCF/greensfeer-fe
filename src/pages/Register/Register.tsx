@@ -113,7 +113,7 @@ const Register = () => {
       return;
     }
     if (!isChecked1 || !isChecked2) {
-      setError("You need to accept all the fields");
+      setError("Please accept all the fields");
       console.log(error);
       return;
     }

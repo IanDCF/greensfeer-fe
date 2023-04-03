@@ -32,7 +32,7 @@ const ListingForm1 = ({ handleSubmit }: Props) => {
               <option hidden={true} defaultValue={"Select an option"}>
                 Select an option
               </option>
-              <option value="Product">Product</option>
+              <option value="Product">Project</option>
               <option value="Service">Service</option>
             </select>
           </div>
