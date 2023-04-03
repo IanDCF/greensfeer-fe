@@ -8,7 +8,7 @@ const registerUserSchema = z.object({
 const registerInfoUserSchema = z.object({
   firstName: z.string().trim(),
   secondName: z.string().trim(),
-  rol: z.string().trim(),
+  role: z.string().trim(),
 });
 
 const newUserSchema = registerUserSchema.merge(registerInfoUserSchema);
