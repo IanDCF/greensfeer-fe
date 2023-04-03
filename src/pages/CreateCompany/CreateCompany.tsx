@@ -213,6 +213,15 @@ const CreateCompany: React.FC = () => {
 
   return (
     <section className="create-company">
+      {/* 
+      // FIXME: add upload image thumbnail to inputs to show user successful upload?
+      <div
+        style={{
+          backgroundImage: `url(${bannerUrl})`,
+          height: "40px",
+          width: "40px",
+        }}
+      ></div> */}
       {!stepOneDone && createCompany1 && (
         <CompanyForm1
           handleSubmit={handleFirstSubmit}
