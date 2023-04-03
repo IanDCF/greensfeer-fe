@@ -7,7 +7,7 @@ import { useAuth } from "../../context/AuthProvider/AuthProvider";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { IUser } from "customTypes";
-import UserModal from "../../components/Modal/Modal";
+import Modal from "../../components/Modal/Modal";
 
 export const UserProfile: React.FC = () => {
   const [profile, setProfile] = useState<IUser>();
@@ -45,7 +45,7 @@ export const UserProfile: React.FC = () => {
         <ProfileAffiliations />
         {/* <PostsList /> */}
         <PostsList />
-        <UserModal open={openCompanyModal} />
+        <Modal open={openCompanyModal} />
       </div>
     </>
   );
