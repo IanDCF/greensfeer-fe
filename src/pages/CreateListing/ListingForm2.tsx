@@ -214,7 +214,7 @@ const ListingForm2 = ({ handleSubmit }: Props) => {
           link="/create-listing/step3"
         />
         <button className="create-company__button" type="submit">
-          Submit Service/Continue to Product Detail &gt;
+          Submit Service/Continue to Project Detail &gt;
         </button>
       </div>
     </form>
