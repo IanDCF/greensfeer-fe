@@ -27,6 +27,7 @@ const CreateCompany: React.FC = () => {
   const [bannerPic, setBannerPic] = useState<File>();
   const [bannerUrl, setBannerUrl] = useState("");
   const [isChecked1, setIsChecked1] = useState(false);
+  const [navitateMessage, setNavigateMessage] = useState("");
 
   const handlePic = (e: React.FormEvent<HTMLInputElement>) => {
     const target = e.target as HTMLInputElement;
@@ -82,7 +83,12 @@ const CreateCompany: React.FC = () => {
             return res.data.message;
           })
           .then((companyId) => {
-            navigate(`/company/${companyId}`);
+            setNavigateMessage(
+              "Company created, redirecting to new Company Profile"
+            );
+            setTimeout(() => {
+              navigate(`/company/${companyId}`);
+            }, 5000);
           });
         // navigate(`/company/${newCompanyId}`);
       } catch (error) {
@@ -231,8 +237,13 @@ const CreateCompany: React.FC = () => {
           isChecked1={isChecked1}
         />
       )}
-      {stepOneDone && createCompany2 && (
+      {stepOneDone&&!stepTwoDone && createCompany2 && (
         <CompanyForm2 handleSubmit={handleSecondSubmit} />
+      )}
+      {stepTwoDone && (
+        <div className="create-company__form" style={{ fontSize: "4rem" }}>
+          {navitateMessage}
+        </div>
       )}
     </section>
   );
