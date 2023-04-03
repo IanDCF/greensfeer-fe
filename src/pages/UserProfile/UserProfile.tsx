@@ -5,7 +5,7 @@ import "./UserProfile.scss";
 import { ProfileHeader } from "../../components/ProfileHeader/ProfileHeader";
 import { useAuth } from "../../context/AuthProvider/AuthProvider";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, MouseEventHandler } from "react";
 import { IUser } from "customTypes";
 import Modal from "../../components/Modal/Modal";
 
@@ -14,6 +14,9 @@ export const UserProfile: React.FC = () => {
   const { currentUser } = useAuth();
   const [token, setToken] = useState<string>();
   const [openCompanyModal, setOpenCompanyModal] = useState<boolean>(true);
+  const clickHandler:MouseEventHandler = () => {
+    setOpenCompanyModal(false);
+  };
 
   useEffect(() => {
     async function fetchProfile() {
@@ -45,7 +48,7 @@ export const UserProfile: React.FC = () => {
         <ProfileAffiliations />
         {/* <PostsList /> */}
         <PostsList />
-        <Modal open={openCompanyModal} />
+        <Modal open={openCompanyModal} clickHandler={clickHandler} />
       </div>
     </>
   );

@@ -1,12 +1,13 @@
 import { ProfileHeader } from "../../components/ProfileHeader/ProfileHeader";
 import { ProfileAbout } from "../../components/ProfileAbout/ProfileAbout";
 import { MarketListings } from "../../components/CompanyListings/CompanyListings";
-import { useEffect, useState } from "react";
+import { MouseEventHandler, useEffect, useState } from "react";
 import "../UserProfile/UserProfile.scss";
 import getMarketPost from "../../helpers/marketPostFetcher";
 import { ICompany, IMarketPost } from "customTypes";
 import { useNavigate, useParams } from "react-router-dom";
 import getCompany from "../../helpers/companyFetcher";
+import Modal from "../../components/Modal/Modal";
 
 export const CompanyProfile: React.FC = () => {
   const { companyId } = useParams();
@@ -14,6 +15,10 @@ export const CompanyProfile: React.FC = () => {
   const [products, setProducts] = useState<IMarketPost[]>([]);
   const [services, setServices] = useState<IMarketPost[]>([]);
   const [company, setCompany] = useState<ICompany | null>(null);
+  const [openCompanyModal, setOpenCompanyModal] = useState<boolean>(true);
+  const clickHandler:MouseEventHandler= () => {
+    setOpenCompanyModal(false);
+  };
   useEffect(() => {
     const getData = async () => {
       if (companyId) {
@@ -42,6 +47,7 @@ export const CompanyProfile: React.FC = () => {
           {/* <Affiliations /> */}
           <MarketListings posts={products} title={"Projects"} />
           <MarketListings posts={services} title={"Services"} />
+          <Modal open={openCompanyModal} clickHandler={clickHandler} />
         </div>
       )}
     </>
