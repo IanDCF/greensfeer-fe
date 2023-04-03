@@ -41,7 +41,7 @@ export const UserProfile: React.FC = () => {
         <ProfileAbout ProfileData={profile} user={true} />
         {/* {profile && console.log(profile)} */}
         <ProfileAffiliations />
-        <PostsList />
+        {/* <PostsList /> */}
       </div>
     </>
   );

@@ -2,6 +2,8 @@ import "./ProfileAffiliations.scss";
 import companyLogo1 from "../../assets/images/affiliation1.png";
 import companyLogo2 from "../../assets/images/affiliation2.png";
 import UserAffilliations from "../../data/UserAffiliations.json";
+import { IoIosAdd } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 // interface UserAffiliations {
 //   logo: string;
@@ -25,7 +27,6 @@ export const ProfileAffiliations: React.FC = () => {
           <div className="affiliations__logo-div">
             <div className="affiliations__logo" style={logoStyle2} />
           </div>
-
           <p className="affiliations__name">Tesla</p>
         </div>
 
@@ -33,8 +34,17 @@ export const ProfileAffiliations: React.FC = () => {
           <div className="affiliations__logo-div">
             <div className="affiliations__logo" style={logoStyle1} />
           </div>
-
           <p className="affiliations__name">Microsoft</p>
+        </div>
+
+        <div className="affiliations__company">
+          <Link
+            to="/create-company/step1"
+            className="affiliations__logo-div-add"
+          >
+            <IoIosAdd />
+          </Link>
+          <p className="affiliations__name">Add New</p>
         </div>
       </div>
     </div>

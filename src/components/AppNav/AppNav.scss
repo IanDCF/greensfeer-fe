@@ -1,0 +1,78 @@
+@use "../../styles/partials/colors.scss" as color;
+@use "../../styles/partials/breakpoints.scss" as bp;
+
+.appnav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
+    rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  background-color: color.$white;
+
+  @include bp.tablet {
+    padding: 2.5rem 3rem 2rem 3rem;
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+
+    @include bp.tablet {
+      width: 77%;
+    }
+
+    @include bp.desktop {
+      width: 70%;
+      max-width: 800px;
+    }
+  }
+
+  &__links {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    @include bp.tablet {
+      width: 45%;
+    }
+
+    @include bp.desktop {
+      width: 28%;
+    }
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__img {
+    width: 8.75rem;
+    height: 8.75rem;
+    border-radius: 10rem;
+  }
+
+  &__icon {
+    font-size: 6.5rem;
+    color: color.$charcoal;
+  }
+
+  &__icon-newmsg {
+    @extend .appnav__icon;
+    font-size: 6rem;
+  }
+
+  &__searchbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+}
