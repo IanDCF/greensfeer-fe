@@ -45,7 +45,9 @@ const Register = () => {
         );
         setLoading(true);
         if (createdUser) {
-          navigate("/marketplace");
+          setTimeout(() => {
+            navigate("/marketplace");
+          }, 3000);
         }
         console.log(createdUser);
       } catch (error) {
@@ -192,7 +194,11 @@ const Register = () => {
           error={error}
         />
       )}
-      {loading && <div style={{ fontSize: "15rem" }}>Loading...</div>}
+      {loading && (
+        <div className="create-company__form" style={{ fontSize: "4rem" }}>
+          Thanks for creating an account! Navigating to Marketplace...
+        </div>
+      )}
     </section>
   );
 };

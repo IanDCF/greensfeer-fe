@@ -88,7 +88,7 @@ const CreateCompany: React.FC = () => {
             );
             setTimeout(() => {
               navigate(`/company/${companyId}`);
-            }, 5000);
+            }, 3000);
           });
         // navigate(`/company/${newCompanyId}`);
       } catch (error) {

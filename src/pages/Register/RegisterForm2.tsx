@@ -103,7 +103,10 @@ const RegisterForm2 = ({
               checked={isChecked1}
               onChange={(e) => handleCheckbox1(e.target.checked)}
             />
-            <label className="register__label-checkbox" htmlFor="captcha">
+            <label
+              className="register__label-checkbox"
+              htmlFor="pushNotifications"
+            >
               Send me push notifications
             </label>
           </div>
