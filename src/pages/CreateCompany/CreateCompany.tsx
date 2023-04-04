@@ -10,6 +10,7 @@ import CompanyForm2 from "./CompanyForm2";
 import "./CreateCompany.scss";
 import companyCreator from "../../helpers/companyCreator";
 import getAllCompanies from "../../helpers/allCompanyFetcher";
+import validateCompany from "../../helpers/validateCompany";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const CreateCompany: React.FC = () => {
@@ -27,7 +28,6 @@ const CreateCompany: React.FC = () => {
   const [bannerPic, setBannerPic] = useState<File>();
   const [bannerUrl, setBannerUrl] = useState("");
   const [isChecked1, setIsChecked1] = useState(false);
-  const [navitateMessage, setNavigateMessage] = useState("");
 
   const handlePic = (e: React.FormEvent<HTMLInputElement>) => {
     const target = e.target as HTMLInputElement;
@@ -66,36 +66,31 @@ const CreateCompany: React.FC = () => {
   //this upoads picture successfully but does not return a path with token
 
   useEffect(() => {
-    if (stepTwoDone) validateCompany();
+    if (stepTwoDone) validateCompany(newCompany);
   }, [stepTwoDone]);
 
-  const validateCompany = async () => {
-    const companyValidation = newCompanySchema.safeParse(newCompany);
-    if (!companyValidation.success) {
-      console.log(companyValidation.error.errors);
-    }
-    if (companyValidation.success) {
-      const company = companyValidation.data;
-      try {
-        //send post req?
-        companyCreator(newCompany)
-          .then((res) => {
-            return res.data.message;
-          })
-          .then((companyId) => {
-            setNavigateMessage(
-              "Company created, redirecting to new Company Profile"
-            );
-            setTimeout(() => {
-              navigate(`/company/${companyId}`);
-            }, 3000);
-          });
-        // navigate(`/company/${newCompanyId}`);
-      } catch (error) {
-        console.log(`catched error: ${error}`);
-      }
-    }
-  };
+  // const validateCompany = async (company: TNewCompany) => {
+  //   const companyValidation = newCompanySchema.safeParse(company);
+  //   if (!companyValidation.success) {
+  //     console.log(companyValidation.error.errors);
+  //   }
+  //   if (companyValidation.success) {
+  //     try {
+  //       //send post req?
+  //       companyCreator(company)
+  //         .then((res) => {
+  //           return res.data.message;
+  //         })
+  //         .then((companyId) => {
+  //           setTimeout(() => {
+  //             navigate(`/company/${companyId}`);
+  //           }, 3000);
+  //         });
+  //     } catch (error) {
+  //       console.log(`catched error: ${error}`);
+  //     }
+  //   }
+  // };
 
   const handleFirstSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -237,12 +232,12 @@ const CreateCompany: React.FC = () => {
           isChecked1={isChecked1}
         />
       )}
-      {stepOneDone&&!stepTwoDone && createCompany2 && (
+      {stepOneDone && !stepTwoDone && createCompany2 && (
         <CompanyForm2 handleSubmit={handleSecondSubmit} />
       )}
       {stepTwoDone && (
         <div className="create-company__form" style={{ fontSize: "4rem" }}>
-          {navitateMessage}
+          Company created, redirecting to new Company Profile
         </div>
       )}
     </section>
