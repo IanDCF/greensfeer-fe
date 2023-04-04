@@ -11,6 +11,7 @@ interface Props {
   handleBanner: (e: React.FormEvent<HTMLInputElement>) => void;
   isChecked1: boolean;
   handleCheckbox1: (isChecked: boolean) => void;
+  errors: string;
 }
 
 const CompanyForm1 = ({
@@ -19,6 +20,7 @@ const CompanyForm1 = ({
   handleBanner,
   handleCheckbox1,
   isChecked1,
+  errors,
 }: Props) => {
   return (
     <form className="create-company__form" onSubmit={handleSubmit}>
@@ -141,6 +143,7 @@ const CompanyForm1 = ({
           </label>
         </div>
       </div>
+      <div className="create-company__error">{errors}</div>
       <div className="create-company__controls">
         <ControlButton
           dark={true}
