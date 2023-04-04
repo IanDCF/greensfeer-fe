@@ -33,7 +33,7 @@ const AppNavMobile: React.FC = () => {
         <div className="nav-mobile__searchbar">
           {isMarketplacePath ? <MarketplaceSearch /> : <Searchbar />}
         </div>
-        <Link to="/profile" className="nav-mobile__link">
+        <div className="nav-mobile__link">
           {/* render conditionally */}
           {/* <div className="nav-mobile__img" style={photoStyle} /> */}
           <div className="nav-mobile__img" onClick={toggleUserMenu}>
@@ -44,7 +44,7 @@ const AppNavMobile: React.FC = () => {
               </div>
             )}
           </div>
-        </Link>
+        </div>
       </nav>
     </header>
   );
