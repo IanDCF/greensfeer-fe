@@ -2,8 +2,47 @@
 @use "../../styles/partials/breakpoints.scss" as bp;
 
 .marketplace-container {
-  padding: 3.5rem 3rem 0 3rem;
-  display: flex;
-  flex-direction: column;
-  margin-top: 12rem;
+  @include bp.mobile {
+    margin-top: 13rem;
+  }
+
+  @include bp.tablet {
+    margin-top: 13.5rem;
+  }
+
+  @include bp.desktop {
+    margin-top: 13.5rem;
+  }
+
+  &__mobile {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0rem 3rem 15rem 3rem;
+    @include bp.tablet {
+      display: none;
+    }
+    @include bp.desktop {
+      display: none;
+    }
+  }
+
+  &__tablet-desktop {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 0rem 3rem 3rem 3rem;
+    max-width: 1024px;
+    height: 90vh;
+    overflow: hidden;
+    @include bp.mobile {
+      display: none;
+    }
+  }
+
+  &__explorer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
