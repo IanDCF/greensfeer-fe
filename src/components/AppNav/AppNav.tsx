@@ -1,4 +1,5 @@
 import "./AppNav.scss";
+import { useState } from "react";
 import Searchbar from "../Searchbar/Searchbar";
 import PlaceholderPhoto from "../../assets/images/placeholder-photo.png";
 import { Link, useLocation } from "react-router-dom";
@@ -17,6 +18,12 @@ const AppNav: React.FC = () => {
 
   const location = useLocation();
   const isMarketplacePath = location.pathname.includes("/marketplace");
+
+  const [showUserMenu, setShowUserMenu] = useState(false);
+
+  const handleUserMenuClick = () => {
+    setShowUserMenu(!showUserMenu);
+  };
 
   return (
     <header className="appnav">
@@ -41,15 +48,16 @@ const AppNav: React.FC = () => {
             <IoMdNotificationsOutline className="appnav__icon" />
           </Link>
 
-          <Link to="/profile" className="appnav__link">
+          <div className="appnav__link" onClick={handleUserMenuClick}>
             {/* render conditionally: user profile picture or placeholder icon*/}
-            {/* <div className="appnav__img" style={photoStyle}
-           /> */}
+            {/* <div className="appnav__img" style={photoStyle} /> */}
             <FaUserCircle className="appnav__icon" />
-            <div className="appnav__user-menu">
-              <UserMenu />
-            </div>
-          </Link>
+            {showUserMenu && (
+              <div className="appnav__user-menu">
+                <UserMenu />
+              </div>
+            )}
+          </div>
         </div>
       </nav>
     </header>

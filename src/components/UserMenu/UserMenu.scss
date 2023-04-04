@@ -10,19 +10,19 @@
   justify-content: center;
 
   @include bp.mobile {
-    font-size: 4.3rem;
+    font-size: 4rem;
     width: 40rem;
-    padding: 2.5rem;
+    padding: 2rem;
   }
 
   @include bp.tablet {
-    font-size: 4.3rem;
+    font-size: 4.1rem;
     width: 40rem;
     padding: 2.5rem;
   }
 
   @include bp.desktop {
-    font-size: 4.3rem;
+    font-size: 4.1rem;
     width: 40rem;
     padding: 2.5rem;
   }

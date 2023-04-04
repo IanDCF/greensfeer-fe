@@ -1,4 +1,5 @@
 import "./AppNavMobile.scss";
+import { useState } from "react";
 import Searchbar from "../Searchbar/Searchbar";
 import PlaceholderPhoto from "../../assets/images/placeholder-photo.png";
 import { Link, useLocation } from "react-router-dom";
@@ -13,8 +14,15 @@ const AppNavMobile: React.FC = () => {
   };
 
   const location = useLocation();
-  // const isChatPath = location.pathname.includes("/messages");
   const isMarketplacePath = location.pathname.includes("/marketplace");
+
+  // state to keep track of whether user menu is open or not
+  const [showUserMenu, setShowUserMenu] = useState(false);
+
+  // function to toggle user menu
+  const toggleUserMenu = () => {
+    setShowUserMenu(!showUserMenu);
+  };
 
   return (
     <header className="nav-mobile">
@@ -27,25 +35,16 @@ const AppNavMobile: React.FC = () => {
         </div>
         <Link to="/profile" className="nav-mobile__link">
           {/* render conditionally */}
-          {/* <div className="nav-mobile__img" style={photoStyle}
-           /> */}
-          <div className="nav-mobile__img">
+          {/* <div className="nav-mobile__img" style={photoStyle} /> */}
+          <div className="nav-mobile__img" onClick={toggleUserMenu}>
             <FaUserCircle />
-            <div className="nav-mobile__user-menu">
-              <UserMenu />
-            </div>
+            {showUserMenu && (
+              <div className="nav-mobile__user-menu">
+                <UserMenu />
+              </div>
+            )}
           </div>
         </Link>
-        {/* {!isChatPath && (
-          <Link to="/messages" className="nav-mobile__link">
-            <AiOutlineMessage className="nav-mobile__icon" />
-          </Link>
-        )}
-        {isChatPath && (
-          <div className="nav-mobile__link">
-            <FiEdit className="nav-mobile__icon-newmsg" />
-          </div>
-        )} */}
       </nav>
     </header>
   );
