@@ -55,9 +55,30 @@
     }
   }
 
+  &__body {
+    display: flex;
+    flex-direction: column;
+    background-color: color.$mint;
+    width: 100%;
+    border-radius: 2.5rem;
+    margin-bottom: 3rem;
+    color: color.$darkgray2;
+  }
+
   &__banner {
     width: 100%;
-    margin-bottom: 2rem;
+
+    @include bp.mobile {
+      margin-bottom: 2rem;
+    }
+
+    @include bp.tablet {
+      margin-bottom: 2rem;
+    }
+
+    @include bp.desktop {
+      margin-bottom: 3rem;
+    }
   }
 
   &__img {
@@ -65,71 +86,191 @@
     border-radius: 2.5rem;
   }
 
-  &__body {
-    margin-bottom: 3rem;
-    display: flex;
-    flex-direction: column;
-    background-color: color.$mint;
-    width: 100%;
-    border-radius: 2.5rem;
-    color: color.$charcoal;
-  }
-
   &__details {
     display: flex;
     flex-direction: column;
+
+    @include bp.mobile {
+      margin: 0 2rem 6rem 2rem;
+    }
+
+    @include bp.tablet {
+      margin: 0 2rem 6rem 2rem;
+    }
+
+    @include bp.desktop {
+      margin: 0 3rem 6rem 3rem;
+    }
   }
 
   &__ep-type {
-    font-size: 3.5rem;
     font-weight: 300;
+
+    @include bp.mobile {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+    }
+
+    @include bp.tablet {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+    }
+
+    @include bp.desktop {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+    }
   }
 
   &__post-name {
-    font-size: 5.5rem;
     font-weight: 500;
-    margin-bottom: 1rem;
+
+    @include bp.mobile {
+      font-size: 5.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    @include bp.tablet {
+      font-size: 5.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    @include bp.desktop {
+      font-size: 6rem;
+      margin-bottom: 1.5rem;
+    }
   }
 
   &__company {
     display: flex;
     align-items: center;
-    margin-bottom: 1rem;
+
+    @include bp.mobile {
+      margin-bottom: 1rem;
+    }
+
+    @include bp.tablet {
+      margin-bottom: 1rem;
+    }
+
+    @include bp.desktop {
+      margin-bottom: 1rem;
+    }
   }
 
   &__company-name {
-    font-size: 4rem;
     font-weight: 400;
+
+    @include bp.mobile {
+      font-size: 4rem;
+    }
+
+    @include bp.tablet {
+      font-size: 4rem;
+    }
+
+    @include bp.desktop {
+      font-size: 4.5rem;
+    }
+  }
+
+  &__company-verified {
+    display: flex;
+    align-items: center;
+    color: color.$green;
+
+    @include bp.mobile {
+      font-size: 4.5rem;
+      margin-left: 2rem;
+    }
+
+    @include bp.tablet {
+      font-size: 4.5rem;
+      margin-left: 2rem;
+    }
+
+    @include bp.desktop {
+      font-size: 4.5rem;
+      margin-left: 2rem;
+    }
   }
 
   &__verified-icon {
-    margin-left: 2rem;
-    width: 4rem;
+    display: flex;
+    align-items: center;
+
+    @include bp.mobile {
+      margin-left: 2rem;
+      width: 4rem;
+    }
+
+    @include bp.tablet {
+      margin-left: 2rem;
+      width: 4rem;
+    }
+
+    @include bp.desktop {
+      margin-left: 2.5rem;
+      width: 4.5rem;
+    }
   }
 
   &__location {
-    font-size: 3rem;
     font-weight: 600;
     color: color.$green;
-    margin-bottom: 2rem;
+
+    @include bp.mobile {
+      font-size: 3.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    @include bp.tablet {
+      font-size: 3.5rem;
+      margin-bottom: 0.75rem;
+    }
+    @include bp.desktop {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+    }
   }
 
   &__date-listed {
-    font-size: 3rem;
     font-weight: 300;
     color: color.$nickel;
-    margin-bottom: 7rem;
+
+    @include bp.mobile {
+      font-size: 3rem;
+    }
+
+    @include bp.tablet {
+      font-size: 3rem;
+    }
+
+    @include bp.desktop {
+      font-size: 3rem;
+    }
   }
 
   &__description {
     display: flex;
     flex-direction: column;
-    margin-bottom: 7rem;
+
+    @include bp.mobile {
+      margin: 0 2rem 6rem 2rem;
+    }
+
+    @include bp.tablet {
+      margin: 0 2rem 6rem 2rem;
+    }
+
+    @include bp.desktop {
+      margin: 0 3rem 6rem 3rem;
+    }
   }
 
   &__title {
     font-size: 4rem;
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: 2.5rem;
   }
 
@@ -142,7 +283,17 @@
   &__goals {
     display: flex;
     flex-direction: column;
-    margin-bottom: 7rem;
+    @include bp.mobile {
+      margin: 0 2rem 6rem 2rem;
+    }
+
+    @include bp.tablet {
+      margin: 0 2rem 6rem 2rem;
+    }
+
+    @include bp.desktop {
+      margin: 0 3rem 6rem 3rem;
+    }
   }
 
   &__goals-display {
@@ -162,7 +313,17 @@
   }
 
   &__certifications {
-    margin-bottom: 7rem;
+    @include bp.mobile {
+      margin: 0 2rem 6rem 2rem;
+    }
+
+    @include bp.tablet {
+      margin: 0 2rem 6rem 2rem;
+    }
+
+    @include bp.desktop {
+      margin: 0 3rem 6rem 3rem;
+    }
   }
 
   &__certifications-display {
@@ -187,7 +348,17 @@
   }
 
   &__photos {
-    margin-bottom: 7rem;
+    @include bp.mobile {
+      margin: 0 2rem 6rem 2rem;
+    }
+
+    @include bp.tablet {
+      margin: 0 2rem 6rem 2rem;
+    }
+
+    @include bp.desktop {
+      margin: 0 3rem 6rem 3rem;
+    }
   }
 
   &__photos-display {

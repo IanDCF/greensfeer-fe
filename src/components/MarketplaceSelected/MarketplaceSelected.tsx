@@ -11,11 +11,24 @@ import sdg6 from "../../assets/icons/sdg6.png";
 import sdg7 from "../../assets/icons/sdg7.png";
 import CoralReef from "../../assets/images/coralreef.png";
 import { IMarketPost } from "customTypes";
+import { BiCheckShield } from "react-icons/bi";
 interface Post {
   Post?: IMarketPost;
 }
 
 const MarketplaceSelected: React.FC<Post> = ({ Post }) => {
+  const formatDate = (dateStr: string) => {
+    const date = new Date(dateStr);
+    const options: Intl.DateTimeFormatOptions = {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
+    };
+    return date.toLocaleString("en-US", options);
+  };
   return (
     <section className="marketplace-select">
       <div className="marketplace-select__body">
@@ -28,48 +41,45 @@ const MarketplaceSelected: React.FC<Post> = ({ Post }) => {
         </div>
 
         <div className="marketplace-select__details">
-          <div className="marketplace-select__ep-type">
-            EP Type: {Post?.p?.ep_type}
-          </div>
+          {/* Render ep_type is project, else render service type: we need to discuss */}
+          <div className="marketplace-select__ep-type">{Post?.p?.ep_type}</div>
           <div className="marketplace-select__post-name">{Post?.post_name}</div>
           <div className="marketplace-select__company">
             <div className="marketplace-select__company-name">
-              {Post?.company_id} Company Name
+              Company Name Fix Required
             </div>
             <div className="marketplace-select__company-verified">
-              <img
+              {/* <img
                 className="marketplace-select__verified-icon"
                 src={VerifiedIcon}
-              />
+              /> */}
+              <BiCheckShield />
             </div>
           </div>
           <div className="marketplace-select__location">
             {`${Post?.location.city}, ${Post?.location.state_province}, ${Post?.location.country}`}
           </div>
           <div className="marketplace-select__date-listed">
-            Listed on: {Post?.created_at} created at
+            Listed on {Post && formatDate(Post.created_at)}
           </div>
         </div>
         <div className="marketplace-select__description">
-          <div className="marketplace-select__title">Who we are</div>
+          <div className="marketplace-select__title">About</div>
           <div className="marketplace-select__description-text">
             {Post?.description}
           </div>
         </div>
         <div className="marketplace-select__certifications">
-          <div className="marketplace-select__title">Certifications</div>
+          <div className="marketplace-select__title">Tags</div>
           <div className="marketplace-select__certifications-display">
-            <div className="marketplace-select__certification">
-              Credit Unit: {Post?.p?.credit_unit}
-            </div>
             <div className="marketplace-select__certification">
               Vintage Year: {Post?.p?.vintage_year}
             </div>
             <div className="marketplace-select__certification">
-              Price Per Credit: ${Post?.p?.price_per_credit}
+              Price: ${Post?.p?.price_per_credit} / tCO2
             </div>
             <div className="marketplace-select__certification">
-              Total Price: ${Post?.p?.total_price}
+              Volume: {Post?.p?.offset_volume}
             </div>
             <div className="marketplace-select__certification">
               Offset Type: {Post?.p?.offset_type}

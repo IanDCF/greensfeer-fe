@@ -43,7 +43,7 @@ const Marketplace: React.FC = () => {
   );
 
   return (
-    <body className="marketplace-container">
+    <div className="marketplace-container">
       <section className="marketplace-container__mobile">
         {marketplaceItemSelectedMatch && (
           <MarketplaceSelected Post={selectedPost} />
@@ -66,7 +66,7 @@ const Marketplace: React.FC = () => {
           <MarketplaceSelected Post={selectedPost} />
         </div>
       </section>
-    </body>
+    </div>
   );
 };
 
