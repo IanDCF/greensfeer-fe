@@ -8,8 +8,10 @@ import { FaUserCircle } from "react-icons/fa";
 import { HiOutlineUserGroup } from "react-icons/hi";
 import { AiOutlineMessage } from "react-icons/ai";
 import { IoMdNotificationsOutline } from "react-icons/io";
+import { useAuth } from "../../context/AuthProvider/AuthProvider";
 
 const AppNav: React.FC = () => {
+  const { currentUser } = useAuth();
   const photoStyle = {
     background: `url(${PlaceholderPhoto}) center/cover no-repeat`,
   };
@@ -37,7 +39,7 @@ const AppNav: React.FC = () => {
             <IoMdNotificationsOutline className="appnav__icon" />
           </Link>
 
-          <Link to="/profile" className="appnav__link">
+          <Link to={`/profile/${currentUser?.uid}`} className="appnav__link">
             {/* render conditionally: user profile picture or placeholder icon*/}
             {/* <div className="appnav__img" style={photoStyle}
            /> */}

@@ -5,8 +5,10 @@ import { Link, useLocation } from "react-router-dom";
 import MarketplaceSearch from "../Searchbar/MarketplaceSearch";
 import Logo from "../../assets/logos/greensfeer-logo.png";
 import { FaUserCircle } from "react-icons/fa";
+import { useAuth } from "../../context/AuthProvider/AuthProvider";
 
 const AppNavMobile: React.FC = () => {
+  const {currentUser} = useAuth()
   const photoStyle = {
     background: `url(${PlaceholderPhoto}) center/cover no-repeat`,
   };
@@ -24,7 +26,7 @@ const AppNavMobile: React.FC = () => {
         <div className="nav-mobile__searchbar">
           {isMarketplacePath ? <MarketplaceSearch /> : <Searchbar />}
         </div>
-        <Link to="/profile" className="nav-mobile__link">
+        <Link to={`/profile/${currentUser?.uid}`} className="nav-mobile__link">
           {/* render conditionally */}
           {/* <div className="nav-mobile__img" style={photoStyle}
            /> */}

@@ -3,10 +3,11 @@ import companyLogo1 from "../../assets/images/affiliation1.png";
 import companyLogo2 from "../../assets/images/affiliation2.png";
 import UserAffilliations from "../../data/UserAffiliations.json";
 import { IoIosAdd } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ICompany } from "customTypes";
 import getAffiliation from "../../helpers/affiliationFetcher";
+import { useAuth } from "src/context/AuthProvider/AuthProvider";
 
 // interface UserAffiliations {
 //   logo: string;
@@ -15,14 +16,17 @@ import getAffiliation from "../../helpers/affiliationFetcher";
 // }
 
 export const ProfileAffiliations: React.FC = () => {
+  const {uid}= useParams()
   const [userAfilliations, setUserAfilliation] = useState<ICompany[] | null>(
     null
   );
   useEffect(() => {
     const affiliations = async () => {
-      const affiliations = await getAffiliation();
-
-      setUserAfilliation(affiliations);
+      if (uid){
+        const affiliations = await getAffiliation(uid);
+        console.log(affiliations)
+        setUserAfilliation(affiliations);
+      }
     };
     affiliations();
   }, []);

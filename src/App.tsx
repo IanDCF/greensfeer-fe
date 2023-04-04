@@ -27,7 +27,7 @@ const App = () => {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/network" element={<Network />} />
         <Route path="/messages" element={<Messages />} />
-        <Route path="/profile" element={<UserProfile />} />
+        <Route path="/profile/:uid" element={<UserProfile />} />
         <Route path="/messages/chat" element={<ChatRoom />} />
         <Route path="/company/:companyId" element={<CompanyProfile />} />
         <Route path="/marketplace" element={<Marketplace />} />
