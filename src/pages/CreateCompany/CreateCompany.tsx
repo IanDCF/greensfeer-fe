@@ -27,7 +27,7 @@ const CreateCompany: React.FC = () => {
   const [bannerPic, setBannerPic] = useState<File>();
   const [bannerUrl, setBannerUrl] = useState("");
   const [isChecked1, setIsChecked1] = useState(false);
-  const [formErrs, setFormErrs] = useState({});
+  const [formErrs, setFormErrs] = useState("");
 
   const handlePic = (e: React.FormEvent<HTMLInputElement>) => {
     const target = e.target as HTMLInputElement;
@@ -94,6 +94,7 @@ const CreateCompany: React.FC = () => {
 
   const handleFirstSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setFormErrs("");
     const nameInput = e.currentTarget.elements.namedItem(
       "name"
     ) as HTMLInputElement;
@@ -126,7 +127,7 @@ const CreateCompany: React.FC = () => {
     const nameAvailable = await getAllCompanies().then((companies) => {
       const found = companies.find((company) => company.name === `${name}`);
       if (found) {
-        console.log("error: name already in use");
+        setFormErrs("That company is already on Greensfeer!");
         return false;
       }
       if (!found) {
@@ -143,35 +144,40 @@ const CreateCompany: React.FC = () => {
         const error = registerCompanySchemaValidation.error.errors;
         console.log(error);
       }
-    if (registerCompanySchemaValidation.success) {
-      setNewCompany({
-        ...newCompany,
-        name,
-        market_role,
-        sector,
-        location,
-        logo,
-        banner,
-      });
-      if (!newCompany.name) {
-        console.log("Please enter a company name");
-        return;
-      }
-      if (!newCompany.sector) {
-        console.log("Please enter a sector");
-        return;
-      }
-      if (!newCompany.market_role) {
-        console.log("Please enter a market role");
-        return;
-      }
-      if (!newCompany.location) {
-        console.log("Please enter a location");
-        return;
-      }
+      if (registerCompanySchemaValidation.success) {
+        setNewCompany({
+          ...newCompany,
+          name,
+          market_role,
+          sector,
+          location,
+          logo,
+          banner,
+        });}
+
+    if (!newCompany.name) {
+      setFormErrs("Please enter a company name");
+      return;
+    }
+    if (!newCompany.sector) {
+      setFormErrs("Please enter a sector");
+      return;
+    }
+    if (!newCompany.market_role) {
+      setFormErrs("Please enter a market role");
+      return;
+    }
+    if (!newCompany.location) {
+      setFormErrs("Please enter a location");
+      return;
+    }
+    if (!isChecked1) {
+      setFormErrs("Please confirm you are an organization rep");
+      return;
+    }
       setStepOneDone(true);
       navigate("/create-company/step2");
-    }
+    
     console.log("Form 1 submitted");
     // Correctly checks company name against database & saves form fields to state
   };
@@ -246,6 +252,7 @@ const CreateCompany: React.FC = () => {
           handleBanner={handleBanner}
           handleCheckbox1={handleCheckbox1}
           isChecked1={isChecked1}
+          errors={formErrs}
         />
       )}
       {stepOneDone && !stepTwoDone && createCompany2 && (
