@@ -35,7 +35,7 @@ const ListingForm2 = ({ handleSubmit }: Props) => {
               name="methodology"
               className="create-company__input"
             >
-              <option hidden={true} defaultValue={"Select Project Type"}>
+              <option hidden={true} defaultValue={""}>
                 Select Project Type
               </option>
               <option value="Agroforestry">Agroforestry</option>
@@ -132,7 +132,7 @@ const ListingForm2 = ({ handleSubmit }: Props) => {
               name="service_type"
               className="create-company__input"
             >
-              <option hidden={true} defaultValue={"Select a Service"}>
+              <option hidden={true} defaultValue={""}>
                 Select a Service
               </option>
               <option value="API Provider">API Provider</option>
