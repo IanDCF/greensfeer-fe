@@ -7,12 +7,14 @@ interface Props {
   handleSubmit: any;
   isChecked1: boolean;
   handleCheckbox1: (isChecked: boolean) => void;
+  error: null | string;
 }
 
 const RegisterForm2 = ({
   handleSubmit,
   handleCheckbox1,
   isChecked1,
+  error,
 }: Props) => {
   return (
     <div className="register__wrapper">
@@ -61,9 +63,7 @@ const RegisterForm2 = ({
               I am a
             </label>
             <select id="role" name="role" className="register__input">
-              <option disabled selected>
-                Tell us who you are
-              </option>
+              <option hidden>Tell us who you are</option>
               <option value="Project Aggregator">Project Aggregator</option>
               <option value="Broker">Broker</option>
               <option value="Buyer">Buyer</option>
@@ -108,7 +108,7 @@ const RegisterForm2 = ({
             </label>
           </div>
         </div>
-
+        {error ? <div className="register__error">{`${error}`}</div> : ""}
         <button className="register__button" type="submit">
           Join Greensfeer
         </button>

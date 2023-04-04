@@ -127,6 +127,7 @@ const Register = () => {
   };
   const handleSecondSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setError("");
     const firstNameInput = e.currentTarget.elements.namedItem(
       "firstName"
     ) as HTMLInputElement;
@@ -152,9 +153,16 @@ const Register = () => {
       console.log(error);
       return;
     }
+    if (!firstName || !secondName) {
+      setError("Please fill in your name");
+      return;
+    }
+    if (role === "Tell us who you are") {
+      setError("Please describe your role");
+      return;
+    }
     if (!isChecked1) {
-      setError("You need to accept all the fields");
-      console.log(error);
+      setError("Please accept all the fields");
       return;
     }
     if (registerInfoValidation.success) {
@@ -181,6 +189,7 @@ const Register = () => {
           handleSubmit={handleSecondSubmit}
           handleCheckbox1={handleCheckbox1}
           isChecked1={isChecked1}
+          error={error}
         />
       )}
       {loading && <div style={{ fontSize: "15rem" }}>Loading...</div>}
