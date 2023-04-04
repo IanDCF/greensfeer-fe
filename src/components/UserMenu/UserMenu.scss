@@ -34,6 +34,7 @@
     border-bottom: 2px solid color.$mint;
     padding-bottom: 2rem;
     padding-top: 2rem;
+    cursor: pointer;
   }
   &__item:hover {
     color: color.$green;
