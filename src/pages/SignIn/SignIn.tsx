@@ -34,15 +34,15 @@ const SignIn = () => {
           console.log(`User ${user.email} logged in successfully`);
           navigate("/marketplace");
         }
-      } catch (error) {
-        console.error(error);
+      } catch (error:unknown) {
+        setError(error.code);
       }
     }
   };
 
   return (
     <section className="register">
-      <SignInForm handleSubmit={handleSubmit} />
+      <SignInForm handleSubmit={handleSubmit} error={error} />
     </section>
   );
 };
