@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { matchPath, useLocation, useNavigate } from "react-router-dom";
-import {
+import newCompanySchema, {
   registerCompanyDetailSchema,
   registerCompanySchema,
   TNewCompany,
@@ -9,7 +9,7 @@ import CompanyForm1 from "./CompanyForm1";
 import CompanyForm2 from "./CompanyForm2";
 import "./CreateCompany.scss";
 import getAllCompanies from "../../helpers/allCompanyFetcher";
-import validateCompany from "../../helpers/validateCompany";
+import companyCreator from "../../helpers/companyCreator";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const CreateCompany: React.FC = () => {
@@ -69,28 +69,28 @@ const CreateCompany: React.FC = () => {
     if (stepTwoDone) validateCompany(newCompany);
   }, [stepTwoDone]);
 
-  // const validateCompany = async (company: TNewCompany) => {
-  //   const companyValidation = newCompanySchema.safeParse(company);
-  //   if (!companyValidation.success) {
-  //     console.log(companyValidation.error.errors);
-  //   }
-  //   if (companyValidation.success) {
-  //     try {
-  //       //send post req?
-  //       companyCreator(company)
-  //         .then((res) => {
-  //           return res.data.message;
-  //         })
-  //         .then((companyId) => {
-  //           setTimeout(() => {
-  //             navigate(`/company/${companyId}`);
-  //           }, 3000);
-  //         });
-  //     } catch (error) {
-  //       console.log(`catched error: ${error}`);
-  //     }
-  //   }
-  // };
+  const validateCompany = async (company: TNewCompany) => {
+    const companyValidation = newCompanySchema.safeParse(company);
+    if (!companyValidation.success) {
+      console.log(companyValidation.error.errors);
+    }
+    if (companyValidation.success) {
+      try {
+        //send post req?
+        companyCreator(company)
+          .then((res) => {
+            return res.data.message;
+          })
+          .then((companyId) => {
+            setTimeout(() => {
+              navigate(`/company/${companyId}`);
+            }, 3000);
+          });
+      } catch (error) {
+        console.log(`catched error: ${error}`);
+      }
+    }
+  };
 
   const handleFirstSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -144,16 +144,17 @@ const CreateCompany: React.FC = () => {
         const error = registerCompanySchemaValidation.error.errors;
         console.log(error);
       }
-      if (registerCompanySchemaValidation.success) {
-        setNewCompany({
-          ...newCompany,
-          name,
-          market_role,
-          sector,
-          location,
-          logo,
-          banner,
-        });}
+    if (registerCompanySchemaValidation.success) {
+      setNewCompany({
+        ...newCompany,
+        name,
+        market_role,
+        sector,
+        location,
+        logo,
+        banner,
+      });
+    }
 
     if (!newCompany.name) {
       setFormErrs("Please enter a company name");
@@ -175,9 +176,9 @@ const CreateCompany: React.FC = () => {
       setFormErrs("Please confirm you are an organization rep");
       return;
     }
-      setStepOneDone(true);
-      navigate("/create-company/step2");
-    
+    setStepOneDone(true);
+    navigate("/create-company/step2");
+
     console.log("Form 1 submitted");
     // Correctly checks company name against database & saves form fields to state
   };
