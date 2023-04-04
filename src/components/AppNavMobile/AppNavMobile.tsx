@@ -5,6 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 import MarketplaceSearch from "../Searchbar/MarketplaceSearch";
 import Logo from "../../assets/logos/greensfeer-logo.png";
 import { FaUserCircle } from "react-icons/fa";
+import UserMenu from "../UserMenu/UserMenu";
 
 const AppNavMobile: React.FC = () => {
   const photoStyle = {
@@ -30,6 +31,9 @@ const AppNavMobile: React.FC = () => {
            /> */}
           <div className="nav-mobile__img">
             <FaUserCircle />
+            <div className="nav-mobile__user-menu">
+              <UserMenu />
+            </div>
           </div>
         </Link>
         {/* {!isChatPath && (

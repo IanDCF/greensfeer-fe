@@ -13,6 +13,7 @@
   z-index: 10;
   background-color: color.$white;
 }
+
 .nav-mobile {
   display: flex;
   padding: 2.5rem 3.5rem 1.5rem 3.5rem;
@@ -42,6 +43,12 @@
     border-radius: 10rem;
     font-size: 8.5rem;
     color: color.$charcoal;
+  }
+
+  &__user-menu {
+    position: absolute;
+    top: 14rem;
+    right: 3rem;
   }
 
   &__icon {

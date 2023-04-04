@@ -8,6 +8,7 @@ import { FaUserCircle } from "react-icons/fa";
 import { HiOutlineUserGroup } from "react-icons/hi";
 import { AiOutlineMessage } from "react-icons/ai";
 import { IoMdNotificationsOutline } from "react-icons/io";
+import UserMenu from "../UserMenu/UserMenu";
 
 const AppNav: React.FC = () => {
   const photoStyle = {
@@ -45,6 +46,9 @@ const AppNav: React.FC = () => {
             {/* <div className="appnav__img" style={photoStyle}
            /> */}
             <FaUserCircle className="appnav__icon" />
+            <div className="appnav__user-menu">
+              <UserMenu />
+            </div>
           </Link>
         </div>
       </nav>
