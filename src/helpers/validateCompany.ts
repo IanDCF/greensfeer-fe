@@ -1,9 +1,9 @@
 import newCompanySchema, { TNewCompany } from "../schemas/CompanySchema";
 import companyCreator from "./companyCreator";
 import { useNavigate } from "react-router-dom";
-const navigate = useNavigate();
 
 const validateCompany = async (company: TNewCompany) => {
+  const navigate = useNavigate();
   const companyValidation = newCompanySchema.safeParse(company);
   if (!companyValidation.success) {
     console.log(companyValidation.error.errors);

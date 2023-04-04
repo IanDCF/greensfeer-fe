@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { matchPath, useLocation, useNavigate } from "react-router-dom";
-import newCompanySchema, {
+import {
   registerCompanyDetailSchema,
   registerCompanySchema,
   TNewCompany,
@@ -8,7 +8,6 @@ import newCompanySchema, {
 import CompanyForm1 from "./CompanyForm1";
 import CompanyForm2 from "./CompanyForm2";
 import "./CreateCompany.scss";
-import companyCreator from "../../helpers/companyCreator";
 import getAllCompanies from "../../helpers/allCompanyFetcher";
 import validateCompany from "../../helpers/validateCompany";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
@@ -28,6 +27,7 @@ const CreateCompany: React.FC = () => {
   const [bannerPic, setBannerPic] = useState<File>();
   const [bannerUrl, setBannerUrl] = useState("");
   const [isChecked1, setIsChecked1] = useState(false);
+  const [formErrs, setFormErrs] = useState({});
 
   const handlePic = (e: React.FormEvent<HTMLInputElement>) => {
     const target = e.target as HTMLInputElement;
@@ -153,6 +153,22 @@ const CreateCompany: React.FC = () => {
         logo,
         banner,
       });
+      if (!newCompany.name) {
+        console.log("Please enter a company name");
+        return;
+      }
+      if (!newCompany.sector) {
+        console.log("Please enter a sector");
+        return;
+      }
+      if (!newCompany.market_role) {
+        console.log("Please enter a market role");
+        return;
+      }
+      if (!newCompany.location) {
+        console.log("Please enter a location");
+        return;
+      }
       setStepOneDone(true);
       navigate("/create-company/step2");
     }

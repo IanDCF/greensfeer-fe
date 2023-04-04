@@ -39,7 +39,7 @@ const ListingForm3 = ({ handleSubmit }: Props) => {
               name="verification_standard"
               className="create-listing__input"
             >
-              <option hidden={true} defaultValue={"Select a Standard"}>
+              <option hidden={true} defaultValue={""}>
                 Select a Standard
               </option>
               <option value="ACR">American Carbon Registry (ACR)</option>

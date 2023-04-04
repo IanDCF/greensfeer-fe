@@ -29,7 +29,7 @@ const ListingForm1 = ({ handleSubmit }: Props) => {
               name="post_type"
               className="create-company__input"
             >
-              <option hidden={true} defaultValue={"Select an option"}>
+              <option hidden={true} defaultValue={""}>
                 Select an option
               </option>
               <option value="Product">Project</option>
@@ -54,7 +54,7 @@ const ListingForm1 = ({ handleSubmit }: Props) => {
             </label>
             <select id="sector" name="sector" className="create-company__input">
               {/* FIXME: Back end currently does not handle sector */}
-              <option hidden={true} defaultValue={"Select a secotr"}>
+              <option hidden={true} defaultValue={""}>
                 Select a sector
               </option>
               <option value="All">All</option>
