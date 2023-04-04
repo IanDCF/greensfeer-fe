@@ -55,6 +55,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
   }
 
   &__img {
@@ -71,6 +72,12 @@
   &__icon-newmsg {
     @extend .appnav__icon;
     font-size: 6rem;
+  }
+
+  &__user-menu {
+    position: absolute;
+    top: 10.75rem;
+    right: -1rem;
   }
 
   &__searchbar {
