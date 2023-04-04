@@ -79,7 +79,7 @@
     }
 
     @include bp.desktop {
-      font-size: 4rem;
+      font-size: 4.2rem;
     }
   }
 
@@ -96,7 +96,7 @@
     }
 
     @include bp.desktop {
-      font-size: 3.2rem;
+      font-size: 3.4rem;
     }
   }
 
@@ -109,11 +109,11 @@
     }
 
     @include bp.tablet {
-      font-size: 2.5rem;
+      font-size: 2.8rem;
     }
 
     @include bp.desktop {
-      font-size: 2.5rem;
+      font-size: 2.8rem;
     }
   }
 
@@ -138,25 +138,30 @@
 
   &__badges {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: space-around;
   }
 
   &__badge {
+    border-radius: 5px;
     background-color: rgb(197, 234, 195);
 
     @include bp.mobile {
       width: 6rem;
       height: 6rem;
+      min-width: 6rem;
     }
 
     @include bp.tablet {
       width: 6rem;
       height: 6rem;
+      min-width: 6rem;
     }
 
     @include bp.desktop {
       width: 6rem;
       height: 6rem;
+      min-width: 6rem;
     }
   }
 

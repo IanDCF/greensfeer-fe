@@ -17,7 +17,7 @@ interface MarketThumbnailsProps {
   posts: Post[];
 }
 
-export const MarketListings: React.FC<MarketThumbnailsProps> = ({
+export const CompanyListings: React.FC<MarketThumbnailsProps> = ({
   title,
   posts,
 }) => {
@@ -35,24 +35,38 @@ export const MarketListings: React.FC<MarketThumbnailsProps> = ({
       <div className="listings__list">
         {title === "Projects" && (
           <div className="listings__card">
-            <div className="listings__ep-type">Project Type</div>
-            <div className="listings__name">Post Name Sometimes Long</div>
-            <div className="listings__sector">Sector Name Sometimes Long</div>
-            <div className="location__location">City, Country</div>
-            <div className="listings__standrard">Verification Standard</div>
+            <div className="listings__card-text">
+              <div className="listings__ep-type">Project Type</div>
+              <div className="listings__name">Post Name Sometimes Long</div>
+              <div className="listings__sector">Sector Name Sometimes Long</div>
+            </div>
+            <div className="listings__markers">
+              <div className="listings__badges">
+                <div className="listings__badge"></div>
+                <div className="listings__badge"></div>
+                <div className="listings__badge"></div>
+              </div>
+              <div className="listings__price">
+                <div className="lisitngs__price-tag">$10 / tCO2</div>
+              </div>
+            </div>
+            {/* <div className="location__location">City, Country</div> */}
+            {/* <div className="listings__standrard">Verification Standard</div> */}
             {/* if project has vintage, render: */}
-            <div className="listings__vintage">Vintage: YEAR</div>
+            {/* <div className="listings__vintage">Vintage: YEAR</div> */}
             {/* else, render verification_standard */}
-            <div className="listings__price">$23.00 / tCO2</div>
+            {/* <div className="listings__price">$23.00 / tCO2</div> */}
           </div>
         )}
 
         {title === "Services" && (
           <div className="listings__card">
-            <div className="listings__ep-type">Service Type</div>
-            <div className="listings__name">Post Name Sometimes Long</div>
-            <div className="listings__sector">Sector Name Sometimes Long</div>
-            <div className="listings__location">City, Country</div>
+            {/* We need to discuss this from backend perspective */}
+            <div className="listings__card-text">
+              <div className="listings__ep-type">Service Type</div>
+              <div className="listings__name">Post Name Sometimes Long</div>
+              <div className="listings__sector">Sector Name Sometimes Long</div>
+            </div>
             <div className="listings__contact">Name of Primary Contact</div>
           </div>
         )}
@@ -63,9 +77,33 @@ export const MarketListings: React.FC<MarketThumbnailsProps> = ({
                 key={`${post.post_name}${post.company_id}`}
                 className="listings__card"
               >
-                <div className="listings__ep-type">{post.post_category}</div>
-                <div className="listings__name">{post.post_name}</div>
-                <div className="listings__sector">{post.company_id}</div>
+                <div className="listings__card-text">
+                  <div className="listings__ep-type">{post.post_category}</div>
+                  <div className="listings__name">{post.post_name}</div>
+                  <div className="listings__sector">{post.company_id}</div>
+                </div>
+                {post?.p && (
+                  <div className="listings__markers">
+                    <div className="listings__badges">
+                      <div className="listings__badge"></div>
+                      <div className="listings__badge"></div>
+                      <div className="listings__badge"></div>
+                    </div>
+                    <div className="listings__price">
+                      <div className="lisitngs__price-tag">
+                        {/* this needs  to be price per credit */}
+                        {`\$${post?.p?.total_price} / tCO2`}
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {!post?.p && (
+                  <div className="listings__contact">
+                    Name of Primary Contact
+                  </div>
+                )}
+
                 <div className="listingss__price">
                   {post.p ? post.p.total_price : ""}
                 </div>
