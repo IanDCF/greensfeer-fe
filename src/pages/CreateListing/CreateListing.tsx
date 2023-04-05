@@ -39,6 +39,7 @@ const CreateListing = () => {
   const [stepTwoDone, setStepTwoDone] = useState<boolean>(false);
   // listingOptionalDone
   const [productDetailDone, setProductDetailDone] = useState<boolean>(false);
+  const [formErrs, setFormErrs] = useState("");
 
   const clickHandler = () => {
     if (createListing2) {
@@ -118,6 +119,7 @@ const CreateListing = () => {
   // first submit
   const handleFirstSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setFormErrs("");
     const post_typeInput = e.currentTarget.elements.namedItem(
       "post_type"
     ) as HTMLInputElement;
@@ -148,8 +150,16 @@ const CreateListing = () => {
       console.log(error);
       return;
     }
+    if (post_type === "Select an option") {
+      setFormErrs("Please indicate Project Developer/Service Provider");
+      return;
+    }
     if (!post_name) {
-      console.log("name required");
+      setFormErrs("Please title your listing");
+      return;
+    }
+    if (sector === "Select a sector") {
+      setFormErrs("Please select a sector");
       return;
     }
     if (registerListingValidation.success) {
@@ -168,6 +178,7 @@ const CreateListing = () => {
   // second submit
   const handleSecondSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setFormErrs("");
     const methodologyInput = e.currentTarget.elements.namedItem(
       "methodology"
     ) as HTMLInputElement;
@@ -197,6 +208,18 @@ const CreateListing = () => {
     if (!registerListingDetailValidation.success) {
       const error = registerListingDetailValidation.error.errors;
       console.log(error);
+      return;
+    }
+    if (methodology === "Select Project Type") {
+      setFormErrs("Please select a project type");
+      return;
+    }
+    if (service_type === "Select a Service") {
+      setFormErrs("Please select a service type");
+      return;
+    }
+    if (!location) {
+      setFormErrs("Please provide your location");
       return;
     }
     if (registerListingDetailValidation.success) {

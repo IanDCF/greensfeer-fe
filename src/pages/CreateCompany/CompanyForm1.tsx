@@ -22,6 +22,7 @@ const CompanyForm1 = ({
   isChecked1,
   errors,
 }: Props) => {
+  // FIXME: update to controlled form inputs; set to state so values are not missing on submit
   return (
     <form className="create-company__form" onSubmit={handleSubmit}>
       <div className="create-company__logo">
