@@ -7,7 +7,7 @@ import getMarketPost from "../../helpers/marketPostFetcher";
 import { ICompany, IMarketPost } from "customTypes";
 import { useNavigate, useParams } from "react-router-dom";
 import getCompany from "../../helpers/companyFetcher";
-import Modal from "../../components/Modal/Modal";
+import Modal from "../../components/PromptModal/PromptModal";
 
 export const CompanyProfile: React.FC = () => {
   const { companyId } = useParams();
@@ -16,7 +16,7 @@ export const CompanyProfile: React.FC = () => {
   const [services, setServices] = useState<IMarketPost[]>([]);
   const [company, setCompany] = useState<ICompany | null>(null);
   const [openCompanyModal, setOpenCompanyModal] = useState<boolean>(true);
-  const clickHandler:MouseEventHandler= () => {
+  const clickHandler: MouseEventHandler = () => {
     setOpenCompanyModal(false);
   };
   useEffect(() => {

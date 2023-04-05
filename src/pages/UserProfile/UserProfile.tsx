@@ -1,20 +1,19 @@
 import { ProfileAbout } from "../../components/ProfileAbout/ProfileAbout";
 import { ProfileAffiliations } from "../../components/ProfileAffiliations/ProfileAffiliations";
-import { PostsList } from "../../components/PostsList/PostsList";
 import "./UserProfile.scss";
 import { ProfileHeader } from "../../components/ProfileHeader/ProfileHeader";
 import { useAuth } from "../../context/AuthProvider/AuthProvider";
 import axios from "axios";
 import { useState, useEffect, MouseEventHandler } from "react";
 import { IUser } from "customTypes";
-import Modal from "../../components/Modal/Modal";
+import PromptModal from "../../components/PromptModal/PromptModal";
 
 export const UserProfile: React.FC = () => {
   const [profile, setProfile] = useState<IUser>();
   const { currentUser } = useAuth();
   const [token, setToken] = useState<string>();
   const [openCompanyModal, setOpenCompanyModal] = useState<boolean>(true);
-  const clickHandler:MouseEventHandler = () => {
+  const clickHandler: MouseEventHandler = () => {
     setOpenCompanyModal(false);
   };
 
@@ -46,9 +45,7 @@ export const UserProfile: React.FC = () => {
         <ProfileAbout ProfileData={profile} user={true} />
         {/* {profile && console.log(profile)} */}
         <ProfileAffiliations />
-        {/* <PostsList /> */}
-        <PostsList />
-        <Modal open={openCompanyModal} clickHandler={clickHandler} />
+        <PromptModal open={openCompanyModal} clickHandler={clickHandler} />
       </div>
     </>
   );

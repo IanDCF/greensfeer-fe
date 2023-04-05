@@ -38,17 +38,15 @@
 
   &__links {
     display: flex;
-
     justify-content: space-between;
     align-items: center;
+    // @include bp.tablet {
+    //   width: 45%;
+    // }
 
-    @include bp.tablet {
-      width: 45%;
-    }
-
-    @include bp.desktop {
-      width: 28%;
-    }
+    // @include bp.desktop {
+    //   width: 28%;
+    // }
   }
 
   &__link {
@@ -59,14 +57,29 @@
   }
 
   &__img {
-    width: 8.75rem;
-    height: 8.75rem;
     border-radius: 10rem;
+
+    @include bp.tablet {
+      width: 9rem;
+      height: 9rem;
+    }
+
+    @include bp.desktop {
+      width: 9.5rem;
+      height: 9.5rem;
+    }
   }
 
   &__icon {
-    font-size: 6.5rem;
     color: color.$charcoal;
+
+    @include bp.tablet {
+      font-size: 8.75rem;
+    }
+
+    @include bp.desktop {
+      font-size: 9rem;
+    }
   }
 
   &__icon-newmsg {
