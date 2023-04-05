@@ -275,11 +275,6 @@ const CreateCompany: React.FC = () => {
           Company created, redirecting to new Company Profile
         </div>
       )}
-      {stepTwoDone && (
-        <div className="create-company__form" style={{ fontSize: "4rem" }}>
-          Company created, redirecting to new Company Profile
-        </div>
-      )}
     </section>
   );
 };
