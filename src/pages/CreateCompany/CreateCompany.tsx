@@ -29,6 +29,10 @@ const CreateCompany: React.FC = () => {
   const [isChecked1, setIsChecked1] = useState(false);
   const [formErrs, setFormErrs] = useState("");
 
+  const clickHandler = () => {
+    setStepOneDone(false);
+  };
+
   const handlePic = (e: React.FormEvent<HTMLInputElement>) => {
     const target = e.target as HTMLInputElement;
     const pic: File = (target.files as FileList)[0];
@@ -257,7 +261,10 @@ const CreateCompany: React.FC = () => {
         />
       )}
       {stepOneDone && !stepTwoDone && createCompany2 && (
-        <CompanyForm2 handleSubmit={handleSecondSubmit} />
+        <CompanyForm2
+          handleSubmit={handleSecondSubmit}
+          clickHandler={clickHandler}
+        />
       )}
       {stepTwoDone && (
         <div className="create-company__form" style={{ fontSize: "4rem" }}>

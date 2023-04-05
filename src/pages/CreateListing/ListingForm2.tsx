@@ -11,9 +11,9 @@ const ListingForm2 = ({ handleSubmit }: Props) => {
   return (
     <form className="create-listing__form" onSubmit={handleSubmit}>
       {/* Back btn has to change state to display previous page */}
-      <div className="create-company__back-btn">
+      <Link to='/create-listing/step1' className="create-company__back-btn">
         <TbArrowBackUp />
-      </div>
+      </Link>
       <div className="create-listing__logo">
         <img
           src={logo}

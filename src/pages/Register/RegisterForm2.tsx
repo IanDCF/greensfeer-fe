@@ -1,13 +1,13 @@
-import { Link } from "react-router-dom";
 import GreensfeerLogo from "../../assets/logos/greensfeer-logo.svg";
 import "./Register.scss";
 import { TbArrowBackUp } from "react-icons/tb";
 
 interface Props {
-  handleSubmit: any;
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
   isChecked1: boolean;
   handleCheckbox1: (isChecked: boolean) => void;
   error: null | string;
+  clickHandler: () => void;
 }
 
 const RegisterForm2 = ({
@@ -15,11 +15,12 @@ const RegisterForm2 = ({
   handleCheckbox1,
   isChecked1,
   error,
+  clickHandler,
 }: Props) => {
   return (
     <div className="register__wrapper">
       {/* This back arrow should send the user back to the first Form */}
-      <div className="register__back-btn">
+      <div onClick={clickHandler} className="register__back-btn">
         <TbArrowBackUp />
       </div>
       <div className="register__logo">

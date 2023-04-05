@@ -22,6 +22,10 @@ const Register = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<null | string>(null);
 
+  const clickHandler =()=>{
+    setRegisterDone(false)
+  }
+
   useEffect(() => {
     if (registerDoneInfo) validateUser();
   }, [registerDoneInfo]);
@@ -192,6 +196,7 @@ const Register = () => {
           handleCheckbox1={handleCheckbox1}
           isChecked1={isChecked1}
           error={error}
+          clickHandler={clickHandler}
         />
       )}
       {loading && (
