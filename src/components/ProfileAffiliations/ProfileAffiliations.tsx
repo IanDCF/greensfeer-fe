@@ -47,29 +47,19 @@ export const ProfileAffiliations: React.FC = () => {
         {userAfilliations &&
           userAfilliations?.length > 0 &&
           userAfilliations.map((aff) => (
+            <Link to={`/company/${aff.company_id}`}>
             <div className="affiliations__company">
               <div className="affiliations__logo-div">
                 <div
                   className="affiliations__logo"
+                  //Currently there is no logo in the aff object
                   style={logoStyle(aff.logo)}
-                />
+                  />
               </div>
               <p className="affiliations__name">{aff.name}</p>
             </div>
+                  </Link>
           ))}
-        {/* <div className="affiliations__company">
-          <div className="affiliations__logo-div">
-            <div className="affiliations__logo" style={logoStyle2} />
-          </div>
-          <p className="affiliations__name">Tesla</p>
-        </div>
-
-        <div className="affiliations__company">
-          <div className="affiliations__logo-div">
-            <div className="affiliations__logo" style={logoStyle1} />
-          </div>
-          <p className="affiliations__name">Microsoft</p>
-        </div> */}
 
         <div className="affiliations__company">
           <Link
