@@ -287,6 +287,9 @@ const CreateListing = () => {
         price_per_credit,
       });
       setProductDetailDone(true);
+      setTimeout(() => {
+        navigate("/marketplace");
+      }, 3000);
     }
   };
 
@@ -308,7 +311,7 @@ const CreateListing = () => {
         />
       )}
       {/* ListingForm3 is only required if a the listing is for a product */}
-      {stepTwoDone && createListing3 && (
+      {stepTwoDone && createListing3 && !productDetailDone && (
         <ListingForm3
           handleSubmit={handleProductSubmit}
           clickHandler={clickHandler}
@@ -316,6 +319,11 @@ const CreateListing = () => {
         />
       )}
       {/* FIXME: ensure to parseint vintage_year & price_per_credit */}
+      {productDetailDone && (
+        <div className="create-listing__form" style={{ fontSize: "4rem" }}>
+          Project listed, redirecting to marketplace
+        </div>
+      )}
     </section>
   );
 };
