@@ -69,6 +69,7 @@ const Register = () => {
 
   const handleFirstSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setError('')
     const emailInput = e.currentTarget.elements.namedItem(
       "email"
     ) as HTMLInputElement;
