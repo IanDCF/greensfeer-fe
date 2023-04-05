@@ -55,17 +55,12 @@ const CreateListing = () => {
 
   // validate post
   useEffect(() => {
-    console.log("in effect");
     const validateAndPost = async () => {
+      console.log("validate");
       const affiliation = await getAffiliation(currentUser);
       const company = await getCompany(affiliation.company_id);
       setCurrentCompany(affiliation.company_id);
-      if (!currentCompany) {
-        setFormErrs(`Please create a company first!`);
-        setTimeout(() => {
-          navigate("/create-company/step1");
-        }, 3000);
-      }
+      // FIXME: possible to visit this page with no company created
 
       if (newMarketPost.post_type === "Service") {
         // validate & run axios.post
@@ -87,7 +82,10 @@ const CreateListing = () => {
         };
         //post service
         createMarketPost(service);
-
+        setFormErrs("Service Listing Created, navigating to marketplace");
+        setTimeout(() => {
+          navigate("/marketplace");
+        }, 3000);
       }
       if (productDetailDone && newMarketPost.post_type === "Product") {
         //validate & run axios.post
@@ -240,6 +238,7 @@ const CreateListing = () => {
         location,
         link,
       });
+
       setStepTwoDone(true);
       navigate("/create-listing/step3");
     }

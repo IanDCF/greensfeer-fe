@@ -216,15 +216,10 @@ const ListingForm2 = ({
           text="Cancel"
           link={`/company/${company}`}
         />
-        <ControlButton
-          btnType="link"
-          dark={false}
-          text="Next"
-          link="/create-listing/step3"
+ 
+        <ControlButton dark={false} btnType="submit"
+          text="Post Service/Project Detail"
         />
-        <button className="create-company__button" type="submit">
-          Submit Service/Continue to Project Detail &gt;
-        </button>
       </div>
     </form>
   );
