@@ -5,12 +5,14 @@ import { TbArrowBackUp } from "react-icons/tb";
 import { Link } from "react-router-dom";
 interface Props {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  clickHandler: () => void;
+  company: string;
 }
-const ListingForm3 = ({ handleSubmit }: Props) => {
+const ListingForm3 = ({ handleSubmit, clickHandler, company }: Props) => {
   return (
     <form className="create-listing__form" onSubmit={handleSubmit}>
       {/* Back btn has to change state to display previous page */}
-      <div className="create-listing__back-btn">
+      <div onClick={clickHandler} className="create-listing__back-btn">
         <TbArrowBackUp />
       </div>
       <div className="create-listing__logo">
@@ -39,7 +41,7 @@ const ListingForm3 = ({ handleSubmit }: Props) => {
               name="verification_standard"
               className="create-listing__input"
             >
-              <option hidden={true} defaultValue={"Select a Standard"}>
+              <option hidden={true} defaultValue={""}>
                 Select a Standard
               </option>
               <option value="ACR">American Carbon Registry (ACR)</option>
@@ -170,7 +172,7 @@ const ListingForm3 = ({ handleSubmit }: Props) => {
         <ControlButton
           dark={true}
           text="Cancel"
-          link="/company"
+          link={`/company/${company}`}
           btnType="link"
         />
         <ControlButton

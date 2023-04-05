@@ -4,9 +4,10 @@ import "../Register/Register.scss";
 
 interface Props {
   handleSubmit: any;
+  error: string | null;
 }
 
-const SignInForm = ({ handleSubmit }: Props) => {
+const SignInForm = ({ handleSubmit, error }: Props) => {
   return (
     <div className="register__wrapper">
       <div className="register__logo">
@@ -46,7 +47,7 @@ const SignInForm = ({ handleSubmit }: Props) => {
             />
           </div>
         </div>
-
+        <div className="register__error">{error}</div>
         <button className="register__button" type="submit">
           Sign In
         </button>

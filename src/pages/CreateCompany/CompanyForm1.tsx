@@ -11,6 +11,7 @@ interface Props {
   handleBanner: (e: React.FormEvent<HTMLInputElement>) => void;
   isChecked1: boolean;
   handleCheckbox1: (isChecked: boolean) => void;
+  errors: string;
 }
 
 const CompanyForm1 = ({
@@ -19,7 +20,9 @@ const CompanyForm1 = ({
   handleBanner,
   handleCheckbox1,
   isChecked1,
+  errors,
 }: Props) => {
+  // FIXME: update to controlled form inputs; set to state so values are not missing on submit
   return (
     <form className="create-company__form" onSubmit={handleSubmit}>
       <div className="create-company__logo">
@@ -93,7 +96,7 @@ const CompanyForm1 = ({
               name="marketRole"
               className="create-company__input"
             >
-              <option hidden defaultValue={"Select market role"}>
+              <option hidden defaultValue={""}>
                 Select market role
               </option>
               <option value="Project Developer">Project Developer</option>
@@ -125,23 +128,28 @@ const CompanyForm1 = ({
       <div className="create-company__preferences">
         <div className="create-company__boxes">
           <input
-            id="pushNotifications"
+            id="representative"
             className="create-company__checkbox"
             type="checkbox"
+            name="representative"
             checked={isChecked1}
             onChange={(e) => handleCheckbox1(e.target.checked)}
           />
-          <label className="create-company__label-checkbox" htmlFor="captcha">
+          <label
+            className="create-company__label-checkbox"
+            htmlFor="representative"
+          >
             I certify that I am an authorized representative of this
             organization
           </label>
         </div>
       </div>
+      <div className="create-company__error">{errors}</div>
       <div className="create-company__controls">
         <ControlButton
           dark={true}
           text="Cancel"
-          link="/marketplace"
+          link="/profile"
           btnType="link"
         />
         <ControlButton dark={false} text="Next" btnType="submit" />

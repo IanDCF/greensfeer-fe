@@ -1,17 +1,21 @@
 import { ProfileAbout } from "../../components/ProfileAbout/ProfileAbout";
 import { ProfileAffiliations } from "../../components/ProfileAffiliations/ProfileAffiliations";
-import { PostsList } from "../../components/PostsList/PostsList";
 import "./UserProfile.scss";
 import { ProfileHeader } from "../../components/ProfileHeader/ProfileHeader";
 import { useAuth } from "../../context/AuthProvider/AuthProvider";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, MouseEventHandler } from "react";
 import { IUser } from "customTypes";
+import PromptModal from "../../components/PromptModal/PromptModal";
 
 export const UserProfile: React.FC = () => {
   const [profile, setProfile] = useState<IUser>();
   const { currentUser } = useAuth();
   const [token, setToken] = useState<string>();
+  const [openCompanyModal, setOpenCompanyModal] = useState<boolean>(true);
+  const clickHandler: MouseEventHandler = () => {
+    setOpenCompanyModal(false);
+  };
 
   useEffect(() => {
     async function fetchProfile() {
@@ -41,7 +45,7 @@ export const UserProfile: React.FC = () => {
         <ProfileAbout ProfileData={profile} user={true} />
         {/* {profile && console.log(profile)} */}
         <ProfileAffiliations />
-        {/* <PostsList /> */}
+        <PromptModal open={openCompanyModal} clickHandler={clickHandler} />
       </div>
     </>
   );

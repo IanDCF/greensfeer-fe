@@ -1,18 +1,24 @@
 import "./CreateCompany.scss";
+import { Link } from "react-router-dom";
 import logo from "../../assets/logos/greensfeer-logo.png";
 import ControlButton from "../../components/ControlButtons/ControlButton";
 import { TbArrowBackUp } from "react-icons/tb";
 interface Props {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  clickHandler: () => void;
 }
 
-const CompanyForm2 = ({ handleSubmit }: Props) => {
+const CompanyForm2 = ({ handleSubmit, clickHandler }: Props) => {
   return (
     <form className="create-company__form" onSubmit={handleSubmit}>
       {/* Back btn has to change state to display previous page */}
-      <div className="create-company__back-btn">
+      <Link
+        to="/create-company/step1"
+        onClick={clickHandler}
+        className="create-company__back-btn"
+      >
         <TbArrowBackUp />
-      </div>
+      </Link>
       <div className="create-company__logo">
         <img
           src={logo}
@@ -82,7 +88,7 @@ const CompanyForm2 = ({ handleSubmit }: Props) => {
         <ControlButton
           dark={true}
           text="Cancel"
-          link="/create-company/step1"
+          link="/profile"
           btnType="link"
         />
         <ControlButton dark={false} text="Create" btnType="submit" />

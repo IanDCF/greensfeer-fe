@@ -5,9 +5,11 @@ import { TbArrowBackUp } from "react-icons/tb";
 import { Link } from "react-router-dom";
 interface Props {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  errors: string;
+  company: string;
 }
 
-const ListingForm1 = ({ handleSubmit }: Props) => {
+const ListingForm1 = ({ handleSubmit, errors, company }: Props) => {
   return (
     <form className="create-listing__form" onSubmit={handleSubmit}>
       <div className="create-listing__logo">
@@ -29,10 +31,10 @@ const ListingForm1 = ({ handleSubmit }: Props) => {
               name="post_type"
               className="create-company__input"
             >
-              <option hidden={true} defaultValue={"Select an option"}>
+              <option hidden={true} defaultValue={""}>
                 Select an option
               </option>
-              <option value="Product">Product</option>
+              <option value="Product">Project</option>
               <option value="Service">Service</option>
             </select>
           </div>
@@ -54,7 +56,7 @@ const ListingForm1 = ({ handleSubmit }: Props) => {
             </label>
             <select id="sector" name="sector" className="create-company__input">
               {/* FIXME: Back end currently does not handle sector */}
-              <option hidden={true} defaultValue={"Select a secotr"}>
+              <option hidden={true} defaultValue={""}>
                 Select a sector
               </option>
               <option value="All">All</option>
@@ -126,11 +128,12 @@ const ListingForm1 = ({ handleSubmit }: Props) => {
       <div className="create-listing__required-text">
         * required input field
       </div>
+      <div className="create-listing__error">{errors}</div>
       <div className="create-listing__controls">
         <ControlButton
           dark={true}
           text="Cancel"
-          link="/company"
+          link={`/company/${company}`}
           btnType="link"
         />
         <ControlButton
