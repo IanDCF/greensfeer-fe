@@ -6,9 +6,10 @@ import { TbArrowBackUp } from "react-icons/tb";
 interface Props {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   clickHandler: () => void;
+  errors: string;
 }
 
-const ListingForm2 = ({ handleSubmit, clickHandler }: Props) => {
+const ListingForm2 = ({ handleSubmit, clickHandler, errors }: Props) => {
   return (
     <form className="create-listing__form" onSubmit={handleSubmit}>
       {/* Back btn has to change state to display previous page */}
@@ -201,6 +202,7 @@ const ListingForm2 = ({ handleSubmit, clickHandler }: Props) => {
           * required input field
         </div>
       </div>
+      <div className="create-company__error">{errors}</div>
       <div className="create-listing__controls">
         <ControlButton
           btnType="link"

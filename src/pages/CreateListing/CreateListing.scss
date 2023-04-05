@@ -23,7 +23,9 @@
       background-color: rgba(0, 0, 0, 0.5);
     }
   }
-
+  &__error {
+    font-size: 4rem;
+  }
   &__form {
     display: flex;
     flex-direction: column;

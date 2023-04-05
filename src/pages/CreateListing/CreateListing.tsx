@@ -284,12 +284,13 @@ const CreateListing = () => {
   return (
     <section className="create-listing">
       {!stepOneDone && createListing1 && (
-        <ListingForm1 handleSubmit={handleFirstSubmit} />
+        <ListingForm1 handleSubmit={handleFirstSubmit} errors={formErrs} />
       )}
       {!stepTwoDone && createListing2 && (
         <ListingForm2
           handleSubmit={handleSecondSubmit}
           clickHandler={clickHandler}
+          errors={formErrs}
         />
       )}
       {/* ListingForm3 is only required if a the listing is for a product */}

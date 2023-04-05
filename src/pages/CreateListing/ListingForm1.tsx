@@ -5,9 +5,10 @@ import { TbArrowBackUp } from "react-icons/tb";
 import { Link } from "react-router-dom";
 interface Props {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  errors: string;
 }
 
-const ListingForm1 = ({ handleSubmit }: Props) => {
+const ListingForm1 = ({ handleSubmit, errors }: Props) => {
   return (
     <form className="create-listing__form" onSubmit={handleSubmit}>
       <div className="create-listing__logo">
@@ -126,6 +127,7 @@ const ListingForm1 = ({ handleSubmit }: Props) => {
       <div className="create-listing__required-text">
         * required input field
       </div>
+      <div className="create-listing__error">{errors}</div>
       <div className="create-listing__controls">
         <ControlButton
           dark={true}
