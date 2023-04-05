@@ -88,7 +88,7 @@ const CompanyForm2 = ({ handleSubmit, clickHandler }: Props) => {
         <ControlButton
           dark={true}
           text="Cancel"
-          link="/create-company/step1"
+          link="/profile"
           btnType="link"
         />
         <ControlButton dark={false} text="Create" btnType="submit" />

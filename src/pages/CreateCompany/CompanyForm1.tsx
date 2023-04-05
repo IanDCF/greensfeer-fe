@@ -149,7 +149,7 @@ const CompanyForm1 = ({
         <ControlButton
           dark={true}
           text="Cancel"
-          link="/marketplace"
+          link="/profile"
           btnType="link"
         />
         <ControlButton dark={false} text="Next" btnType="submit" />

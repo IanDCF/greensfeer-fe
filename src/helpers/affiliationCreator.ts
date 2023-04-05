@@ -7,9 +7,8 @@ const addAffiliation = async (currentUser: User | null, company_id: string) => {
   if (currentUser) {
     // get request with token
     const token = await currentUser.getIdToken();
-    const response = await axios.post(`${URL_BASE}/affiliation/new/`, {
-      headers: { token, company_id, admin: true, posting: true },
-    });
+    const newAffil = { token, company_id, admin: true, posting: true };
+    const response = await axios.post(`${URL_BASE}/affiliation/new/`, {newAffil});
     const companyAndUser = response.data.message;
     return companyAndUser;
     //back end return uid, affiliation, contact
