@@ -8,9 +8,11 @@ import newCompanySchema, {
 import CompanyForm1 from "./CompanyForm1";
 import CompanyForm2 from "./CompanyForm2";
 import "./CreateCompany.scss";
+import addAffiliation from "../../helpers/affiliationCreator";
 import getAllCompanies from "../../helpers/allCompanyFetcher";
 import companyCreator from "../../helpers/companyCreator";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { useAuth } from "../../context/AuthProvider/AuthProvider";
 
 const CreateCompany: React.FC = () => {
   const storage = getStorage();
@@ -28,6 +30,7 @@ const CreateCompany: React.FC = () => {
   const [bannerUrl, setBannerUrl] = useState("");
   const [isChecked1, setIsChecked1] = useState(false);
   const [formErrs, setFormErrs] = useState("");
+  const { currentUser } = useAuth();
 
   const clickHandler = () => {
     setStepOneDone(false);
@@ -86,6 +89,7 @@ const CreateCompany: React.FC = () => {
             return res.data.message;
           })
           .then((companyId) => {
+            addAffiliation(currentUser, companyId);
             setTimeout(() => {
               navigate(`/company/${companyId}`);
             }, 3000);

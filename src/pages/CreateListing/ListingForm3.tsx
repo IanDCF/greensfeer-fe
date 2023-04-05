@@ -6,8 +6,9 @@ import { Link } from "react-router-dom";
 interface Props {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   clickHandler: () => void;
+  company: string;
 }
-const ListingForm3 = ({ handleSubmit, clickHandler }: Props) => {
+const ListingForm3 = ({ handleSubmit, clickHandler, company }: Props) => {
   return (
     <form className="create-listing__form" onSubmit={handleSubmit}>
       {/* Back btn has to change state to display previous page */}
@@ -171,7 +172,7 @@ const ListingForm3 = ({ handleSubmit, clickHandler }: Props) => {
         <ControlButton
           dark={true}
           text="Cancel"
-          link="/company"
+          link={`/company/${company}`}
           btnType="link"
         />
         <ControlButton

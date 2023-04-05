@@ -7,9 +7,15 @@ interface Props {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   clickHandler: () => void;
   errors: string;
+  company: string;
 }
 
-const ListingForm2 = ({ handleSubmit, clickHandler, errors }: Props) => {
+const ListingForm2 = ({
+  handleSubmit,
+  clickHandler,
+  errors,
+  company,
+}: Props) => {
   return (
     <form className="create-listing__form" onSubmit={handleSubmit}>
       {/* Back btn has to change state to display previous page */}
@@ -208,7 +214,7 @@ const ListingForm2 = ({ handleSubmit, clickHandler, errors }: Props) => {
           btnType="link"
           dark={true}
           text="Cancel"
-          link="/company"
+          link={`/company/${company}`}
         />
         <ControlButton
           btnType="link"

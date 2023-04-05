@@ -40,6 +40,7 @@ const CreateListing = () => {
   // listingOptionalDone
   const [productDetailDone, setProductDetailDone] = useState<boolean>(false);
   const [formErrs, setFormErrs] = useState("");
+  const [currentCompany, setCurrentCompany] = useState("");
 
   const clickHandler = () => {
     if (createListing2) {
@@ -58,6 +59,7 @@ const CreateListing = () => {
     const validateAndPost = async () => {
       const affiliation = await getAffiliation(currentUser);
       const company = await getCompany(affiliation.company_id);
+      setCurrentCompany(affiliation.company_id);
 
       if (newMarketPost.post_type === "Service") {
         // validate & run axios.post
@@ -284,13 +286,18 @@ const CreateListing = () => {
   return (
     <section className="create-listing">
       {!stepOneDone && createListing1 && (
-        <ListingForm1 handleSubmit={handleFirstSubmit} errors={formErrs} />
+        <ListingForm1
+          handleSubmit={handleFirstSubmit}
+          errors={formErrs}
+          company={currentCompany}
+        />
       )}
       {!stepTwoDone && createListing2 && (
         <ListingForm2
           handleSubmit={handleSecondSubmit}
           clickHandler={clickHandler}
           errors={formErrs}
+          company={currentCompany}
         />
       )}
       {/* ListingForm3 is only required if a the listing is for a product */}
@@ -298,6 +305,7 @@ const CreateListing = () => {
         <ListingForm3
           handleSubmit={handleProductSubmit}
           clickHandler={clickHandler}
+          company={currentCompany}
         />
       )}
       {/* FIXME: ensure to parseint vintage_year & price_per_credit */}

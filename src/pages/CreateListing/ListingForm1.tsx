@@ -6,9 +6,10 @@ import { Link } from "react-router-dom";
 interface Props {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   errors: string;
+  company: string;
 }
 
-const ListingForm1 = ({ handleSubmit, errors }: Props) => {
+const ListingForm1 = ({ handleSubmit, errors, company }: Props) => {
   return (
     <form className="create-listing__form" onSubmit={handleSubmit}>
       <div className="create-listing__logo">
@@ -132,7 +133,7 @@ const ListingForm1 = ({ handleSubmit, errors }: Props) => {
         <ControlButton
           dark={true}
           text="Cancel"
-          link="/company"
+          link={`/company/${company}`}
           btnType="link"
         />
         <ControlButton
