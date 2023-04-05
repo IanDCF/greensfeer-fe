@@ -40,13 +40,24 @@ const CreateListing = () => {
   // listingOptionalDone
   const [productDetailDone, setProductDetailDone] = useState<boolean>(false);
 
+  const clickHandler = () => {
+    if (createListing2) {
+      setStepOneDone(false);
+      navigate("/create-listing/step1");
+    }
+    if (createListing3) {
+      setStepTwoDone(false);
+      navigate("/create-listing/step2");
+    }
+  };
+
   // validate post
   useEffect(() => {
     console.log("in effect");
     const validateAndPost = async () => {
-      console.log("in validate");
       const affiliation = await getAffiliation(currentUser);
       const company = await getCompany(affiliation.company_id);
+
       if (newMarketPost.post_type === "Service") {
         // validate & run axios.post
         const newListing = await validateListing();
@@ -253,11 +264,17 @@ const CreateListing = () => {
         <ListingForm1 handleSubmit={handleFirstSubmit} />
       )}
       {!stepTwoDone && createListing2 && (
-        <ListingForm2 handleSubmit={handleSecondSubmit} />
+        <ListingForm2
+          handleSubmit={handleSecondSubmit}
+          clickHandler={clickHandler}
+        />
       )}
       {/* ListingForm3 is only required if a the listing is for a product */}
       {stepTwoDone && createListing3 && (
-        <ListingForm3 handleSubmit={handleProductSubmit} />
+        <ListingForm3
+          handleSubmit={handleProductSubmit}
+          clickHandler={clickHandler}
+        />
       )}
       {/* FIXME: ensure to parseint vintage_year & price_per_credit */}
     </section>

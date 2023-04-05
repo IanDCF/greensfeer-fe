@@ -2,18 +2,19 @@ import "./CreateListing.scss";
 import logo from "../../assets/logos/greensfeer-logo.png";
 import ControlButton from "../../components/ControlButtons/ControlButton";
 import { TbArrowBackUp } from "react-icons/tb";
-import { Link } from "react-router-dom";
+
 interface Props {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  clickHandler: () => void;
 }
 
-const ListingForm2 = ({ handleSubmit }: Props) => {
+const ListingForm2 = ({ handleSubmit, clickHandler }: Props) => {
   return (
     <form className="create-listing__form" onSubmit={handleSubmit}>
       {/* Back btn has to change state to display previous page */}
-      <Link to='/create-listing/step1' className="create-company__back-btn">
+      <div onClick={clickHandler} className="create-company__back-btn">
         <TbArrowBackUp />
-      </Link>
+      </div>
       <div className="create-listing__logo">
         <img
           src={logo}
