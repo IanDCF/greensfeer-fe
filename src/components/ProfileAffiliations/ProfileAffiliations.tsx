@@ -16,15 +16,16 @@ import { useAuth } from "src/context/AuthProvider/AuthProvider";
 // }
 
 export const ProfileAffiliations: React.FC = () => {
-  const {uid}= useParams()
+  const { uid } = useParams();
+  console.log(uid);
   const [userAfilliations, setUserAfilliation] = useState<ICompany[] | null>(
     null
   );
   useEffect(() => {
     const affiliations = async () => {
-      if (uid){
+      if (uid) {
         const affiliations = await getAffiliation(uid);
-        console.log(affiliations)
+        console.log(affiliations);
         setUserAfilliation(affiliations);
       }
     };
@@ -48,17 +49,17 @@ export const ProfileAffiliations: React.FC = () => {
           userAfilliations?.length > 0 &&
           userAfilliations.map((aff) => (
             <Link to={`/company/${aff.company_id}`}>
-            <div className="affiliations__company">
-              <div className="affiliations__logo-div">
-                <div
-                  className="affiliations__logo"
-                  //Currently there is no logo in the aff object
-                  style={logoStyle(aff.logo)}
+              <div className="affiliations__company">
+                <div className="affiliations__logo-div">
+                  <div
+                    className="affiliations__logo"
+                    //Currently there is no logo in the aff object
+                    style={logoStyle(aff.logo)}
                   />
+                </div>
+                <p className="affiliations__name">{aff.name}</p>
               </div>
-              <p className="affiliations__name">{aff.name}</p>
-            </div>
-                  </Link>
+            </Link>
           ))}
 
         <div className="affiliations__company">

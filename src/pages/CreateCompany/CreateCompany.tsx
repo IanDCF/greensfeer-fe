@@ -14,7 +14,6 @@ import companyCreator from "../../helpers/companyCreator";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { useAuth } from "../../context/AuthProvider/AuthProvider";
 import { newUserAffiliation } from "../../helpers/affiliationFetcher";
-import { useAuth } from "../../context/AuthProvider/AuthProvider";
 
 const CreateCompany: React.FC = () => {
   const storage = getStorage();
@@ -33,7 +32,6 @@ const CreateCompany: React.FC = () => {
   const [bannerUrl, setBannerUrl] = useState("");
   const [isChecked1, setIsChecked1] = useState(false);
   const [formErrs, setFormErrs] = useState("");
-  const { currentUser } = useAuth();
 
   const clickHandler = () => {
     setStepOneDone(false);
