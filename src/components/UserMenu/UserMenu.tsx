@@ -1,12 +1,15 @@
 import "./UserMenu.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../../firebase/firebase";
+import { useAuth } from "../../context/AuthProvider/AuthProvider";
 
 const UserMenu = () => {
+  const { currentUser, logout } = useAuth();
+
   const navigate = useNavigate();
   const handleSignOut = async () => {
     try {
-      await auth.signOut();
+      await logout();
       navigate("/");
       console.log("User has been signed out");
     } catch (error) {
@@ -15,7 +18,7 @@ const UserMenu = () => {
   };
   return (
     <div className="user-menu">
-      <Link to="/profile" className="user-menu__item">
+      <Link to={`/profile/${currentUser?.uid}`} className="user-menu__item">
         My Profile
       </Link>
       <div className="user-menu__item" onClick={handleSignOut}>

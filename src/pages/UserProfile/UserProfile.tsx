@@ -33,6 +33,8 @@ export const UserProfile: React.FC = () => {
         );
         console.log(response.data);
         setProfile(response.data);
+      } else {
+        console.log("No current user logged in");
       }
     }
     fetchProfile();
