@@ -115,10 +115,7 @@ const Searchbar = () => {
                     src={`${profile.profile_picture}`}
                   />
                 ) : profile.logo ? (
-                  <img
-                    className="search__photo"
-                    src={`${profile.profile_picture}`}
-                  />
+                  <img className="search__photo" src={`${profile.logo}`} />
                 ) : (
                   <div className="search__photo">
                     <FaUserCircle />
