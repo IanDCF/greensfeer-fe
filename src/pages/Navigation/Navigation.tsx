@@ -17,13 +17,13 @@ const Navigation = () => {
     // isNetworkPath ||
     // isMessagesPath ||
     isProfilePath || isCompanyPath || isMarketplacePath;
-  const shouldRenderNavBottom = shouldRenderNavBar;
+  // const shouldRenderNavBottom = shouldRenderNavBar;
 
   return (
     <div className="navigation">
       <div className="navigation__mobile">
         {shouldRenderNavBar && <AppNavMobile />}
-        {shouldRenderNavBottom && <AppNavMobileBottom />}
+        {/* {shouldRenderNavBottom && <AppNavMobileBottom />} */}
       </div>
       <div className="navigation__tablet-desktop">
         {shouldRenderNavBar && <AppNav />}

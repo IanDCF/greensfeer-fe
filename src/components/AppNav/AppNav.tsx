@@ -38,7 +38,7 @@ const AppNav: React.FC = () => {
         {/* </div> */}
 
         <div className="appnav__links">
-          <Link to="#" className="appnav__link">
+          {/* <Link to="#" className="appnav__link">
             <AiOutlineMessage className="appnav__icon" />
           </Link>
           <Link to="#" className="appnav__link">
@@ -46,7 +46,7 @@ const AppNav: React.FC = () => {
           </Link>
           <Link to="#" className="appnav__link">
             <IoMdNotificationsOutline className="appnav__icon" />
-          </Link>
+          </Link> */}
 
           <div className="appnav__link" onClick={handleUserMenuClick}>
             {/* render conditionally: user profile picture or placeholder icon*/}

@@ -39,14 +39,29 @@ const CreateListing = () => {
   const [stepTwoDone, setStepTwoDone] = useState<boolean>(false);
   // listingOptionalDone
   const [productDetailDone, setProductDetailDone] = useState<boolean>(false);
+  const [formErrs, setFormErrs] = useState("");
+  const [currentCompany, setCurrentCompany] = useState("");
+
+  const clickHandler = () => {
+    if (createListing2) {
+      setStepOneDone(false);
+      navigate("/create-listing/step1");
+    }
+    if (createListing3) {
+      setStepTwoDone(false);
+      navigate("/create-listing/step2");
+    }
+  };
 
   // validate post
   useEffect(() => {
-    console.log("in effect");
     const validateAndPost = async () => {
-      console.log("in validate");
+      console.log("validate");
       const affiliation = await getAffiliation(currentUser);
       const company = await getCompany(affiliation.company_id);
+      setCurrentCompany(affiliation.company_id);
+      // FIXME: possible to visit this page with no company created
+
       if (newMarketPost.post_type === "Service") {
         // validate & run axios.post
         const newListing = await validateListing();
@@ -67,6 +82,10 @@ const CreateListing = () => {
         };
         //post service
         createMarketPost(service);
+        setFormErrs("Service Listing Created, navigating to marketplace");
+        setTimeout(() => {
+          navigate("/marketplace");
+        }, 3000);
       }
       if (productDetailDone && newMarketPost.post_type === "Product") {
         //validate & run axios.post
@@ -92,6 +111,7 @@ const CreateListing = () => {
       }
     };
     validateAndPost();
+    // if()
   }, [stepTwoDone, productDetailDone]);
 
   const validateListing = async () => {
@@ -107,6 +127,7 @@ const CreateListing = () => {
   // first submit
   const handleFirstSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setFormErrs("");
     const post_typeInput = e.currentTarget.elements.namedItem(
       "post_type"
     ) as HTMLInputElement;
@@ -137,8 +158,16 @@ const CreateListing = () => {
       console.log(error);
       return;
     }
+    if (post_type === "Select an option") {
+      setFormErrs("Please indicate Project Developer/Service Provider");
+      return;
+    }
     if (!post_name) {
-      console.log("name required");
+      setFormErrs("Please title your listing");
+      return;
+    }
+    if (sector === "Select a sector") {
+      setFormErrs("Please select a sector");
       return;
     }
     if (registerListingValidation.success) {
@@ -157,6 +186,7 @@ const CreateListing = () => {
   // second submit
   const handleSecondSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setFormErrs("");
     const methodologyInput = e.currentTarget.elements.namedItem(
       "methodology"
     ) as HTMLInputElement;
@@ -188,6 +218,18 @@ const CreateListing = () => {
       console.log(error);
       return;
     }
+    if (methodology === "Select Project Type") {
+      setFormErrs("Please select a project type");
+      return;
+    }
+    if (service_type === "Select a Service") {
+      setFormErrs("Please select a service type");
+      return;
+    }
+    if (!location) {
+      setFormErrs("Please provide your location");
+      return;
+    }
     if (registerListingDetailValidation.success) {
       setNewMarketPost({
         ...newMarketPost,
@@ -196,6 +238,7 @@ const CreateListing = () => {
         location,
         link,
       });
+
       setStepTwoDone(true);
       navigate("/create-listing/step3");
     }
@@ -244,22 +287,43 @@ const CreateListing = () => {
         price_per_credit,
       });
       setProductDetailDone(true);
+      setTimeout(() => {
+        navigate("/marketplace");
+      }, 3000);
     }
   };
 
   return (
     <section className="create-listing">
       {!stepOneDone && createListing1 && (
-        <ListingForm1 handleSubmit={handleFirstSubmit} />
+        <ListingForm1
+          handleSubmit={handleFirstSubmit}
+          errors={formErrs}
+          company={currentCompany}
+        />
       )}
       {!stepTwoDone && createListing2 && (
-        <ListingForm2 handleSubmit={handleSecondSubmit} />
+        <ListingForm2
+          handleSubmit={handleSecondSubmit}
+          clickHandler={clickHandler}
+          errors={formErrs}
+          company={currentCompany}
+        />
       )}
       {/* ListingForm3 is only required if a the listing is for a product */}
-      {stepTwoDone && createListing3 && (
-        <ListingForm3 handleSubmit={handleProductSubmit} />
+      {stepTwoDone && createListing3 && !productDetailDone && (
+        <ListingForm3
+          handleSubmit={handleProductSubmit}
+          clickHandler={clickHandler}
+          company={currentCompany}
+        />
       )}
       {/* FIXME: ensure to parseint vintage_year & price_per_credit */}
+      {productDetailDone && (
+        <div className="create-listing__form" style={{ fontSize: "4rem" }}>
+          Project listed, redirecting to marketplace
+        </div>
+      )}
     </section>
   );
 };

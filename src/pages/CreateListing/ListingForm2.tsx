@@ -2,16 +2,24 @@ import "./CreateListing.scss";
 import logo from "../../assets/logos/greensfeer-logo.png";
 import ControlButton from "../../components/ControlButtons/ControlButton";
 import { TbArrowBackUp } from "react-icons/tb";
-import { Link } from "react-router-dom";
+
 interface Props {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  clickHandler: () => void;
+  errors: string;
+  company: string;
 }
 
-const ListingForm2 = ({ handleSubmit }: Props) => {
+const ListingForm2 = ({
+  handleSubmit,
+  clickHandler,
+  errors,
+  company,
+}: Props) => {
   return (
     <form className="create-listing__form" onSubmit={handleSubmit}>
       {/* Back btn has to change state to display previous page */}
-      <div className="create-company__back-btn">
+      <div onClick={clickHandler} className="create-company__back-btn">
         <TbArrowBackUp />
       </div>
       <div className="create-listing__logo">
@@ -35,7 +43,7 @@ const ListingForm2 = ({ handleSubmit }: Props) => {
               name="methodology"
               className="create-company__input"
             >
-              <option hidden={true} defaultValue={"Select Project Type"}>
+              <option hidden={true} defaultValue={""}>
                 Select Project Type
               </option>
               <option value="Agroforestry">Agroforestry</option>
@@ -132,7 +140,7 @@ const ListingForm2 = ({ handleSubmit }: Props) => {
               name="service_type"
               className="create-company__input"
             >
-              <option hidden={true} defaultValue={"Select a Service"}>
+              <option hidden={true} defaultValue={""}>
                 Select a Service
               </option>
               <option value="API Provider">API Provider</option>
@@ -200,12 +208,18 @@ const ListingForm2 = ({ handleSubmit }: Props) => {
           * required input field
         </div>
       </div>
+      <div className="create-company__error">{errors}</div>
       <div className="create-listing__controls">
-        <ControlButton dark={true} text="Cancel" link="/company" />
-        <ControlButton dark={false} text="Next" link="/create-listing/step3" />
-        <button className="create-company__button" type="submit">
-          Submit Service/Continue to Product Detail &gt;
-        </button>
+        <ControlButton
+          btnType="link"
+          dark={true}
+          text="Cancel"
+          link={`/company/${company}`}
+        />
+ 
+        <ControlButton dark={false} btnType="submit"
+          text="Post Service/Project Detail"
+        />
       </div>
     </form>
   );

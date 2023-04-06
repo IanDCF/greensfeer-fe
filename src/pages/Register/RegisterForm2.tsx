@@ -1,23 +1,26 @@
-import { Link } from "react-router-dom";
 import GreensfeerLogo from "../../assets/logos/greensfeer-logo.svg";
 import "./Register.scss";
 import { TbArrowBackUp } from "react-icons/tb";
 
 interface Props {
-  handleSubmit: any;
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
   isChecked1: boolean;
   handleCheckbox1: (isChecked: boolean) => void;
+  error: null | string;
+  clickHandler: () => void;
 }
 
 const RegisterForm2 = ({
   handleSubmit,
   handleCheckbox1,
   isChecked1,
+  error,
+  clickHandler,
 }: Props) => {
   return (
     <div className="register__wrapper">
       {/* This back arrow should send the user back to the first Form */}
-      <div className="register__back-btn">
+      <div onClick={clickHandler} className="register__back-btn">
         <TbArrowBackUp />
       </div>
       <div className="register__logo">
@@ -61,9 +64,7 @@ const RegisterForm2 = ({
               I am a
             </label>
             <select id="role" name="role" className="register__input">
-              <option disabled selected>
-                Tell us who you are
-              </option>
+              <option hidden>Tell us who you are</option>
               <option value="Project Aggregator">Project Aggregator</option>
               <option value="Broker">Broker</option>
               <option value="Buyer">Buyer</option>
@@ -103,12 +104,15 @@ const RegisterForm2 = ({
               checked={isChecked1}
               onChange={(e) => handleCheckbox1(e.target.checked)}
             />
-            <label className="register__label-checkbox" htmlFor="captcha">
+            <label
+              className="register__label-checkbox"
+              htmlFor="pushNotifications"
+            >
               Send me push notifications
             </label>
           </div>
         </div>
-
+        {error ? <div className="register__error">{`${error}`}</div> : ""}
         <button className="register__button" type="submit">
           Join Greensfeer
         </button>

@@ -8,17 +8,19 @@ import newCompanySchema, {
 import CompanyForm1 from "./CompanyForm1";
 import CompanyForm2 from "./CompanyForm2";
 import "./CreateCompany.scss";
-import companyCreator from "../../helpers/companyCreator";
+import addAffiliation from "../../helpers/affiliationCreator";
 import getAllCompanies from "../../helpers/allCompanyFetcher";
+import companyCreator from "../../helpers/companyCreator";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { useAuth } from "../../context/AuthProvider/AuthProvider";
 import { newUserAffiliation } from "../../helpers/affiliationFetcher";
+import { useAuth } from "../../context/AuthProvider/AuthProvider";
 
 const CreateCompany: React.FC = () => {
   const storage = getStorage();
   const location = useLocation();
   const navigate = useNavigate();
-  const {currentUser} = useAuth()
+  const { currentUser } = useAuth();
   const path = location.pathname;
   const newCompanyDefault = {} as TNewCompany;
   const [newCompany, setNewCompany] = useState<TNewCompany>(newCompanyDefault);
@@ -30,6 +32,12 @@ const CreateCompany: React.FC = () => {
   const [bannerPic, setBannerPic] = useState<File>();
   const [bannerUrl, setBannerUrl] = useState("");
   const [isChecked1, setIsChecked1] = useState(false);
+  const [formErrs, setFormErrs] = useState("");
+  const { currentUser } = useAuth();
+
+  const clickHandler = () => {
+    setStepOneDone(false);
+  };
 
   const handlePic = (e: React.FormEvent<HTMLInputElement>) => {
     const target = e.target as HTMLInputElement;
@@ -68,31 +76,34 @@ const CreateCompany: React.FC = () => {
   //this upoads picture successfully but does not return a path with token
 
   useEffect(() => {
-    if (stepTwoDone) validateCompany();
+    if (stepTwoDone) validateCompany(newCompany);
   }, [stepTwoDone]);
 
-  const validateCompany = async () => {
-    const companyValidation = newCompanySchema.safeParse(newCompany);
+  const validateCompany = async (company: TNewCompany) => {
+    const companyValidation = newCompanySchema.safeParse(company);
     if (!companyValidation.success) {
       console.log(companyValidation.error.errors);
     }
     if (companyValidation.success) {
-      const company = companyValidation.data;
       try {
         //send post req?
-        companyCreator(newCompany)
+        companyCreator(company)
           .then((res) => {
             return res.data.message;
           })
-          .then(async(companyId) => {
+          .then(async (companyId) => {
             //Add user and company to affiliation
-            if (currentUser){
-              const newUserAffi = await newUserAffiliation(companyId, currentUser?.uid, true, true)
-              console.log("New affiliation added: ",newUserAffi )
+            if (currentUser) {
+              const newUserAffi = await newUserAffiliation(
+                companyId,
+                currentUser?.uid,
+                true,
+                true
+              );
+              console.log("New affiliation added: ", newUserAffi);
             }
             navigate(`/company/${companyId}`);
           });
-        // navigate(`/company/${newCompanyId}`);
       } catch (error) {
         console.log(`catched error: ${error}`);
       }
@@ -101,6 +112,7 @@ const CreateCompany: React.FC = () => {
 
   const handleFirstSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setFormErrs("");
     const nameInput = e.currentTarget.elements.namedItem(
       "name"
     ) as HTMLInputElement;
@@ -133,7 +145,7 @@ const CreateCompany: React.FC = () => {
     const nameAvailable = await getAllCompanies().then((companies) => {
       const found = companies.find((company) => company.name === `${name}`);
       if (found) {
-        console.log("error: name already in use");
+        setFormErrs("That company is already on Greensfeer!");
         return false;
       }
       if (!found) {
@@ -160,9 +172,31 @@ const CreateCompany: React.FC = () => {
         logo,
         banner,
       });
-      setStepOneDone(true);
-      navigate("/create-company/step2");
     }
+
+    if (!newCompany.name) {
+      setFormErrs("Please enter a company name");
+      return;
+    }
+    if (!newCompany.sector) {
+      setFormErrs("Please enter a sector");
+      return;
+    }
+    if (!newCompany.market_role) {
+      setFormErrs("Please enter a market role");
+      return;
+    }
+    if (!newCompany.location) {
+      setFormErrs("Please enter a location");
+      return;
+    }
+    if (!isChecked1) {
+      setFormErrs("Please confirm you are an organization rep");
+      return;
+    }
+    setStepOneDone(true);
+    navigate("/create-company/step2");
+
     console.log("Form 1 submitted");
     // Correctly checks company name against database & saves form fields to state
   };
@@ -221,6 +255,15 @@ const CreateCompany: React.FC = () => {
 
   return (
     <section className="create-company">
+      {/* 
+      // FIXME: add upload image thumbnail to inputs to show user successful upload?
+      <div
+        style={{
+          backgroundImage: `url(${bannerUrl})`,
+          height: "40px",
+          width: "40px",
+        }}
+      ></div> */}
       {!stepOneDone && createCompany1 && (
         <CompanyForm1
           handleSubmit={handleFirstSubmit}
@@ -228,10 +271,19 @@ const CreateCompany: React.FC = () => {
           handleBanner={handleBanner}
           handleCheckbox1={handleCheckbox1}
           isChecked1={isChecked1}
+          errors={formErrs}
         />
       )}
-      {stepOneDone && createCompany2 && (
-        <CompanyForm2 handleSubmit={handleSecondSubmit} />
+      {stepOneDone && !stepTwoDone && createCompany2 && (
+        <CompanyForm2
+          handleSubmit={handleSecondSubmit}
+          clickHandler={clickHandler}
+        />
+      )}
+      {stepTwoDone && (
+        <div className="create-company__form" style={{ fontSize: "4rem" }}>
+          Company created, redirecting to new Company Profile
+        </div>
       )}
     </section>
   );
