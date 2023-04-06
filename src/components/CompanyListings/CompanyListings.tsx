@@ -15,11 +15,13 @@ interface Post {
 interface MarketThumbnailsProps {
   title: string;
   posts: Post[];
+  companyProfileType?: string;
 }
 
 export const CompanyListings: React.FC<MarketThumbnailsProps> = ({
   title,
   posts,
+  companyProfileType,
 }) => {
   const truncate = (string: string, maxLength: number) => {
     if (string.length > maxLength) {
@@ -113,11 +115,13 @@ export const CompanyListings: React.FC<MarketThumbnailsProps> = ({
         {/* map posts
                 each card: post category, post name, company_id, optional p.total price
                 */}
-        <div className="listings__card">
-          <Link to="/create-listing/step1" className="listings__add-new">
-            <IoIosAddCircleOutline />
-          </Link>
-        </div>
+        {companyProfileType === "affiliated" && (
+          <div className="listings__card">
+            <Link to="/create-listing/step1" className="listings__add-new">
+              <IoIosAddCircleOutline />
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

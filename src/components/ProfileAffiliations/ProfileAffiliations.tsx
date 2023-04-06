@@ -7,16 +7,26 @@ import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ICompany } from "customTypes";
 import getAffiliation from "../../helpers/affiliationFetcher";
-import { useAuth } from "src/context/AuthProvider/AuthProvider";
 
-// interface UserAffiliations {
-//   logo: string;
-//   name: string;
-//   link: string;
-// }
+interface ProfileAffiliationProps {
+  userType?: string;
+}
 
-export const ProfileAffiliations: React.FC = () => {
-  const { uid } = useParams();
+const getUserIdFromUrl = (url: string): string | null => {
+  const regex = /^\/gs\/(\w+)$/; // Regular expression to match the URL pattern
+  const match = url.match(regex); // Try to match the URL with the regular expression
+
+  if (match && match.length > 1) {
+    return match[1]; // Extract the userId from the regex match
+  }
+
+  return null; // Return null if no match is found
+};
+
+export const ProfileAffiliations: React.FC<ProfileAffiliationProps> = ({
+  userType,
+}) => {
+  const uid = getUserIdFromUrl(window.location.pathname); // Get userId from the URL path
   console.log(uid);
   const [userAfilliations, setUserAfilliation] = useState<ICompany[] | null>(
     null
@@ -62,15 +72,17 @@ export const ProfileAffiliations: React.FC = () => {
             </Link>
           ))}
 
-        <div className="affiliations__company">
-          <Link
-            to="/create-company/step1"
-            className="affiliations__logo-div-add"
-          >
-            <IoIosAdd />
-          </Link>
-          <p className="affiliations__name">Add New</p>
-        </div>
+        {userType === "current" && (
+          <div className="affiliations__company">
+            <Link
+              to="/create-company/step1"
+              className="affiliations__logo-div-add"
+            >
+              <IoIosAdd />
+            </Link>
+            <p className="affiliations__name">Add New</p>
+          </div>
+        )}
       </div>
     </div>
   );

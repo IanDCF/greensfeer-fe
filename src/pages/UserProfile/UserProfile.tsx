@@ -46,7 +46,7 @@ export const UserProfile: React.FC = () => {
         <ProfileHeader ProfileData={profile} user={true} />
         <ProfileAbout ProfileData={profile} user={true} />
         {/* {profile && console.log(profile)} */}
-        <ProfileAffiliations />
+        <ProfileAffiliations userType="current" />
         <PromptModal open={openCompanyModal} clickHandler={clickHandler} />
       </div>
     </>

@@ -18,7 +18,7 @@ const UserMenu = () => {
   };
   return (
     <div className="user-menu">
-      <Link to={`/profile/${currentUser?.uid}`} className="user-menu__item">
+      <Link to={`/gs/${currentUser?.uid}`} className="user-menu__item">
         My Profile
       </Link>
       <div className="user-menu__item" onClick={handleSignOut}>

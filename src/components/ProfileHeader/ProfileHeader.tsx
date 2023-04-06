@@ -16,6 +16,7 @@ interface ProfileHeaderProps {
   ProfileData?: IUser;
   CompanyData?: ICompany;
   user: boolean;
+  userType?: string;
 }
 
 // interface UserProps {
@@ -36,6 +37,7 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
   ProfileData,
   CompanyData,
   user,
+  userType,
 }) => {
   const headshotStyle: React.CSSProperties = {
     background: `url(${ProfileData?.profile_picture}) center/cover no-repeat`,
