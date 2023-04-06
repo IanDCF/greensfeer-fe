@@ -9,7 +9,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import getCompany from "../../helpers/companyFetcher";
 import Modal from "../../components/PromptModal/PromptModal";
 import { useAuth } from "../../context/AuthProvider/AuthProvider";
-import getAffiliation from "../../helpers/affiliationFetcher";
+import getAffiliation, {
+  getAllAffiliations,
+} from "../../helpers/affiliationFetcher";
 
 export const CompanyProfile: React.FC = () => {
   const { currentUser } = useAuth();
@@ -47,7 +49,7 @@ export const CompanyProfile: React.FC = () => {
     const checkAffiliation = async () => {
       try {
         if (companyId) {
-          const affiliatedCompanies = await getAffiliation(
+          const affiliatedCompanies = await getAllAffiliations(
             currentUser?.uid ?? ""
           ); // Make GET request to endpoint to get affiliated companies
           const isAffiliated = affiliatedCompanies.some(
@@ -78,7 +80,11 @@ export const CompanyProfile: React.FC = () => {
             title={"Projects"}
             companyProfileType={companyProfileType}
           />
-          <CompanyListings posts={services} title={"Services"} />
+          <CompanyListings
+            posts={services}
+            title={"Services"}
+            companyProfileType={companyProfileType}
+          />
           <Modal open={openCompanyModal} clickHandler={clickHandler} />
         </div>
       )}
