@@ -84,6 +84,7 @@ const MarketplaceSearch = () => {
                 className="search__link"
               >
                 {listing.image ? (
+                  // company logo not banner
                   <img className="search__photo" src={`${listing.image}`} />
                 ) : (
                   <div className="search__photo">
@@ -97,6 +98,7 @@ const MarketplaceSearch = () => {
                   <BsDot />
                 </div>
                 <div className="search__listing-type">
+                  {/* change to sector */}
                   {listing.methodology}
                 </div>
               </Link>
