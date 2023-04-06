@@ -1,7 +1,6 @@
 import axios from "axios";
 import { ICompany } from "customTypes";
 import { User } from "firebase/auth";
-import { useAuth } from "../context/AuthProvider/AuthProvider";
 
 const getAffiliation = async (currentUser: User | null) => {
   const URL_BASE = import.meta.env.VITE_REACT_APP_BASE_URL;
