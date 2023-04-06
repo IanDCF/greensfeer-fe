@@ -8,22 +8,19 @@ import { ICompany, IMarketPost } from "customTypes";
 import { useNavigate, useParams } from "react-router-dom";
 import getCompany from "../../helpers/companyFetcher";
 import Modal from "../../components/PromptModal/PromptModal";
-import { useAuth } from "../../context/AuthProvider/AuthProvider";
-import getAffiliation from "../../helpers/affiliationFetcher";
 
 export const CompanyProfile: React.FC = () => {
-  const { currentUser } = useAuth();
   const { companyId } = useParams();
   const navigate = useNavigate();
   const [products, setProducts] = useState<IMarketPost[]>([]);
   const [services, setServices] = useState<IMarketPost[]>([]);
   const [company, setCompany] = useState<ICompany | null>(null);
   const [openCompanyModal, setOpenCompanyModal] = useState<boolean>(true);
-  const [companyProfileType, setCompanyProfileType] =
-    useState<string>("not affiliated");
+
   const clickHandler: MouseEventHandler = () => {
     setOpenCompanyModal(false);
   };
+
   useEffect(() => {
     const getData = async () => {
       if (companyId) {
@@ -43,28 +40,7 @@ export const CompanyProfile: React.FC = () => {
     getData();
   }, [companyId]);
 
-  useEffect(() => {
-    const checkAffiliation = async () => {
-      try {
-        if (companyId) {
-          const affiliatedCompanies = await getAffiliation(
-            currentUser?.uid ?? ""
-          ); // Make GET request to endpoint to get affiliated companies
-          const isAffiliated = affiliatedCompanies.some(
-            (company) => company.company_id === companyId
-          ); // Check if companyId exists in the affiliated companies array
-          if (isAffiliated) {
-            setCompanyProfileType("affiliated"); // Set companyProfileType state to "affiliated" if there is a match
-          } else {
-            setCompanyProfileType("not affiliated"); // Set to "not affiliated" if no match
-          }
-        }
-      } catch (error) {
-        console.error("Failed to get affiliated companies: ", error);
-      }
-    };
-    checkAffiliation();
-  }, [companyId, currentUser]);
+  useEffect(() => {});
 
   return (
     <>
@@ -73,11 +49,7 @@ export const CompanyProfile: React.FC = () => {
           <ProfileHeader CompanyData={company} user={false} />
           <ProfileAbout CompanyData={company} user={false} />
           {/* <Affiliations /> */}
-          <CompanyListings
-            posts={products}
-            title={"Projects"}
-            companyProfileType={companyProfileType}
-          />
+          <CompanyListings posts={products} title={"Projects"} />
           <CompanyListings posts={services} title={"Services"} />
           <Modal open={openCompanyModal} clickHandler={clickHandler} />
         </div>

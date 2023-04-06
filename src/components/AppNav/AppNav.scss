@@ -89,8 +89,15 @@
 
   &__user-menu {
     position: absolute;
-    top: 10.75rem;
     right: -1rem;
+
+    @include bp.tablet {
+      top: 12.5rem;
+    }
+
+    @include bp.desktop {
+      top: 12.5rem;
+    }
   }
 
   &__searchbar {

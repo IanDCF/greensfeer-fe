@@ -14,6 +14,7 @@ import Marketplace from "./pages/Marketplace/Marketplace";
 import CreateCompany from "./pages/CreateCompany/CreateCompany";
 import CreateListing from "./pages/CreateListing/CreateListing";
 import Navigation from "./pages/Navigation/Navigation";
+import MemberProfile from "./pages/MemberProfile/MemberProfile";
 
 const App = () => {
   const { currentUser } = useAuth();
@@ -27,7 +28,8 @@ const App = () => {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/network" element={<Network />} />
         <Route path="/messages" element={<Messages />} />
-        <Route path="/profile/:uid" element={<UserProfile />} />
+        <Route path={`/gs/${currentUser?.uid}`} element={<UserProfile />} />
+        <Route path="/gs/:uid" element={<MemberProfile />} />
         <Route path="/messages/chat" element={<ChatRoom />} />
         <Route path="/company/:companyId" element={<CompanyProfile />} />
         <Route path="/marketplace" element={<Marketplace />} />

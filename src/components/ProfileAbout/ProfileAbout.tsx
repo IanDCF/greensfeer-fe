@@ -5,12 +5,14 @@ interface ProfileAboutProps {
   ProfileData?: IUser;
   CompanyData?: ICompany;
   user: boolean;
+  userType?: string;
 }
 
 export const ProfileAbout: React.FC<ProfileAboutProps> = ({
   ProfileData,
   CompanyData,
   user,
+  userType,
 }) => {
   return (
     <div className="about">

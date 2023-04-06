@@ -9,7 +9,7 @@ const Navigation = () => {
 
   // const isNetworkPath = location.pathname.includes("/network");
   // const isMessagesPath = location.pathname.includes("/messages");
-  const isProfilePath = location.pathname.includes("/profile");
+  const isProfilePath = location.pathname.includes("/gs/");
   const isCompanyPath = location.pathname.includes("/company");
   const isMarketplacePath = location.pathname.includes("/marketplace");
 
