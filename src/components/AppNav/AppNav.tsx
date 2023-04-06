@@ -12,6 +12,7 @@ import { IoMdNotificationsOutline } from "react-icons/io";
 import UserMenu from "../UserMenu/UserMenu";
 
 const AppNav: React.FC = () => {
+  const { currentUser } = useAuth();
   const photoStyle = {
     background: `url(${PlaceholderPhoto}) center/cover no-repeat`,
   };
