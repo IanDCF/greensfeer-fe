@@ -63,8 +63,9 @@ const Searchbar = () => {
       setSearchDropdown(true);
       setSearchResult(
         sampleProfiles.filter((profile) => {
+          const regex = new RegExp(`${search}`, "i");
           const match = (nameStr: string | undefined) => {
-            if (nameStr?.match(search)) return true;
+            if (nameStr?.match(regex)) return true;
           };
           if (
             match(profile.first_name) ||
@@ -137,20 +138,6 @@ const Searchbar = () => {
               </Link>
             );
           })}
-          <Link to="#" className="search__link">
-            <div className="search__photo">
-              <FaUserCircle />
-            </div>
-            <div className="search__text">
-              <div className="search__name">{search}</div>
-            </div>
-            <div className="search__separator">
-              <BsDot />
-            </div>
-            <div className="search__headline">
-              Project Developer @ India's Forests
-            </div>
-          </Link>
         </div>
       )}
     </div>

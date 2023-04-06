@@ -49,7 +49,8 @@ const MarketplaceSearch = () => {
       setMarketSearchDropdown(true);
       setMarketSearchResult(
         sampleListings.filter((listing) => {
-          return listing.post_name.match(marketSearch);
+          const regex = new RegExp(`${marketSearch}`, "i");
+          return listing.post_name.match(regex);
         })
       );
     } else {
