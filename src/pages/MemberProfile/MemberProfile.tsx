@@ -7,28 +7,18 @@ import axios from "axios";
 import { useState, useEffect, MouseEventHandler } from "react";
 import { IUser } from "customTypes";
 import PromptModal from "../../components/PromptModal/PromptModal";
-
-const getUserIdFromUrl = (url: string): string | null => {
-  const regex = /^\/gs\/(\w+)$/; // Regular expression to match the URL pattern
-  const match = url.match(regex); // Try to match the URL with the regular expression
-
-  if (match && match.length > 1) {
-    return match[1]; // Extract the userId from the regex match
-  }
-
-  return null; // Return null if no match is found
-};
+import { useParams } from "react-router-dom";
 
 export const MemberProfile: React.FC = () => {
   const [profile, setProfile] = useState<IUser>();
+  const { user_id } = useParams(); // Get userId from the URL path
 
   useEffect(() => {
     const fetchProfile = async () => {
-      const userId = getUserIdFromUrl(window.location.pathname); // Get userId from the URL path
-      if (userId) {
+      if (user_id) {
         try {
           const response = await axios.get(
-            `http://127.0.0.1:5001/greensfeer-db-dd101/us-central1/app/api/user/${userId}`
+            `http://127.0.0.1:5001/greensfeer-db-dd101/us-central1/app/api/user/${user_id}`
           );
           if (response.status === 200) {
             setProfile(response.data);
@@ -42,7 +32,7 @@ export const MemberProfile: React.FC = () => {
     };
 
     fetchProfile();
-  }, []);
+  }, [user_id]);
 
   return (
     <>

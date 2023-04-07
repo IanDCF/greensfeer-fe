@@ -22,9 +22,9 @@ const Register = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<null | string>(null);
 
-  const clickHandler =()=>{
-    setRegisterDone(false)
-  }
+  const clickHandler = () => {
+    setRegisterDone(false);
+  };
 
   useEffect(() => {
     if (registerDoneInfo) validateUser();
@@ -50,7 +50,7 @@ const Register = () => {
         setLoading(true);
         if (createdUser) {
           setTimeout(() => {
-            navigate("/marketplace");
+            navigate(`/marketplace/`);
           }, 3000);
         }
         console.log(createdUser);
@@ -69,7 +69,7 @@ const Register = () => {
 
   const handleFirstSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setError('')
+    setError("");
     const emailInput = e.currentTarget.elements.namedItem(
       "email"
     ) as HTMLInputElement;

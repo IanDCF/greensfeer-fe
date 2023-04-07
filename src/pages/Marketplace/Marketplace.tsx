@@ -1,4 +1,4 @@
-import { useLocation, matchPath } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import "./Marketplace.scss";
 import MarketplaceList from "../../components/MarketplaceList/MarketplaceList";
 import MarketplaceSelected from "../../components/MarketplaceSelected/MarketplaceSelected";
@@ -10,10 +10,11 @@ import FilterBar from "../../components/FilterBar/FilterBar";
 import PromptModal from "../../components/PromptModal/PromptModal";
 
 const Marketplace: React.FC = () => {
+  const { listing_id } = useParams(); // Retrieve the listingId from URL pathname directly
   const [marketPosts, setMarketPosts] = useState<IMarketPost[]>([]);
-  const [selectedPost, setSelectedPost] = useState<IMarketPost>();
-  const location = useLocation();
-  const path = location.pathname;
+  const [selectedPost, setSelectedPost] = useState<IMarketPost | undefined>();
+  const [marketplaceToggle, setMarketplaceToggle] = useState(false);
+
   useEffect(() => {
     const getData = async () => {
       const posts = await allMarketPosts();
@@ -21,43 +22,50 @@ const Marketplace: React.FC = () => {
     };
     getData();
   }, []);
-  useEffect(
-    () => {
-      const getPost = async () => {
-        const post = await selectMarketPost(
-          "623858ea-177a-42a5-b5cd-85befd63960e"
-        );
+
+  useEffect(() => {
+    // Call selectMarketPost with listing_id as a dependency
+    const getPost = async () => {
+      if (listing_id) {
+        const post = await selectMarketPost(listing_id);
         setSelectedPost(post);
-      };
-      getPost();
-    },
-    [
-      // once there is a clickhandler run when params update
-    ]
-  );
-
-  const marketplaceListMatch = matchPath(path, "/marketplace");
-
-  const marketplaceItemSelectedMatch = matchPath(
-    location.pathname,
-    "/marketplace/item"
-  );
+      }
+    };
+    getPost();
+  }, [listing_id]); // Add listing_id as a dependency
 
   const [openCompanyModal, setOpenCompanyModal] = useState<boolean>(true);
   const clickHandler: MouseEventHandler = () => {
     setOpenCompanyModal(false);
   };
 
+  const handleMarketplaceToggle = () => {
+    setMarketplaceToggle(!marketplaceToggle);
+  };
+
+  const navigate = useNavigate();
+
+  const handleMarketplaceURL = (listingId: string) => {
+    navigate(`/marketplace/${listingId}`);
+  };
+
   return (
     <div className="marketplace-container">
       <section className="marketplace-container__mobile">
-        {marketplaceItemSelectedMatch && (
-          <MarketplaceSelected Post={selectedPost} />
+        {marketplaceToggle && (
+          <MarketplaceSelected
+            Post={selectedPost}
+            clickHandler={handleMarketplaceToggle}
+          />
         )}
-        {marketplaceListMatch && (
+        {!marketplaceToggle && (
           <>
             <FilterBar />
-            <MarketplaceList Posts={marketPosts} />
+            <MarketplaceList
+              Posts={marketPosts}
+              clickHandler={handleMarketplaceToggle}
+              urlHandler={handleMarketplaceURL}
+            />
             <PromptModal open={openCompanyModal} clickHandler={clickHandler} />
           </>
         )}
@@ -69,7 +77,10 @@ const Marketplace: React.FC = () => {
 
         <div className="marketplace-container__explorer">
           {" "}
-          <MarketplaceList Posts={marketPosts} />
+          <MarketplaceList
+            Posts={marketPosts}
+            urlHandler={handleMarketplaceURL}
+          />
           <MarketplaceSelected Post={selectedPost} />
         </div>
         <PromptModal open={openCompanyModal} clickHandler={clickHandler} />

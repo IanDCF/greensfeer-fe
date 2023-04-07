@@ -1,6 +1,5 @@
 import { MouseEventHandler } from "react";
-import { Link, matchPath } from "react-router-dom";
-import ControlButton from "../ControlButtons/ControlButton";
+import { Link } from "react-router-dom";
 import { AiOutlineClose } from "react-icons/ai";
 import "./PromptModal.scss";
 
@@ -13,7 +12,7 @@ interface Props {
 //close function: axios.patch user company modal seen: true
 // navigate to proper destination
 const PromptModal: React.FC<Props> = ({ open, clickHandler }) => {
-  const onMarketplace = matchPath(location.pathname, "/marketplace");
+  const onMarketplace = location.pathname.includes("/marketplace/");
   if (!open) return <></>;
   return (
     <div className="modal">
