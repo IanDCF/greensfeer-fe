@@ -5,21 +5,28 @@ import { FaUserCircle } from "react-icons/fa";
 import "./Searchbar.scss";
 import { BsDot } from "react-icons/bs";
 import displayPic from "../../assets/images/Mohan-muruge.jpg";
-interface Result {
-  profile_picture: string | undefined;
-  logo: string | undefined;
-  first_name: string | undefined;
-  last_name: string | undefined;
-  name: string | undefined;
-  uid: string | undefined;
-  company_id: string | undefined;
-  headline: string | undefined;
-}
+import getAllCompanies from "../../helpers/allCompanyFetcher";
+import { allUsers } from "../../helpers/userFetcher";
+import { ICompany, IUser } from "customTypes";
 
 const Searchbar = () => {
   const [search, setSearch] = useState("");
-  const [searchResult, setSearchResult] = useState<Array<Object>>([]);
+  const [profiles, setProfiles] = useState<(IUser | ICompany)[]>([]);
+  const [searchResult, setSearchResult] = useState<(IUser | ICompany)[]>();
   const [searchDropdown, setSearchDropdown] = useState(false);
+
+  const getProfiles = async () => {
+    // TODO: create a specific GET that returns necessary details
+    const companies = await getAllCompanies();
+    const users = await allUsers();
+    if (users) {
+      setProfiles([...users, ...companies]);
+    }
+    console.log(profiles);
+  };
+  useEffect(() => {
+    getProfiles();
+  }, []);
   const sampleProfiles = [
     {
       profile_picture: "",
@@ -62,7 +69,7 @@ const Searchbar = () => {
     if (search.length > 0) {
       setSearchDropdown(true);
       setSearchResult(
-        sampleProfiles.filter((profile) => {
+        profiles?.filter((profile) => {
           const regex = new RegExp(`${search}`, "i");
           const match = (nameStr: string | undefined) => {
             if (nameStr?.match(regex)) return true;
@@ -99,44 +106,59 @@ const Searchbar = () => {
       />
       {searchDropdown && (
         <div className="search__dropdown" onClick={handleSearch}>
-          {searchResult.map((profile) => {
-            return (
-              <Link
-                to={
-                  profile.uid
-                    ? `/gs/${profile.uid}`
-                    : `/company/${profile.company_id}`
-                }
-                key={profile.uid ? profile.uid : profile.company_id}
-                className="search__link"
-              >
-                {profile.profile_picture ? (
-                  <img
-                    className="search__photo"
-                    src={`${profile.profile_picture}`}
-                  />
-                ) : profile.logo ? (
-                  <img className="search__photo" src={`${profile.logo}`} />
-                ) : (
-                  <div className="search__photo">
-                    <FaUserCircle />
-                  </div>
-                )}
-                <div className="search__text">
-                  {profile.first_name ? (
-                    <div className="search__name">{`${profile.first_name} ${profile.last_name}`}</div>
+          {searchResult?.map((profile: IUser | ICompany) => {
+            if ("uid" in profile) {
+              return (
+                <Link
+                  to={`/gs/${profile.uid}`}
+                  key={profile.uid}
+                  className="search__link"
+                >
+                  {profile.profile_picture ? (
+                    <img
+                      className="search__photo"
+                      src={`${profile.profile_picture}`}
+                    />
                   ) : (
-                    <div className="search__name">{profile.name}</div>
+                    <div className="search__photo">
+                      <FaUserCircle />
+                    </div>
                   )}
-                </div>
-                <div className="search__separator">
-                  <BsDot />
-                </div>
-                <div className="search__headline">
-                  {profile.headline ? profile.headline : ""}
-                </div>
-              </Link>
-            );
+                  <div className="search__text">
+                    <div className="search__name">{`${profile.first_name} ${profile.last_name}`}</div>
+                  </div>
+                  <div className="search__separator">
+                    <BsDot />
+                  </div>
+                  <div className="search__headline">{profile.headline}</div>
+                </Link>
+              );
+            } else {
+              return (
+                <Link
+                  to={`/company/${profile.company_id}`}
+                  key={profile.company_id}
+                  className="search__link"
+                >
+                  {profile.logo ? (
+                    <img className="search__photo" src={`${profile.logo}`} />
+                  ) : (
+                    <div className="search__photo">
+                      <FaUserCircle />
+                    </div>
+                  )}
+                  <div className="search__text">
+                    {<div className="search__name">{profile.name}</div>}
+                  </div>
+                  <div className="search__separator">
+                    <BsDot />
+                  </div>
+                  <div className="search__headline">
+                    {profile.headline ? profile.headline : ""}
+                  </div>
+                </Link>
+              );
+            }
           })}
         </div>
       )}
