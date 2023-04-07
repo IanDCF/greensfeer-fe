@@ -254,6 +254,8 @@ const CreateCompany: React.FC = () => {
           handleCheckbox1={handleCheckbox1}
           isChecked1={isChecked1}
           errors={formErrs}
+          profileUrl={profileUrl}
+          bannerUrl={bannerUrl}
         />
       )}
       {stepOneDone && !stepTwoDone && createCompany2 && (

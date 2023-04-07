@@ -189,6 +189,14 @@
     }
   }
 
+  &__upload-check {
+    position: absolute;
+    color: color.$green;
+    font-size: 4.5rem;
+    top: -2.85rem;
+    right: -1.75rem;
+  }
+
   &__label {
     position: absolute;
     background-color: color.$white;
