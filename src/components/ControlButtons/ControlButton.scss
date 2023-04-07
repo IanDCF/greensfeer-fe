@@ -4,23 +4,24 @@
 .control-btn {
   text-decoration: none;
   margin: 0;
-  white-space: nowrap;
-  outline: none;
+  // white-space: nowrap;
+  // outline: none;
   border-radius: 50px;
   border: none;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
   cursor: pointer;
   font-weight: 300;
 
   &__icon {
     display: flex;
     align-items: center;
-    margin-left: 3rem;
+    margin-left: 1.5rem;
 
     @include bp.mobile {
-      font-size: 6.5rem;
+      font-size: 5.75rem;
     }
 
     @include bp.tablet {
@@ -28,12 +29,16 @@
     }
 
     @include bp.desktop {
-      font-size: 6.5rem;
+      font-size: 5.75rem;
     }
   }
 
+  &__text {
+    margin: 0 auto;
+  }
+
   @include bp.mobile {
-    font-size: 6.5rem;
+    font-size: 5.5rem;
     padding: 1.5rem 4.5rem;
   }
 
@@ -44,7 +49,7 @@
   }
 
   @include bp.desktop {
-    font-size: 6.5rem;
+    font-size: 5.5rem;
     padding: 1.5rem 4.5rem;
   }
 

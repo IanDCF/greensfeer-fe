@@ -128,6 +128,11 @@
     }
   }
 
+  &__heading-search {
+    @extend .create-company__heading;
+    margin-bottom: 20rem;
+  }
+
   &__input-fields {
     display: flex;
     flex-direction: column;
@@ -324,6 +329,27 @@
     }
   }
 
+  &__search-icon {
+    display: flex;
+    align-items: center;
+    color: color.$nickel;
+    margin-right: 1.25rem;
+    @include bp.mobile {
+      font-size: 3.5rem;
+      font-weight: 300;
+    }
+
+    @include bp.tablet {
+      font-size: 4rem;
+      font-weight: 300;
+    }
+
+    @include bp.desktop {
+      font-size: 3.5rem;
+      font-weight: 300;
+    }
+  }
+
   &__offering {
     @extend .create-company__input;
     color: color.$charcoal;
@@ -398,5 +424,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  &__controls-search {
+    @extend .create-company__controls;
+    margin-top: 20rem;
   }
 }

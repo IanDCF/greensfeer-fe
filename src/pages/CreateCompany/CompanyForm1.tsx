@@ -2,9 +2,6 @@ import "./CreateCompany.scss";
 import logo from "../../assets/logos/greensfeer-logo.png";
 import { BsCamera } from "react-icons/bs";
 import ControlButton from "../../components/ControlButtons/ControlButton";
-import getAllCompanies from "../../helpers/allCompanyFetcher";
-import { compile } from "sass";
-import React from "react";
 interface Props {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   handlePic: (e: React.FormEvent<HTMLInputElement>) => void;
@@ -148,8 +145,8 @@ const CompanyForm1 = ({
       <div className="create-company__controls">
         <ControlButton
           dark={true}
-          text="Cancel"
-          link="/profile"
+          text="Back"
+          link="/search-company"
           btnType="link"
         />
         <ControlButton dark={false} text="Next" btnType="submit" />

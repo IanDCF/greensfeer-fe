@@ -1,68 +1,30 @@
 @use "../../styles/partials/colors.scss" as color;
 @use "../../styles/partials/breakpoints.scss" as bp;
 
-.search {
-  border: 0.25rem solid color.$romansilver;
-  height: 9rem;
-  border-radius: 15rem;
-  padding: 0 4rem;
-  display: flex;
-  align-items: center;
+.search-dropdown {
+  position: absolute;
+  background-color: color.$white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 2.5rem;
+  padding: 1rem 2rem;
 
   @include bp.mobile {
-    width: 94%;
-  }
-  @include bp.tablet {
-    position: relative;
-    width: 95%;
-  }
-  @include bp.desktop {
-    position: relative;
-    width: 92%;
-  }
-
-  &__icon {
-    font-size: 4rem;
-    color: color.$romansilver;
-    margin-right: 0.75rem;
-  }
-  &__input {
-    border: none;
-    outline: none;
-    font-size: 3.5rem;
-    font-weight: 300;
+    top: 13rem;
+    left: 0;
     width: 100%;
-    color: color.$romansilver;
-    ::placeholder {
-      color: color.$romansilver;
-    }
   }
 
-  &__dropdown {
-    position: absolute;
-    background-color: color.$white;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    border-radius: 2.5rem;
-    padding: 1rem 2rem;
+  @include bp.tablet {
+    top: 17rem;
+    left: 0;
+    right: 0;
+  }
 
-    @include bp.mobile {
-      top: 14rem;
-      left: 3.5rem;
-      right: 3.5rem;
-    }
-
-    @include bp.tablet {
-      top: 12rem;
-      left: 0;
-      right: 0;
-    }
-
-    @include bp.desktop {
-      width: 100%;
-      top: 12rem;
-      left: 0;
-      right: 0;
-    }
+  @include bp.desktop {
+    width: 100%;
+    top: 13rem;
+    left: 0;
+    right: 0;
   }
 
   &__link {
@@ -89,16 +51,18 @@
     @include bp.mobile {
       font-size: 10rem;
       width: 10rem;
+      min-width: 10rem;
       height: 10rem;
     }
 
     @include bp.tablet {
       font-size: 12rem;
+      min-width: 12rem;
       width: 12rem;
       height: 12rem;
     }
 
-    @include bp.mobile {
+    @include bp.desktop {
       font-size: 12rem;
       width: 12rem;
       height: 12rem;
@@ -138,16 +102,16 @@
 
     @include bp.mobile {
       font-size: 3.75rem;
-      max-width: 38rem;
+      max-width: 28rem;
     }
 
     @include bp.tablet {
       font-size: 4rem;
-      max-width: 40rem;
+      max-width: 45rem;
     }
 
     @include bp.desktop {
-      max-width: 55rem;
+      max-width: 28rem;
       font-size: 4rem;
     }
   }
@@ -181,6 +145,6 @@
   }
 
   &__listing-type {
-    @extend .search__headline;
+    @extend .search-dropdown__headline;
   }
 }

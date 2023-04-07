@@ -6,9 +6,10 @@ import { TbArrowBackUp } from "react-icons/tb";
 interface Props {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   clickHandler: () => void;
+  errors: string;
 }
 
-const CompanyForm2 = ({ handleSubmit, clickHandler }: Props) => {
+const CompanyForm2 = ({ handleSubmit, clickHandler, errors }: Props) => {
   return (
     <form className="create-company__form" onSubmit={handleSubmit}>
       {/* Back btn has to change state to display previous page */}
@@ -84,6 +85,7 @@ const CompanyForm2 = ({ handleSubmit, clickHandler }: Props) => {
           * required input field
         </div>
       </div>
+      <div className="create-company__error">{errors}</div>
       <div className="create-company__controls">
         <ControlButton
           dark={true}
