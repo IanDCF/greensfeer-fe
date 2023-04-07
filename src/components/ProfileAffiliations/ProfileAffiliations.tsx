@@ -73,10 +73,7 @@ export const ProfileAffiliations: React.FC<ProfileAffiliationProps> = ({
 
         {userType === "current" && (
           <div className="affiliations__company">
-            <Link
-              to="/create-company/step1"
-              className="affiliations__logo-div-add"
-            >
+            <Link to="/search-company/" className="affiliations__logo-div-add">
               <IoIosAdd />
             </Link>
             <p className="affiliations__name">Add New</p>
