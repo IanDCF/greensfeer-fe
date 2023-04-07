@@ -35,7 +35,7 @@ declare module "customTypes" {
     post_category: string;
     location: Location;
     company_id: string;
-    post_type: "Product" | "Service";
+    post_type: "Project" | "Service";
   }
   export interface P {
     offset_unit: string;

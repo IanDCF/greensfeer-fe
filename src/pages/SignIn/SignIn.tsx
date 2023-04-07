@@ -32,9 +32,9 @@ const SignIn = () => {
         const { user } = await login(email, password);
         if (user) {
           console.log(`User ${user.email} logged in successfully`);
-          navigate("/marketplace");
+          navigate(`/marketplace`);
         }
-      } catch (error:unknown) {
+      } catch (error: any) {
         setError(error.code);
       }
     }

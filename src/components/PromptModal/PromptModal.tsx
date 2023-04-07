@@ -13,7 +13,7 @@ interface Props {
 //close function: axios.patch user company modal seen: true
 // navigate to proper destination
 const PromptModal: React.FC<Props> = ({ open, clickHandler }) => {
-  const onMarketplace = matchPath(location.pathname, "/marketplace");
+  const onMarketplace = location.pathname.includes("/marketplace/");
   if (!open) return <></>;
   return (
     <div className="modal">

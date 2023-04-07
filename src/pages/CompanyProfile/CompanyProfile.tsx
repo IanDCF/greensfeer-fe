@@ -9,9 +9,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import getCompany from "../../helpers/companyFetcher";
 import Modal from "../../components/PromptModal/PromptModal";
 import { useAuth } from "../../context/AuthProvider/AuthProvider";
-import getAffiliation, {
-  getAllAffiliations,
-} from "../../helpers/affiliationFetcher";
+import { getAllAffiliations } from "../../helpers/affiliationFetcher";
 
 export const CompanyProfile: React.FC = () => {
   const { currentUser } = useAuth();

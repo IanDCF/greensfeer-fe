@@ -1,4 +1,4 @@
-import { useLocation, matchPath } from "react-router-dom";
+import { useLocation, matchPath, useParams } from "react-router-dom";
 import "./Marketplace.scss";
 import MarketplaceList from "../../components/MarketplaceList/MarketplaceList";
 import MarketplaceSelected from "../../components/MarketplaceSelected/MarketplaceSelected";
@@ -10,10 +10,12 @@ import FilterBar from "../../components/FilterBar/FilterBar";
 import PromptModal from "../../components/PromptModal/PromptModal";
 
 const Marketplace: React.FC = () => {
+  const { listing_id } = useParams(); // Retrieve the listingId from URL pathname directly
   const [marketPosts, setMarketPosts] = useState<IMarketPost[]>([]);
-  const [selectedPost, setSelectedPost] = useState<IMarketPost>();
+  const [selectedPost, setSelectedPost] = useState<IMarketPost | undefined>();
   const location = useLocation();
   const path = location.pathname;
+
   useEffect(() => {
     const getData = async () => {
       const posts = await allMarketPosts();
@@ -21,20 +23,18 @@ const Marketplace: React.FC = () => {
     };
     getData();
   }, []);
-  useEffect(
-    () => {
-      const getPost = async () => {
-        const post = await selectMarketPost(
-          "623858ea-177a-42a5-b5cd-85befd63960e"
-        );
+
+  useEffect(() => {
+    // Call selectMarketPost with listing_id as a dependency
+    console.log(listing_id);
+    const getPost = async () => {
+      if (listing_id) {
+        const post = await selectMarketPost(listing_id);
         setSelectedPost(post);
-      };
-      getPost();
-    },
-    [
-      // once there is a clickhandler run when params update
-    ]
-  );
+      }
+    };
+    getPost();
+  }, [listing_id]); // Add listing_id as a dependency
 
   const marketplaceListMatch = matchPath(path, "/marketplace");
 

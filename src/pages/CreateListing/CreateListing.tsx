@@ -84,7 +84,7 @@ const CreateListing = () => {
         createMarketPost(service);
         setFormErrs("Service Listing Created, navigating to marketplace");
         setTimeout(() => {
-          navigate("/marketplace");
+          navigate(`/marketplace}`);
         }, 3000);
       }
       if (productDetailDone && newMarketPost.post_type === "Product") {
