@@ -1,6 +1,5 @@
 import { MouseEventHandler } from "react";
-import { Link, matchPath } from "react-router-dom";
-import ControlButton from "../ControlButtons/ControlButton";
+import { Link } from "react-router-dom";
 import { AiOutlineClose } from "react-icons/ai";
 import "./PromptModal.scss";
 

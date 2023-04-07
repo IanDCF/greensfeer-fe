@@ -10,11 +10,14 @@ import sdg7 from "../../assets/icons/sdg7.png";
 import CoralReef from "../../assets/images/coralreef.png";
 import { IMarketPost } from "customTypes";
 import { BiCheckShield } from "react-icons/bi";
+import { TbArrowBackUp } from "react-icons/tb";
+import { MouseEventHandler } from "react";
 interface Post {
   Post?: IMarketPost;
+  clickHandler?: MouseEventHandler<HTMLDivElement>;
 }
 
-const MarketplaceSelected: React.FC<Post> = ({ Post }) => {
+const MarketplaceSelected: React.FC<Post> = ({ Post, clickHandler }) => {
   const formatDate = (dateStr: string) => {
     const date = new Date(dateStr);
     const options: Intl.DateTimeFormatOptions = {
@@ -27,10 +30,14 @@ const MarketplaceSelected: React.FC<Post> = ({ Post }) => {
     };
     return date.toLocaleString("en-US", options);
   };
+
   return (
     <section className="marketplace-select">
       <div className="marketplace-select__body">
         <div className="marketplace-select__banner">
+          <div className="marketplace-select__back" onClick={clickHandler}>
+            <TbArrowBackUp />
+          </div>
           <img
             src={CompanyBanner}
             alt="Company Banner"
