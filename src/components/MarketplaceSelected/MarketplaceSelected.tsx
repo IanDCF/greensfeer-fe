@@ -1,7 +1,5 @@
 import CompanyBanner from "../../assets/images/nature-banner-2.png";
-import CompanyLogo from "../../assets/images/logo1.png";
 import "./MarketplaceSelected.scss";
-import VerifiedIcon from "../../assets/logos/greensfeer-logo.png";
 import sdg1 from "../../assets/icons/sdg1.png";
 import sdg2 from "../../assets/icons/sdg2.png";
 import sdg3 from "../../assets/icons/sdg3.png";
@@ -41,7 +39,7 @@ const MarketplaceSelected: React.FC<Post> = ({ Post }) => {
         </div>
 
         <div className="marketplace-select__details">
-          {/* Render ep_type is project, else render service type: we need to discuss */}
+          {/* Render ep_type if project, else render service type: we need to discuss */}
           <div className="marketplace-select__ep-type">{Post?.p?.ep_type}</div>
           <div className="marketplace-select__post-name">{Post?.post_name}</div>
           <div className="marketplace-select__company">
@@ -49,15 +47,11 @@ const MarketplaceSelected: React.FC<Post> = ({ Post }) => {
               Company Name Fix Required
             </div>
             <div className="marketplace-select__company-verified">
-              {/* <img
-                className="marketplace-select__verified-icon"
-                src={VerifiedIcon}
-              /> */}
               <BiCheckShield />
             </div>
           </div>
           <div className="marketplace-select__location">
-            {`${Post?.location.city}, ${Post?.location.state_province}, ${Post?.location.country}`}
+            {`${Post?.location}`}
           </div>
           <div className="marketplace-select__date-listed">
             Listed on {Post && formatDate(Post.created_at)}

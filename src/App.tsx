@@ -29,11 +29,11 @@ const App = () => {
         <Route path="/network" element={<Network />} />
         <Route path="/messages" element={<Messages />} />
         <Route path={`/gs/${currentUser?.uid}`} element={<UserProfile />} />
-        <Route path="/gs/:uid" element={<MemberProfile />} />
+        <Route path="/gs/:user_id" element={<MemberProfile />} />
         <Route path="/messages/chat" element={<ChatRoom />} />
         <Route path="/company/:companyId" element={<CompanyProfile />} />
-        <Route path="/marketplace" element={<Marketplace />} />
-        <Route path="/marketplace/item" element={<Marketplace />} />
+        {/* <Route path="/marketplace" element={<Marketplace />} /> */}
+        <Route path="/marketplace/:listing_id" element={<Marketplace />} />
         <Route path="/create-company/step1" element={<CreateCompany />} />
         <Route path="/create-company/step2" element={<CreateCompany />} />
         <Route path="/create-listing/step1" element={<CreateListing />} />

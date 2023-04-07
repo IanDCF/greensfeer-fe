@@ -13,9 +13,7 @@ const MarketplaceCard: React.FC<Post> = ({ Post }) => {
         <div className="marketplace-card__company-name">
           Company Name Fix Required
         </div>
-        <div className="marketplace-card__location">
-          {`${Post?.location.city}, ${Post?.location.state_province}, ${Post?.location.country}`}
-        </div>
+        <div className="marketplace-card__location">{`${Post?.location}`}</div>
       </div>
 
       <div className="marketplace-card__markers">

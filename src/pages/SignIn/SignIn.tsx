@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthProvider/AuthProvider";
 import { sigInSchema } from "../../schemas/UserSchema";
 import SignInForm from "./SignInForm";
+import allMarketPosts from "../../helpers/allMarketFetcher";
+import { Axios, AxiosError } from "axios";
 
 const SignIn = () => {
   const [error, setError] = useState<string | null>(null);
@@ -31,10 +33,13 @@ const SignIn = () => {
       try {
         const { user } = await login(email, password);
         if (user) {
+          //helper function to extract listing id
+          const listing_id = await allMarketPosts();
+
           console.log(`User ${user.email} logged in successfully`);
-          navigate("/marketplace");
+          navigate(`/marketplace/${listing_id[0].company_id}`);
         }
-      } catch (error:unknown) {
+      } catch (error: any) {
         setError(error.code);
       }
     }

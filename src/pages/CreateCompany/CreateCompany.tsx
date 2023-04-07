@@ -59,6 +59,7 @@ const CreateCompany: React.FC = () => {
       upload();
     }
   }, [profilePic]);
+
   useEffect(() => {
     if (bannerPic) {
       const newPicRef = ref(storage, `${bannerPic.name}`);
@@ -81,30 +82,22 @@ const CreateCompany: React.FC = () => {
     const companyValidation = newCompanySchema.safeParse(company);
     if (!companyValidation.success) {
       console.log(companyValidation.error.errors);
+      return;
     }
-    if (companyValidation.success) {
-      try {
-        //send post req?
-        companyCreator(company)
-          .then((res) => {
-            return res.data.message;
-          })
-          .then(async (companyId) => {
-            //Add user and company to affiliation
-            if (currentUser) {
-              const newUserAffi = await newUserAffiliation(
-                companyId,
-                currentUser?.uid,
-                true,
-                true
-              );
-              console.log("New affiliation added: ", newUserAffi);
-            }
-            navigate(`/company/${companyId}`);
-          });
-      } catch (error) {
-        console.log(`catched error: ${error}`);
+
+    try {
+      // send post req?
+      const res = await companyCreator(company);
+      const companyId = res.data.message;
+
+      // Add user and company to affiliation
+      if (currentUser) {
+        const newUserAffi = await addAffiliation(currentUser, companyId);
+        console.log("New affiliation added: ", newUserAffi);
+        setTimeout(() => navigate(`/gs/${currentUser?.uid}`), 3000);
       }
+    } catch (error) {
+      console.log(`catched error: ${error}`);
     }
   };
 
@@ -229,8 +222,7 @@ const CreateCompany: React.FC = () => {
     if (!registerCompanyDetailValidation.success) {
       const error = registerCompanyDetailValidation.error.errors;
       console.log(error);
-    }
-    if (registerCompanyDetailValidation.success) {
+    } else {
       setNewCompany({
         ...newCompany,
         headline,

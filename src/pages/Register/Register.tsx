@@ -9,6 +9,7 @@ import newUserSchema, {
 } from "../../schemas/UserSchema";
 import { useAuth } from "../../context/AuthProvider/AuthProvider";
 import { allUsers } from "../../helpers/userFetcher";
+import allMarketPosts from "../../helpers/allMarketFetcher";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -22,9 +23,9 @@ const Register = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<null | string>(null);
 
-  const clickHandler =()=>{
-    setRegisterDone(false)
-  }
+  const clickHandler = () => {
+    setRegisterDone(false);
+  };
 
   useEffect(() => {
     if (registerDoneInfo) validateUser();
@@ -49,8 +50,10 @@ const Register = () => {
         );
         setLoading(true);
         if (createdUser) {
+          //helper function to extract listing id
+          const listing_id = await allMarketPosts();
           setTimeout(() => {
-            navigate("/marketplace");
+            navigate(`/marketplace/${listing_id[0].company_id}`);
           }, 3000);
         }
         console.log(createdUser);
@@ -69,7 +72,7 @@ const Register = () => {
 
   const handleFirstSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setError('')
+    setError("");
     const emailInput = e.currentTarget.elements.namedItem(
       "email"
     ) as HTMLInputElement;
