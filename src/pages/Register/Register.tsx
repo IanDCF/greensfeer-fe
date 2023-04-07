@@ -9,7 +9,6 @@ import newUserSchema, {
 } from "../../schemas/UserSchema";
 import { useAuth } from "../../context/AuthProvider/AuthProvider";
 import { allUsers } from "../../helpers/userFetcher";
-import allMarketPosts from "../../helpers/allMarketFetcher";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -50,10 +49,8 @@ const Register = () => {
         );
         setLoading(true);
         if (createdUser) {
-          //helper function to extract listing id
-          const listing_id = await allMarketPosts();
           setTimeout(() => {
-            navigate(`/marketplace/${listing_id[0].company_id}`);
+            navigate(`/marketplace/`);
           }, 3000);
         }
         console.log(createdUser);

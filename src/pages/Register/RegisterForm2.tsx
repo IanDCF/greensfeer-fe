@@ -64,8 +64,9 @@ const RegisterForm2 = ({
               I am a
             </label>
             <select id="role" name="role" className="register__input">
-              <option hidden>Tell us who you are</option>
-              <option value="Project Aggregator">Project Aggregator</option>
+              <option selected disabled>
+                Tell us who you are
+              </option>
               <option value="Broker">Broker</option>
               <option value="Buyer">Buyer</option>
               <option value="Carbon Consultant">Carbon Consultant</option>
@@ -78,6 +79,7 @@ const RegisterForm2 = ({
               <option value="Offset Standard Setter">
                 Offset Standard Setter
               </option>
+              <option value="Project Aggregator">Project Aggregator</option>
               <option value="Project Developer">Project Developer</option>
               <option value="Project Financier">
                 Project Financier/ Investor

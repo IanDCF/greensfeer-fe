@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useAuth } from "./context/AuthProvider/AuthProvider";
 import ChatRoom from "./components/ChatRoom/ChatRoom";
 import Landing from "./pages/Landing/Landing";
@@ -18,6 +18,7 @@ import MemberProfile from "./pages/MemberProfile/MemberProfile";
 
 const App = () => {
   const { currentUser } = useAuth();
+
   return (
     <BrowserRouter>
       <Routes>
@@ -33,7 +34,12 @@ const App = () => {
         <Route path="/messages/chat" element={<ChatRoom />} />
         <Route path="/company/:companyId" element={<CompanyProfile />} />
         {/* <Route path="/marketplace" element={<Marketplace />} /> */}
+        <Route
+          path="/marketplace"
+          element={<Navigate to="668bba37-0635-4c38-b954-589e159a1d2c" />} // Redirect to default URL
+        />
         <Route path="/marketplace/:listing_id" element={<Marketplace />} />
+
         <Route path="/create-company/step1" element={<CreateCompany />} />
         <Route path="/create-company/step2" element={<CreateCompany />} />
         <Route path="/create-listing/step1" element={<CreateListing />} />

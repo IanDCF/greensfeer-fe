@@ -14,7 +14,6 @@ import createMarketPost from "../../helpers/marketPostCreator";
 import getAffiliation from "../../helpers/affiliationFetcher";
 import getCompany from "../../helpers/companyFetcher";
 import { useAuth } from "../../context/AuthProvider/AuthProvider";
-import allMarketPosts from "../../helpers/allMarketFetcher";
 
 const CreateListing = () => {
   // create market post as current user
@@ -84,9 +83,8 @@ const CreateListing = () => {
         //post service
         createMarketPost(service);
         setFormErrs("Service Listing Created, navigating to marketplace");
-        const listing_id = await allMarketPosts();
         setTimeout(() => {
-          navigate(`/marketplace/${listing_id[0].company_id}`);
+          navigate(`/marketplace}`);
         }, 3000);
       }
       if (productDetailDone && newMarketPost.post_type === "Product") {

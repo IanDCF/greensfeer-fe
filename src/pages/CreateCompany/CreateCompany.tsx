@@ -13,7 +13,6 @@ import getAllCompanies from "../../helpers/allCompanyFetcher";
 import companyCreator from "../../helpers/companyCreator";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { useAuth } from "../../context/AuthProvider/AuthProvider";
-import { newUserAffiliation } from "../../helpers/affiliationFetcher";
 
 const CreateCompany: React.FC = () => {
   const storage = getStorage();
