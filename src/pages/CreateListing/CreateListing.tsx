@@ -87,10 +87,10 @@ const CreateListing = () => {
           navigate(`/marketplace}`);
         }, 3000);
       }
-      if (productDetailDone && newMarketPost.post_type === "Product") {
+      if (productDetailDone && newMarketPost.post_type === "Project") {
         //validate & run axios.post
         const newListing = await validateListing();
-        const product = {
+        const project = {
           post_name: newListing?.post_name,
           post_type: newListing?.post_type,
           post_category: newListing?.service_type,
@@ -107,7 +107,7 @@ const CreateListing = () => {
             price_per_credit: newListing?.price_per_credit,
           },
         };
-        createMarketPost(product);
+        createMarketPost(project);
       }
     };
     validateAndPost();

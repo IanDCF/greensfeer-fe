@@ -70,6 +70,7 @@
 
     @include bp.mobile {
       margin-bottom: 2rem;
+      position: relative;
     }
 
     @include bp.tablet {
@@ -84,6 +85,32 @@
   &__img {
     width: 100%;
     border-radius: 2.5rem;
+  }
+
+  &__back {
+    @include bp.mobile {
+      position: absolute;
+      top: 0.75rem;
+      left: 0.75rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.2);
+      border-radius: 50%;
+      color: rgba(255, 255, 255, 0.803);
+      font-size: 6rem;
+      width: 7rem;
+      height: 6rem;
+      padding-right: 0.4rem;
+    }
+
+    @include bp.tablet {
+      display: none;
+    }
+
+    @include bp.desktop {
+      display: none;
+    }
   }
 
   &__details {
@@ -345,6 +372,10 @@
     justify-content: center;
     margin-right: 2rem;
     margin-bottom: 2rem;
+
+    white-space: nowrap; /* Prevents text from wrapping to new lines */
+    overflow: hidden; /* Hides any overflowing text */
+    text-overflow: ellipsis; /* Adds an ellipsis at the end of the truncated text */
   }
 
   &__photos {
