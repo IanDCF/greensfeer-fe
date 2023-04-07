@@ -75,9 +75,9 @@ const Searchbar = () => {
             if (nameStr?.match(regex)) return true;
           };
           if (
-            match(profile.first_name) ||
-            match(profile.last_name) ||
-            match(profile.name)
+            ("first_name" in profile && match(profile.first_name)) ||
+            ("last_name" in profile && match(profile.last_name)) ||
+            ("name" in profile && match(profile.name))
             // first name match || last name match || name match
           )
             return true;

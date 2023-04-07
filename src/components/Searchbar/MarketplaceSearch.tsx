@@ -6,19 +6,22 @@ import { BsDot } from "react-icons/bs";
 import "./Searchbar.scss";
 import companyLogo from "../../assets/images/placeholder-logo.png";
 import CompanyBanner from "../../assets/images/nature-banner-2.png";
-interface Result {
-  image: string | undefined;
-  post_name: string;
-  market_post_id: string;
-  methodology: string;
-}
+import { IMarketPost } from "customTypes";
+import allMarketPosts from "../../helpers/allMarketFetcher";
 
 const MarketplaceSearch = () => {
   const [marketSearch, setMarketSearch] = useState("");
-  const [marketSearchResult, setMarketSearchResult] = useState<Array<Result>>(
-    []
-  );
+  const [posts, setPosts] = useState<IMarketPost[]>([]);
+  const [marketResult, setMarketResult] = useState<IMarketPost[]>([]);
   const [marketSearchDropdown, setMarketSearchDropdown] = useState(false);
+  const getPosts = async () => {
+    const listings = await allMarketPosts();
+    setPosts(listings);
+  };
+
+  useEffect(() => {
+    getPosts();
+  }, []);
 
   const sampleListings = [
     {
@@ -47,8 +50,8 @@ const MarketplaceSearch = () => {
   useEffect(() => {
     if (marketSearch.length > 0) {
       setMarketSearchDropdown(true);
-      setMarketSearchResult(
-        sampleListings.filter((listing) => {
+      setMarketResult(
+        posts?.filter((listing) => {
           const regex = new RegExp(`${marketSearch}`, "i");
           return listing.post_name.match(regex);
         })
@@ -76,7 +79,7 @@ const MarketplaceSearch = () => {
       />
       {marketSearchDropdown && (
         <div className="search__dropdown" onClick={handleSearch}>
-          {marketSearchResult.map((listing) => {
+          {marketResult.map((listing) => {
             return (
               <Link
                 to={`/marketplace/${listing.market_post_id}`}
@@ -99,7 +102,7 @@ const MarketplaceSearch = () => {
                 </div>
                 <div className="search__listing-type">
                   {/* change to sector */}
-                  {listing.methodology}
+                  {listing.p?.methodology}
                 </div>
               </Link>
             );
