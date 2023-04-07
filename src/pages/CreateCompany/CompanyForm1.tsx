@@ -2,9 +2,7 @@ import "./CreateCompany.scss";
 import logo from "../../assets/logos/greensfeer-logo.png";
 import { BsCamera } from "react-icons/bs";
 import ControlButton from "../../components/ControlButtons/ControlButton";
-import getAllCompanies from "../../helpers/allCompanyFetcher";
-import { compile } from "sass";
-import React from "react";
+import { BsFillCheckCircleFill } from "react-icons/bs";
 interface Props {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   handlePic: (e: React.FormEvent<HTMLInputElement>) => void;
@@ -12,6 +10,8 @@ interface Props {
   isChecked1: boolean;
   handleCheckbox1: (isChecked: boolean) => void;
   errors: string;
+  profileUrl: string;
+  bannerUrl: string;
 }
 
 const CompanyForm1 = ({
@@ -21,6 +21,8 @@ const CompanyForm1 = ({
   handleCheckbox1,
   isChecked1,
   errors,
+  profileUrl,
+  bannerUrl,
 }: Props) => {
   // FIXME: update to controlled form inputs; set to state so values are not missing on submit
   return (
@@ -38,6 +40,11 @@ const CompanyForm1 = ({
       <div className="create-company__input-fields">
         <div className="create-company__img-upload">
           <div className="create-company__company-logo">
+            {profileUrl && (
+              <div className="create-company__upload-check">
+                <BsFillCheckCircleFill />
+              </div>
+            )}
             <div className="create-company__label">logo</div>
             <div className="create-company__icon">
               <BsCamera />
@@ -53,6 +60,11 @@ const CompanyForm1 = ({
             />
           </div>
           <div className="create-company__company-banner">
+            {bannerUrl && (
+              <div className="create-company__upload-check">
+                <BsFillCheckCircleFill />
+              </div>
+            )}
             <div className="create-company__label">banner</div>
             <div className="create-company__icon">
               <BsCamera />
@@ -148,8 +160,8 @@ const CompanyForm1 = ({
       <div className="create-company__controls">
         <ControlButton
           dark={true}
-          text="Cancel"
-          link="/profile"
+          text="Back"
+          link="/search-company"
           btnType="link"
         />
         <ControlButton dark={false} text="Next" btnType="submit" />

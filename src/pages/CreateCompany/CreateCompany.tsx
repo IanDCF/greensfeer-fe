@@ -13,6 +13,7 @@ import getAllCompanies from "../../helpers/allCompanyFetcher";
 import companyCreator from "../../helpers/companyCreator";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { useAuth } from "../../context/AuthProvider/AuthProvider";
+import CompanySearch from "./CompanySearch";
 
 const CreateCompany: React.FC = () => {
   const storage = getStorage();
@@ -132,67 +133,48 @@ const CreateCompany: React.FC = () => {
     });
 
     //get request for company where form input name matches existing company name
-    const nameAvailable = await getAllCompanies().then((companies) => {
-      const found = companies.find((company) => company.name === `${name}`);
-      if (found) {
-        setFormErrs("That company is already on Greensfeer!");
-        return false;
-      }
-      if (!found) {
-        console.log("name available");
-        return true;
-      }
+    const companies = await getAllCompanies();
+    const found = companies.find((company) => company.name === `${name}`);
+    if (found) {
+      setFormErrs("That company is already on Greensfeer!");
+      return;
+    }
+
+    if (!registerCompanySchemaValidation.success) {
+      const error = registerCompanySchemaValidation.error.errors;
+      console.log(error);
+      return;
+    }
+
+    setNewCompany({
+      ...newCompany,
+      name,
+      market_role,
+      sector,
+      location,
+      logo,
+      banner,
     });
 
-    if (!nameAvailable) {
+    if (!name || !sector || !market_role || !location) {
+      setFormErrs("Please fill in all required fields");
       return;
-    }
-    if (nameAvailable)
-      if (!registerCompanySchemaValidation.success) {
-        const error = registerCompanySchemaValidation.error.errors;
-        console.log(error);
-      }
-    if (registerCompanySchemaValidation.success) {
-      setNewCompany({
-        ...newCompany,
-        name,
-        market_role,
-        sector,
-        location,
-        logo,
-        banner,
-      });
     }
 
-    if (!newCompany.name) {
-      setFormErrs("Please enter a company name");
-      return;
-    }
-    if (!newCompany.sector) {
-      setFormErrs("Please enter a sector");
-      return;
-    }
-    if (!newCompany.market_role) {
-      setFormErrs("Please enter a market role");
-      return;
-    }
-    if (!newCompany.location) {
-      setFormErrs("Please enter a location");
-      return;
-    }
     if (!isChecked1) {
-      setFormErrs("Please confirm you are an organization rep");
+      setFormErrs("Please confirm you are an authorized representative");
       return;
     }
+
     setStepOneDone(true);
     navigate("/create-company/step2");
 
     console.log("Form 1 submitted");
-    // Correctly checks company name against database & saves form fields to state
   };
 
   const handleSecondSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     const headlineInput = e.currentTarget.elements.namedItem(
       "headline"
     ) as HTMLInputElement;
@@ -210,6 +192,7 @@ const CreateCompany: React.FC = () => {
     const description = descriptionInput.value;
     const email = emailInput.value;
     const website = websiteInput.value;
+
     const registerCompanyDetailValidation =
       registerCompanyDetailSchema.safeParse({
         headline,
@@ -221,15 +204,23 @@ const CreateCompany: React.FC = () => {
     if (!registerCompanyDetailValidation.success) {
       const error = registerCompanyDetailValidation.error.errors;
       console.log(error);
-    } else {
-      setNewCompany({
-        ...newCompany,
-        headline,
-        description,
-        email,
-        website,
-      });
+      return;
     }
+
+    setNewCompany({
+      ...newCompany,
+      headline,
+      description,
+      email,
+      website,
+    });
+
+    if (!email || !website) {
+      // FIXME: the error message does not display
+      setFormErrs("Please fill in all required fields");
+      return;
+    }
+
     setStepTwoDone(true);
     console.log("Form 2 submitted");
     // Perform the necessary actions for form 2 submission
@@ -239,6 +230,7 @@ const CreateCompany: React.FC = () => {
     setIsChecked1(isChecked);
   };
 
+  const searchCompany = matchPath(path, "/search-company");
   const createCompany1 = matchPath(path, "/create-company/step1");
   const createCompany2 = matchPath(path, "/create-company/step2");
 
@@ -253,6 +245,7 @@ const CreateCompany: React.FC = () => {
           width: "40px",
         }}
       ></div> */}
+      {searchCompany && <CompanySearch />}
       {!stepOneDone && createCompany1 && (
         <CompanyForm1
           handleSubmit={handleFirstSubmit}
@@ -261,17 +254,20 @@ const CreateCompany: React.FC = () => {
           handleCheckbox1={handleCheckbox1}
           isChecked1={isChecked1}
           errors={formErrs}
+          profileUrl={profileUrl}
+          bannerUrl={bannerUrl}
         />
       )}
       {stepOneDone && !stepTwoDone && createCompany2 && (
         <CompanyForm2
           handleSubmit={handleSecondSubmit}
           clickHandler={clickHandler}
+          errors={formErrs}
         />
       )}
       {stepTwoDone && (
         <div className="create-company__form" style={{ fontSize: "4rem" }}>
-          Company created, redirecting to new Company Profile
+          Hold on tight while we finilize your company profile!
         </div>
       )}
     </section>

@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import "./ControlButton.scss";
 import { TbArrowBackUp } from "react-icons/tb";
-import { FaTimes } from "react-icons/fa";
-import { HiArrowNarrowRight } from "react-icons/hi";
+import { AiOutlineClose } from "react-icons/ai";
+import { HiOutlineArrowRight } from "react-icons/hi";
 interface Props {
   dark: boolean;
   text: string;
@@ -20,11 +20,13 @@ const ControlButton: React.FC<Props> = ({ dark, text, link, btnType }) => {
         }`}
       >
         <div className="control-btn__text">{text}</div>
-        <div className="control-btn__icon">
-          {text === "Back" && <TbArrowBackUp />}
-          {text === "Cancel" && <FaTimes />}
-          {text === "Next" && <HiArrowNarrowRight />}
-        </div>
+        {(text === "Cancel" || "Next" || "Back") && (
+          <div className="control-btn__icon">
+            {text === "Back" && <TbArrowBackUp />}
+            {text === "Cancel" && <AiOutlineClose />}
+            {text === "Next" && <HiOutlineArrowRight />}
+          </div>
+        )}
       </button>
     );
   } else {
@@ -37,14 +39,13 @@ const ControlButton: React.FC<Props> = ({ dark, text, link, btnType }) => {
         }`}
       >
         <div className="control-btn__text">{text}</div>
-        <div
-          className="control-btn__icon"
-          style={!text ? { display: "none" } : {}}
-        >
-          {text === "Back" && <TbArrowBackUp />}
-          {text === "Cancel" && <FaTimes />}
-          {text === "Next" && <HiArrowNarrowRight />}
-        </div>
+        {(text === "Cancel" || "Next" || "Back") && (
+          <div className="control-btn__icon">
+            {text === "Back" && <TbArrowBackUp />}
+            {text === "Cancel" && <AiOutlineClose />}
+            {text === "Next" && <HiOutlineArrowRight />}
+          </div>
+        )}
       </Link>
     );
   }
