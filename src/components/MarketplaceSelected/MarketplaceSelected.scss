@@ -90,18 +90,19 @@
   &__back {
     @include bp.mobile {
       position: absolute;
-      top: 0.75rem;
-      left: 0.75rem;
+      top: 1rem;
+      left: 1rem;
       display: flex;
       justify-content: center;
       align-items: center;
       background-color: rgba(0, 0, 0, 0.2);
-      border-radius: 50%;
+      border-radius: 2.5rem;
       color: rgba(255, 255, 255, 0.803);
       font-size: 6rem;
       width: 7rem;
       height: 6rem;
-      padding-right: 0.4rem;
+      padding-top: 0.25rem;
+      padding-right: 0.3rem;
     }
 
     @include bp.tablet {

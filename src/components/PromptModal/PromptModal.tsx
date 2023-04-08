@@ -35,9 +35,7 @@ const PromptModal: React.FC<Props> = ({ open, clickHandler }) => {
           </div>
           <Link
             className="modal__accept"
-            to={
-              onMarketplace ? "/create-company/step1" : "/create-listing/step1"
-            }
+            to={onMarketplace ? "/search-company" : "/create-listing/step1"}
           >
             {`${onMarketplace ? "Search Company" : "Create Listing"}`}
           </Link>
