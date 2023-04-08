@@ -14,7 +14,7 @@ declare module "customTypes" {
     profile_banner?: undefined;
     about?: string;
     last_name: string;
-    created_at: Timestamp;
+    created_at: string;
     profile_picture?: undefined;
     location: Location;
     linkedin?: null;
@@ -36,6 +36,9 @@ declare module "customTypes" {
     location: Location;
     company_id: string;
     post_type: "Project" | "Service";
+    verified: boolean;
+    sdg: Array;
+    photos: Array;
   }
   export interface P {
     offset_unit: string;
@@ -93,6 +96,7 @@ declare module "customTypes" {
     profile_picture: string;
     profile_banner: string;
     about: string;
+    created_at: string;
   }
 }
 
