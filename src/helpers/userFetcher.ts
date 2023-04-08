@@ -15,7 +15,9 @@ const createUser = async (
   firstName: string,
   secondName: string,
   role: string,
-  idToken: string
+  idToken: string,
+  newsletter: boolean,
+  notifications: boolean
 ) => {
   const URL_BASE = import.meta.env.VITE_REACT_APP_BASE_URL;
   try {
@@ -25,7 +27,9 @@ const createUser = async (
       role,
       idToken,
       email,
-      headline:role
+      headline: role,
+      newsletter,
+      notifications,
     });
     if (status !== 201) return null;
     return data as IUser;

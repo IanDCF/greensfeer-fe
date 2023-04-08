@@ -45,7 +45,9 @@ const Register = () => {
           user.password,
           user.firstName,
           user.secondName,
-          user.role
+          user.role,
+          user.newsletter,
+          user.notifications
         );
         setLoading(true);
         if (createdUser) {
@@ -87,6 +89,7 @@ const Register = () => {
       email,
       password,
       confirmPassword,
+      newsletter: isChecked2,
     });
     const checkEmailAvailability = async (email: string) => {
       const users = await allUsers();
@@ -119,14 +122,19 @@ const Register = () => {
       // console.log(error);
       return;
     }
-    if (!isChecked1 || !isChecked2) {
+    if (!isChecked1) {
       setError("Please accept all the fields");
-      console.log(error);
       return;
     }
     if (registerUserSchemValidation.success) {
       console.log("Setting User Registration part 1");
-      setNewUser({ ...newUser, email, password, confirmPassword });
+      setNewUser({
+        ...newUser,
+        email,
+        password,
+        confirmPassword,
+        newsletter: isChecked2,
+      });
       setRegisterDone(true);
       setIsChecked1(false);
       setIsChecked2(false);
@@ -152,6 +160,7 @@ const Register = () => {
       firstName,
       secondName,
       role,
+      notifications: isChecked1,
     });
     if (!registerInfoValidation.success) {
       const error = registerInfoValidation.error.errors; //We need to format the errors so we can pass the string
@@ -168,13 +177,13 @@ const Register = () => {
       setError("Please describe your role");
       return;
     }
-    if (!isChecked1) {
-      setError("Please accept all the fields");
-      return;
-    }
+    // if (!isChecked1) {
+    //   setError("Please accept all the fields");
+    //   return;
+    // }
     if (registerInfoValidation.success) {
       console.log("Setting up part 2");
-      setNewUser({ ...newUser, firstName, secondName, role });
+      setNewUser({ ...newUser, ...registerInfoValidation.data });
       setRegisterDoneInfo(true);
     }
   };
