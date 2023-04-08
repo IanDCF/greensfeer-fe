@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ICompany } from "customTypes";
+import { IAffiliation, ICompany } from "customTypes";
 import { User } from "firebase/auth";
 
 const getAffiliation = async (currentUser: User | null) => {
@@ -23,8 +23,7 @@ const getAllAffiliations = async (uid: string) => {
   const URL_BASE = import.meta.env.VITE_REACT_APP_BASE_URL;
   try {
     const { data, status } = await axios.get(`${URL_BASE}/affiliation/${uid}`);
-    return data as ICompany[];
-      // FIXME: data is a single affiliation rather than company
+    return data as IAffiliation[];
   } catch (error) {
     console.log(error);
     throw new Error(error as string);

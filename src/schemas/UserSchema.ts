@@ -4,11 +4,13 @@ const registerUserSchema = z.object({
   email: z.string().trim().toLowerCase().email(),
   password: z.string().trim().min(6),
   confirmPassword: z.string().trim().min(6),
+  newsletter: z.boolean(),
 });
 const registerInfoUserSchema = z.object({
   firstName: z.string().trim(),
   secondName: z.string().trim(),
   role: z.string().trim(),
+  notifications: z.boolean(),
 });
 
 const newUserSchema = registerUserSchema.merge(registerInfoUserSchema);

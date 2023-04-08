@@ -92,7 +92,12 @@ const CreateCompany: React.FC = () => {
 
       // Add user and company to affiliation
       if (currentUser) {
-        const newUserAffi = await addAffiliation(currentUser, companyId);
+        const newUserAffi = await addAffiliation(
+          currentUser,
+          companyId,
+          newCompany.name,
+          newCompany.logo
+        );
         console.log("New affiliation added: ", newUserAffi);
         setTimeout(() => navigate(`/gs/${currentUser?.uid}`), 3000);
       }
