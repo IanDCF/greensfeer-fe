@@ -24,6 +24,7 @@ const getAllAffiliations = async (uid: string) => {
   try {
     const { data, status } = await axios.get(`${URL_BASE}/affiliation/${uid}`);
     return data as ICompany[];
+      // FIXME: data is a single affiliation rather than company
   } catch (error) {
     console.log(error);
     throw new Error(error as string);

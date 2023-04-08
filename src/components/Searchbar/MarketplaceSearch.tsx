@@ -2,14 +2,41 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { MdStorefront } from "react-icons/md";
 import { AiOutlineGlobal } from "react-icons/ai";
-import "./Searchbar.scss";
 import { BsDot } from "react-icons/bs";
+import "./Searchbar.scss";
 import companyLogo from "../../assets/images/placeholder-logo.png";
+import CompanyBanner from "../../assets/images/nature-banner-2.png";
+import { IMarketPost } from "customTypes";
+import allMarketPosts from "../../helpers/allMarketFetcher";
 
 const MarketplaceSearch = () => {
   const [marketSearch, setMarketSearch] = useState("");
-  const [marketSearchResult, setMarketSearchResult] = useState([]);
+  const [posts, setPosts] = useState<IMarketPost[]>([]);
+  const [marketResult, setMarketResult] = useState<IMarketPost[]>([]);
   const [marketSearchDropdown, setMarketSearchDropdown] = useState(false);
+  const getPosts = async () => {
+    const listings = await allMarketPosts();
+    setPosts(listings);
+  };
+
+  useEffect(() => {
+    getPosts();
+  }, []);
+
+  const sampleListings = [
+    {
+      image: CompanyBanner,
+      post_name: "sample",
+      market_post_id: "testpost",
+      methodology: "reef restoration",
+    },
+    {
+      image: "",
+      post_name: "default",
+      market_post_id: "noimage",
+      methodology: "financing",
+    },
+  ];
 
   const handleSearch = () => {
     toggleSearchDropdown();
@@ -23,6 +50,12 @@ const MarketplaceSearch = () => {
   useEffect(() => {
     if (marketSearch.length > 0) {
       setMarketSearchDropdown(true);
+      setMarketResult(
+        posts?.filter((listing) => {
+          const regex = new RegExp(`${marketSearch}`, "i");
+          return listing.post_name.match(regex);
+        })
+      );
     } else {
       setMarketSearchDropdown(false);
     }
@@ -39,40 +72,41 @@ const MarketplaceSearch = () => {
         type="text"
         placeholder="Search Marketplace"
         onChange={(e) => {
+          e.preventDefault();
           setMarketSearch(e.target.value);
         }}
         value={marketSearch}
       />
       {marketSearchDropdown && (
         <div className="search__dropdown" onClick={handleSearch}>
-          <Link to="#" className="search__link">
-            <div className="search__photo" style={logoStyle}>
-              {/* <img
-                src={displayPic}
-                alt="User Display Picture"
-                className="search__photo-img"
-              /> */}
-            </div>
-            <div className="search__text">
-              <div className="search__name">{marketSearch}</div>
-            </div>
-            <div className="search__separator">
-              <BsDot />
-            </div>
-            <div className="search__listing-type">Coral Reef Restoration</div>
-          </Link>
-          <Link to="#" className="search__link">
-            <div className="search__photo">
-              <AiOutlineGlobal />
-            </div>
-            <div className="search__text">
-              <div className="search__name">{marketSearch}</div>
-            </div>
-            <div className="search__separator">
-              <BsDot />
-            </div>
-            <div className="search__listing-type">Financing & Sponsorship</div>
-          </Link>
+          {marketResult.map((listing) => {
+            return (
+              <Link
+                to={`/marketplace/${listing.market_post_id}`}
+                key={listing.market_post_id}
+                className="search__link"
+              >
+                {listing.image ? (
+                  // company logo not banner
+                  <img className="search__photo" src={`${listing.image}`} />
+                ) : (
+                  <div className="search__photo">
+                    <AiOutlineGlobal />
+                  </div>
+                )}
+                <div className="search__text">
+                  <div className="search__name">{listing.post_name}</div>
+                </div>
+                <div className="search__separator">
+                  <BsDot />
+                </div>
+                <div className="search__listing-type">
+                  {/* change to sector */}
+                  {listing.p?.methodology}
+                </div>
+              </Link>
+            );
+          })}
         </div>
       )}
     </div>

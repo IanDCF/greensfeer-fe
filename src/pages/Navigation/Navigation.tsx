@@ -21,13 +21,13 @@ const Navigation = () => {
 
   return (
     <div className="navigation">
-      <div className="navigation__mobile">
-        {shouldRenderNavBar && <AppNavMobile />}
-        {/* {shouldRenderNavBottom && <AppNavMobileBottom />} */}
-      </div>
-      <div className="navigation__tablet-desktop">
-        {shouldRenderNavBar && <AppNav />}
-      </div>
+      {/* <div className="navigation__mobile"> */}
+      {/* {shouldRenderNavBar && <AppNav />} */}
+      {/* {shouldRenderNavBottom && <AppNavMobileBottom />} */}
+      {/* </div> */}
+      {/* <div className="navigation__tablet-desktop"> */}
+      {shouldRenderNavBar && <AppNav />}
+      {/* </div> */}
     </div>
   );
 };
