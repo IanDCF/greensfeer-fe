@@ -13,19 +13,29 @@
   z-index: 10;
   background-color: color.$white;
 
+  @include bp.mobile {
+    padding: 2.5rem 3rem 2rem 3rem;
+  }
+
   @include bp.tablet {
     padding: 2.5rem 3rem 2rem 3rem;
   }
 
   &__wrapper {
     display: flex;
-    justify-content: space-between;
+
+    @include bp.mobile {
+      justify-content: space-around;
+      width: 100%;
+    }
 
     @include bp.tablet {
+      justify-content: space-between;
       width: 77%;
     }
 
     @include bp.desktop {
+      justify-content: space-between;
       width: 70%;
       max-width: 800px;
     }
@@ -53,11 +63,20 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    position: relative;
+    cursor: pointer;
+    @include bp.tablet {
+      position: relative;
+    }
   }
 
   &__img {
     border-radius: 10rem;
+
+    @include bp.mobile {
+      width: 9rem;
+      height: 9rem;
+      font-size: 8.5rem;
+    }
 
     @include bp.tablet {
       width: 9rem;
@@ -72,6 +91,10 @@
 
   &__icon {
     color: color.$charcoal;
+
+    @include bp.mobile {
+      font-size: 8.75rem;
+    }
 
     @include bp.tablet {
       font-size: 8.75rem;
@@ -89,13 +112,19 @@
 
   &__user-menu {
     position: absolute;
-    right: -1rem;
+
+    @include bp.mobile {
+      top: 14rem;
+      right: 3.5rem;
+    }
 
     @include bp.tablet {
+      right: -1rem;
       top: 12.5rem;
     }
 
     @include bp.desktop {
+      right: -1rem;
       top: 12.5rem;
     }
   }

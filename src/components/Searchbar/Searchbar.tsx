@@ -27,34 +27,6 @@ const Searchbar = () => {
   useEffect(() => {
     getProfiles();
   }, []);
-  const sampleProfiles = [
-    {
-      profile_picture: "",
-      first_name: "T",
-      last_name: "M",
-      uid: "testuser",
-      headline: "",
-    },
-    {
-      profile_picture: displayPic,
-      first_name: "I",
-      last_name: "D",
-      uid: "mq9jbuGVuRbWsFL5661Wtg2r5ef2",
-      headline: "Project Developer",
-    },
-    {
-      logo: "https://firebasestorage.googleapis.com/v0/b/greensfeer-db-dd101.appspot.com/o/placeholder-logo.png?alt=media&token=6331817b-5ab2-4673-8bbd-995b805d062c",
-      name: "CarbonBlu",
-      company_id: "a13e7421-dbac-4f67-9ed9-2a0c0aa1f658",
-      headline: "Restoring coral reefs since 2000",
-    },
-    {
-      logo: "",
-      name: "test",
-      company_id: "testcompany",
-      headline: "",
-    },
-  ];
 
   const handleSearch = () => {
     toggleSearchDropdown();

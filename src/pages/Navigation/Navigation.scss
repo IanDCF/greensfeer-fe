@@ -12,7 +12,7 @@
   }
   &__tablet-desktop {
     @include bp.mobile {
-      display: none;
+      // display: none;
     }
   }
 }
