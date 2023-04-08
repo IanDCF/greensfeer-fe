@@ -4,8 +4,9 @@ import companyLogo2 from "../../assets/images/affiliation2.png";
 import { IoIosAdd } from "react-icons/io";
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { ICompany } from "customTypes";
+import { IAffiliation, ICompany } from "customTypes";
 import { getAllAffiliations } from "../../helpers/affiliationFetcher";
+import { AiOutlineGlobal } from "react-icons/ai";
 
 interface ProfileAffiliationProps {
   userType?: string;
@@ -27,9 +28,9 @@ export const ProfileAffiliations: React.FC<ProfileAffiliationProps> = ({
 }) => {
   const uid = getUserIdFromUrl(window.location.pathname); // Get userId from the URL path
   console.log(uid);
-  const [userAfilliations, setUserAfilliation] = useState<ICompany[] | null>(
-    null
-  );
+  const [userAfilliations, setUserAfilliation] = useState<
+    IAffiliation[] | null
+  >(null);
   useEffect(() => {
     const affiliations = async () => {
       if (uid) {
@@ -57,18 +58,24 @@ export const ProfileAffiliations: React.FC<ProfileAffiliationProps> = ({
         {userAfilliations &&
           userAfilliations?.length > 0 &&
           userAfilliations.map((aff) => (
-            <Link to={`/company/${aff.company_id}`}>
-              <div className="affiliations__company">
-                <div className="affiliations__logo-div">
+            <div key={aff.affiliation_id} className="affiliations__company">
+              <Link
+                to={`/company/${aff.company_id}`}
+                className="affiliations__logo-div"
+              >
+                {aff.logo ? (
                   <div
                     className="affiliations__logo"
-                    //Currently there is no logo in the aff object
                     style={logoStyle(aff.logo)}
                   />
-                </div>
-                <p className="affiliations__name">{aff.name}</p>
-              </div>
-            </Link>
+                ) : (
+                  <div className="affiliations__logo-icon">
+                    <AiOutlineGlobal />
+                  </div>
+                )}
+              </Link>
+              <p className="affiliations__name">{aff.company_name}</p>
+            </div>
           ))}
 
         {userType === "current" && (
