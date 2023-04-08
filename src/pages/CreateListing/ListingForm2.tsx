@@ -8,6 +8,7 @@ interface Props {
   clickHandler: () => void;
   errors: string;
   company: string;
+  listingType: string;
 }
 
 const ListingForm2 = ({
@@ -15,6 +16,7 @@ const ListingForm2 = ({
   clickHandler,
   errors,
   company,
+  listingType,
 }: Props) => {
   return (
     <form className="create-listing__form" onSubmit={handleSubmit}>
@@ -34,150 +36,160 @@ const ListingForm2 = ({
         <div className="create-listing__text-input">
           {/* We need conditional rendering here
           depending on whether the state holds a product or a service */}
-          <div className="create-company__input-div">
-            <label className="create-company__label-text" htmlFor="methodology">
-              project type*
-            </label>
-            <select
-              id="methodology"
-              name="methodology"
-              className="create-company__input"
-            >
-              <option hidden={true} defaultValue={""}>
-                Select Project Type
-              </option>
-              <option value="Agroforestry">Agroforestry</option>
-              <option value="Biomass Energy Generation">
-                Biomass Energy Generation
-              </option>
-              <option value="Blue Carbon (CO2 sequestration in marine and coastal ecosystems)">
-                Blue Carbon (CO2 sequestration in marine and coastal ecosystems)
-              </option>
-              <option value="Carbon Capture and Storage">
-                Carbon Capture and Storage
-              </option>
-              <option value="Forest Conservation and Management">
-                Forest Conservation and Management
-              </option>
-              <option value="Landfill Gas Capture and Utilization">
-                Landfill Gas Capture and Utilization
-              </option>
-              <option value="Methane Capture and Utilization from Livestock or Landfills">
-                Methane Capture and Utilization from Livestock or Landfills
-              </option>
-              <option value="REDD+ (Reducing Emissions from Deforestation and Forest Degradation)">
-                REDD+ (Reducing Emissions from Deforestation and Forest
-                Degradation)
-              </option>
-              <option value="Reforestation and Afforestation">
-                Reforestation and Afforestation
-              </option>
-              <option value="Soil Conservation and Erosion Control">
-                Soil Conservation and Erosion Control
-              </option>
-              <option value="Sustainable Agriculture and Farming">
-                Sustainable Agriculture and Farming
-              </option>
-              <option value="Renewable Energy Installations (such as wind, solar, hydro, and geothermal)">
-                Renewable Energy Installations (such as wind, solar, hydro, and
-                geothermal)
-              </option>
-              <option value="Blue Carbon (CO2 sequestration in marine and coastal ecosystems)">
-                Blue Carbon (CO2 sequestration in marine and coastal ecosystems)
-              </option>
-              <option disabled>Program Types:</option>
-              <option value="Agricultural Soil Carbon Sequestration Programs">
-                Agricultural Soil Carbon Sequestration Programs
-              </option>
-              <option value="Afforestation and Reforestation Programs">
-                Afforestation and Reforestation Programs
-              </option>
-              <option value="Building Energy Efficiency Programs">
-                Building Energy Efficiency Programs
-              </option>
-              <option value="Carbon Offset Programs">
-                Carbon Offset Programs
-              </option>
-              <option value="Energy Efficiency Programs (specifically those that involve the replacement of high-carbon energy sources with low-carbon ones)">
-                Energy Efficiency Programs (specifically those that involve the
-                replacement of high-carbon energy sources with low-carbon ones)
-              </option>
-              <option value="Fuel Switching Programs">
-                Fuel Switching Programs
-              </option>
-              <option value="Green Transportation Programs">
-                Green Transportation Programs
-              </option>
-              <option value="Landfill Gas-to-Energy Programs">
-                Landfill Gas-to-Energy Programs
-              </option>
-              <option value="Livestock Methane Reduction Programs">
-                Livestock Methane Reduction Programs
-              </option>
-              <option value="Renewable Energy Programs (such as solar, wind, and geothermal energy)">
-                Renewable Energy Programs (such as solar, wind, and geothermal
-                energy)
-              </option>
-              <option value="Sustainable Forestry Management Programs">
-                Sustainable Forestry Management Programs
-              </option>
-              <option value="Waste-to-Energy Programs">
-                Waste-to-Energy Programs
-              </option>
-            </select>
-          </div>
+          {listingType === "Project" && (
+            <div className="create-company__input-div">
+              <label
+                className="create-company__label-text"
+                htmlFor="project_type"
+              >
+                project type*
+              </label>
+              <select
+                id="project_type"
+                name="project_type"
+                className="create-company__input"
+              >
+                <option hidden={true} defaultValue={"Select Project Type"}>
+                  Select Project Type
+                </option>
+                <option value="Agroforestry">Agroforestry</option>
+                <option value="Biomass Energy Generation">
+                  Biomass Energy Generation
+                </option>
+                <option value="Blue Carbon (CO2 sequestration in marine and coastal ecosystems)">
+                  Blue Carbon (CO2 sequestration in marine and coastal
+                  ecosystems)
+                </option>
+                <option value="Carbon Capture and Storage">
+                  Carbon Capture and Storage
+                </option>
+                <option value="Forest Conservation and Management">
+                  Forest Conservation and Management
+                </option>
+                <option value="Landfill Gas Capture and Utilization">
+                  Landfill Gas Capture and Utilization
+                </option>
+                <option value="Methane Capture and Utilization from Livestock or Landfills">
+                  Methane Capture and Utilization from Livestock or Landfills
+                </option>
+                <option value="REDD+ (Reducing Emissions from Deforestation and Forest Degradation)">
+                  REDD+ (Reducing Emissions from Deforestation and Forest
+                  Degradation)
+                </option>
+                <option value="Reforestation and Afforestation">
+                  Reforestation and Afforestation
+                </option>
+                <option value="Soil Conservation and Erosion Control">
+                  Soil Conservation and Erosion Control
+                </option>
+                <option value="Sustainable Agriculture and Farming">
+                  Sustainable Agriculture and Farming
+                </option>
+                <option value="Renewable Energy Installations (such as wind, solar, hydro, and geothermal)">
+                  Renewable Energy Installations (such as wind, solar, hydro,
+                  and geothermal)
+                </option>
+                <option value="Blue Carbon (CO2 sequestration in marine and coastal ecosystems)">
+                  Blue Carbon (CO2 sequestration in marine and coastal
+                  ecosystems)
+                </option>
+                <option disabled>Program Types:</option>
+                <option value="Agricultural Soil Carbon Sequestration Programs">
+                  Agricultural Soil Carbon Sequestration Programs
+                </option>
+                <option value="Afforestation and Reforestation Programs">
+                  Afforestation and Reforestation Programs
+                </option>
+                <option value="Building Energy Efficiency Programs">
+                  Building Energy Efficiency Programs
+                </option>
+                <option value="Carbon Offset Programs">
+                  Carbon Offset Programs
+                </option>
+                <option value="Energy Efficiency Programs (specifically those that involve the replacement of high-carbon energy sources with low-carbon ones)">
+                  Energy Efficiency Programs (specifically those that involve
+                  the replacement of high-carbon energy sources with low-carbon
+                  ones)
+                </option>
+                <option value="Fuel Switching Programs">
+                  Fuel Switching Programs
+                </option>
+                <option value="Green Transportation Programs">
+                  Green Transportation Programs
+                </option>
+                <option value="Landfill Gas-to-Energy Programs">
+                  Landfill Gas-to-Energy Programs
+                </option>
+                <option value="Livestock Methane Reduction Programs">
+                  Livestock Methane Reduction Programs
+                </option>
+                <option value="Renewable Energy Programs (such as solar, wind, and geothermal energy)">
+                  Renewable Energy Programs (such as solar, wind, and geothermal
+                  energy)
+                </option>
+                <option value="Sustainable Forestry Management Programs">
+                  Sustainable Forestry Management Programs
+                </option>
+                <option value="Waste-to-Energy Programs">
+                  Waste-to-Energy Programs
+                </option>
+              </select>
+            </div>
+          )}
 
           {/* FIXME: back end does not support entering service type yet */}
-          <div className="create-company__input-div">
-            <label
-              className="create-company__label-text"
-              htmlFor="service_type"
-            >
-              service type*
-            </label>
-            <select
-              id="service_type"
-              name="service_type"
-              className="create-company__input"
-            >
-              <option hidden={true} defaultValue={""}>
-                Select a Service
-              </option>
-              <option value="API Provider">API Provider</option>
-              <option value="Broker">Broker</option>
-              <option value="Carbon Offset Consultant">
-                Carbon Offset Consultant
-              </option>
-              <option value="Credit Rating Provider">
-                Credit Rating Provider
-              </option>
-              <option value="Exchange">Exchange</option>
-              <option value="Financing & Sponsorship">
-                Financing & Sponsorship
-              </option>
-              <option value="Governance & Accreditation">
-                Governance & Accreditation
-              </option>
-              <option value="Insurance">Insurance</option>
-              <option value="Market Research & Data Platform">
-                Market Research & Data Platform
-              </option>
-              <option value="Marketplace">Marketplace</option>
-              <option value="Measuring, Reporting, & Verification">
-                Measuring, Reporting, & Verification
-              </option>
-              <option value="Project Developers & Aggregator">
-                Project Developers & Aggregator
-              </option>
-              <option value="Software as a Service">
-                Software as a Service (SaaS)
-              </option>
-              <option value="Third-Party Auditor">Third-Party Auditor</option>
-              <option value="Verification & Validation Body">
-                Verification & Validation Body
-              </option>
-            </select>
-          </div>
+          {listingType === "Service" && (
+            <div className="create-company__input-div">
+              <label
+                className="create-company__label-text"
+                htmlFor="service_type"
+              >
+                service type*
+              </label>
+              <select
+                id="service_type"
+                name="service_type"
+                className="create-company__input"
+              >
+                <option hidden={true} defaultValue={"Select Service Type"}>
+                  Select Service Type
+                </option>
+                <option value="API Provider">API Provider</option>
+                <option value="Broker">Broker</option>
+                <option value="Carbon Offset Consultant">
+                  Carbon Offset Consultant
+                </option>
+                <option value="Credit Rating Provider">
+                  Credit Rating Provider
+                </option>
+                <option value="Exchange">Exchange</option>
+                <option value="Financing & Sponsorship">
+                  Financing & Sponsorship
+                </option>
+                <option value="Governance & Accreditation">
+                  Governance & Accreditation
+                </option>
+                <option value="Insurance">Insurance</option>
+                <option value="Market Research & Data Platform">
+                  Market Research & Data Platform
+                </option>
+                <option value="Marketplace">Marketplace</option>
+                <option value="Measuring, Reporting, & Verification">
+                  Measuring, Reporting, & Verification
+                </option>
+                <option value="Project Developers & Aggregator">
+                  Project Developers & Aggregator
+                </option>
+                <option value="Software as a Service">
+                  Software as a Service (SaaS)
+                </option>
+                <option value="Third-Party Auditor">Third-Party Auditor</option>
+                <option value="Verification & Validation Body">
+                  Verification & Validation Body
+                </option>
+              </select>
+            </div>
+          )}
 
           <div className="create-listing__input-div">
             <label className="create-listing__label-text" htmlFor="location">
@@ -216,9 +228,11 @@ const ListingForm2 = ({
           text="Cancel"
           link={`/company/${company}`}
         />
- 
-        <ControlButton dark={false} btnType="submit"
-          text="Post Service/Project Detail"
+
+        <ControlButton
+          dark={false}
+          btnType="submit"
+          text={listingType === "Project" ? "Next" : "Done"}
         />
       </div>
     </form>
