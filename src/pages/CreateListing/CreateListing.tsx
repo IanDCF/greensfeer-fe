@@ -41,6 +41,7 @@ const CreateListing = () => {
   const [productDetailDone, setProductDetailDone] = useState<boolean>(false);
   const [formErrs, setFormErrs] = useState("");
   const [currentCompany, setCurrentCompany] = useState("");
+  const [listingType, setListingType] = useState("");
 
   const clickHandler = () => {
     if (createListing2) {
@@ -84,7 +85,7 @@ const CreateListing = () => {
         createMarketPost(service);
         setFormErrs("Service Listing Created, navigating to marketplace");
         setTimeout(() => {
-          navigate(`/marketplace}`);
+          navigate(`/marketplace/}`);
         }, 3000);
       }
       if (productDetailDone && newMarketPost.post_type === "Project") {
@@ -93,7 +94,7 @@ const CreateListing = () => {
         const project = {
           post_name: newListing?.post_name,
           post_type: newListing?.post_type,
-          post_category: newListing?.service_type,
+          post_category: newListing?.project_type,
           description: newListing?.description,
           link: newListing?.link,
           location: newListing?.location,
@@ -101,7 +102,8 @@ const CreateListing = () => {
           company_id: affiliation.company_id,
           contact: company?.email,
           p: {
-            methodology: newListing?.methodology,
+            ep_type: newListing?.project_type,
+            methodology: newListing?.methodology_id,
             verification_standard: newListing?.verification_standard,
             vintage_year: newListing?.vintage_year,
             price_per_credit: newListing?.price_per_credit,
@@ -178,6 +180,7 @@ const CreateListing = () => {
         sector,
         description,
       });
+      setListingType(post_type);
       setStepOneDone(true);
       navigate("/create-listing/step2");
     }
@@ -187,12 +190,19 @@ const CreateListing = () => {
   const handleSecondSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormErrs("");
-    const methodologyInput = e.currentTarget.elements.namedItem(
-      "methodology"
-    ) as HTMLInputElement;
-    const service_typeInput = e.currentTarget.elements.namedItem(
-      "service_type"
-    ) as HTMLInputElement;
+    const project_typeInput =
+      listingType === "Project"
+        ? (e.currentTarget.elements.namedItem(
+            "project_type"
+          ) as HTMLInputElement)
+        : null;
+
+    const service_typeInput =
+      listingType === "Service"
+        ? (e.currentTarget.elements.namedItem(
+            "service_type"
+          ) as HTMLInputElement)
+        : null;
     const locationInput = e.currentTarget.elements.namedItem(
       "location"
     ) as HTMLInputElement;
@@ -200,14 +210,29 @@ const CreateListing = () => {
       "link"
     ) as HTMLInputElement;
 
-    const methodology = methodologyInput.value;
-    const service_type = service_typeInput.value;
+    const project_type =
+      listingType === "Project" ? project_typeInput!.value : "";
+    const service_type =
+      listingType === "Service" ? service_typeInput!.value : "";
     const location = locationInput.value;
     const link = linkInput.value;
 
+    if (project_type === "Select Project Type") {
+      setFormErrs("Please select a project type");
+      return;
+    }
+    if (service_type === "Select Service Type") {
+      setFormErrs("Please select a service type");
+      return;
+    }
+    if (!location) {
+      setFormErrs("Please provide your location");
+      return;
+    }
+
     const registerListingDetailValidation =
       registerListingDetailSchema.safeParse({
-        methodology,
+        project_type,
         service_type,
         location,
         link,
@@ -218,29 +243,21 @@ const CreateListing = () => {
       console.log(error);
       return;
     }
-    if (methodology === "Select Project Type") {
-      setFormErrs("Please select a project type");
-      return;
-    }
-    if (service_type === "Select a Service") {
-      setFormErrs("Please select a service type");
-      return;
-    }
-    if (!location) {
-      setFormErrs("Please provide your location");
-      return;
-    }
-    if (registerListingDetailValidation.success) {
-      setNewMarketPost({
-        ...newMarketPost,
-        methodology,
-        service_type,
-        location,
-        link,
-      });
 
-      setStepTwoDone(true);
+    setNewMarketPost({
+      ...newMarketPost,
+      project_type,
+      service_type,
+      location,
+      link,
+    });
+
+    setStepTwoDone(true);
+    if (listingType === "Project") {
       navigate("/create-listing/step3");
+    } else if (listingType === "Service") {
+      setProductDetailDone(true);
+      setTimeout(() => navigate("/marketplace"), 3000);
     }
   };
 
@@ -308,6 +325,7 @@ const CreateListing = () => {
           clickHandler={clickHandler}
           errors={formErrs}
           company={currentCompany}
+          listingType={listingType}
         />
       )}
       {/* ListingForm3 is only required if a the listing is for a product */}
@@ -321,7 +339,10 @@ const CreateListing = () => {
       {/* FIXME: ensure to parseint vintage_year & price_per_credit */}
       {productDetailDone && (
         <div className="create-listing__form" style={{ fontSize: "4rem" }}>
-          Project listed, redirecting to marketplace
+          {listingType === "Project" &&
+            "Success! Your project is now listed on Greensfeer"}
+          {listingType === "Service" &&
+            "Success! Your service is now listed Greensfeer"}
         </div>
       )}
     </section>

@@ -175,12 +175,7 @@ const ListingForm3 = ({ handleSubmit, clickHandler, company }: Props) => {
           link={`/company/${company}`}
           btnType="link"
         />
-        <ControlButton
-          dark={false}
-          text="Post"
-          link="/create-listing/step3"
-          btnType="submit"
-        />
+        <ControlButton dark={false} text="Post" btnType="submit" />
       </div>
     </form>
   );

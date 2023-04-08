@@ -136,12 +136,7 @@ const ListingForm1 = ({ handleSubmit, errors, company }: Props) => {
           link={`/company/${company}`}
           btnType="link"
         />
-        <ControlButton
-          dark={false}
-          text="Next"
-          link="/create-listing/step2"
-          btnType="submit"
-        />
+        <ControlButton dark={false} text="Next" btnType="submit" />
       </div>
     </form>
   );
