@@ -96,7 +96,7 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
           ) : (
             <>
               <p className="header__headline">{`${CompanyData?.headline}`}</p>
-              <p className="header__location">{`${CompanyData?.location.city}, ${CompanyData?.location.state_province}, ${CompanyData?.location.country}`}</p>
+              <p className="header__location">{`${CompanyData?.location}`}</p>
               <p className="header__connections">Verified</p>
             </>
           )}
