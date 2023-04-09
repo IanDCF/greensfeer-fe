@@ -98,6 +98,21 @@ declare module "customTypes" {
     about: string;
     created_at: string;
   }
+
+  export interface IAffiliation {
+    company_id: string;
+    user_id: string;
+    logo: string;
+    company_name: string;
+    admin: boolean;
+    created_at: CreatedAt;
+    affiliation_id: string;
+    posting: boolean;
+  }
+  export interface CreatedAt {
+    _seconds: number;
+    _nanoseconds: number;
+  }
 }
 
 module.exports = {

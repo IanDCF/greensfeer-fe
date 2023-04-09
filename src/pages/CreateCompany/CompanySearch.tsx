@@ -46,7 +46,7 @@ const CompanySearch = () => {
         <div className="create-company__text-input">
           <div className="create-company__input-div">
             <label className="create-company__label-text" htmlFor="name">
-              comopany name
+              company name
             </label>
             <div className="create-company__search-icon">
               <GoSearch />
