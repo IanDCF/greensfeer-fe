@@ -73,7 +73,7 @@ const MarketplaceSelected: React.FC<Post> = ({ Post, clickHandler }) => {
             <TbArrowBackUp />
           </div>
           <img
-            src={Post?.post_banner ? Post.post_banner : CompanyBanner}
+            src={Post?.banner ? Post.banner : CompanyBanner}
             alt="Company Banner"
             className="marketplace-select__img"
           />
@@ -87,7 +87,7 @@ const MarketplaceSelected: React.FC<Post> = ({ Post, clickHandler }) => {
           <div className="marketplace-select__post-name">{Post?.post_name}</div>
           <div className="marketplace-select__company">
             <div className="marketplace-select__company-name">
-              Company Name FIX ME
+              {Post?.company_name}
             </div>
             {Post?.verified && (
               <div className="marketplace-select__company-verified">

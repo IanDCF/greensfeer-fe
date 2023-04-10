@@ -10,7 +10,7 @@ interface Post {
   sector: string;
   company_name: string;
   p?: {
-    total_price: number;
+    price_per_credit: string;
   };
   market_post_id: string;
 }
@@ -80,7 +80,7 @@ export const CompanyListings: React.FC<MarketThumbnailsProps> = ({
           ? posts.map((post) => (
               <Link
                 to={`/marketplace/${post.market_post_id}`}
-                key={`${post.post_name}${post.company_id}`}
+                key={`${post.market_post_id}`}
                 className="listings__card"
               >
                 <div className="listings__card-text">
@@ -88,30 +88,25 @@ export const CompanyListings: React.FC<MarketThumbnailsProps> = ({
                   <div className="listings__name">{post.post_name}</div>
                   <div className="listings__sector">{post.sector}</div>
                 </div>
-                {post?.p && (
-                  <div className="listings__markers">
-                    <div className="listings__badges">
-                      <div className="listings__badge"></div>
-                      <div className="listings__badge"></div>
-                      <div className="listings__badge"></div>
-                    </div>
+
+                <div className="listings__markers">
+                  <div className="listings__badges">
+                    <div className="listings__badge"></div>
+                    <div className="listings__badge"></div>
+                    <div className="listings__badge"></div>
+                  </div>
+                  {post?.p && (
                     <div className="listings__price">
                       <div className="lisitngs__price-tag">
-                        {/* this needs  to be price per credit */}
-                        {`\$${post?.p?.total_price} / tCO2`}
+                        {`\$${post?.p?.price_per_credit} / tCO2`}
                       </div>
                     </div>
-                  </div>
-                )}
-
-                {!post?.p && (
-                  <div className="listings__contact">
-                    Name of Primary Contact
-                  </div>
-                )}
-
-                <div className="listingss__price">
-                  {post.p ? post.p.total_price : ""}
+                  )}
+                  {!post?.p && (
+                    <div className="listings__price">
+                      <div className="listings__contact"></div>
+                    </div>
+                  )}
                 </div>
               </Link>
             ))

@@ -54,7 +54,7 @@ declare module "customTypes" {
     credit_unit: string;
     expiry_date: string;
     verification_number: string;
-    price_per_credit: number;
+    price_per_credit: string;
     ep_type: string;
     verification_standard: string;
     project_end_date: string;
