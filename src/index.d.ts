@@ -39,6 +39,7 @@ declare module "customTypes" {
     verified: boolean;
     sdg: Array;
     photos: Array;
+    sector: string;
   }
   export interface P {
     offset_unit: string;
