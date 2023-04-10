@@ -102,7 +102,7 @@ const MarketplaceSearch = () => {
                 </div>
                 <div className="search__listing-type">
                   {/* change to sector */}
-                  {listing.p?.methodology}
+                  {listing.p?.ep_type}
                 </div>
               </Link>
             );

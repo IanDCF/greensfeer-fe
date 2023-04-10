@@ -19,7 +19,9 @@ interface InterfaceAuthProvider {
     password: string,
     firstName: string,
     secondName: string,
-    role: string
+    role: string,
+    newsletter: boolean,
+    notifications: boolean
   ) => Promise<IUser | null>;
   login: (email: string, password: string) => Promise<UserCredential>;
   logout: () => Promise<void>;
@@ -38,7 +40,9 @@ const signUp = async (
   password: string,
   firstName: string,
   secondName: string,
-  role: string
+  role: string,
+  newsletter: boolean,
+  notifications: boolean
 ) => {
   const credentials = await createUserWithEmailAndPassword(
     auth,
@@ -50,7 +54,15 @@ const signUp = async (
   await entryForSignUp(idToken);
 
   //call database & create user
-  return await createUser(email, firstName, secondName, role, idToken);
+  return await createUser(
+    email,
+    firstName,
+    secondName,
+    role,
+    idToken,
+    newsletter,
+    notifications
+  );
 };
 const login = (email: string, password: string) => {
   return signInWithEmailAndPassword(auth, email, password);

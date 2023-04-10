@@ -39,6 +39,7 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
   user,
   userType,
 }) => {
+  console.log(ProfileData);
   const headshotStyle: React.CSSProperties = {
     background: `url(${ProfileData?.profile_picture}) center/cover no-repeat`,
   };
@@ -88,17 +89,14 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
             <>
               <p className="header__headline">{`${ProfileData?.headline}`}</p>
               <p className="header__location">
-                {ProfileData?.location &&
-                  `${ProfileData.location?.city}, ${ProfileData.location?.state_province}, ${ProfileData.location?.country}`}
+                {ProfileData?.location && `${ProfileData.location}`}
               </p>
-              <p className="header__connections">
-                Member since March 15th 2023
-              </p>
+              <div className="header__connections">Member since FIXME DATE</div>
             </>
           ) : (
             <>
               <p className="header__headline">{`${CompanyData?.headline}`}</p>
-              <p className="header__location">{`${CompanyData?.location.city}, ${CompanyData?.location.state_province}, ${CompanyData?.location.country}`}</p>
+              <p className="header__location">{`${CompanyData?.location}`}</p>
               <p className="header__connections">Verified</p>
             </>
           )}

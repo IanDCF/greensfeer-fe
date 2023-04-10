@@ -9,8 +9,8 @@ const registerListingSchema = z.object({
 });
 
 const registerListingDetailSchema = z.object({
-  methodology: z.optional(z.string().trim()),
-  service_type: z.optional(z.string().trim()),
+  project_type: z.optional(z.string().trim().nullable()),
+  service_type: z.optional(z.string().trim().nullable()),
   location: z.optional(z.string().trim()),
   link: z.optional(z.string().trim()),
 });
