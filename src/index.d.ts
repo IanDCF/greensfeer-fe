@@ -40,6 +40,9 @@ declare module "customTypes" {
     sdg: Array;
     photos: Array;
     sector: string;
+    company_name: string;
+    logo: string;
+    banner: string;
   }
   export interface P {
     offset_unit: string;

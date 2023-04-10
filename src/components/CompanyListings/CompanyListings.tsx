@@ -7,6 +7,8 @@ interface Post {
   post_type: string;
   post_category: string;
   company_id: string;
+  sector: string;
+  company_name: string;
   p?: {
     total_price: number;
   };
@@ -82,7 +84,7 @@ export const CompanyListings: React.FC<MarketThumbnailsProps> = ({
                 <div className="listings__card-text">
                   <div className="listings__ep-type">{post.post_category}</div>
                   <div className="listings__name">{post.post_name}</div>
-                  <div className="listings__sector">{post.company_id}</div>
+                  <div className="listings__sector">{post.sector}</div>
                 </div>
                 {post?.p && (
                   <div className="listings__markers">

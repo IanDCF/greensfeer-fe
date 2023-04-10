@@ -102,6 +102,7 @@ const CreateListing = () => {
           user_id: affiliation.user_id,
           company_id: affiliation.company_id,
           contact: company?.email,
+          sector: newListing?.sector,
           p: {
             ep_type: newListing?.project_type,
             methodology: newListing?.methodology_id,
