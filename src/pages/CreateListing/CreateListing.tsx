@@ -57,7 +57,7 @@ const CreateListing = () => {
   // validate post
   useEffect(() => {
     const validateAndPost = async () => {
-      console.log("validate");
+      console.log(newMarketPost);
       const affiliation = await getAffiliation(currentUser);
       const company = await getCompany(affiliation.company_id);
       setCurrentCompany(affiliation.company_id);
@@ -80,6 +80,7 @@ const CreateListing = () => {
           user_id: affiliation.user_id,
           company_id: affiliation.company_id,
           contact: company?.email,
+          sector: newListing?.sector,
         };
         //post service
         createMarketPost(service);
