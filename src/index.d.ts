@@ -40,7 +40,10 @@ declare module "customTypes" {
     verified: boolean;
     sdg: Array;
     photos: Array;
-    post_banner: string;
+    sector: string;
+    company_name: string;
+    logo: string;
+    banner: string;
   }
   export interface P {
     offset_unit: string;
@@ -51,7 +54,7 @@ declare module "customTypes" {
     credit_unit: string;
     expiry_date: string;
     verification_number: string;
-    price_per_credit: number;
+    price_per_credit: string;
     ep_type: string;
     verification_standard: string;
     project_end_date: string;

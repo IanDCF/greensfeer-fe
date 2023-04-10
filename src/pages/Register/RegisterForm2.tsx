@@ -64,7 +64,7 @@ const RegisterForm2 = ({
               I am a
             </label>
             <select id="role" name="role" className="register__input">
-              <option selected disabled>
+              <option defaultValue={''} hidden>
                 Tell us who you are
               </option>
               <option value="Broker">Broker</option>

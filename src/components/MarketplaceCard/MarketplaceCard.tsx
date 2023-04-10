@@ -24,8 +24,9 @@ const MarketplaceCard: React.FC<Post> = ({
         <div className="marketplace-card__post-type">{Post?.post_type}</div>
         <div className="marketplace-card__post-name">{Post?.post_name}</div>
         <div className="marketplace-card__company-name">
-          Company Name Fix Required
+          {Post?.company_name}
         </div>
+        <div className="marketplace-card__company-name">{Post?.sector}</div>
         <div className="marketplace-card__location">{`${Post?.location}`}</div>
       </div>
 
@@ -38,7 +39,7 @@ const MarketplaceCard: React.FC<Post> = ({
         <div className="marketplace-card__price">
           {Post?.post_type === "Project" &&
             `\$${Post?.p?.price_per_credit} / tCO2`}
-          {Post?.post_type === "Service" && "Ian Del Carpio"}
+          {Post?.post_type === "Service" && ""}
         </div>
       </div>
     </div>
