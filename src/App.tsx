@@ -22,6 +22,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
+{/* Protected routes based {!currentUser? <Route path={"/network" || "/messages"} element={<Landing/>}/>: "normal"} */}
         <Route path="/" element={<Landing />} />
         <Route path="/subscribe" element={<Subscribe />} />
         <Route path="/register" element={<Register />} />
@@ -35,9 +36,9 @@ const App = () => {
         <Route path="/company/:companyId" element={<CompanyProfile />} />
         {/* <Route path="/marketplace" element={<Marketplace />} /> */}
         <Route
-          path="/marketplace"
+        path="/marketplace"
           element={<Navigate to="668bba37-0635-4c38-b954-589e159a1d2c" />} // Redirect to default URL
-        />
+          />
         <Route path="/marketplace/:listing_id" element={<Marketplace />} />
         <Route path="/search-company" element={<CreateCompany />} />
         <Route path="/create-company/step1" element={<CreateCompany />} />
