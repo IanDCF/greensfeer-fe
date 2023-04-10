@@ -40,7 +40,10 @@ declare module "customTypes" {
     verified: boolean;
     sdg: Array;
     photos: Array;
-    post_banner: string;
+    sector: string;
+    company_name: string;
+    logo: string;
+    banner: string;
   }
   export interface P {
     offset_unit: string;
