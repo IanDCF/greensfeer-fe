@@ -102,7 +102,7 @@ const Searchbar = () => {
                   <div className="search__separator">
                     <BsDot />
                   </div>
-                  <div className="search__headline">{profile.headline}</div>
+                  <div className="search__headline">{profile.role}</div>
                 </Link>
               );
             } else {
@@ -125,9 +125,7 @@ const Searchbar = () => {
                   <div className="search__separator">
                     <BsDot />
                   </div>
-                  <div className="search__headline">
-                    {profile.headline ? profile.headline : ""}
-                  </div>
+                  <div className="search__headline">{profile?.sector}</div>
                 </Link>
               );
             }

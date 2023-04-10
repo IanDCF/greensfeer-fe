@@ -36,7 +36,7 @@ const App = () => {
         {/* <Route path="/marketplace" element={<Marketplace />} /> */}
         <Route
           path="/marketplace"
-          element={<Navigate to="a03df0bb-b00f-442b-aca5-d38c00f65a01" />} // Redirect to default URL
+          element={<Navigate to="bf626374-4236-451f-874b-f61383d9361e" />} // Redirect to default URL
         />
         <Route path="/marketplace/:listing_id" element={<Marketplace />} />
         <Route path="/search-company" element={<CreateCompany />} />

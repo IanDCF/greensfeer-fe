@@ -21,6 +21,7 @@ declare module "customTypes" {
     first_name: string;
     headline?: null;
     email: string;
+    role: string;
   }
   export interface IMarketPost {
     image: string;
@@ -39,6 +40,7 @@ declare module "customTypes" {
     verified: boolean;
     sdg: Array;
     photos: Array;
+    post_banner: string;
   }
   export interface P {
     offset_unit: string;

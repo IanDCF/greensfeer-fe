@@ -31,7 +31,7 @@ const PromptModal: React.FC<Props> = ({ open, clickHandler }) => {
         </div>
         <div className="modal__controls">
           <div className="modal__decline" onClick={clickHandler}>
-            No Thanks
+            Maybe later
           </div>
           <Link
             className="modal__accept"

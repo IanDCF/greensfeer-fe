@@ -10,6 +10,7 @@ interface Post {
   p?: {
     total_price: number;
   };
+  market_post_id: string;
 }
 
 interface MarketThumbnailsProps {
@@ -75,7 +76,8 @@ export const CompanyListings: React.FC<MarketThumbnailsProps> = ({
 
         {posts
           ? posts.map((post) => (
-              <div
+              <Link
+                to={`/marketplace/${post.market_post_id}`}
                 key={`${post.post_name}${post.company_id}`}
                 className="listings__card"
               >
@@ -109,7 +111,7 @@ export const CompanyListings: React.FC<MarketThumbnailsProps> = ({
                 <div className="listingss__price">
                   {post.p ? post.p.total_price : ""}
                 </div>
-              </div>
+              </Link>
             ))
           : "loading"}
         {/* map posts

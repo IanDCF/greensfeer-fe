@@ -31,12 +31,19 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    padding: 0rem 3rem 3rem 3rem;
-    max-width: 1024px;
+
+    max-width: 1120px;
     height: 90vh;
     overflow: hidden;
     @include bp.mobile {
       display: none;
+    }
+
+    @include bp.tablet {
+      padding: 0rem 6.5rem 3rem 6.5rem;
+    }
+    @include bp.desktop {
+      padding: 0rem 9.5rem 3rem 9.5rem;
     }
   }
 

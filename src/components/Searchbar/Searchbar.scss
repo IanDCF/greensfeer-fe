@@ -18,7 +18,7 @@
   }
   @include bp.desktop {
     position: relative;
-    width: 92%;
+    width: 95%;
   }
 
   &__icon {
@@ -93,15 +93,15 @@
     }
 
     @include bp.tablet {
-      font-size: 12rem;
-      width: 12rem;
-      height: 12rem;
+      font-size: 11rem;
+      width: 11rem;
+      height: 11rem;
     }
 
     @include bp.mobile {
-      font-size: 12rem;
-      width: 12rem;
-      height: 12rem;
+      font-size: 11rem;
+      width: 11rem;
+      height: 11rem;
     }
   }
 

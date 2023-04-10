@@ -13,37 +13,45 @@
   z-index: 10;
   background-color: color.$white;
 
-  @include bp.mobile {
-    padding: 2.5rem 3rem 2rem 3rem;
-  }
-
-  @include bp.tablet {
-    padding: 2.5rem 3rem 2rem 3rem;
-  }
-
   &__wrapper {
     display: flex;
 
     @include bp.mobile {
-      justify-content: space-around;
+      justify-content: space-between;
+      padding: 2.5rem 3.5rem 2rem 3.5rem;
       width: 100%;
     }
 
     @include bp.tablet {
       justify-content: space-between;
-      width: 77%;
+      padding: 2.5rem 6.5rem 2rem 6.5rem;
+      width: 100%;
     }
 
     @include bp.desktop {
       justify-content: space-between;
-      width: 70%;
-      max-width: 800px;
+      padding: 2.5rem 9.5rem 2rem 9.5rem;
+      width: 100%;
+      max-width: 1099px;
     }
   }
 
   &__search {
     display: flex;
     align-items: center;
+
+    @include bp.mobile {
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    @include bp.tablet {
+      width: 72%;
+    }
+
+    @include bp.desktop {
+      width: 72%;
+    }
   }
 
   &__links {
