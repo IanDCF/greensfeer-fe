@@ -3,6 +3,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { BsFilter } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import FilterParameter from "../FilterParameter/FilterParameter";
+import { RxDividerVertical } from "react-icons/rx";
 const FilterBar = () => {
   return (
     <nav className="filter-bar">
@@ -13,6 +14,9 @@ const FilterBar = () => {
           </div>
           <div className="filter-bar__btn-text">Add Listing</div>
         </Link>
+        <div className="filter-bar__separator">
+          <RxDividerVertical />
+        </div>
         <div className="filter-bar__filters-btn">
           <div className="filter-bar__icon">
             <BsFilter />

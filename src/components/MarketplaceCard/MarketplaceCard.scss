@@ -102,7 +102,7 @@
 
   &__location {
     font-weight: 500;
-    color: color.$darkgreen2;
+    color: color.$green;
 
     @include bp.mobile {
       font-size: 2.8rem;

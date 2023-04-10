@@ -1,4 +1,4 @@
-import CompanyBanner from "../../assets/images/nature-banner-2.png";
+import CompanyBanner from "../../assets/images/placeholder-banner.png";
 import "./MarketplaceSelected.scss";
 import icon1 from "../../assets/icons/sdg1.png";
 import icon2 from "../../assets/icons/sdg2.png";
@@ -73,7 +73,7 @@ const MarketplaceSelected: React.FC<Post> = ({ Post, clickHandler }) => {
             <TbArrowBackUp />
           </div>
           <img
-            src={CompanyBanner}
+            src={Post?.post_banner ? Post.post_banner : CompanyBanner}
             alt="Company Banner"
             className="marketplace-select__img"
           />
