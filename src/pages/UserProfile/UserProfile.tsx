@@ -7,14 +7,33 @@ import axios from "axios";
 import { useState, useEffect, MouseEventHandler } from "react";
 import { IUser } from "customTypes";
 import PromptModal from "../../components/PromptModal/PromptModal";
+import { EditHeaderModal } from "../../components/EditUserProfile/EditHeaderModal";
+import { EditAboutModal } from "../../components/EditUserProfile/EditAboutModal";
+import { EditAffiliationsModal } from "../../components/EditUserProfile/EditAffiliationsModal";
 
 export const UserProfile: React.FC = () => {
   const [profile, setProfile] = useState<IUser>();
   const { currentUser } = useAuth();
   const [token, setToken] = useState<string>();
-  const [openCompanyModal, setOpenCompanyModal] = useState<boolean>(true);
-  const clickHandler: MouseEventHandler = () => {
-    setOpenCompanyModal(false);
+  const [openPromptModal, setOpenPromptModal] = useState<boolean>(true);
+  const [headerModal, setHeaderModal] = useState<boolean>(false);
+  const [aboutModal, setAboutModal] = useState<boolean>(false);
+  const [affiliationsModal, setAffiliationsModal] = useState<boolean>(false);
+
+  const promptHandler: MouseEventHandler = () => {
+    setOpenPromptModal(false);
+  };
+
+  const editHeaderHandler: MouseEventHandler = () => {
+    setHeaderModal(!headerModal);
+  };
+
+  const editAboutHandler: MouseEventHandler = () => {
+    setAboutModal(!aboutModal);
+  };
+
+  const editAffiliationsHandler: MouseEventHandler = () => {
+    setAffiliationsModal(!affiliationsModal);
   };
 
   useEffect(() => {
@@ -43,11 +62,37 @@ export const UserProfile: React.FC = () => {
   return (
     <>
       <div className="user-profile-container">
-        <ProfileHeader ProfileData={profile} user={true} />
-        <ProfileAbout ProfileData={profile} user={true} />
+        <ProfileHeader
+          ProfileData={profile}
+          user={true}
+          editing={true}
+          editHeaderHandler={editHeaderHandler}
+        />
+        <ProfileAbout
+          ProfileData={profile}
+          user={true}
+          editing={true}
+          editAboutHandler={editAboutHandler}
+        />
         {/* {profile && console.log(profile)} */}
-        <ProfileAffiliations userType="current" />
-        <PromptModal open={openCompanyModal} clickHandler={clickHandler} />
+        <ProfileAffiliations
+          userType="current"
+          editing={true}
+          editAffiliationsHandler={editAffiliationsHandler}
+        />
+        <PromptModal open={openPromptModal} clickHandler={promptHandler} />
+        <EditHeaderModal
+          openModal={headerModal}
+          editHeaderHandler={editHeaderHandler}
+        />
+        <EditAboutModal
+          openModal={aboutModal}
+          editAboutHandler={editAboutHandler}
+        />
+        <EditAffiliationsModal
+          openModal={affiliationsModal}
+          editAffiliationsHandler={editAffiliationsHandler}
+        />
       </div>
     </>
   );

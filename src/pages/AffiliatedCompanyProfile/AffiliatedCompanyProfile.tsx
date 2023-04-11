@@ -7,7 +7,7 @@ import getMarketPost from "../../helpers/marketPostFetcher";
 import { ICompany, IMarketPost } from "customTypes";
 import { useNavigate, useParams } from "react-router-dom";
 import getCompany from "../../helpers/companyFetcher";
-import Modal from "../../components/PromptModal/PromptModal";
+import PromptModal from "../../components/PromptModal/PromptModal";
 
 export const CompanyProfile: React.FC = () => {
   const { companyId } = useParams();
@@ -46,12 +46,12 @@ export const CompanyProfile: React.FC = () => {
     <>
       {company && (
         <div className="user-profile-container">
-          <ProfileHeader CompanyData={company} user={false} />
-          <ProfileAbout CompanyData={company} user={false} />
+          <ProfileHeader CompanyData={company} user={false} editing={true} />
+          <ProfileAbout CompanyData={company} user={false} editing={true} />
           {/* <Affiliations /> */}
           <CompanyListings posts={products} title={"Projects"} />
           <CompanyListings posts={services} title={"Services"} />
-          <Modal open={openCompanyModal} clickHandler={clickHandler} />
+          <PromptModal open={openCompanyModal} clickHandler={clickHandler} />
         </div>
       )}
     </>

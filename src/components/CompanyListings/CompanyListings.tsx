@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./CompanyListings.scss";
 import { IoIosAddCircleOutline } from "react-icons/io";
-
+import { FiEdit2 } from "react-icons/fi";
 interface Post {
   post_name: string;
   post_type: string;
@@ -36,6 +36,11 @@ export const CompanyListings: React.FC<MarketThumbnailsProps> = ({
 
   return (
     <div className="listings">
+      {companyProfileType === "affiliated" && (
+        <div className="header__edit-btn">
+          <FiEdit2 />
+        </div>
+      )}
       <h3 className="listings__title">{title}</h3>
       <div className="listings__list">
         {title === "Projects" && (

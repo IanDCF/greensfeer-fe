@@ -12,11 +12,15 @@ import PlaceholderPhoto from "../../assets/images/placeholder-photo.png";
 import PlaceholderLogo from "../../assets/images/placeholder-logo.png";
 import { FaUserCircle } from "react-icons/fa";
 import { AiOutlineGlobal } from "react-icons/ai";
+import { FiEdit2 } from "react-icons/fi";
+import { MouseEventHandler } from "react";
 interface ProfileHeaderProps {
   ProfileData?: IUser;
   CompanyData?: ICompany;
   user: boolean;
   userType?: string;
+  editing?: boolean;
+  editHeaderHandler?: MouseEventHandler;
 }
 
 // interface UserProps {
@@ -38,6 +42,8 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
   CompanyData,
   user,
   userType,
+  editing,
+  editHeaderHandler,
 }) => {
   console.log(ProfileData);
   const headshotStyle: React.CSSProperties = {
@@ -63,6 +69,11 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
       </div>
 
       <div className="header__details">
+        {editing && (
+          <div className="header__edit-btn" onClick={editHeaderHandler}>
+            <FiEdit2 />
+          </div>
+        )}
         <div className="header__photo-div">
           {ProfileData?.profile_picture || CompanyData?.logo ? (
             <div
