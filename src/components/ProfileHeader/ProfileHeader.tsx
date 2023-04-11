@@ -36,6 +36,18 @@ interface ProfileHeaderProps {
 //   profile_banner: string;
 //   about: string;
 // }
+  const formatDate = (dateStr: string) => {
+    const date = new Date(dateStr);
+    const options: Intl.DateTimeFormatOptions = {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
+    };
+    return date.toLocaleString("en-US", options);
+  };
 
 export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
   ProfileData,
@@ -102,7 +114,7 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
               <p className="header__location">
                 {ProfileData?.location && `${ProfileData.location}`}
               </p>
-              <div className="header__connections">Member since FIXME DATE</div>
+              <div className="header__connections">Member since {ProfileData && formatDate(ProfileData.created_at)}</div>
             </>
           ) : (
             <>

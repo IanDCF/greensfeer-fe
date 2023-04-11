@@ -4,20 +4,51 @@ import { BsCamera } from "react-icons/bs";
 import ControlButton from "../../components/ControlButtons/ControlButton";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import "./EditModal.scss";
+import { IUser } from "customTypes";
 
 interface Props {
   openModal: boolean;
   editHeaderHandler: MouseEventHandler;
+  current?: IUser;
 }
+
+const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+
+  const fristNInput = e.currentTarget.elements.namedItem(
+    "firstName"
+  ) as HTMLInputElement;
+  const lastNInput = e.currentTarget.elements.namedItem(
+    "lastName"
+  ) as HTMLInputElement;
+  const headlineInput = e.currentTarget.elements.namedItem(
+    "headline"
+  ) as HTMLInputElement;
+  const marketRoleInput = e.currentTarget.elements.namedItem(
+    "marketRole"
+  ) as HTMLInputElement;
+  const locationInput = e.currentTarget.elements.namedItem(
+    "location"
+  ) as HTMLInputElement;
+  const profilePicInput = e.currentTarget.elements.namedItem(
+    "profilePic"
+  ) as HTMLInputElement;
+  const bannerPicInput = e.currentTarget.elements.namedItem(
+    "bannerPic"
+  ) as HTMLInputElement;
+};
 
 export const EditHeaderModal: React.FC<Props> = ({
   openModal,
   editHeaderHandler,
+  current,
 }) => {
+  // populate state with current user data
+
   if (!openModal) return <></>;
   return (
     <div className="edit-modal">
-      <div className="edit-modal__card">
+      <form className="edit-modal__card">
         <div className="edit-modal__close" onClick={editHeaderHandler}>
           <AiOutlineClose />
         </div>
@@ -80,6 +111,7 @@ export const EditHeaderModal: React.FC<Props> = ({
                 name="firsName"
                 className="edit-modal__input"
                 placeholder="Enter your first name"
+                defaultValue={current?.first_name}
               />
             </div>
             <div className="edit-modal__input-div">
@@ -91,7 +123,8 @@ export const EditHeaderModal: React.FC<Props> = ({
                 id="lastName"
                 name="lastName"
                 className="edit-modal__input"
-                placeholder="What sector are you in?"
+                placeholder="Enter your last name"
+                defaultValue={current?.last_name}
               />
             </div>
             <div className="edit-modal__input-div">
@@ -104,6 +137,7 @@ export const EditHeaderModal: React.FC<Props> = ({
                 name="headline"
                 className="edit-modal__input"
                 placeholder="Please enter a tagline"
+                defaultValue={current?.headline}
               />
             </div>
             <div className="edit-modal__input-div">
@@ -115,8 +149,8 @@ export const EditHeaderModal: React.FC<Props> = ({
                 name="marketRole"
                 className="edit-modal__input"
               >
-                <option hidden defaultValue={""}>
-                  Select market role
+                <option hidden defaultValue={current?.role}>
+                  {current?.role}
                 </option>
                 <option value="Project Developer">Project Developer</option>
                 <option value="Sponsor">Sponsor</option>
@@ -137,6 +171,7 @@ export const EditHeaderModal: React.FC<Props> = ({
                 name="location"
                 className="edit-modal__input"
                 placeholder="Where are you located?"
+                defaultValue={current?.location}
               />
             </div>
           </div>
@@ -151,7 +186,7 @@ export const EditHeaderModal: React.FC<Props> = ({
           </div>
           <ControlButton dark={false} text="Save" btnType="submit" />
         </div>
-      </div>
+      </form>
     </div>
   );
 };

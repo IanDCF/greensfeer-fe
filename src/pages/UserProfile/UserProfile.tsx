@@ -90,6 +90,7 @@ export const UserProfile: React.FC = () => {
         <EditHeaderModal
           openModal={headerModal}
           editHeaderHandler={editHeaderHandler}
+          current={profile}
         />
         <EditAboutModal
           openModal={aboutModal}
