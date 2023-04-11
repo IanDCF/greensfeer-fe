@@ -15,7 +15,7 @@ export const UserProfile: React.FC = () => {
   const [profile, setProfile] = useState<IUser>();
   const { currentUser } = useAuth();
   const [token, setToken] = useState<string>();
-  const [openPromptModal, setOpenPromptModal] = useState<boolean>(true);
+  const [openPromptModal, setOpenPromptModal] = useState<boolean>(false);
   const [headerModal, setHeaderModal] = useState<boolean>(false);
   const [aboutModal, setAboutModal] = useState<boolean>(false);
   const [affiliationsModal, setAffiliationsModal] = useState<boolean>(false);
@@ -34,6 +34,7 @@ export const UserProfile: React.FC = () => {
 
   const editAffiliationsHandler: MouseEventHandler = () => {
     setAffiliationsModal(!affiliationsModal);
+    localStorage.setItem("ListingModalSeen", "yes");
   };
 
   useEffect(() => {
@@ -57,6 +58,11 @@ export const UserProfile: React.FC = () => {
       }
     }
     fetchProfile();
+    if (!localStorage.getItem("ListingModalSeen")) {
+      setTimeout(() => {
+        setOpenCompanyModal(true);
+      }, 3000);
+    }
   }, [currentUser]);
 
   return (
