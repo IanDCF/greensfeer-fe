@@ -10,6 +10,8 @@ import getCompany from "../../helpers/companyFetcher";
 import Modal from "../../components/PromptModal/PromptModal";
 import { useAuth } from "../../context/AuthProvider/AuthProvider";
 import { getAllAffiliations } from "../../helpers/affiliationFetcher";
+import { EditCompanyHeader } from "../../components/EditUserProfile/EditCompanyHeader";
+import { EditCompanyAbout } from "../../components/EditUserProfile/EditCompanyAbout";
 
 export const CompanyProfile: React.FC = () => {
   const { currentUser } = useAuth();
@@ -19,12 +21,33 @@ export const CompanyProfile: React.FC = () => {
   const [services, setServices] = useState<IMarketPost[]>([]);
   const [company, setCompany] = useState<ICompany | null>(null);
   const [openCompanyModal, setOpenCompanyModal] = useState<boolean>(false);
+  const [headerModal, setHeaderModal] = useState<boolean>(false);
+  const [aboutModal, setAboutModal] = useState<boolean>(false);
+  const [projectModal, setProjectModal] = useState<boolean>(false);
+  const [serviceModal, setServiceModal] = useState<boolean>(false);
   const [companyProfileType, setCompanyProfileType] =
     useState<string>("not affiliated");
-  const clickHandler: MouseEventHandler = () => {
+  const promptHandler: MouseEventHandler = () => {
     setOpenCompanyModal(false);
-      localStorage.setItem("ListingModalSeen", "yes");
+    localStorage.setItem("ListingModalSeen", "yes");
   };
+
+  const editHeaderHandler: MouseEventHandler = () => {
+    setHeaderModal(!headerModal);
+  };
+
+  const editAboutHandler: MouseEventHandler = () => {
+    setAboutModal(!aboutModal);
+  };
+
+  const editProjectHandler: MouseEventHandler = () => {
+    setProjectModal(!projectModal);
+  };
+
+  const editServiceHandler: MouseEventHandler = () => {
+    setServiceModal(!serviceModal);
+  };
+
   useEffect(() => {
     const getData = async () => {
       if (companyId) {
@@ -42,11 +65,11 @@ export const CompanyProfile: React.FC = () => {
       }
     };
     getData();
-        if (!localStorage.getItem("ListingModalSeen")) {
-          setTimeout(() => {
-            setOpenCompanyModal(true);
-          }, 3000);
-        }
+    if (!localStorage.getItem("ListingModalSeen")) {
+      setTimeout(() => {
+        setOpenCompanyModal(true);
+      }, 3000);
+    }
   }, [companyId]);
 
   useEffect(() => {
@@ -80,11 +103,13 @@ export const CompanyProfile: React.FC = () => {
             CompanyData={company}
             user={false}
             editing={companyProfileType === "affiliated" ? true : false}
+            editHeaderHandler={editHeaderHandler}
           />
           <ProfileAbout
             CompanyData={company}
             user={false}
             editing={companyProfileType === "affiliated" ? true : false}
+            editAboutHandler={editAboutHandler}
           />
           {/* <Affiliations /> */}
           <CompanyListings
@@ -97,7 +122,15 @@ export const CompanyProfile: React.FC = () => {
             title={"Services"}
             companyProfileType={companyProfileType}
           />
-          <Modal open={openCompanyModal} clickHandler={clickHandler} />
+          <Modal open={openCompanyModal} clickHandler={promptHandler} />
+          <EditCompanyHeader
+            openModal={headerModal}
+            editHeaderHandler={editHeaderHandler}
+          />
+          <EditCompanyAbout
+            openModal={aboutModal}
+            editAboutHandler={editAboutHandler}
+          />
         </div>
       )}
     </>
