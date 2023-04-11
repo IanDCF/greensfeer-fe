@@ -1,0 +1,444 @@
+@use "../../styles/partials/mixins" as mx;
+@use "../../styles/partials/colors.scss" as color;
+@use "../../styles/partials/breakpoints.scss" as bp;
+
+.edit-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(19, 24, 44, 0.7);
+  z-index: 11;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+
+  &__card {
+    position: relative;
+    background-color: color.$white;
+    border-radius: 2.5rem;
+    display: flex;
+    flex-direction: column;
+
+    @include bp.mobile {
+      padding: 4rem 5rem;
+      width: 92%;
+    }
+
+    @include bp.tablet {
+      padding: 8rem 8rem 4rem 8rem;
+      max-width: 120rem;
+    }
+
+    @include bp.desktop {
+      padding: 8rem 8rem 4rem 8rem;
+      width: 100%;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: 2.5rem;
+    right: 2.5rem;
+    color: color.$darkgray2;
+
+    @include bp.mobile {
+      font-size: 5rem;
+    }
+
+    @include bp.tablet {
+      font-size: 6rem;
+    }
+
+    @include bp.desktop {
+      font-size: 6rem;
+    }
+  }
+
+  &__title {
+    color: color.$darkgray2;
+    font-weight: 500;
+
+    @include bp.mobile {
+      font-size: 5rem;
+      margin-bottom: 8rem;
+    }
+
+    @include bp.tablet {
+      font-size: 5rem;
+      margin-bottom: 8rem;
+    }
+  }
+
+  &__input-fields {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 3rem;
+  }
+
+  &__img-upload {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    @include bp.mobile {
+      margin-bottom: 5rem;
+    }
+
+    @include bp.tablet {
+      margin-bottom: 10rem;
+    }
+
+    @include bp.desktop {
+      margin-bottom: 5rem;
+    }
+  }
+
+  &__pic1 {
+    border: 1.25px solid color.$green;
+    border-radius: 2.5rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    @include bp.mobile {
+      width: 31%;
+      min-width: 20rem;
+      height: 15.75rem;
+      margin-right: 3rem;
+    }
+
+    @include bp.tablet {
+      width: 35.5rem;
+      height: 18rem;
+      margin-right: 7rem;
+    }
+
+    @include bp.desktop {
+      width: 31%;
+      height: 15.75rem;
+      margin-right: 3rem;
+    }
+  }
+
+  &__upload-check {
+    position: absolute;
+    color: color.$green;
+    font-size: 4.5rem;
+    top: -2.85rem;
+    right: -1.75rem;
+  }
+
+  &__label {
+    position: absolute;
+    background-color: color.$white;
+    padding: 0 0.75rem;
+
+    @include bp.mobile {
+      top: -2rem;
+      left: 2rem;
+      font-size: 2.5rem;
+      overflow: auto;
+      white-space: nowrap;
+    }
+
+    @include bp.tablet {
+      top: -2.5rem;
+      left: 2rem;
+      font-size: 3.2rem;
+    }
+
+    @include bp.desktop {
+      top: -2rem;
+      left: 2rem;
+      font-size: 2.5rem;
+    }
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12rem;
+    width: 9.75rem;
+  }
+
+  &__input-file {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    min-width: 20rem;
+  }
+
+  &__pic2 {
+    @extend .edit-modal__pic1;
+    margin-right: 0;
+    @include bp.mobile {
+      width: 69%;
+    }
+
+    @include bp.tablet {
+      width: 52rem;
+    }
+
+    @include bp.desktop {
+      width: 69%;
+    }
+  }
+
+  &__input {
+    width: 100%;
+    border: none;
+    outline: none;
+    color: color.$nickel;
+    background-color: none;
+
+    @include bp.mobile {
+      font-size: 3.5rem;
+      font-weight: 300;
+    }
+
+    @include bp.tablet {
+      font-size: 4rem;
+      font-weight: 300;
+    }
+
+    @include bp.desktop {
+      font-size: 3.5rem;
+      font-weight: 300;
+    }
+  }
+
+  &__text-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  &__input-div {
+    position: relative;
+    border: 1px solid color.$green;
+    border-radius: 12rem;
+    display: flex;
+    align-items: center;
+    padding: 0 4rem 0 6rem;
+
+    @include bp.mobile {
+      height: 11rem;
+      width: 100%;
+      margin-bottom: 4rem;
+      &:last-child {
+        margin-bottom: 2rem;
+      }
+    }
+
+    @include bp.tablet {
+      height: 15rem;
+      width: 100%;
+      margin-bottom: 8rem;
+      &:last-child {
+        margin-bottom: 3rem;
+      }
+    }
+
+    @include bp.desktop {
+      height: 11rem;
+      width: 100%;
+      margin-bottom: 4rem;
+    }
+  }
+
+  &__label-text {
+    @extend .edit-modal__label;
+    @include bp.mobile {
+      left: 6rem;
+    }
+
+    @include bp.tablet {
+      left: 6rem;
+    }
+
+    @include bp.desktop {
+      left: 6rem;
+    }
+  }
+
+  // Affiliations
+  &__title-aff {
+    @extend .edit-modal__title;
+    margin-bottom: 4rem;
+  }
+  &__my-aff {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  &__sub-title {
+    color: color.$darkgray2;
+    font-size: 4rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+  }
+
+  &__aff-display {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  &__aff-card {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    align-items: center;
+    padding: 3rem 1rem;
+    margin-bottom: 2.5rem;
+
+    @include bp.tablet {
+      width: 85rem;
+    }
+
+    @include bp.desktop {
+      margin-bottom: 2rem;
+      width: 100%;
+    }
+  }
+
+  &__aff-logo {
+    width: 18rem;
+    height: 18rem;
+    margin-right: 3rem;
+  }
+
+  &__aff-name {
+    font-size: 4rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+  }
+
+  &__aff-since {
+    font-size: 3.5rem;
+    font-weight: 400;
+  }
+
+  &__aff-delete {
+    position: absolute;
+
+    text-decoration: underline;
+    font-size: 3rem;
+    font-weight: 300;
+    color: color.$darkgray2;
+    cursor: pointer;
+
+    @include bp.mobile {
+      bottom: 0rem;
+      right: 5rem;
+    }
+
+    @include bp.tablet {
+      bottom: 2rem;
+      right: 5rem;
+    }
+
+    @include bp.desktop {
+      bottom: 3rem;
+      right: 5rem;
+    }
+  }
+
+  &__aff-delete:hover {
+    color: color.$green;
+  }
+
+  &__aff-add {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__aff-add-icon {
+    border: 1px solid color.$green;
+    border-radius: 5rem;
+    height: 25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15rem;
+    color: color.$charcoal;
+    margin-bottom: 2rem;
+  }
+
+  // End of Affiliations
+
+  &__required-text {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    @include bp.mobile {
+      margin-top: 5rem;
+      margin-bottom: 1rem;
+      justify-content: center;
+    }
+
+    @include bp.tablet {
+      margin-top: 6.5rem;
+      margin-bottom: 2rem;
+      justify-content: center;
+    }
+
+    @include bp.desktop {
+      margin-top: 6.5rem;
+      margin-bottom: 2rem;
+      justify-content: space-between;
+    }
+  }
+  &__input-div-textarea {
+    @extend .edit-modal__input-div;
+    border-radius: 5rem;
+    @include bp.mobile {
+      width: 100%;
+      height: 60rem;
+    }
+    @include bp.tablet {
+      height: 80rem;
+      width: 100rem;
+    }
+    @include bp.desktop {
+      height: 55rem;
+      width: 100rem;
+    }
+  }
+
+  &__input-textarea {
+    @extend .edit-modal__input;
+    resize: none;
+    width: 95%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+  }
+
+  &__characters {
+    color: color.$romansilver;
+    font-weight: 300;
+  }
+}

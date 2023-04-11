@@ -3,13 +3,15 @@ import companyLogo1 from "../../assets/images/affiliation1.png";
 import companyLogo2 from "../../assets/images/affiliation2.png";
 import { IoIosAdd } from "react-icons/io";
 import { Link, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { MouseEventHandler, useEffect, useState } from "react";
 import { IAffiliation, ICompany } from "customTypes";
 import { getAllAffiliations } from "../../helpers/affiliationFetcher";
 import { AiOutlineGlobal } from "react-icons/ai";
-
+import { FiEdit2 } from "react-icons/fi";
 interface ProfileAffiliationProps {
   userType?: string;
+  editing?: boolean;
+  editAffiliationsHandler?: MouseEventHandler;
 }
 
 const getUserIdFromUrl = (url: string): string | null => {
@@ -25,6 +27,8 @@ const getUserIdFromUrl = (url: string): string | null => {
 
 export const ProfileAffiliations: React.FC<ProfileAffiliationProps> = ({
   userType,
+  editing,
+  editAffiliationsHandler,
 }) => {
   const uid = getUserIdFromUrl(window.location.pathname); // Get userId from the URL path
   console.log(uid);
@@ -54,6 +58,11 @@ export const ProfileAffiliations: React.FC<ProfileAffiliationProps> = ({
   return (
     <div className="affiliations">
       <h3 className="affiliations__title">Affiliations</h3>
+      {editing && (
+        <div className="header__edit-btn" onClick={editAffiliationsHandler}>
+          <FiEdit2 />
+        </div>
+      )}
       <div className="affiliations__list">
         {userAfilliations &&
           userAfilliations?.length > 0 &&

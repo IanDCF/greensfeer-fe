@@ -11,6 +11,7 @@
   white-space: nowrap;
   color: color.$darkgray2;
   width: 100%;
+  position: relative;
 
   @include bp.mobile {
     margin-bottom: 2.5rem;

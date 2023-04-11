@@ -9,6 +9,7 @@
   flex-direction: column;
   color: color.$darkgray2;
   width: 100%;
+  position: relative;
 
   @include bp.mobile {
     margin-bottom: 2.5rem;
@@ -49,6 +50,7 @@
   &__text {
     margin: 0;
     font-weight: 300;
+    max-width: 92%;
 
     @include bp.mobile {
       font-size: 3rem;

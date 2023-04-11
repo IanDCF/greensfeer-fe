@@ -70,8 +70,16 @@ export const CompanyProfile: React.FC = () => {
     <>
       {company && (
         <div className="user-profile-container">
-          <ProfileHeader CompanyData={company} user={false} />
-          <ProfileAbout CompanyData={company} user={false} />
+          <ProfileHeader
+            CompanyData={company}
+            user={false}
+            editing={companyProfileType === "affiliated" ? true : false}
+          />
+          <ProfileAbout
+            CompanyData={company}
+            user={false}
+            editing={companyProfileType === "affiliated" ? true : false}
+          />
           {/* <Affiliations /> */}
           <CompanyListings
             posts={products}
