@@ -21,6 +21,11 @@ const Marketplace: React.FC = () => {
       setMarketPosts(posts);
     };
     getData();
+     if (!localStorage.getItem("CompanyModalSeen")) {
+       setTimeout(() => {
+         setOpenCompanyModal(true);
+       }, 3000);
+     }
   }, []);
 
   useEffect(() => {
@@ -34,9 +39,10 @@ const Marketplace: React.FC = () => {
     getPost();
   }, [listing_id]); // Add listing_id as a dependency
 
-  const [openCompanyModal, setOpenCompanyModal] = useState<boolean>(true);
+  const [openCompanyModal, setOpenCompanyModal] = useState<boolean>(false);
   const clickHandler: MouseEventHandler = () => {
     setOpenCompanyModal(false);
+    localStorage.setItem("CompanyModalSeen", "yes")
   };
 
   const handleMarketplaceToggle = () => {

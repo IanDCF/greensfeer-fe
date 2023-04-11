@@ -18,11 +18,12 @@ export const CompanyProfile: React.FC = () => {
   const [products, setProducts] = useState<IMarketPost[]>([]);
   const [services, setServices] = useState<IMarketPost[]>([]);
   const [company, setCompany] = useState<ICompany | null>(null);
-  const [openCompanyModal, setOpenCompanyModal] = useState<boolean>(true);
+  const [openCompanyModal, setOpenCompanyModal] = useState<boolean>(false);
   const [companyProfileType, setCompanyProfileType] =
     useState<string>("not affiliated");
   const clickHandler: MouseEventHandler = () => {
     setOpenCompanyModal(false);
+      localStorage.setItem("ListingModalSeen", "yes");
   };
   useEffect(() => {
     const getData = async () => {
@@ -41,6 +42,11 @@ export const CompanyProfile: React.FC = () => {
       }
     };
     getData();
+        if (!localStorage.getItem("ListingModalSeen")) {
+          setTimeout(() => {
+            setOpenCompanyModal(true);
+          }, 3000);
+        }
   }, [companyId]);
 
   useEffect(() => {

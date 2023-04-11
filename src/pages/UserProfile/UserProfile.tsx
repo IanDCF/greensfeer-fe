@@ -12,9 +12,10 @@ export const UserProfile: React.FC = () => {
   const [profile, setProfile] = useState<IUser>();
   const { currentUser } = useAuth();
   const [token, setToken] = useState<string>();
-  const [openCompanyModal, setOpenCompanyModal] = useState<boolean>(true);
+  const [openCompanyModal, setOpenCompanyModal] = useState<boolean>(false);
   const clickHandler: MouseEventHandler = () => {
     setOpenCompanyModal(false);
+    localStorage.setItem("ListingModalSeen", "yes");
   };
 
   useEffect(() => {
@@ -38,6 +39,11 @@ export const UserProfile: React.FC = () => {
       }
     }
     fetchProfile();
+    if (!localStorage.getItem("ListingModalSeen")) {
+      setTimeout(() => {
+        setOpenCompanyModal(true);
+      }, 3000);
+    }
   }, [currentUser]);
 
   return (
