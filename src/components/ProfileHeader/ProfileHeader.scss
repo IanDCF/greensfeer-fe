@@ -34,6 +34,7 @@
   &__details {
     display: flex;
     align-items: center;
+    position: relative;
 
     @include bp.mobile {
       padding: 1.5rem;
@@ -45,6 +46,42 @@
 
     @include bp.desktop {
       padding: 2.5rem 4.5rem;
+    }
+  }
+
+  &__edit-btn {
+    position: absolute;
+    border-radius: 50%;
+    // background-color: rgba(0, 0, 0, 0.544);
+    // background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: color.$nickel;
+    cursor: pointer;
+
+    @include bp.mobile {
+      top: 1.5rem;
+      right: 2rem;
+      width: 5rem;
+      height: 5rem;
+      font-size: 4rem;
+    }
+
+    @include bp.tablet {
+      top: 3rem;
+      right: 4rem;
+      width: 6rem;
+      height: 6rem;
+      font-size: 4.5rem;
+    }
+
+    @include bp.desktop {
+      top: 3rem;
+      right: 4rem;
+      width: 7.5rem;
+      height: 7.5rem;
+      font-size: 5rem;
     }
   }
 
