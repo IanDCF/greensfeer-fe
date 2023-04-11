@@ -108,7 +108,7 @@ export const EditHeaderModal: React.FC<Props> = ({
               <input
                 type="text"
                 id="firstName"
-                name="firsName"
+                name="firstName"
                 className="edit-modal__input"
                 placeholder="Enter your first name"
                 defaultValue={current?.first_name}
