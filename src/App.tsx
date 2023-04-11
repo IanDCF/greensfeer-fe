@@ -22,7 +22,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-{/* Protected routes based {!currentUser? <Route path={"/network" || "/messages"} element={<Landing/>}/>: "normal"} */}
+        {/* Protected routes based {!currentUser? <Route path={"/network" || "/messages"} element={<Landing/>}/>: "normal"} */}
         <Route path="/" element={<Landing />} />
         <Route path="/subscribe" element={<Subscribe />} />
         <Route path="/register" element={<Register />} />
