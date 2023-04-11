@@ -15,13 +15,14 @@ export const UserProfile: React.FC = () => {
   const [profile, setProfile] = useState<IUser>();
   const { currentUser } = useAuth();
   const [token, setToken] = useState<string>();
-  const [openPromptModal, setOpenPromptModal] = useState<boolean>(false);
+  const [openCompanyModal, setOpenCompanyModal] = useState<boolean>(false);
   const [headerModal, setHeaderModal] = useState<boolean>(false);
   const [aboutModal, setAboutModal] = useState<boolean>(false);
   const [affiliationsModal, setAffiliationsModal] = useState<boolean>(false);
 
   const promptHandler: MouseEventHandler = () => {
-    setOpenPromptModal(false);
+    setOpenCompanyModal(false);
+    localStorage.setItem("ListingModalSeen", "yes");
   };
 
   const editHeaderHandler: MouseEventHandler = () => {
@@ -34,7 +35,6 @@ export const UserProfile: React.FC = () => {
 
   const editAffiliationsHandler: MouseEventHandler = () => {
     setAffiliationsModal(!affiliationsModal);
-    localStorage.setItem("ListingModalSeen", "yes");
   };
 
   useEffect(() => {
@@ -86,7 +86,7 @@ export const UserProfile: React.FC = () => {
           editing={true}
           editAffiliationsHandler={editAffiliationsHandler}
         />
-        <PromptModal open={openPromptModal} clickHandler={promptHandler} />
+        <PromptModal open={openCompanyModal} clickHandler={promptHandler} />
         <EditHeaderModal
           openModal={headerModal}
           editHeaderHandler={editHeaderHandler}
