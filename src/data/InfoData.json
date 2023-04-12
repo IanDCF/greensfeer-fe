@@ -4,39 +4,29 @@
     "darkMode": true,
     "topLine": "Discover",
     "headLine": "Build A Network",
-    "description": "Connect with like-minded individuals and organizations committed to sustainability",
-    "buttonText": "Learn More",
+    "description": "Showcase your projects, collaborate with trusted partners and access a network of experts - all in one place",
+    "buttonText": "Try for Free",
     "alt": "Online Presence Image",
-    "link": "https://www.youtube.com/@Greensfeer/playlists"
+    "link": "/signin"
   },
   {
-    "id": "exchange",
+    "id": "community",
     "darkMode": false,
-    "topLine": "Exchange",
-    "headLine": "Buy & Sell",
-    "description": "Find carbon commodities or related products and services that work for you",
-    "buttonText": "Learn More",
+    "topLine": "Community",
+    "headLine": "More than a Marketplace",
+    "description": "We're a community of like-minded professionals and organizations committed to making a difference",
+    "buttonText": "Join for Free",
     "alt": "Global Reach Image",
-    "link": "https://www.youtube.com/@Greensfeer/playlists"
+    "link": "/signin"
   },
   {
-    "id": "promote",
+    "id": "beta",
     "darkMode": true,
-    "topLine": "Promote",
-    "headLine": "Products & Services",
-    "description": "Share your insights or latest developments and showcase your commitment to sustainability",
-    "buttonText": "Learn More",
+    "topLine": "Greensfeer Beta",
+    "headLine": "Exclusive Program",
+    "description": "We create a tailored experience based on your needs, you get free access to premium features. Want to learn more? Get in touch!",
+    "buttonText": "Get in Touch",
     "alt": "Global Reach Image",
-    "link": "https://www.youtube.com/@Greensfeer/playlists"
-  },
-  {
-    "id": "collaborate",
-    "darkMode": false,
-    "topLine": "Collaborate",
-    "headLine": "Partnerships",
-    "description": "Help us design a platform tailored to your needs, we help you reach your target audience",
-    "buttonText": "Learn More",
-    "alt": "Business Deal Image",
-    "link": "https://www.linkedin.com/company/greensfeer/about/"
+    "link": "mailto:info@greensfeer.com"
   }
 ]

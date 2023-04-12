@@ -26,7 +26,7 @@ const MarketplaceCard: React.FC<Post> = ({
         <div className="marketplace-card__company-name">
           {Post?.company_name}
         </div>
-        <div className="marketplace-card__company-name">{Post?.sector}</div>
+        {/* <div className="marketplace-card__company-name">{Post?.sector}</div> */}
         <div className="marketplace-card__location">{`${Post?.location}`}</div>
       </div>
 

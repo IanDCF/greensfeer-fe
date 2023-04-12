@@ -36,11 +36,11 @@ export const CompanyListings: React.FC<MarketThumbnailsProps> = ({
 
   return (
     <div className="listings">
-      {companyProfileType === "affiliated" && (
+      {/* {companyProfileType === "affiliated" && (
         <div className="header__edit-btn">
           <FiEdit2 />
         </div>
-      )}
+      )} */}
       <h3 className="listings__title">{title}</h3>
       <div className="listings__list">
         {title === "Projects" && (
