@@ -9,7 +9,6 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { TEditSchema } from "../../schemas/UserSchema";
 import { updateUser } from "../../helpers/userFetcher";
 import { getAuth } from "firebase/auth";
-import { auth } from "firebase-functions/v1";
 
 interface Props {
   openModal: boolean;
@@ -88,8 +87,8 @@ export const EditHeaderModal: React.FC<Props> = ({
     e.preventDefault();
     const updateObj = await populateEdit(e);
     setUpdate(updateObj);
-    const user_id = currentUser?.uid;
-    updateUser(user_id, update);
+
+    currentUser && update && updateUser(currentUser.uid, update);
   };
 
   if (!openModal) return <></>;
