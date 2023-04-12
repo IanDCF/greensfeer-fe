@@ -5,6 +5,7 @@ import ControlButton from "../../components/ControlButtons/ControlButton";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import "./EditModal.scss";
 import { IUser } from "customTypes";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 interface Props {
   openModal: boolean;
@@ -15,7 +16,7 @@ interface Props {
 const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
 
-  const fristNInput = e.currentTarget.elements.namedItem(
+  const firstNInput = e.currentTarget.elements.namedItem(
     "firstName"
   ) as HTMLInputElement;
   const lastNInput = e.currentTarget.elements.namedItem(
@@ -36,6 +37,24 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
   const bannerPicInput = e.currentTarget.elements.namedItem(
     "bannerPic"
   ) as HTMLInputElement;
+
+  const first_name = firstNInput.value;
+  const last_name = lastNInput.value;
+  const headline = headlineInput.value;
+  const market_role = marketRoleInput.value;
+  const location = locationInput.value;
+  const profile_picture = profilePicInput.files ? profilePicInput.files[0] : "";
+  const banner_picture = bannerPicInput.files ? bannerPicInput.files[0] : "";
+};
+
+const upload = async (pic: File | undefined) => {
+  const storage = getStorage();
+  if (pic) {
+    const newPicRef = ref(storage, `${pic.name}`);
+    await uploadBytes(newPicRef, pic);
+    const url = await getDownloadURL(newPicRef);
+    return url
+  }
 };
 
 export const EditHeaderModal: React.FC<Props> = ({
