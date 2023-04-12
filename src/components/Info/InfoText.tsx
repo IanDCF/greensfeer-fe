@@ -5,7 +5,7 @@ import "./InfoText.scss";
 interface Props {
   darkMode: boolean;
   topLine: string;
-  headLine: string;
+  headline: string;
   description: string;
   buttonText: string;
   link: string;
@@ -14,7 +14,7 @@ interface Props {
 const InfoText: React.FC<Props> = ({
   darkMode,
   topLine,
-  headLine,
+  headline,
   description,
   buttonText,
   link,
@@ -26,7 +26,7 @@ const InfoText: React.FC<Props> = ({
         <h2
           className={`text__headline ${!darkMode && "text__headline--light"}`}
         >
-          {headLine}
+          {headline}
         </h2>
         <p
           className={`text__description ${

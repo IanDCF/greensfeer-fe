@@ -3,7 +3,7 @@ declare module "customTypes" {
     id: string;
     darkMode: boolean;
     topLine: string;
-    headLine: string;
+    headline: string;
     description: string;
     buttonText: string;
     link: string;
@@ -16,7 +16,7 @@ declare module "customTypes" {
     last_name: string;
     created_at: string;
     profile_picture?: undefined;
-    location:string | undefined;
+    location: string | undefined;
     // location: Location;
     linkedin?: null;
     first_name: string;

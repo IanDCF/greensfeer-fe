@@ -51,6 +51,23 @@ const allUsers = async () => {
   }
 };
 
+const updateUser = async (
+  user_id: string,
+  first_name: string,
+  last_name: string,
+  role: string,
+  headline: string,
+  location: string
+) => {
+  const URL_BASE = import.meta.env.VITE_REACT_APP_BASE_URL;
+  const res = await axios.patch(`${URL_BASE}/user/${user_id}`, {
+    first_name,
+    last_name,
+    role,
+    headline,
+    location,
+  });
+};
 
-export { createUser, allUsers };
+export { createUser, allUsers, updateUser };
 export default entryForSignUp;
