@@ -1,4 +1,4 @@
-import { MouseEventHandler } from "react";
+import { MouseEventHandler, useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { BsCamera } from "react-icons/bs";
 import ControlButton from "../../components/ControlButtons/ControlButton";
@@ -6,6 +6,10 @@ import { BsFillCheckCircleFill } from "react-icons/bs";
 import "./EditModal.scss";
 import { IUser } from "customTypes";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { TEditSchema } from "../../schemas/UserSchema";
+import { updateUser } from "../../helpers/userFetcher";
+import { getAuth } from "firebase/auth";
+import { auth } from "firebase-functions/v1";
 
 interface Props {
   openModal: boolean;
@@ -13,7 +17,7 @@ interface Props {
   current?: IUser;
 }
 
-const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+const populateEdit = async (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
 
   const firstNInput = e.currentTarget.elements.namedItem(
@@ -41,10 +45,25 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
   const first_name = firstNInput.value;
   const last_name = lastNInput.value;
   const headline = headlineInput.value;
-  const market_role = marketRoleInput.value;
+  const role = marketRoleInput.value;
   const location = locationInput.value;
-  const profile_picture = profilePicInput.files ? profilePicInput.files[0] : "";
-  const banner_picture = bannerPicInput.files ? bannerPicInput.files[0] : "";
+  const pic_file = profilePicInput.files ? profilePicInput.files[0] : "";
+  const banner_file = bannerPicInput.files ? bannerPicInput.files[0] : "";
+  let profile_picture;
+  let profile_banner;
+  pic_file && (profile_picture = await upload(pic_file));
+  banner_file && (profile_banner = await upload(banner_file));
+
+  const updateObj = {
+    first_name,
+    last_name,
+    headline,
+    role,
+    location,
+    profile_picture,
+    profile_banner,
+  };
+  return updateObj;
 };
 
 const upload = async (pic: File | undefined) => {
@@ -53,8 +72,8 @@ const upload = async (pic: File | undefined) => {
     const newPicRef = ref(storage, `${pic.name}`);
     await uploadBytes(newPicRef, pic);
     const url = await getDownloadURL(newPicRef);
-    return url
-  }
+    return url;
+  } else return "";
 };
 
 export const EditHeaderModal: React.FC<Props> = ({
@@ -62,12 +81,21 @@ export const EditHeaderModal: React.FC<Props> = ({
   editHeaderHandler,
   current,
 }) => {
+  const { currentUser } = getAuth();
+  const [update, setUpdate] = useState<TEditSchema>();
   // populate state with current user data
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const updateObj = await populateEdit(e);
+    setUpdate(updateObj);
+    const user_id = currentUser?.uid;
+    updateUser(user_id, update);
+  };
 
   if (!openModal) return <></>;
   return (
     <div className="edit-modal">
-      <form className="edit-modal__card">
+      <form className="edit-modal__card" onSubmit={handleSubmit}>
         <div className="edit-modal__close" onClick={editHeaderHandler}>
           <AiOutlineClose />
         </div>
