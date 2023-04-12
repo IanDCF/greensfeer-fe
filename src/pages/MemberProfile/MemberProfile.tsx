@@ -10,6 +10,7 @@ import PromptModal from "../../components/PromptModal/PromptModal";
 import { useParams } from "react-router-dom";
 
 export const MemberProfile: React.FC = () => {
+  const URL_BASE = import.meta.env.VITE_REACT_APP_BASE_URL;
   const [profile, setProfile] = useState<IUser>();
   const { user_id } = useParams(); // Get userId from the URL path
 
@@ -17,9 +18,7 @@ export const MemberProfile: React.FC = () => {
     const fetchProfile = async () => {
       if (user_id) {
         try {
-          const response = await axios.get(
-            `http://127.0.0.1:5001/greensfeer-db-dd101/us-central1/app/api/user/${user_id}`
-          );
+          const response = await axios.get(`${URL_BASE}/user/${user_id}`);
           if (response.status === 200) {
             setProfile(response.data);
           } else {

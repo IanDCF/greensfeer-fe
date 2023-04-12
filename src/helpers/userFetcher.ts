@@ -50,5 +50,7 @@ const allUsers = async () => {
     throw new Error(error as string);
   }
 };
+
+
 export { createUser, allUsers };
 export default entryForSignUp;
