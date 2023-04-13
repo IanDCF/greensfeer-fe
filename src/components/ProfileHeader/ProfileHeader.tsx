@@ -112,15 +112,27 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
             <>
               <p className="header__headline">{`${ProfileData?.headline}`}</p>
               <p className="header__location">
-                {ProfileData?.location && `${ProfileData.location}`}
+                {ProfileData?.location
+                  ? `${ProfileData.location}`
+                  : "Add Location"}
               </p>
               <div className="header__connections">Member since {ProfileData && formatDate(ProfileData.created_at)}</div>
             </>
           ) : (
             <>
-              <p className="header__headline">{`${CompanyData?.headline}`}</p>
-              <p className="header__location">{`${CompanyData?.location}`}</p>
-              <p className="header__connections">Verified</p>
+              <p className="header__headline">
+                {CompanyData?.headline
+                  ? `${CompanyData?.headline}`
+                  : "Add Headline"}
+              </p>
+              <p className="header__location">
+                {CompanyData?.location
+                  ? `${CompanyData?.location}`
+                  : "Add Location"}
+              </p>
+              <p className="header__connections">
+                {CompanyData?.verified ? "Verified" : `Joined FIX ME DATE`}
+              </p>
             </>
           )}
         </div>

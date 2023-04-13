@@ -92,6 +92,7 @@ declare module "customTypes" {
     website: string;
     headline: string;
     description: string;
+    verified?: boolean;
   }
 
   interface IUser {

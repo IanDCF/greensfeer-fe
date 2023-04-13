@@ -211,8 +211,9 @@ const Register = () => {
       )}
       {loading && (
         <div className="create-company__form" style={{ fontSize: "4rem" }}>
-          You've successfully created a Greensfeer account! Explore projects and
-          services in the Voluntary Carbon Market.
+          <div className="register__success">
+            Congratulations! You are now part of the Greensfeer community.
+          </div>
         </div>
       )}
     </section>

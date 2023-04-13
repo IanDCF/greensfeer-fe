@@ -1,7 +1,6 @@
-import { Link } from "react-router-dom";
 import GreensfeerLogo from "../../assets/logos/greensfeer-logo.svg";
 import "../Register/Register.scss";
-
+import { MdOutlineErrorOutline } from "react-icons/md";
 interface Props {
   handleSubmit: any;
   error: string | null;
@@ -47,7 +46,16 @@ const SignInForm = ({ handleSubmit, error }: Props) => {
             />
           </div>
         </div>
-        <div className="register__error">{error}</div>
+        {error ? (
+          <div className="register__error">
+            <div className="register__error-icon">
+              <MdOutlineErrorOutline />
+            </div>
+            <div className="register__error-text">{`${error}`}</div>
+          </div>
+        ) : (
+          ""
+        )}
         <button className="register__button" type="submit">
           Sign In
         </button>

@@ -2,6 +2,7 @@ import "./CreateListing.scss";
 import logo from "../../assets/logos/greensfeer-logo.png";
 import ControlButton from "../../components/ControlButtons/ControlButton";
 import { TbArrowBackUp } from "react-icons/tb";
+import { MdOutlineErrorOutline } from "react-icons/md";
 
 interface Props {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
@@ -72,7 +73,7 @@ const ListingForm2 = ({
                 <option value="Methane Capture and Utilization from Livestock or Landfills">
                   Methane Capture and Utilization from Livestock or Landfills
                 </option>
-                <option value="REDD+ (Reducing Emissions from Deforestation and Forest Degradation)">
+                <option value="REDD+">
                   REDD+ (Reducing Emissions from Deforestation and Forest
                   Degradation)
                 </option>
@@ -85,11 +86,11 @@ const ListingForm2 = ({
                 <option value="Sustainable Agriculture and Farming">
                   Sustainable Agriculture and Farming
                 </option>
-                <option value="Renewable Energy Installations (such as wind, solar, hydro, and geothermal)">
+                <option value="Renewable Energy Installations">
                   Renewable Energy Installations (such as wind, solar, hydro,
                   and geothermal)
                 </option>
-                <option value="Blue Carbon (CO2 sequestration in marine and coastal ecosystems)">
+                <option value="Blue Carbon">
                   Blue Carbon (CO2 sequestration in marine and coastal
                   ecosystems)
                 </option>
@@ -106,7 +107,7 @@ const ListingForm2 = ({
                 <option value="Carbon Offset Programs">
                   Carbon Offset Programs
                 </option>
-                <option value="Energy Efficiency Programs (specifically those that involve the replacement of high-carbon energy sources with low-carbon ones)">
+                <option value="Energy Efficiency Programs">
                   Energy Efficiency Programs (specifically those that involve
                   the replacement of high-carbon energy sources with low-carbon
                   ones)
@@ -123,7 +124,7 @@ const ListingForm2 = ({
                 <option value="Livestock Methane Reduction Programs">
                   Livestock Methane Reduction Programs
                 </option>
-                <option value="Renewable Energy Programs (such as solar, wind, and geothermal energy)">
+                <option value="Renewable Energy Programs">
                   Renewable Energy Programs (such as solar, wind, and geothermal
                   energy)
                 </option>
@@ -220,7 +221,16 @@ const ListingForm2 = ({
           * required input field
         </div>
       </div>
-      <div className="create-company__error">{errors}</div>
+      {errors ? (
+        <div className="register__error">
+          <div className="register__error-icon">
+            <MdOutlineErrorOutline />
+          </div>
+          <div className="register__error-text">{`${errors}`}</div>
+        </div>
+      ) : (
+        ""
+      )}
       <div className="create-listing__controls">
         <ControlButton
           btnType="link"

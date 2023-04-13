@@ -1,5 +1,6 @@
 import React from "react";
 import "./Button.scss";
+import { Link } from "react-router-dom";
 
 interface Props {
   darkMode: boolean;
@@ -9,14 +10,13 @@ interface Props {
 
 const Button: React.FC<Props> = ({ darkMode, text, link }) => {
   return (
-    <a
-      href={link}
-      target="_blank"
+    <Link
+      to={link}
       rel="noreferrer"
       className={`btn ${darkMode ? "btn--dark" : "btn--light"}`}
     >
       {text}
-    </a>
+    </Link>
   );
 };
 

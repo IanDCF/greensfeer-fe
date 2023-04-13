@@ -43,15 +43,12 @@ export const UserProfile: React.FC = () => {
       if (currentUser) {
         const token = await currentUser.getIdToken();
         setToken(token);
-        const response = await axios.get(
-          `${URL_BASE}/user/current`,
-          {
-            headers: {
-              bearerToken: token,
-              "Access-Control-Allow-Origin": "http://127.0.0.1:5173",
-            },
-          }
-        );
+        const response = await axios.get(`${URL_BASE}/user/current`, {
+          headers: {
+            bearerToken: token,
+            "Access-Control-Allow-Origin": "http://127.0.0.1:5173",
+          },
+        });
         console.log(response.data);
         setProfile(response.data);
       } else {

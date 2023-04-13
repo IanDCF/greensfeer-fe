@@ -30,11 +30,19 @@ export const ProfileAbout: React.FC<ProfileAboutProps> = ({
       <h3 className="about__title">About</h3>
       {user ? (
         <>
-          <p className="about__text">{`${ProfileData?.about}`}</p>
+          <p className="about__text">
+            {ProfileData?.about
+              ? ProfileData?.about
+              : "Proud Greensfeer Member"}
+          </p>
         </>
       ) : (
         <>
-          <p className="about__text">{`${CompanyData?.description}`}</p>
+          <p className="about__text">
+            {CompanyData?.description
+              ? CompanyData?.description
+              : "We love Greensfeer"}
+          </p>
         </>
       )}
     </div>

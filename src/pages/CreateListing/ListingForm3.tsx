@@ -113,6 +113,9 @@ const ListingForm3 = ({ handleSubmit, clickHandler, company }: Props) => {
               name="vintage_year"
               className="create-listing__input"
             >
+              <option selected disabled>
+                Select year
+              </option>
               {Array.from({ length: 19 }, (_, i) => 2023 - i).map((year) => (
                 <option key={year} value={year}>
                   {year}
@@ -158,7 +161,6 @@ const ListingForm3 = ({ handleSubmit, clickHandler, company }: Props) => {
                   min="0"
                   className="create-listing__input"
                   placeholder="Per tCO2"
-                  required
                 />
               </div>
             </div>
