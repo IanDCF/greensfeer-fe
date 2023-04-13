@@ -1,0 +1,59 @@
+@use "../../styles/partials/colors.scss" as color;
+@use "../../styles/partials/breakpoints.scss" as bp;
+
+.marketplace-list {
+  display: flex;
+  flex-direction: column;
+
+  @include bp.mobile {
+    width: 100%;
+    padding-top: 16rem;
+  }
+
+  @include bp.tablet {
+    width: 42%;
+    height: 100vh;
+    overflow-y: scroll;
+    padding-top: 16rem;
+    padding-bottom: 30rem;
+    padding-right: 2rem;
+    &::-webkit-scrollbar {
+      width: 5px;
+      height: 7px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: rgb(255, 255, 255);
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: rgba(0, 0, 0, 0);
+      border-radius: 10px;
+    }
+  }
+
+  @include bp.desktop {
+    width: 42%;
+    height: 100vh;
+    overflow-y: scroll;
+    padding-top: 17rem;
+    padding-bottom: 23rem;
+    padding-right: 2rem;
+    padding-left: 2rem;
+    &::-webkit-scrollbar {
+      width: 5px;
+      height: 7px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: rgb(255, 255, 255);
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: rgba(0, 0, 0, 0);
+      border-radius: 10px;
+    }
+  }
+}

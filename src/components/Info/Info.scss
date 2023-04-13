@@ -62,7 +62,10 @@
       width: 100%;
     }
     @include bp.tablet {
-      width: 48%;
+      width: 50%;
+    }
+    @include bp.desktop {
+      width: 60%;
     }
   }
 

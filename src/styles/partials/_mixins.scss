@@ -1,0 +1,20 @@
+@use "./colors.scss" as color;
+@use "./breakpoints.scss" as bp;
+
+@mixin card {
+  background-color: color.$mint;
+  max-width: 100%;
+  @include rounded-border();
+}
+
+@mixin round-image {
+  border-radius: 50%;
+}
+
+@mixin rounded-border {
+  border-radius: 2.5rem;
+}
+
+@mixin card-shadow {
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}

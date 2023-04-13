@@ -1,5 +1,16 @@
 const NotFound = () => {
-  return <div>Not Found</div>;
+  return (
+    <div
+      style={{
+        fontSize: "4rem",
+        display: "flex",
+        justifyContent: "center",
+        marginTop: "15rem",
+      }}
+    >
+      Not Found
+    </div>
+  );
 };
 
 export default NotFound;

@@ -1,0 +1,150 @@
+@use "../../styles/partials/colors.scss" as color;
+@use "../../styles/partials/breakpoints.scss" as bp;
+
+.search-dropdown {
+  position: absolute;
+  background-color: color.$white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 2.5rem;
+  padding: 1rem 2rem;
+
+  @include bp.mobile {
+    top: 13rem;
+    left: 0;
+    width: 100%;
+  }
+
+  @include bp.tablet {
+    top: 17rem;
+    left: 0;
+    right: 0;
+  }
+
+  @include bp.desktop {
+    width: 100%;
+    top: 13rem;
+    left: 0;
+    right: 0;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid color.$mint;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+    text-decoration: none;
+  }
+
+  &__link:last-child {
+    border-bottom: none;
+    padding-bottom: 2rem;
+  }
+
+  &__photo {
+    display: flex;
+    align-items: center;
+    color: color.$charcoal;
+    margin-right: 2rem;
+    border-radius: 50%;
+
+    @include bp.mobile {
+      font-size: 10rem;
+      width: 10rem;
+      min-width: 10rem;
+      height: 10rem;
+    }
+
+    @include bp.tablet {
+      font-size: 12rem;
+      min-width: 12rem;
+      width: 12rem;
+      height: 12rem;
+    }
+
+    @include bp.desktop {
+      font-size: 12rem;
+      width: 12rem;
+      height: 12rem;
+    }
+  }
+
+  &__photo-img {
+    display: flex;
+    align-items: center;
+    border-radius: 50%;
+    margin-right: 2rem;
+
+    @include bp.mobile {
+      width: 10rem;
+    }
+
+    @include bp.tablet {
+      width: 12rem;
+    }
+
+    @include bp.mobile {
+      width: 12rem;
+    }
+  }
+
+  &__text {
+    display: flex;
+    align-items: center;
+  }
+
+  &__name {
+    color: color.$darkgray2;
+    font-weight: 500;
+    white-space: nowrap; /* Prevents text from wrapping to new lines */
+    overflow: hidden; /* Hides any overflowing text */
+    text-overflow: ellipsis; /* Adds an ellipsis at the end of the truncated text */
+
+    @include bp.mobile {
+      font-size: 3.75rem;
+      max-width: 28rem;
+    }
+
+    @include bp.tablet {
+      font-size: 4rem;
+      max-width: 45rem;
+    }
+
+    @include bp.desktop {
+      max-width: 28rem;
+      font-size: 4rem;
+    }
+  }
+
+  &__separator {
+    display: flex;
+    align-items: center;
+    margin: 0 0.5rem;
+    font-size: 3rem;
+    color: color.$romansilver;
+  }
+
+  &__headline {
+    color: color.$nickel;
+    font-weight: 300;
+    white-space: nowrap; /* Prevents text from wrapping to new lines */
+    overflow: hidden; /* Hides any overflowing text */
+    text-overflow: ellipsis; /* Adds an ellipsis at the end of the truncated text */
+
+    @include bp.mobile {
+      font-size: 3.4rem;
+    }
+
+    @include bp.tablet {
+      font-size: 3.5rem;
+    }
+
+    @include bp.desktop {
+      font-size: 3.75rem;
+    }
+  }
+
+  &__listing-type {
+    @extend .search-dropdown__headline;
+  }
+}

@@ -1,0 +1,441 @@
+@use "../../styles/partials/colors.scss" as color;
+@use "../../styles/partials/breakpoints.scss" as bp;
+
+.create-company {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+
+  @include bp.desktop {
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/greensfeer-db-dd101.appspot.com/o/trees.jpeg?alt=media&token=334171df-d0f4-40a9-9262-e585dc897712");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  }
+  &__error {
+    font-size: 4rem;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: color.$white;
+    @include bp.mobile {
+      width: 100%;
+      height: 100vh;
+    }
+
+    @include bp.tablet {
+      width: 95rem;
+      height: 175rem;
+    }
+
+    @include bp.desktop {
+      position: relative;
+      width: 146rem;
+      height: 165.5rem;
+      border-radius: 8px;
+    }
+  }
+
+  &__back-btn {
+    position: absolute;
+
+    @include bp.mobile {
+      font-size: 6rem;
+      top: 2rem;
+      left: 2.5rem;
+    }
+
+    @include bp.tablet {
+      font-size: 8rem;
+      top: 6rem;
+      left: 2.5rem;
+    }
+
+    @include bp.desktop {
+      font-size: 8rem;
+      top: 2rem;
+      left: 2rem;
+    }
+  }
+
+  &__logo {
+    @include bp.mobile {
+      margin-bottom: 2.5rem;
+    }
+
+    @include bp.tablet {
+      margin-bottom: 10rem;
+    }
+
+    @include bp.desktop {
+      margin-bottom: 3.5rem;
+    }
+  }
+
+  &__logo-img {
+    @include bp.mobile {
+      width: 9.25rem;
+    }
+
+    @include bp.tablet {
+      width: 28rem;
+    }
+
+    @include bp.desktop {
+      width: 9.25rem;
+    }
+  }
+
+  &__heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: 300;
+    text-align: center;
+
+    @include bp.mobile {
+      font-size: 4.5rem;
+      width: 62rem;
+      margin-bottom: 8rem;
+    }
+
+    @include bp.tablet {
+      font-size: 5.5rem;
+      width: 70rem;
+      margin-bottom: 14rem;
+    }
+
+    @include bp.desktop {
+      font-size: 5rem;
+      width: 62rem;
+      margin-bottom: 8rem;
+    }
+  }
+
+  &__heading-search {
+    @extend .create-company__heading;
+    margin-bottom: 20rem;
+  }
+
+  &__input-fields {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 3rem;
+  }
+
+  &__img-upload {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    @include bp.mobile {
+      margin-bottom: 5rem;
+    }
+
+    @include bp.tablet {
+      margin-bottom: 10rem;
+    }
+
+    @include bp.desktop {
+      margin-bottom: 5rem;
+    }
+  }
+
+  &__company-logo {
+    border: 1.25px solid color.$green;
+    border-radius: 2.5rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    @include bp.mobile {
+      width: 18.25rem;
+      height: 15.75rem;
+      margin-right: 3rem;
+    }
+
+    @include bp.tablet {
+      width: 35.5rem;
+      height: 18rem;
+      margin-right: 7rem;
+    }
+
+    @include bp.desktop {
+      width: 18.25rem;
+      height: 15.75rem;
+      margin-right: 3rem;
+    }
+  }
+
+  &__upload-check {
+    position: absolute;
+    color: color.$green;
+    font-size: 4.5rem;
+    top: -2.85rem;
+    right: -1.75rem;
+  }
+
+  &__label {
+    position: absolute;
+    background-color: color.$white;
+    padding: 0 0.75rem;
+
+    @include bp.mobile {
+      top: -2rem;
+      left: 2rem;
+      font-size: 2.5rem;
+    }
+
+    @include bp.tablet {
+      top: -2.5rem;
+      left: 2rem;
+      font-size: 3.2rem;
+    }
+
+    @include bp.desktop {
+      top: -2rem;
+      left: 2rem;
+      font-size: 2.5rem;
+    }
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12rem;
+    width: 9.75rem;
+  }
+
+  &__input-file {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+  }
+
+  &__company-banner {
+    @extend .create-company__company-logo;
+    margin-right: 0;
+    @include bp.mobile {
+      width: 39.25rem;
+    }
+
+    @include bp.tablet {
+      width: 52rem;
+    }
+
+    @include bp.desktop {
+      width: 39.25rem;
+    }
+  }
+
+  &__text-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  &__input-div {
+    position: relative;
+    border: 1px solid color.$green;
+    border-radius: 12rem;
+    display: flex;
+    align-items: center;
+    padding: 0 4rem 0 6rem;
+
+    @include bp.mobile {
+      height: 11rem;
+      width: 61rem;
+      margin-bottom: 4rem;
+      &:last-child {
+        margin-bottom: 2rem;
+      }
+    }
+
+    @include bp.tablet {
+      height: 15rem;
+      width: 100%;
+      margin-bottom: 8rem;
+      &:last-child {
+        margin-bottom: 4rem;
+      }
+    }
+
+    @include bp.desktop {
+      height: 11rem;
+      width: 61rem;
+      margin-bottom: 4rem;
+    }
+  }
+
+  &__input-offering {
+    @extend .create-company__input-div;
+    width: 72.7rem;
+  }
+
+  &__label-text {
+    @extend .create-company__label;
+    @include bp.mobile {
+      left: 6rem;
+    }
+
+    @include bp.tablet {
+      left: 6rem;
+    }
+
+    @include bp.desktop {
+      left: 6rem;
+    }
+  }
+
+  &__input {
+    width: 100%;
+    border: none;
+    outline: none;
+    color: color.$nickel;
+    background-color: none;
+
+    @include bp.mobile {
+      font-size: 3.5rem;
+      font-weight: 300;
+    }
+
+    @include bp.tablet {
+      font-size: 4rem;
+      font-weight: 300;
+    }
+
+    @include bp.desktop {
+      font-size: 3.5rem;
+      font-weight: 300;
+    }
+  }
+
+  &__search-icon {
+    display: flex;
+    align-items: center;
+    color: color.$nickel;
+    margin-right: 1.25rem;
+    @include bp.mobile {
+      font-size: 3.5rem;
+      font-weight: 300;
+    }
+
+    @include bp.tablet {
+      font-size: 4rem;
+      font-weight: 300;
+    }
+
+    @include bp.desktop {
+      font-size: 3.5rem;
+      font-weight: 300;
+    }
+  }
+
+  &__offering {
+    @extend .create-company__input;
+    color: color.$charcoal;
+  }
+
+  &__required-text {
+    @include bp.mobile {
+      font-size: 2.5rem;
+      margin-bottom: 4rem;
+    }
+
+    @include bp.tablet {
+      font-size: 3rem;
+      margin-bottom: 4.5rem;
+    }
+
+    @include bp.desktop {
+      font-size: 2.5rem;
+      margin-bottom: 4rem;
+    }
+  }
+
+  &__preferences {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @include bp.mobile {
+      width: 70rem;
+      margin-bottom: 1rem;
+    }
+
+    @include bp.tablet {
+      width: 75rem;
+      margin-bottom: 11rem;
+    }
+
+    @include bp.desktop {
+      width: 70rem;
+      margin-bottom: 3rem;
+    }
+  }
+
+  &__boxes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    @include bp.mobile {
+      margin-bottom: 4rem;
+    }
+
+    @include bp.tablet {
+      margin-bottom: 2rem;
+    }
+
+    @include bp.desktop {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  &__label-checkbox {
+    width: 51rem;
+    margin-left: 1rem;
+    font-size: 3rem;
+    font-weight: 300;
+    color: color.$romansilver;
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__controls-search {
+    @extend .create-company__controls;
+    margin-top: 20rem;
+  }
+}

@@ -63,6 +63,7 @@
       align-items: center;
       text-align: center;
       justify-content: space-evenly;
+      margin-right: -9rem;
       width: 141rem;
       min-width: 110rem;
     }
@@ -117,7 +118,7 @@
     text-decoration: none;
     color: color.$green;
     font-size: 4rem;
-    font-weight: 600;
+    font-weight: 500;
     background-color: none;
     border-radius: 50px;
     display: flex;
@@ -136,6 +137,7 @@
 
   &__btn-in {
     text-decoration: none;
+    font-weight: 500;
     color: color.$green;
     font-size: 4rem;
     background-color: color.$black;

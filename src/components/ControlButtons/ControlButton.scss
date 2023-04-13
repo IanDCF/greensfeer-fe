@@ -1,0 +1,86 @@
+@use "../../styles/partials/colors.scss" as color;
+@use "../../styles/partials/breakpoints.scss" as bp;
+
+.control-btn {
+  text-decoration: none;
+  margin: 0;
+  // white-space: nowrap;
+  // outline: none;
+  border-radius: 50px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 300;
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    margin-left: 1.5rem;
+
+    @include bp.mobile {
+      font-size: 5.75rem;
+    }
+
+    @include bp.tablet {
+      font-size: 5rem;
+    }
+
+    @include bp.desktop {
+      font-size: 5.75rem;
+    }
+  }
+
+  &__text {
+    margin: 0 auto;
+  }
+
+  @include bp.mobile {
+    font-size: 5.5rem;
+    padding: 1.5rem 4.5rem;
+  }
+
+  @include bp.tablet {
+    font-size: 5rem;
+    max-width: 37rem;
+    padding: 3rem 6rem;
+  }
+
+  @include bp.desktop {
+    font-size: 5.5rem;
+    padding: 1.5rem 4.5rem;
+  }
+
+  &--green {
+    color: color.$black;
+    background-color: color.$green;
+    &:hover {
+      background-color: color.$black;
+      color: color.$white;
+      transition: all 0.2s ease-in-out;
+    }
+  }
+
+  &--black {
+    color: color.$white;
+    background-color: color.$black;
+
+    @include bp.mobile {
+      margin-right: 2rem;
+    }
+
+    @include bp.tablet {
+      margin-right: 6rem;
+    }
+
+    @include bp.desktop {
+      margin-right: 2rem;
+    }
+    &:hover {
+      background-color: color.$green;
+      transition: all 0.2s ease-in-out;
+    }
+  }
+}

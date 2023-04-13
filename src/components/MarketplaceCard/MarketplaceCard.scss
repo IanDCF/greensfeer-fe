@@ -1,0 +1,187 @@
+@use "../../styles/partials/colors.scss" as color;
+@use "../../styles/partials/breakpoints.scss" as bp;
+
+.marketplace-card {
+  display: flex;
+  justify-content: space-between;
+  background-color: color.$mint;
+  width: 100%;
+  border-radius: 2.5rem;
+  cursor: pointer;
+  color: color.$darkgray2;
+
+  @include bp.mobile {
+    margin-bottom: 3rem;
+    padding: 3rem 3rem;
+  }
+
+  @include bp.tablet {
+    margin-bottom: 3rem;
+    padding: 3rem 3rem;
+  }
+
+  @include bp.desktop {
+    margin-bottom: 3rem;
+    padding: 3rem 3rem;
+  }
+
+  @include bp.desktop {
+    &:hover {
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    @include bp.mobile {
+      width: 65%;
+    }
+
+    @include bp.tablet {
+      width: 65%;
+    }
+
+    @include bp.desktop {
+      width: 65%;
+    }
+  }
+
+  &__post-type {
+    font-weight: 300;
+    margin-bottom: 1rem;
+
+    @include bp.mobile {
+      font-size: 3rem;
+    }
+
+    @include bp.tablet {
+      font-size: 3rem;
+    }
+
+    @include bp.desktop {
+      font-size: 3rem;
+    }
+  }
+
+  &__post-name {
+    font-weight: 500;
+    margin-bottom: 1rem;
+
+    @include bp.mobile {
+      font-size: 4rem;
+    }
+
+    @include bp.tablet {
+      font-size: 4rem;
+    }
+
+    @include bp.desktop {
+      font-size: 4.2rem;
+    }
+  }
+
+  &__company-name {
+    font-weight: 400;
+    margin-bottom: 0.8rem;
+
+    @include bp.mobile {
+      font-size: 3.2rem;
+    }
+
+    @include bp.tablet {
+      font-size: 3.2rem;
+    }
+
+    @include bp.desktop {
+      font-size: 3.4rem;
+    }
+  }
+
+  &__location {
+    font-weight: 500;
+    color: color.$green;
+
+    @include bp.mobile {
+      font-size: 2.8rem;
+    }
+
+    @include bp.tablet {
+      font-size: 2.8rem;
+    }
+
+    @include bp.desktop {
+      font-size: 2.8rem;
+    }
+  }
+
+  &__markers {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include bp.mobile {
+      width: 33%;
+      max-width: 33rem;
+    }
+
+    @include bp.tablet {
+      width: 30%;
+    }
+
+    @include bp.desktop {
+      width: 30%;
+    }
+  }
+
+  &__badges {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  &__badge {
+    border-radius: 5px;
+    background-color: rgb(197, 234, 195);
+
+    @include bp.mobile {
+      width: 6rem;
+      height: 6rem;
+      min-width: 6rem;
+    }
+
+    @include bp.tablet {
+      width: 6rem;
+      height: 6rem;
+      min-width: 6rem;
+    }
+
+    @include bp.desktop {
+      width: 6rem;
+      height: 6rem;
+      min-width: 6rem;
+    }
+  }
+
+  &__price {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    font-weight: 400;
+
+    @include bp.mobile {
+      font-size: 4rem;
+    }
+
+    @include bp.tablet {
+      font-size: 4rem;
+    }
+
+    @include bp.desktop {
+      font-size: 4rem;
+    }
+  }
+}
