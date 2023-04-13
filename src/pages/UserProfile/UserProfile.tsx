@@ -12,6 +12,7 @@ import { EditAboutModal } from "../../components/EditUserProfile/EditAboutModal"
 import { EditAffiliationsModal } from "../../components/EditUserProfile/EditAffiliationsModal";
 
 export const UserProfile: React.FC = () => {
+  const URL_BASE = import.meta.env.VITE_REACT_APP_BASE_URL;
   const [profile, setProfile] = useState<IUser>();
   const { currentUser } = useAuth();
   const [token, setToken] = useState<string>();
@@ -42,15 +43,12 @@ export const UserProfile: React.FC = () => {
       if (currentUser) {
         const token = await currentUser.getIdToken();
         setToken(token);
-        const response = await axios.get(
-          "http://127.0.0.1:5001/greensfeer-db-dd101/us-central1/app/api/user/current",
-          {
-            headers: {
-              bearerToken: token,
-              "Access-Control-Allow-Origin": "http://127.0.0.1:5173",
-            },
-          }
-        );
+        const response = await axios.get(`${URL_BASE}/user/current`, {
+          headers: {
+            bearerToken: token,
+            "Access-Control-Allow-Origin": "http://127.0.0.1:5173",
+          },
+        });
         console.log(response.data);
         setProfile(response.data);
       } else {
