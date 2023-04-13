@@ -24,10 +24,10 @@ const FilterBar = () => {
           <div className="filter-bar__btn-text">Filters</div>
         </div>
         <div className="filter-bar__parameter">
-          <FilterParameter label="Project Type" />
+          <FilterParameter label="Project" />
         </div>
         <div className="filter-bar__parameter">
-          <FilterParameter label="Service Type" />
+          <FilterParameter label="Service" />
         </div>
         <div className="filter-bar__parameter">
           <FilterParameter label="Location" />

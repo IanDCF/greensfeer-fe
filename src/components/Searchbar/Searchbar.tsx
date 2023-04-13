@@ -125,6 +125,10 @@ const Searchbar = () => {
                   <div className="search__separator">
                     <BsDot />
                   </div>
+                  <div className="search__headline">Company</div>
+                  <div className="search__separator">
+                    <BsDot />
+                  </div>
                   <div className="search__headline">{profile?.sector}</div>
                 </Link>
               );

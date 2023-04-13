@@ -1,8 +1,7 @@
 import "./CreateListing.scss";
 import logo from "../../assets/logos/greensfeer-logo.png";
 import ControlButton from "../../components/ControlButtons/ControlButton";
-import { TbArrowBackUp } from "react-icons/tb";
-import { Link } from "react-router-dom";
+import { MdOutlineErrorOutline } from "react-icons/md";
 interface Props {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   errors: string;
@@ -24,7 +23,7 @@ const ListingForm1 = ({ handleSubmit, errors, company }: Props) => {
         <div className="create-listing__text-input">
           <div className="create-company__input-div">
             <label className="create-company__label-text" htmlFor="post_type">
-              offering type*
+              listing type*
             </label>
             <select
               id="post_type"
@@ -56,10 +55,10 @@ const ListingForm1 = ({ handleSubmit, errors, company }: Props) => {
             </label>
             <select id="sector" name="sector" className="create-company__input">
               {/* FIXME: Back end currently does not handle sector */}
-              <option hidden={true} defaultValue={""}>
-                Select a sector
+              <option defaultValue={"Null"} selected disabled>
+                Which sector are you in?
               </option>
-              <option value="All">All</option>
+              <option value="Various Sectors">Various Sectors</option>
               <option value="Agriculture">Agriculture</option>
               <option value="Aviation and Shipping">
                 Aviation and Shipping
@@ -88,16 +87,11 @@ const ListingForm1 = ({ handleSubmit, errors, company }: Props) => {
               <option value="Land Use and Conservation">
                 Land Use and Conservation
               </option>
-              <option value="Other">
-                Other (including education, research and development, advocacy,
-                and public awareness campaigns)
-              </option>
               <option value="REDD+">
                 REDD+ (Reducing Emissions from Deforestation and Forest
                 Degradation)
               </option>
               <option value="Renewable Energy">Renewable Energy</option>
-
               <option value="Social and Community Development">
                 Social and Community Development
               </option>
@@ -109,6 +103,7 @@ const ListingForm1 = ({ handleSubmit, errors, company }: Props) => {
               <option value="Climate Adaptation and Resilience">
                 Climate Adaptation and Resilience
               </option>
+              <option value="Other">Other</option>
             </select>
           </div>
 
@@ -128,7 +123,16 @@ const ListingForm1 = ({ handleSubmit, errors, company }: Props) => {
       <div className="create-listing__required-text">
         * required input field
       </div>
-      <div className="create-listing__error">{errors}</div>
+      {errors ? (
+        <div className="register__error">
+          <div className="register__error-icon">
+            <MdOutlineErrorOutline />
+          </div>
+          <div className="register__error-text">{`${errors}`}</div>
+        </div>
+      ) : (
+        ""
+      )}
       <div className="create-listing__controls">
         <ControlButton
           dark={true}

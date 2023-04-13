@@ -2,6 +2,7 @@ import "./CreateCompany.scss";
 import logo from "../../assets/logos/greensfeer-logo.png";
 import ControlButton from "../../components/ControlButtons/ControlButton";
 import { useAuth } from "../../context/AuthProvider/AuthProvider";
+import { MdOutlineErrorOutline } from "react-icons/md";
 interface Props {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   clickHandler: () => void;
@@ -79,7 +80,16 @@ const CompanyForm2 = ({ handleSubmit, clickHandler, errors }: Props) => {
           * required input field
         </div>
       </div>
-      <div className="create-company__error">{errors}</div>
+      {errors ? (
+        <div className="register__error">
+          <div className="register__error-icon">
+            <MdOutlineErrorOutline />
+          </div>
+          <div className="register__error-text">{`${errors}`}</div>
+        </div>
+      ) : (
+        ""
+      )}
       <div className="create-company__controls">
         <ControlButton
           dark={true}

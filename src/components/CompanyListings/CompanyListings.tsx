@@ -43,44 +43,6 @@ export const CompanyListings: React.FC<MarketThumbnailsProps> = ({
       )} */}
       <h3 className="listings__title">{title}</h3>
       <div className="listings__list">
-        {title === "Projects" && (
-          <div className="listings__card">
-            <div className="listings__card-text">
-              <div className="listings__ep-type">Project Type</div>
-              <div className="listings__name">Post Name Sometimes Long</div>
-              <div className="listings__sector">Sector Name Sometimes Long</div>
-            </div>
-            <div className="listings__markers">
-              <div className="listings__badges">
-                <div className="listings__badge"></div>
-                <div className="listings__badge"></div>
-                <div className="listings__badge"></div>
-              </div>
-              <div className="listings__price">
-                <div className="lisitngs__price-tag">$10 / tCO2</div>
-              </div>
-            </div>
-            {/* <div className="location__location">City, Country</div> */}
-            {/* <div className="listings__standrard">Verification Standard</div> */}
-            {/* if project has vintage, render: */}
-            {/* <div className="listings__vintage">Vintage: YEAR</div> */}
-            {/* else, render verification_standard */}
-            {/* <div className="listings__price">$23.00 / tCO2</div> */}
-          </div>
-        )}
-
-        {title === "Services" && (
-          <div className="listings__card">
-            {/* We need to discuss this from backend perspective */}
-            <div className="listings__card-text">
-              <div className="listings__ep-type">Service Type</div>
-              <div className="listings__name">Post Name Sometimes Long</div>
-              <div className="listings__sector">Sector Name Sometimes Long</div>
-            </div>
-            <div className="listings__contact">Name of Primary Contact</div>
-          </div>
-        )}
-
         {posts
           ? posts.map((post) => (
               <Link
@@ -100,13 +62,16 @@ export const CompanyListings: React.FC<MarketThumbnailsProps> = ({
                     <div className="listings__badge"></div>
                     <div className="listings__badge"></div>
                   </div>
-                  {post?.p && (
+                  {post?.p && post?.p?.price_per_credit ? (
                     <div className="listings__price">
                       <div className="lisitngs__price-tag">
                         {`\$${post?.p?.price_per_credit} / tCO2`}
                       </div>
                     </div>
+                  ) : (
+                    ""
                   )}
+
                   {!post?.p && (
                     <div className="listings__price">
                       <div className="listings__contact"></div>
