@@ -1,0 +1,25 @@
+@use "../../styles/partials/colors.scss" as color;
+@use "../../styles/partials/breakpoints.scss" as bp;
+
+.network-container {
+  margin-top: 12rem;
+}
+
+.network {
+  padding: 3rem 3rem 0 3rem;
+  display: flex;
+  flex-direction: column;
+
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    //margin-bottom: 3rem;
+  }
+
+  &__title {
+    font-size: 3.5rem;
+    font-weight: 500;
+    color: color.$darkgray2;
+    margin-bottom: 1rem;
+  }
+}

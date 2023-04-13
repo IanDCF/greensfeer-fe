@@ -1,0 +1,147 @@
+@use "../../styles/partials/colors.scss" as color;
+@use "../../styles/partials/breakpoints.scss" as bp;
+
+.appnav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
+    rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  background-color: color.$white;
+
+  &__wrapper {
+    display: flex;
+
+    @include bp.mobile {
+      justify-content: space-between;
+      padding: 2.5rem 3.5rem 2rem 3.5rem;
+      width: 100%;
+    }
+
+    @include bp.tablet {
+      justify-content: space-between;
+      padding: 2.5rem 6.5rem 2rem 6.5rem;
+      width: 100%;
+    }
+
+    @include bp.desktop {
+      justify-content: space-between;
+      padding: 2.5rem 9.5rem 2rem 9.5rem;
+      width: 100%;
+      max-width: 1099px;
+    }
+  }
+
+  &__search {
+    display: flex;
+    align-items: center;
+
+    @include bp.mobile {
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    @include bp.tablet {
+      width: 72%;
+    }
+
+    @include bp.desktop {
+      width: 72%;
+    }
+  }
+
+  &__links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    // @include bp.tablet {
+    //   width: 45%;
+    // }
+
+    // @include bp.desktop {
+    //   width: 28%;
+    // }
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+    @include bp.tablet {
+      position: relative;
+    }
+  }
+
+  &__img {
+    border-radius: 10rem;
+
+    @include bp.mobile {
+      width: 9rem;
+      height: 9rem;
+      font-size: 8.5rem;
+    }
+
+    @include bp.tablet {
+      width: 9rem;
+      height: 9rem;
+    }
+
+    @include bp.desktop {
+      width: 9.5rem;
+      height: 9.5rem;
+    }
+  }
+
+  &__icon {
+    color: color.$charcoal;
+
+    @include bp.mobile {
+      font-size: 8.75rem;
+    }
+
+    @include bp.tablet {
+      font-size: 8.75rem;
+    }
+
+    @include bp.desktop {
+      font-size: 9rem;
+    }
+  }
+
+  &__icon-newmsg {
+    @extend .appnav__icon;
+    font-size: 6rem;
+  }
+
+  &__user-menu {
+    position: absolute;
+
+    @include bp.mobile {
+      top: 14rem;
+      right: 3.5rem;
+    }
+
+    @include bp.tablet {
+      right: -1rem;
+      top: 12.5rem;
+    }
+
+    @include bp.desktop {
+      right: -1rem;
+      top: 12.5rem;
+    }
+  }
+
+  &__searchbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+}

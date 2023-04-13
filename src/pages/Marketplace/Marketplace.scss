@@ -1,0 +1,55 @@
+@use "../../styles/partials/colors.scss" as color;
+@use "../../styles/partials/breakpoints.scss" as bp;
+
+.marketplace-container {
+  @include bp.mobile {
+    margin-top: 13rem;
+  }
+
+  @include bp.tablet {
+    margin-top: 13.5rem;
+  }
+
+  @include bp.desktop {
+    margin-top: 13.5rem;
+  }
+
+  &__mobile {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0rem 3rem 15rem 3rem;
+    @include bp.tablet {
+      display: none;
+    }
+    @include bp.desktop {
+      display: none;
+    }
+  }
+
+  &__tablet-desktop {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+
+    max-width: 1120px;
+    height: 90vh;
+    overflow: hidden;
+    @include bp.mobile {
+      display: none;
+    }
+
+    @include bp.tablet {
+      padding: 0rem 6.5rem 3rem 6.5rem;
+    }
+    @include bp.desktop {
+      padding: 0rem 9.5rem 3rem 9.5rem;
+    }
+  }
+
+  &__explorer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}

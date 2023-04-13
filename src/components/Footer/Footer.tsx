@@ -60,26 +60,15 @@ const Footer = (): JSX.Element => {
             </Link>
           </div>
           <div className="footer__copy">
-            <p>Greensfeer © 2023 All rights reserved</p>
+            <p>© 2023 Greensfeer, All rights reserved.</p>
           </div>
           <div className="footer__socials">
             <a
-              href="https://www.linkedin.com/company/greensfeer/"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="LinkedIn"
+              href="mailto:info@greensfeer.com"
+              aria-label="Email"
               className="footer__icon"
             >
-              <FaLinkedin />
-            </a>
-            <a
-              href="https://twitter.com/greensfeer"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Twitter"
-              className="footer__icon"
-            >
-              <FaTwitter />
+              <MdEmail />
             </a>
             <a
               href="https://www.youtube.com/@greensfeer/playlists"
@@ -91,11 +80,22 @@ const Footer = (): JSX.Element => {
               <FaYoutube />
             </a>
             <a
-              href="mailto:info@greensfeer.com"
-              aria-label="Email"
+              href="https://twitter.com/greensfeer"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Twitter"
               className="footer__icon"
             >
-              <MdEmail />
+              <FaTwitter />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/greensfeer/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn"
+              className="footer__icon"
+            >
+              <FaLinkedin />
             </a>
           </div>
         </div>

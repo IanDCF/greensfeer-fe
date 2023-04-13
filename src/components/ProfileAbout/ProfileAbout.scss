@@ -1,0 +1,70 @@
+@use "../../styles/partials/mixins" as mx;
+@use "../../styles/partials/colors" as color;
+@use "../../styles/partials/breakpoints.scss" as bp;
+
+.about {
+  background-color: color.$mint;
+  border-radius: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  color: color.$darkgray2;
+  width: 100%;
+  position: relative;
+
+  @include bp.mobile {
+    margin-bottom: 2.5rem;
+    padding: 2.5rem;
+  }
+
+  @include bp.tablet {
+    margin-bottom: 3rem;
+    padding: 2.5rem 3rem;
+  }
+
+  @include bp.desktop {
+    margin-bottom: 3rem;
+    padding: 2.5rem 4.5rem;
+    max-width: 1024px;
+  }
+
+  &__title {
+    font-weight: 500;
+    margin: 0;
+
+    @include bp.mobile {
+      margin-bottom: 1.25rem;
+      font-size: 4rem;
+    }
+
+    @include bp.tablet {
+      margin-bottom: 1.75rem;
+      font-size: 5rem;
+    }
+
+    @include bp.desktop {
+      margin-bottom: 1.75rem;
+      font-size: 5rem;
+    }
+  }
+
+  &__text {
+    margin: 0;
+    font-weight: 300;
+    max-width: 92%;
+
+    @include bp.mobile {
+      font-size: 3rem;
+      line-height: 4.2rem;
+    }
+
+    @include bp.tablet {
+      font-size: 3.5rem;
+      line-height: 4.5rem;
+    }
+
+    @include bp.desktop {
+      font-size: 3.5rem;
+      line-height: 4.5rem;
+    }
+  }
+}

@@ -1,0 +1,108 @@
+@use "../../styles/partials/colors.scss" as color;
+@use "../../styles/partials/breakpoints.scss" as bp;
+
+.contact-card {
+  margin-bottom: 2rem;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  height: 20rem;
+  background-color: color.$mint;
+  max-width: 100%;
+  border-radius: 2.5rem;
+
+  &__user {
+    display: flex;
+    height: 100%;
+  }
+
+  &__profile {
+    display: flex;
+    align-items: center;
+  }
+
+  &__photo {
+    position: relative;
+    width: 16rem;
+    height: 16rem;
+    border-radius: 50%;
+    margin-right: 2rem;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-around;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__name {
+    margin: 0;
+    font-size: 3.5rem;
+    font-weight: 500;
+  }
+
+  &__role {
+    margin: 0;
+    font-size: 3rem;
+    font-weight: 300;
+  }
+
+  &__location {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 200;
+  }
+
+  &__connections {
+    margin: 0;
+    font-size: 2.3rem;
+    font-weight: 600;
+    color: color.$green;
+  }
+
+  &__controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-left: 1.5rem;
+  }
+
+  &__label {
+    font-size: 2.5rem;
+    color: color.$nickel;
+    margin: 0 0 1rem 0;
+  }
+
+  &__btn-white {
+    border: 0.3rem solid color.$darkgreen;
+    border-radius: 10rem;
+    font-size: 3rem;
+    font-weight: 500;
+    padding: 1.5rem 2.5rem;
+    background-color: color.$white;
+    color: color.$black2;
+    margin-bottom: 1.5rem;
+    width: 19rem;
+    text-align: center;
+  }
+
+  &__btn-green {
+    border: 0.3rem solid color.$black2;
+    border-radius: 10rem;
+    font-size: 3rem;
+    font-weight: 500;
+    padding: 1.5rem 2.5rem;
+    color: color.$black2;
+    background-color: color.$brightgreen;
+    width: 19rem;
+    text-align: center;
+  }
+}

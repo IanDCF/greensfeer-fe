@@ -33,7 +33,7 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
-    opacity: 70%;
+    opacity: 50%;
   }
 
   &__video {
@@ -65,11 +65,13 @@
       @include bp.tablet {
         font-size: 12rem;
         margin-bottom: 6rem;
+        max-width: 125rem;
       }
 
       @include bp.desktop {
         font-size: 12rem;
         margin-bottom: 6rem;
+        max-width: 255rem;
       }
     }
     p {
@@ -84,13 +86,13 @@
       @include bp.tablet {
         font-size: 6rem;
         margin-bottom: 7rem;
-        max-width: 130rem;
+        max-width: 145rem;
       }
 
       @include bp.desktop {
         font-size: 6rem;
         margin-bottom: 7rem;
-        max-width: 130rem;
+        max-width: 220rem;
       }
     }
   }

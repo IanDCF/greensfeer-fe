@@ -19,9 +19,9 @@ interface NavbarProps {
 const Navbar: FC<NavbarProps> = ({ toggle }) => {
   const navLinks: LinkItem[] = [
     { name: "Discover", id: "discover" },
-    { name: "Exchange", id: "exchange" },
-    { name: "Promote", id: "promote" },
-    { name: "Collaborate", id: "collaborate" },
+    { name: "Community", id: "community" },
+    { name: "Greensfeer Beta", id: "beta" },
+    // { name: "Collaborate", id: "collaborate" },
   ];
 
   const toggleHome = () => {
@@ -58,17 +58,12 @@ const Navbar: FC<NavbarProps> = ({ toggle }) => {
         </ul>
 
         <nav className="nav__btn">
-          <Link to="/subscribe" className="nav__btn-reg">
-            Subscribe
+          <Link to="/register" className="nav__btn-reg">
+            Join Now
           </Link>
-          <a
-            href="https://www.youtube.com/@greensfeer/playlists"
-            rel="noreferrer"
-            className="nav__btn-in"
-            target="_blank"
-          >
-            Learn
-          </a>
+          <Link to="/signin" className="nav__btn-in">
+            Sign In
+          </Link>
         </nav>
       </div>
     </nav>

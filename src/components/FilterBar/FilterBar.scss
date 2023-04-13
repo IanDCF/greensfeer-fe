@@ -1,0 +1,97 @@
+@use "../../styles/partials/colors.scss" as color;
+@use "../../styles/partials/breakpoints.scss" as bp;
+
+.filter-bar {
+  width: 100%;
+  color: color.$charcoal;
+  background-color: color.$white;
+  font-size: 3.5rem;
+  padding-top: 3rem;
+  padding-bottom: 1.5rem;
+  position: fixed;
+
+  @include bp.mobile {
+    padding-right: 3rem;
+  }
+
+  @include bp.desktop {
+    padding-left: 2rem;
+  }
+
+  &__wrap {
+    width: 100%;
+    display: flex;
+
+    overflow-x: scroll;
+    &::-webkit-scrollbar {
+      width: 5px;
+      height: 7px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: rgb(255, 255, 255);
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: rgba(0, 0, 0, 0);
+      border-radius: 10px;
+    }
+  }
+
+  &__add-listing {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid color.$green;
+    border-radius: 10rem;
+    padding: 1.5rem 4rem 1.5rem 3.5rem;
+    font-weight: 500;
+    white-space: nowrap;
+    text-decoration: none;
+    color: color.$charcoal;
+
+    @include bp.mobile {
+      margin-right: 3rem;
+    }
+    &:visited {
+      color: color.$charcoal;
+    }
+  }
+
+  &__icon {
+    font-size: 5rem;
+    display: flex;
+    align-items: center;
+    margin-right: 1.5rem;
+  }
+
+  &__separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size: 9rem;
+
+    @include bp.mobile {
+      display: none;
+    }
+  }
+
+  &__filters-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid color.$charcoal;
+    border-radius: 10rem;
+    padding: 1.5rem 4rem 1.5rem 3.5rem;
+    font-size: 3.75rem;
+    margin-right: 3rem;
+    white-space: nowrap;
+  }
+  &__parameter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

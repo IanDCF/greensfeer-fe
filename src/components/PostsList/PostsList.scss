@@ -1,0 +1,143 @@
+@use "../../styles/partials/mixins" as mx;
+@use "../../styles/partials/colors.scss" as color;
+@use "../../styles/partials/breakpoints.scss" as bp;
+
+.posts {
+  background-color: color.$mint;
+  border-radius: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  white-space: nowrap;
+  color: color.$darkgray2;
+  width: 100%;
+
+  @include bp.mobile {
+    margin-bottom: 2.5rem;
+    padding: 2rem 3rem;
+  }
+
+  @include bp.tablet {
+    margin-bottom: 3rem;
+    padding: 2rem 3rem;
+  }
+
+  @include bp.desktop {
+    margin-bottom: 3rem;
+    padding: 2rem 4.5rem;
+    max-width: 1024px;
+  }
+
+  &__title {
+    font-weight: 500;
+    margin: 0;
+
+    @include bp.mobile {
+      margin-bottom: 1.25rem;
+      font-size: 4rem;
+    }
+
+    @include bp.tablet {
+      margin-bottom: 2.5rem;
+      font-size: 5rem;
+    }
+
+    @include bp.desktop {
+      margin-bottom: 2.5rem;
+      font-size: 5rem;
+    }
+  }
+
+  &__list {
+    display: flex;
+    overflow: auto;
+    white-space: nowrap;
+    padding: 1rem 2rem 3rem 2rem;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+      height: 7px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #56bc78;
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: rgba(0, 0, 0, 0.06);
+      border-radius: 10px;
+    }
+  }
+
+  &__card {
+    border-radius: 2.5rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: color.$white;
+    display: flex;
+    flex-direction: column;
+    margin-right: 4rem;
+    overflow-wrap: break-word;
+
+    &:hover {
+      box-shadow: rgb(121, 183, 120) 0px 3px 8px;
+    }
+
+    @include bp.mobile {
+      padding: 1.5rem 2rem;
+      min-width: 42rem;
+      width: 42rem;
+      height: 24rem;
+    }
+
+    @include bp.tablet {
+      padding: 1.5rem 2rem;
+      min-width: 56.25rem;
+      width: 56.25rem;
+      height: 32rem;
+    }
+
+    @include bp.desktop {
+      padding: 1.5rem 2rem;
+      min-width: 66rem;
+      width: 66rem;
+      height: 34rem;
+    }
+  }
+
+  &__category {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    color: color.$nickel;
+    width: 100%;
+    overflow-wrap: break-word;
+  }
+
+  &__name {
+    margin: 0;
+    font-size: 3rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+
+  &__sector {
+    margin: 0;
+    font-size: 3rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    white-space: normal;
+    width: 100%;
+  }
+
+  &__price {
+    margin: 0;
+    font-size: 3rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    white-space: normal;
+    width: 100%;
+  }
+}

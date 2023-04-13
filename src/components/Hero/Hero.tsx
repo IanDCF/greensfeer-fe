@@ -18,11 +18,11 @@ const Hero: React.FC = () => {
       </div>
 
       <div className="hero__wrap">
-        <h1>Connect with Purpose</h1>
+        <h1>Unleash the Power of Carbon Offsets</h1>
 
         <p>
-          Join the carbon market community today and receive free premium
-          benefits
+          We empower project developers by connecting them with a diverse
+          network of carbon consultants, investors, auditors and more
         </p>
 
         <div className="hero__btn">
