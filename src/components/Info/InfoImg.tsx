@@ -1,7 +1,7 @@
 import React from "react";
-import P1 from "../../assets/images/connected-world.png";
-import P2 from "../../assets/images/business-deal.png";
-import P3 from "../../assets/images/online-ad.png";
+import P1 from "../../assets/images/Marketplace.png";
+import P2 from "../../assets/images/comunity.png";
+import P3 from "../../assets/images/CompanyProfile.png";
 import P4 from "../../assets/images/build-websites.png";
 import "./InfoImg.scss";
 
@@ -17,11 +17,11 @@ const InfoImg: React.FC<Props> = ({ dataId, alt }) => {
       img: P1,
     },
     {
-      id: "exchange",
+      id: "community",
       img: P2,
     },
     {
-      id: "promote",
+      id: "beta",
       img: P3,
     },
     {

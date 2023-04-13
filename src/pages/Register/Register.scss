@@ -13,6 +13,17 @@
   }
 
   &__error {
+    display: flex;
+    color: color.$error;
+    margin-bottom: 3rem;
+  }
+
+  &__error-icon {
+    font-size: 4rem;
+    margin-right: 1.5rem;
+  }
+
+  &__error-text {
     font-size: 3rem;
   }
 
@@ -285,7 +296,7 @@
     @include bp.mobile {
       padding: 0 6rem;
       height: 12rem;
-      font-size: 6.5rem;
+      font-size: 6rem;
     }
 
     @include bp.tablet {
@@ -298,7 +309,7 @@
       width: auto;
       padding: 0 6rem;
       height: 12rem;
-      font-size: 6.5rem;
+      font-size: 6rem;
     }
 
     &:hover {
