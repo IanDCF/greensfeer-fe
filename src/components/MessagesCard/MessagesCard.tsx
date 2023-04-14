@@ -1,6 +1,5 @@
 import "./MessagesCard.scss";
 import ProfilePhoto from "../../assets/images/Mohan-muruge.jpg";
-import inboxList from "./MessagesData.json";
 
 const MessagesCard: React.FC = () => {
   const photoStyle: React.CSSProperties = {
@@ -19,7 +18,7 @@ const MessagesCard: React.FC = () => {
 
   return (
     <>
-      {inboxList.map((conversation) => (
+      {/* {inboxList.map((conversation) => (
         <div
           key={conversation.conversation_id}
           className={`messages-card ${
@@ -42,7 +41,7 @@ const MessagesCard: React.FC = () => {
             </div>
           </div>
         </div>
-      ))}
+      ))} */}
     </>
   );
 };
