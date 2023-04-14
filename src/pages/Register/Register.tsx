@@ -31,11 +31,9 @@ const Register = () => {
   }, [registerDoneInfo]);
 
   const validateUser = async () => {
-    console.log("Creating user:", newUser);
     const userValidation = newUserSchema.safeParse(newUser);
     if (!userValidation.success) {
       setError(error);
-      console.log(userValidation.error.errors);
     }
     if (userValidation.success) {
       const user = userValidation.data;
@@ -55,7 +53,6 @@ const Register = () => {
             navigate(`/marketplace/`);
           }, 3000);
         }
-        console.log(createdUser);
       } catch (error) {
         console.log("catched error : ", error);
       }
@@ -113,13 +110,10 @@ const Register = () => {
     if (!registerUserSchemValidation.success) {
       const error = registerUserSchemValidation.error.errors; //We need to format the errors so we can pass the string to the setError
       setError(error[0].code);
-      console.log(error);
       return;
     }
     if (password !== confirmPassword) {
-      // alert("Passwords don't match");
       setError("Passwords don't match");
-      // console.log(error);
       return;
     }
     if (!isChecked1) {
@@ -127,7 +121,6 @@ const Register = () => {
       return;
     }
     if (registerUserSchemValidation.success) {
-      console.log("Setting User Registration part 1");
       setNewUser({
         ...newUser,
         email,
@@ -166,7 +159,6 @@ const Register = () => {
       const error = registerInfoValidation.error.errors; //We need to format the errors so we can pass the string
       // to the setError
       setError("There was some kind of problem with the inputs");
-      console.log(error);
       return;
     }
     if (!firstName || !secondName) {
@@ -182,7 +174,6 @@ const Register = () => {
     //   return;
     // }
     if (registerInfoValidation.success) {
-      console.log("Setting up part 2");
       setNewUser({ ...newUser, ...registerInfoValidation.data });
       setRegisterDoneInfo(true);
     }

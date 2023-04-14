@@ -84,6 +84,8 @@
     margin-right: 4rem;
     overflow-wrap: break-word;
     font-size: 3rem;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
     &:hover {
       box-shadow: rgb(121, 183, 120) 0px 3px 8px;
     }

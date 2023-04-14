@@ -34,7 +34,6 @@ const createUser = async (
     if (status !== 201) return null;
     return data as IUser;
   } catch (error) {
-    console.log(error);
     throw new Error(error as string);
   }
 };
@@ -46,7 +45,6 @@ const allUsers = async () => {
     if (status !== 200) return null;
     return data as IUser[];
   } catch (error) {
-    console.log(error);
     throw new Error(error as string);
   }
 };

@@ -14,7 +14,7 @@ const getAffiliation = async (currentUser: User | null) => {
     return companyAndUser;
     //back end return uid, affiliation, contact
   } else {
-    return console.log("no user logged in");
+    return console.log("User must be logged in");
   }
 };
 export default getAffiliation;
@@ -25,7 +25,6 @@ const getAllAffiliations = async (uid: string) => {
     const { data, status } = await axios.get(`${URL_BASE}/affiliation/${uid}`);
     return data as IAffiliation[];
   } catch (error) {
-    console.log(error);
     throw new Error(error as string);
   }
 };
@@ -50,7 +49,6 @@ const newUserAffiliation = async (
     //Need to add the Affiliations Types to data
     return data;
   } catch (error) {
-    console.log(error);
     throw new Error(error as string);
   }
 };

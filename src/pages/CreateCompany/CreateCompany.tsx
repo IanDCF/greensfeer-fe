@@ -81,7 +81,6 @@ const CreateCompany: React.FC = () => {
   const validateCompany = async (company: TNewCompany) => {
     const companyValidation = newCompanySchema.safeParse(company);
     if (!companyValidation.success) {
-      console.log(companyValidation.error.errors);
       return;
     }
 
@@ -98,7 +97,6 @@ const CreateCompany: React.FC = () => {
           newCompany.name,
           newCompany.logo
         );
-        console.log("New affiliation added: ", newUserAffi);
         setTimeout(() => navigate(`/gs/${currentUser?.uid}`), 3000);
       }
     } catch (error) {
@@ -147,7 +145,6 @@ const CreateCompany: React.FC = () => {
 
     if (!registerCompanySchemaValidation.success) {
       const error = registerCompanySchemaValidation.error.errors;
-      console.log(error);
       return;
     }
 
@@ -173,8 +170,6 @@ const CreateCompany: React.FC = () => {
 
     setStepOneDone(true);
     navigate("/create-company/step2");
-
-    console.log("Form 1 submitted");
   };
 
   const handleSecondSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -208,7 +203,6 @@ const CreateCompany: React.FC = () => {
 
     if (!registerCompanyDetailValidation.success) {
       const error = registerCompanyDetailValidation.error.errors;
-      console.log(error);
       return;
     }
 
@@ -227,7 +221,6 @@ const CreateCompany: React.FC = () => {
     }
 
     setStepTwoDone(true);
-    console.log("Form 2 submitted");
     // Perform the necessary actions for form 2 submission
   };
 

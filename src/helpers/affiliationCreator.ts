@@ -28,7 +28,7 @@ const addAffiliation = async (
     return companyAndUser;
     //back end return uid, affiliation, contact
   } else {
-    return console.log("no user logged in");
+    return console.log("User must be logged in");
   }
 };
 
