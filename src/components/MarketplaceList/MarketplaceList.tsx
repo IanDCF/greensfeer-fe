@@ -16,19 +16,27 @@ const MarketplaceList: React.FC<MarketProps> = ({
 }) => {
   return (
     <section className="marketplace-list">
-      {Posts
-        ? Posts[0]
-          ? Posts.map((post) => (
-              <MarketplaceCard
-                key={post.market_post_id}
-                Post={post}
-                listingId={post.market_post_id}
-                clickHandler={clickHandler}
-                urlHandler={urlHandler}
-              />
-            ))
-          : "small loading"
-        : "loading"}
+      {Posts ? (
+        Posts[0] ? (
+          Posts.map((post) => (
+            <MarketplaceCard
+              key={post.market_post_id}
+              Post={post}
+              listingId={post.market_post_id}
+              clickHandler={clickHandler}
+              urlHandler={urlHandler}
+            />
+          ))
+        ) : (
+          <div className="marketplace-select__loading">
+            <span className="loader"></span>
+          </div>
+        )
+      ) : (
+        <div className="marketplace-select__loading">
+          <span className="loader"></span>
+        </div>
+      )}
     </section>
   );
 };

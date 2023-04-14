@@ -65,39 +65,45 @@ export const UserProfile: React.FC = () => {
 
   return (
     <>
-      <div className="user-profile-container">
-        <ProfileHeader
-          ProfileData={profile}
-          user={true}
-          editing={true}
-          editHeaderHandler={editHeaderHandler}
-        />
-        <ProfileAbout
-          ProfileData={profile}
-          user={true}
-          editing={true}
-          editAboutHandler={editAboutHandler}
-        />
-        {/* {profile && console.log(profile)} */}
-        <ProfileAffiliations
-          userType="current"
-          editing={true}
-          editAffiliationsHandler={editAffiliationsHandler}
-        />
-        <PromptModal open={openCompanyModal} clickHandler={promptHandler} />
-        <EditHeaderModal
-          openModal={headerModal}
-          editHeaderHandler={editHeaderHandler}
-        />
-        <EditAboutModal
-          openModal={aboutModal}
-          editAboutHandler={editAboutHandler}
-        />
-        <EditAffiliationsModal
-          openModal={affiliationsModal}
-          editAffiliationsHandler={editAffiliationsHandler}
-        />
-      </div>
+      {profile ? (
+        <div className="user-profile-container">
+          <ProfileHeader
+            ProfileData={profile}
+            user={true}
+            editing={true}
+            editHeaderHandler={editHeaderHandler}
+          />
+          <ProfileAbout
+            ProfileData={profile}
+            user={true}
+            editing={true}
+            editAboutHandler={editAboutHandler}
+          />
+          {/* {profile && console.log(profile)} */}
+          <ProfileAffiliations
+            userType="current"
+            editing={true}
+            editAffiliationsHandler={editAffiliationsHandler}
+          />
+          <PromptModal open={openCompanyModal} clickHandler={promptHandler} />
+          <EditHeaderModal
+            openModal={headerModal}
+            editHeaderHandler={editHeaderHandler}
+          />
+          <EditAboutModal
+            openModal={aboutModal}
+            editAboutHandler={editAboutHandler}
+          />
+          <EditAffiliationsModal
+            openModal={affiliationsModal}
+            editAffiliationsHandler={editAffiliationsHandler}
+          />
+        </div>
+      ) : (
+        <div className="user-profile-loading">
+          <span className="loader"></span>
+        </div>
+      )}
     </>
   );
 };

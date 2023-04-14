@@ -1,7 +1,6 @@
 import "./AppNav.scss";
 import { useState } from "react";
 import Searchbar from "../Searchbar/Searchbar";
-import PlaceholderPhoto from "../../assets/images/placeholder-photo.png";
 import { Link, useLocation } from "react-router-dom";
 import MarketplaceSearch from "../Searchbar/MarketplaceSearch";
 import Logo from "../../assets/logos/greensfeer-logo.png";
@@ -12,10 +11,6 @@ import { IoMdNotificationsOutline } from "react-icons/io";
 import UserMenu from "../UserMenu/UserMenu";
 
 const AppNav: React.FC = () => {
-  const photoStyle = {
-    background: `url(${PlaceholderPhoto}) center/cover no-repeat`,
-  };
-
   const location = useLocation();
   const isMarketplacePath = location.pathname.includes("/marketplace");
 

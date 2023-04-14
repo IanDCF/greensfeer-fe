@@ -70,8 +70,8 @@ const ListingForm2 = ({
                 <option value="Landfill Gas Capture and Utilization">
                   Landfill Gas Capture and Utilization
                 </option>
-                <option value="Methane Capture and Utilization from Livestock or Landfills">
-                  Methane Capture and Utilization from Livestock or Landfills
+                <option value="Methane Capture and Utilization">
+                  Methane Capture and Utilization
                 </option>
                 <option value="REDD+">
                   REDD+ (Reducing Emissions from Deforestation and Forest
@@ -157,8 +157,8 @@ const ListingForm2 = ({
                 </option>
                 <option value="API Provider">API Provider</option>
                 <option value="Broker">Broker</option>
-                <option value="Carbon Offset Consultant">
-                  Carbon Offset Consultant
+                <option value="Carbon Offset Consulting">
+                  Carbon Offset Consulting
                 </option>
                 <option value="Credit Rating Provider">
                   Credit Rating Provider
