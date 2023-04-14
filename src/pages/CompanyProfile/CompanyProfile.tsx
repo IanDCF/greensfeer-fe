@@ -3,6 +3,7 @@ import { ProfileAbout } from "../../components/ProfileAbout/ProfileAbout";
 import { CompanyListings } from "../../components/CompanyListings/CompanyListings";
 import { MouseEventHandler, useEffect, useState } from "react";
 import "../UserProfile/UserProfile.scss";
+import "./CompanyProfile.scss";
 import getMarketPost from "../../helpers/marketPostFetcher";
 import { ICompany, IMarketPost } from "customTypes";
 import { useNavigate, useParams } from "react-router-dom";
@@ -97,7 +98,7 @@ export const CompanyProfile: React.FC = () => {
 
   return (
     <>
-      {company && (
+      {company ? (
         <div className="user-profile-container">
           <ProfileHeader
             CompanyData={company}
@@ -131,6 +132,10 @@ export const CompanyProfile: React.FC = () => {
             openModal={aboutModal}
             editAboutHandler={editAboutHandler}
           />
+        </div>
+      ) : (
+        <div className="user-profile-loading">
+          <span className="loader"></span>
         </div>
       )}
     </>
