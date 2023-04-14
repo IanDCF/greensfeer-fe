@@ -29,7 +29,6 @@ export const ProfileAffiliations: React.FC<ProfileAffiliationProps> = ({
   editAffiliationsHandler,
 }) => {
   const uid = getUserIdFromUrl(window.location.pathname); // Get userId from the URL path
-  console.log(uid);
   const [userAfilliations, setUserAfilliation] = useState<
     IAffiliation[] | null
   >(null);
@@ -37,7 +36,6 @@ export const ProfileAffiliations: React.FC<ProfileAffiliationProps> = ({
     const affiliations = async () => {
       if (uid) {
         const affiliations = await getAllAffiliations(uid);
-        console.log(affiliations);
         setUserAfilliation(affiliations);
       }
     };

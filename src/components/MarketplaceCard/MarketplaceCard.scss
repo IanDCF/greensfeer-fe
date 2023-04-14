@@ -9,6 +9,7 @@
   border-radius: 2.5rem;
   cursor: pointer;
   color: color.$darkgray2;
+  transition: all 0.2s ease-in-out;
 
   @include bp.mobile {
     margin-bottom: 3rem;

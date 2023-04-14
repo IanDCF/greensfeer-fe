@@ -6,7 +6,6 @@ const validateCompany = async (company: TNewCompany) => {
   const navigate = useNavigate();
   const companyValidation = newCompanySchema.safeParse(company);
   if (!companyValidation.success) {
-    console.log(companyValidation.error.errors);
   }
   if (companyValidation.success) {
     try {

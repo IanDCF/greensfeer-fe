@@ -10,7 +10,6 @@ const getMarketPost = async (companyId: string) => {
     if (status !== 200) return null;
     return data as IMarketPost[];
   } catch (error) {
-    console.log(error);
     throw new Error();
   }
 };
