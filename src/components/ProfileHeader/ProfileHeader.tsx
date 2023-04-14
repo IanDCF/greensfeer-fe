@@ -45,7 +45,6 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
   editing,
   editHeaderHandler,
 }) => {
-  console.log(ProfileData);
   const headshotStyle: React.CSSProperties = {
     background: `url(${ProfileData?.profile_picture}) center/cover no-repeat`,
   };

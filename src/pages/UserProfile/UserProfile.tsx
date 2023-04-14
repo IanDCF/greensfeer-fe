@@ -49,10 +49,9 @@ export const UserProfile: React.FC = () => {
             "Access-Control-Allow-Origin": "http://127.0.0.1:5173",
           },
         });
-        console.log(response.data);
         setProfile(response.data);
       } else {
-        console.log("No current user logged in");
+        console.log("No user detected");
       }
     }
     fetchProfile();
@@ -79,7 +78,6 @@ export const UserProfile: React.FC = () => {
             editing={true}
             editAboutHandler={editAboutHandler}
           />
-          {/* {profile && console.log(profile)} */}
           <ProfileAffiliations
             userType="current"
             editing={true}

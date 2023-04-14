@@ -7,7 +7,6 @@ const getAllCompanies = async () => {
     const { data } = await axios.get(`${URL_BASE}/company/`);
     return data as ICompany[];
   } catch (error) {
-    console.log(error);
     throw new Error();
   }
 };

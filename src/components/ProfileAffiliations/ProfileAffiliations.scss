@@ -98,6 +98,7 @@
     background-color: color.$white;
     width: 19rem;
     height: 19rem;
+    transition: all 0.2s ease-in-out;
 
     &:hover {
       box-shadow: rgb(121, 183, 120) 0px 3px 8px;

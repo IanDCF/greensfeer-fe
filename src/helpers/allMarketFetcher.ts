@@ -7,7 +7,6 @@ const allMarketPosts = async () => {
     const { data } = await axios.get(`${URL_BASE}/market_post/`);
     return data as IMarketPost[];
   } catch (error) {
-    console.log(error);
     throw new Error();
   }
 };
