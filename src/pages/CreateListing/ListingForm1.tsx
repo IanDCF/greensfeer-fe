@@ -137,7 +137,7 @@ const ListingForm1 = ({ handleSubmit, errors, company }: Props) => {
         <ControlButton
           dark={true}
           text="Cancel"
-          link={`/company/${company}`}
+          link={`/marketplace`}
           btnType="link"
         />
         <ControlButton dark={false} text="Next" btnType="submit" />

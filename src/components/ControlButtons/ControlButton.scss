@@ -56,11 +56,10 @@
   &--green {
     color: color.$black;
     background-color: color.$green;
-    &:hover {
-      background-color: color.$black;
-      color: color.$white;
-      transition: all 0.2s ease-in-out;
-    }
+    // &:hover {
+    //   background-color: darken(color.$green, 5%);
+    //   transition: all 0.2s ease-in-out;
+    // }
   }
 
   &--black {
@@ -78,9 +77,10 @@
     @include bp.desktop {
       margin-right: 2rem;
     }
-    &:hover {
-      background-color: color.$green;
-      transition: all 0.2s ease-in-out;
-    }
+    // &:hover {
+    //   background-color: rgb(45, 46, 45);
+    //   color: color.$white;
+    //   transition: all 0.2s ease-in-out;
+    // }
   }
 }
