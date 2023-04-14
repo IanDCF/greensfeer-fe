@@ -1,4 +1,4 @@
-import GreensfeerLogo from "../../assets/logos/greensfeer-logo.svg";
+import GreensfeerLogo from "../../assets/logos/greensfeer-logo.png";
 import "./Register.scss";
 import { TbArrowBackUp } from "react-icons/tb";
 import { MdOutlineErrorOutline } from "react-icons/md";
