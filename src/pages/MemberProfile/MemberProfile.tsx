@@ -35,12 +35,18 @@ export const MemberProfile: React.FC = () => {
 
   return (
     <>
-      <div className="member-profile-container">
-        <ProfileHeader ProfileData={profile} user={true} />
-        <ProfileAbout ProfileData={profile} user={true} />
-        {/* {profile && console.log(profile)} */}
-        <ProfileAffiliations />
-      </div>
+      {profile ? (
+        <div className="member-profile-container">
+          <ProfileHeader ProfileData={profile} user={true} />
+          <ProfileAbout ProfileData={profile} user={true} />
+          {/* {profile && console.log(profile)} */}
+          <ProfileAffiliations />
+        </div>
+      ) : (
+        <div className="user-profile-loading">
+          <span className="loader"></span>
+        </div>
+      )}
     </>
   );
 };

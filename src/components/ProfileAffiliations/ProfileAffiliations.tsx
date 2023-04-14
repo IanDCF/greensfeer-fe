@@ -1,6 +1,4 @@
 import "./ProfileAffiliations.scss";
-import companyLogo1 from "../../assets/images/affiliation1.png";
-import companyLogo2 from "../../assets/images/affiliation2.png";
 import { IoIosAdd } from "react-icons/io";
 import { Link, useParams } from "react-router-dom";
 import { MouseEventHandler, useEffect, useState } from "react";
@@ -45,12 +43,12 @@ export const ProfileAffiliations: React.FC<ProfileAffiliationProps> = ({
     };
     affiliations();
   }, []);
-  const logoStyle1: React.CSSProperties = {
-    background: `url(${companyLogo1}) center/cover no-repeat`,
-  };
-  const logoStyle2: React.CSSProperties = {
-    background: `url(${companyLogo2}) center/cover no-repeat`,
-  };
+  // const logoStyle1: React.CSSProperties = {
+  //   background: `url(${companyLogo1}) center/cover no-repeat`,
+  // };
+  // const logoStyle2: React.CSSProperties = {
+  //   background: `url(${companyLogo2}) center/cover no-repeat`,
+  // };
   const logoStyle: (logo: string) => React.CSSProperties = (logo) => {
     return { background: `url(${logo}) center/cover no-repeat` };
   };
