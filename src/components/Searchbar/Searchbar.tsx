@@ -22,7 +22,6 @@ const Searchbar = () => {
     if (users) {
       setProfiles([...users, ...companies]);
     }
-    console.log(profiles);
   };
   useEffect(() => {
     getProfiles();

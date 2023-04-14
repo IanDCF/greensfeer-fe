@@ -61,7 +61,7 @@ const SubscribePage: React.FC = () => {
         body
       )
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
       })
       .catch((err) => {
         alert(err);

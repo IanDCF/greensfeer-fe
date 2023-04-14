@@ -39,7 +39,6 @@ export const MemberProfile: React.FC = () => {
         <div className="member-profile-container">
           <ProfileHeader ProfileData={profile} user={true} />
           <ProfileAbout ProfileData={profile} user={true} />
-          {/* {profile && console.log(profile)} */}
           <ProfileAffiliations />
         </div>
       ) : (
