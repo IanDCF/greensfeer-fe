@@ -91,10 +91,10 @@
     }
 
     @include bp.mobile {
-      padding: 1.5rem 2rem;
+      padding: 3rem 3rem;
       min-width: 51rem;
-      width: 51rem;
-      height: 27rem;
+      width: 55rem;
+      height: 33rem;
     }
 
     @include bp.tablet {
