@@ -88,6 +88,18 @@
   &__img {
     width: 100%;
     border-radius: 2.5rem;
+
+    @include bp.mobile {
+      height: 30rem;
+    }
+
+    @include bp.tablet {
+      height: 35rem;
+    }
+
+    @include bp.desktop {
+      height: 38rem;
+    }
   }
 
   &__back {
@@ -191,6 +203,12 @@
 
   &__company-name {
     font-weight: 400;
+    text-decoration: none;
+    color: color.$darkgray2;
+
+    &:hover {
+      text-decoration: underline;
+    }
 
     @include bp.mobile {
       font-size: 4rem;
