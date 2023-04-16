@@ -90,11 +90,11 @@
     border-radius: 2.5rem;
 
     @include bp.mobile {
-      height: 30rem;
+      height: 25vw;
     }
 
     @include bp.tablet {
-      height: 35rem;
+      height: 12vw;
     }
 
     @include bp.desktop {
