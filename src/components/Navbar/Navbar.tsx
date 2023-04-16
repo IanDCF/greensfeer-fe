@@ -59,7 +59,7 @@ const Navbar: FC<NavbarProps> = ({ toggle }) => {
 
         <nav className="nav__btn">
           <Link to="/register" className="nav__btn-reg">
-            Join Now
+            Register
           </Link>
           <Link to="/signin" className="nav__btn-in">
             Sign In
