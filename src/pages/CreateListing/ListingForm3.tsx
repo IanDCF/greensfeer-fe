@@ -44,44 +44,36 @@ const ListingForm3 = ({ handleSubmit, clickHandler, company }: Props) => {
               <option hidden={true} defaultValue={""}>
                 Select a Standard
               </option>
-              <option value="ACR">American Carbon Registry (ACR)</option>
-              <option value="BioCarbon">BioCarbon Partners (BCP)</option>
-              <option value="CCB">
-                Climate, Community and Biodiversity Standards (CCB)
+              <option value="American Carbon Registry">
+                American Carbon Registry
               </option>
-              <option value="CCB2">
-                Climate, Community and Biodiversity Standards 2.0 (CCB Standards
-                2.0)
+              <option value="Climate, Community and Biodiversity Standards">
+                Climate, Community and Biodiversity Standards
               </option>
-              <option value="CCBCoastal">
+              {/* <option value="CCBCoastal">
                 Climate, Community and Biodiversity Standards - Coastal Blue
                 Carbon (CCB Standards - CBC)
+              </option> */}
+              <option value="Climate Action Reserve">
+                Climate Action Reserve
               </option>
-              <option value="CAR">Climate Action Reserve (CAR)</option>
-              <option value="CCBSGG">
-                The Gold Standard for the Global Goals (GS4GG)
+              <option value="Gold Standard">Gold Standard</option>
+              <option value="Cercarbono">Cercarbono</option>
+              <option value="Forest Stewardship Council">
+                Forest Stewardship Council (FSC)
               </option>
-              <option value="CCBS">
-                The Gold Standard - Climate, Community and Biodiversity
-                Standards (GS CCB)
+              <option value="Green-e">Green-e</option>
+              <option value="Plan Vivo">Plan Vivo</option>
+              <option value="Rainforest Alliance">Rainforest Alliance</option>
+              <option value="Social Carbon">Social Carbon</option>
+              <option value="The Climate Registry">The Climate Registry</option>
+              <option value="Verified Carbon Standard">
+                Verified Carbon Standard
               </option>
-              <option value="CERCarbono">CERCarbono</option>
-              <option value="FSC">Forest Stewardship Council (FSC)</option>
-              <option value="GreenE">Green-e Climate</option>
-              <option value="Nori">Nori</option>
-              <option value="PlanVivo">Plan Vivo</option>
-              <option value="RainforestAlliance">
-                Rainforest Alliance Verified
-              </option>
-              <option value="RA-CCBS">
-                The Rainforest Alliance Climate, Community & Biodiversity
-                Standards (RA CCB)
-              </option>
-              <option value="SocialCarbon">Social Carbon</option>
-              <option value="TCR">The Climate Registry (TCR)</option>
-              <option value="VCS">Verified Carbon Standard (VCS)</option>
               <option value="Verra">Verra</option>
-              <option value="UCR">Universal Carbon Registry (UCR)</option>
+              <option value="Universal Carbon Registry">
+                Universal Carbon Registry
+              </option>
             </select>
           </div>
 
@@ -113,14 +105,25 @@ const ListingForm3 = ({ handleSubmit, clickHandler, company }: Props) => {
               name="vintage_year"
               className="create-listing__input"
             >
-              <option selected disabled>
+              <option hidden={true} defaultValue={""}>
                 Select year
               </option>
-              {Array.from({ length: 19 }, (_, i) => 2023 - i).map((year) => (
-                <option key={year} value={year}>
-                  {year}
-                </option>
-              ))}
+              <option value="2023">2023</option>
+              <option value="2022">2022</option>
+              <option value="2021">2021</option>
+              <option value="2020">2020</option>
+              <option value="2019">2019</option>
+              <option value="2018">2018</option>
+              <option value="2017">2017</option>
+              <option value="2016">2016</option>
+              <option value="2015">2015</option>
+              <option value="2014">2014</option>
+              <option value="2013">2013</option>
+              <option value="2012">2012</option>
+              <option value="2011">2011</option>
+              <option value="2010">2010</option>
+              <option value="2009">2009</option>
+              <option value="2008">2008</option>
             </select>
           </div>
           <div className="create-listing__price-inputs">
