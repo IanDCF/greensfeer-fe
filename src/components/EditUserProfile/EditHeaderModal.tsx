@@ -87,8 +87,10 @@ export const EditHeaderModal: React.FC<Props> = ({
     e.preventDefault();
     const updateObj = await populateEdit(e);
     setUpdate(updateObj);
-
     currentUser && update && updateUser(currentUser.uid, update);
+    setTimeout(() => {
+      editHeaderHandler(e);
+    }, 1000);
   };
 
   if (!openModal) return <></>;
