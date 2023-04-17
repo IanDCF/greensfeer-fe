@@ -1,4 +1,4 @@
-import { MouseEventHandler } from "react";
+import { MouseEventHandler, useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { BsCamera } from "react-icons/bs";
 import ControlButton from "../../components/ControlButtons/ControlButton";
@@ -9,6 +9,7 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { TEditSchema } from "../../schemas/UserSchema";
 import { updateUser } from "../../helpers/userFetcher";
 import { getAuth } from "firebase/auth";
+import { set } from "firebase/database";
 
 interface Props {
   openModal: boolean;
@@ -89,6 +90,12 @@ export const EditCompanyHeader: React.FC<Props> = ({
   openModal,
   editHeaderHandler,
 }) => {
+  const [update, setUpdate] = useState();
+  const handleSubmit= async(e: React.FormEvent<HTMLFormElement>)=>{
+    e.preventDefault();
+    const updateObj = await populateEdit(e)
+    setUpdate(updateObj)
+  }
   if (!openModal) return <></>;
   return (
     <div className="edit-modal">
