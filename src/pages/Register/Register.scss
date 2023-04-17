@@ -13,11 +13,22 @@
   }
 
   &__error {
+    display: flex;
+    color: color.$error;
+    margin-bottom: 3rem;
+  }
+
+  &__error-icon {
+    font-size: 4rem;
+    margin-right: 1.5rem;
+  }
+
+  &__error-text {
     font-size: 3rem;
   }
 
   @include bp.desktop {
-    background-image: url("https://firebasestorage.googleapis.com/v0/b/greensfeer-db-dd101.appspot.com/o/trees.jpeg?alt=media&token=334171df-d0f4-40a9-9262-e585dc897712");
+    background-image: url("../../assets/images/trees.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -153,6 +164,7 @@
     display: flex;
     align-items: center;
     padding: 0 4rem 0 6rem;
+    cursor: text;
 
     @include bp.mobile {
       height: 11rem;
@@ -206,6 +218,7 @@
     outline: none;
     color: color.$nickel;
     background-color: none;
+    cursor: text;
 
     @include bp.mobile {
       font-size: 3.5rem;
@@ -227,6 +240,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    cursor: pointer;
 
     @include bp.mobile {
       width: 50rem;
@@ -261,6 +275,13 @@
     }
   }
 
+  &__checkbox {
+    width: 3rem;
+    height: 3rem;
+    min-width: 3rem;
+    min-height: 3rem;
+  }
+
   &__boxes-push {
     @extend .register__boxes;
     width: 100%;
@@ -285,7 +306,7 @@
     @include bp.mobile {
       padding: 0 6rem;
       height: 12rem;
-      font-size: 6.5rem;
+      font-size: 6rem;
     }
 
     @include bp.tablet {
@@ -298,7 +319,7 @@
       width: auto;
       padding: 0 6rem;
       height: 12rem;
-      font-size: 6.5rem;
+      font-size: 6rem;
     }
 
     &:hover {

@@ -61,7 +61,7 @@ declare module "customTypes" {
     project_end_date: string;
     offset_volume: number;
     offset_type: string;
-    vintage_year: number;
+    vintage_year: string;
     methodology: string;
     project_start_date: string;
   }
@@ -92,6 +92,7 @@ declare module "customTypes" {
     website: string;
     headline: string;
     description: string;
+    verified?: boolean;
   }
 
   interface IUser {

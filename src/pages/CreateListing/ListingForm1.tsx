@@ -1,8 +1,7 @@
 import "./CreateListing.scss";
 import logo from "../../assets/logos/greensfeer-logo.png";
 import ControlButton from "../../components/ControlButtons/ControlButton";
-import { TbArrowBackUp } from "react-icons/tb";
-import { Link } from "react-router-dom";
+import { MdOutlineErrorOutline } from "react-icons/md";
 interface Props {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   errors: string;
@@ -24,7 +23,7 @@ const ListingForm1 = ({ handleSubmit, errors, company }: Props) => {
         <div className="create-listing__text-input">
           <div className="create-company__input-div">
             <label className="create-company__label-text" htmlFor="post_type">
-              offering type*
+              listing type*
             </label>
             <select
               id="post_type"
@@ -51,64 +50,56 @@ const ListingForm1 = ({ handleSubmit, errors, company }: Props) => {
             />
           </div>
           <div className="create-company__input-div">
-            <label className="create-company__label-text" htmlFor="sector">
-              sector*
-            </label>
+            <label className="create-company__label-text">sector*</label>
             <select id="sector" name="sector" className="create-company__input">
-              {/* FIXME: Back end currently does not handle sector */}
-              <option hidden={true} defaultValue={""}>
-                Select a sector
+              <option defaultValue={"Null"} selected disabled>
+                Which sector are you in?
               </option>
-              <option value="All">All</option>
+              <option value="Various Sectors">Various Sectors</option>
               <option value="Agriculture">Agriculture</option>
-              <option value="Aviation and Shipping">
-                Aviation and Shipping
-              </option>
+              <option value="Aviation & Shipping">Aviation and Shipping</option>
               <option value="Biodiversity Conservation">
                 Biodiversity Conservation
               </option>
               <option value="Blue Carbon">
                 Blue Carbon (CO2 sequestration in marine and coastal ecosystems)
               </option>
-              <option value="Building and Construction">
+              <option value="Building & Construction">
                 Building and Construction
               </option>
-              <option value="Carbon Capture and Storage">
+              <option value="Carbon Capture & Storage">
                 Carbon Capture and Storage (CCS)
               </option>
               <option value="Circular Economy">Circular Economy</option>
+              <option value="Climate Tech">Climate Tech</option>
               <option value="Distributed Energy">Distributed Energy</option>
               <option value="Ecotourism">Ecotourism</option>
               <option value="Energy Efficiency">Energy Efficiency</option>
               <option value="Energy Storage">Energy Storage</option>
               <option value="Forestry">Forestry</option>
-              <option value="Industrial Processes and Manufacturing">
+              <option value="Industrial Processes & Manufacturing">
                 Industrial Processes and Manufacturing
               </option>
-              <option value="Land Use and Conservation">
+              <option value="Land Use & Conservation">
                 Land Use and Conservation
-              </option>
-              <option value="Other">
-                Other (including education, research and development, advocacy,
-                and public awareness campaigns)
               </option>
               <option value="REDD+">
                 REDD+ (Reducing Emissions from Deforestation and Forest
                 Degradation)
               </option>
               <option value="Renewable Energy">Renewable Energy</option>
-
-              <option value="Social and Community Development">
+              <option value="Social & Community Development">
                 Social and Community Development
               </option>
               <option value="Transportation">Transportation</option>
               <option value="Waste Management">Waste Management</option>
-              <option value="Water Treatment and Supply">
+              <option value="Water Treatment & Supply">
                 Water Treatment and Supply
               </option>
-              <option value="Climate Adaptation and Resilience">
+              <option value="Climate Adaptation & Resilience">
                 Climate Adaptation and Resilience
               </option>
+              <option value="Other">Other</option>
             </select>
           </div>
 
@@ -128,12 +119,21 @@ const ListingForm1 = ({ handleSubmit, errors, company }: Props) => {
       <div className="create-listing__required-text">
         * required input field
       </div>
-      <div className="create-listing__error">{errors}</div>
+      {errors ? (
+        <div className="register__error">
+          <div className="register__error-icon">
+            <MdOutlineErrorOutline />
+          </div>
+          <div className="register__error-text">{`${errors}`}</div>
+        </div>
+      ) : (
+        ""
+      )}
       <div className="create-listing__controls">
         <ControlButton
           dark={true}
           text="Cancel"
-          link={`/company/${company}`}
+          link={`/marketplace`}
           btnType="link"
         />
         <ControlButton dark={false} text="Next" btnType="submit" />

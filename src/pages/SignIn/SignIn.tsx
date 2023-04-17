@@ -22,7 +22,7 @@ const SignIn = () => {
     const userValidation = sigInSchema.safeParse({ email, password });
     if (!userValidation.success) {
       const error = userValidation.error.errors; //We need to format the errors so we can pass the string to the setError
-      setError("There was some kind of problem with the inputs");
+      setError("Incorrect email or password");
       console.log(error);
       return;
     }

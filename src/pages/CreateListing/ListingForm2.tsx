@@ -2,6 +2,7 @@ import "./CreateListing.scss";
 import logo from "../../assets/logos/greensfeer-logo.png";
 import ControlButton from "../../components/ControlButtons/ControlButton";
 import { TbArrowBackUp } from "react-icons/tb";
+import { MdOutlineErrorOutline } from "react-icons/md";
 
 interface Props {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
@@ -52,92 +53,79 @@ const ListingForm2 = ({
                 <option hidden={true} defaultValue={"Select Project Type"}>
                   Select Project Type
                 </option>
+                <option disabled>Project Types:</option>
                 <option value="Agroforestry">Agroforestry</option>
                 <option value="Biomass Energy Generation">
                   Biomass Energy Generation
                 </option>
-                <option value="Blue Carbon (CO2 sequestration in marine and coastal ecosystems)">
+                <option value="Blue Carbon">
                   Blue Carbon (CO2 sequestration in marine and coastal
                   ecosystems)
                 </option>
-                <option value="Carbon Capture and Storage">
+                <option value="Carbon Capture & Storage">
                   Carbon Capture and Storage
                 </option>
-                <option value="Forest Conservation and Management">
+                <option value="Forest Conservation & Management">
                   Forest Conservation and Management
                 </option>
-                <option value="Landfill Gas Capture and Utilization">
+                <option value="Landfill Gas Capture & Utilization">
                   Landfill Gas Capture and Utilization
                 </option>
-                <option value="Methane Capture and Utilization from Livestock or Landfills">
-                  Methane Capture and Utilization from Livestock or Landfills
+                <option value="Methane Capture & Utilization">
+                  Methane Capture and Utilization
                 </option>
-                <option value="REDD+ (Reducing Emissions from Deforestation and Forest Degradation)">
+                <option value="REDD+">
                   REDD+ (Reducing Emissions from Deforestation and Forest
                   Degradation)
                 </option>
-                <option value="Reforestation and Afforestation">
+                <option value="Reforestation & Afforestation">
                   Reforestation and Afforestation
                 </option>
-                <option value="Soil Conservation and Erosion Control">
+                <option value="Soil Conservation & Erosion Control">
                   Soil Conservation and Erosion Control
                 </option>
-                <option value="Sustainable Agriculture and Farming">
+                <option value="Sustainable Agriculture & Farming">
                   Sustainable Agriculture and Farming
                 </option>
-                <option value="Renewable Energy Installations (such as wind, solar, hydro, and geothermal)">
+                <option value="Renewable Energy Installations">
                   Renewable Energy Installations (such as wind, solar, hydro,
                   and geothermal)
                 </option>
-                <option value="Blue Carbon (CO2 sequestration in marine and coastal ecosystems)">
-                  Blue Carbon (CO2 sequestration in marine and coastal
-                  ecosystems)
-                </option>
                 <option disabled>Program Types:</option>
-                <option value="Agricultural Soil Carbon Sequestration Programs">
-                  Agricultural Soil Carbon Sequestration Programs
+                <option value="Agricultural Soil Carbon Sequestration">
+                  Agricultural Soil Carbon Sequestration
                 </option>
-                <option value="Afforestation and Reforestation Programs">
-                  Afforestation and Reforestation Programs
+                <option value="Afforestation & Reforestation">
+                  Afforestation and Reforestation
                 </option>
-                <option value="Building Energy Efficiency Programs">
-                  Building Energy Efficiency Programs
+                <option value="Building Energy Efficiency">
+                  Building Energy Efficiency
                 </option>
                 <option value="Carbon Offset Programs">
                   Carbon Offset Programs
                 </option>
-                <option value="Energy Efficiency Programs (specifically those that involve the replacement of high-carbon energy sources with low-carbon ones)">
-                  Energy Efficiency Programs (specifically those that involve
-                  the replacement of high-carbon energy sources with low-carbon
-                  ones)
+                <option value="Energy Efficiency">
+                  Energy Efficiency (such as replacing high-carbon energy
+                  sources with low-carbon ones)
                 </option>
-                <option value="Fuel Switching Programs">
-                  Fuel Switching Programs
+                <option value="Fuel Switching">Fuel Switching</option>
+                <option value="Green Transportation">
+                  Green Transportation
                 </option>
-                <option value="Green Transportation Programs">
-                  Green Transportation Programs
+                <option value="Landfill Gas-to-Energy">
+                  Landfill Gas-to-Energy
                 </option>
-                <option value="Landfill Gas-to-Energy Programs">
-                  Landfill Gas-to-Energy Programs
+                <option value="Livestock Methane Reduction">
+                  Livestock Methane Reduction
                 </option>
-                <option value="Livestock Methane Reduction Programs">
-                  Livestock Methane Reduction Programs
+                <option value="Renewable Energy">
+                  Renewable Energy (such as solar, wind, and geothermal energy)
                 </option>
-                <option value="Renewable Energy Programs (such as solar, wind, and geothermal energy)">
-                  Renewable Energy Programs (such as solar, wind, and geothermal
-                  energy)
-                </option>
-                <option value="Sustainable Forestry Management Programs">
-                  Sustainable Forestry Management Programs
-                </option>
-                <option value="Waste-to-Energy Programs">
-                  Waste-to-Energy Programs
-                </option>
+                <option value="Waste-to-Energy">Waste-to-Energy</option>
               </select>
             </div>
           )}
 
-          {/* FIXME: back end does not support entering service type yet */}
           {listingType === "Service" && (
             <div className="create-company__input-div">
               <label
@@ -156,8 +144,8 @@ const ListingForm2 = ({
                 </option>
                 <option value="API Provider">API Provider</option>
                 <option value="Broker">Broker</option>
-                <option value="Carbon Offset Consultant">
-                  Carbon Offset Consultant
+                <option value="Carbon Offset Consulting">
+                  Carbon Offset Consulting
                 </option>
                 <option value="Credit Rating Provider">
                   Credit Rating Provider
@@ -220,7 +208,16 @@ const ListingForm2 = ({
           * required input field
         </div>
       </div>
-      <div className="create-company__error">{errors}</div>
+      {errors ? (
+        <div className="register__error">
+          <div className="register__error-icon">
+            <MdOutlineErrorOutline />
+          </div>
+          <div className="register__error-text">{`${errors}`}</div>
+        </div>
+      ) : (
+        ""
+      )}
       <div className="create-listing__controls">
         <ControlButton
           btnType="link"

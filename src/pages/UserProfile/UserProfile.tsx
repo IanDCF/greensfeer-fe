@@ -12,7 +12,7 @@ import { EditAboutModal } from "../../components/EditUserProfile/EditAboutModal"
 import { EditAffiliationsModal } from "../../components/EditUserProfile/EditAffiliationsModal";
 
 export const UserProfile: React.FC = () => {
-    const URL_BASE = import.meta.env.VITE_REACT_APP_BASE_URL;
+  const URL_BASE = import.meta.env.VITE_REACT_APP_BASE_URL;
   const [profile, setProfile] = useState<IUser>();
   const { currentUser } = useAuth();
   const [token, setToken] = useState<string>();
@@ -43,19 +43,15 @@ export const UserProfile: React.FC = () => {
       if (currentUser) {
         const token = await currentUser.getIdToken();
         setToken(token);
-        const response = await axios.get(
-          `${URL_BASE}/user/current`,
-          {
-            headers: {
-              bearerToken: token,
-              "Access-Control-Allow-Origin": "http://127.0.0.1:5173",
-            },
-          }
-        );
-        console.log(response.data);
+        const response = await axios.get(`${URL_BASE}/user/current`, {
+          headers: {
+            bearerToken: token,
+            "Access-Control-Allow-Origin": "http://127.0.0.1:5173",
+          },
+        });
         setProfile(response.data);
       } else {
-        console.log("No current user logged in");
+        console.log("No user detected");
       }
     }
     fetchProfile();
@@ -68,40 +64,45 @@ export const UserProfile: React.FC = () => {
 
   return (
     <>
-      <div className="user-profile-container">
-        <ProfileHeader
-          ProfileData={profile}
-          user={true}
-          editing={true}
-          editHeaderHandler={editHeaderHandler}
-        />
-        <ProfileAbout
-          ProfileData={profile}
-          user={true}
-          editing={true}
-          editAboutHandler={editAboutHandler}
-        />
-        {/* {profile && console.log(profile)} */}
-        <ProfileAffiliations
-          userType="current"
-          editing={true}
-          editAffiliationsHandler={editAffiliationsHandler}
-        />
-        <PromptModal open={openCompanyModal} clickHandler={promptHandler} />
-        <EditHeaderModal
-          openModal={headerModal}
-          editHeaderHandler={editHeaderHandler}
-          current={profile}
-        />
-        <EditAboutModal
-          openModal={aboutModal}
-          editAboutHandler={editAboutHandler}
-        />
-        <EditAffiliationsModal
-          openModal={affiliationsModal}
-          editAffiliationsHandler={editAffiliationsHandler}
-        />
-      </div>
+      {profile ? (
+        <div className="user-profile-container">
+          <ProfileHeader
+            ProfileData={profile}
+            user={true}
+            editing={true}
+            editHeaderHandler={editHeaderHandler}
+          />
+          <ProfileAbout
+            ProfileData={profile}
+            user={true}
+            editing={true}
+            editAboutHandler={editAboutHandler}
+          />
+          <ProfileAffiliations
+            userType="current"
+            editing={true}
+            editAffiliationsHandler={editAffiliationsHandler}
+          />
+          <PromptModal open={openCompanyModal} clickHandler={promptHandler} />
+          <EditHeaderModal
+            openModal={headerModal}
+            editHeaderHandler={editHeaderHandler}
+            current={profile}
+          />
+          <EditAboutModal
+            openModal={aboutModal}
+            editAboutHandler={editAboutHandler}
+          />
+          <EditAffiliationsModal
+            openModal={affiliationsModal}
+            editAffiliationsHandler={editAffiliationsHandler}
+          />
+        </div>
+      ) : (
+        <div className="user-profile-loading">
+          <span className="loader"></span>
+        </div>
+      )}
     </>
   );
 };

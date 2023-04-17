@@ -7,7 +7,6 @@ const selectMarketPost = async (marketPostId: string) => {
     const { data } = await axios.get(`${URL_BASE}/market_post/${marketPostId}`);
     return data as IMarketPost;
   } catch (error) {
-    console.log(error);
     throw new Error();
   }
 };

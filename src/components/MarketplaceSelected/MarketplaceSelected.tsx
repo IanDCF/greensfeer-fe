@@ -17,11 +17,11 @@ import icon14 from "../../assets/icons/sdg14.png";
 import icon15 from "../../assets/icons/sdg15.png";
 import icon16 from "../../assets/icons/sdg16.png";
 import icon17 from "../../assets/icons/sdg17.png";
-import CoralReef from "../../assets/images/coralreef.png";
 import { IMarketPost } from "customTypes";
 import { BiCheckShield } from "react-icons/bi";
 import { TbArrowBackUp } from "react-icons/tb";
 import { MouseEventHandler } from "react";
+import { Link } from "react-router-dom";
 interface Post {
   Post?: IMarketPost;
   clickHandler?: MouseEventHandler<HTMLDivElement>;
@@ -65,125 +65,147 @@ const MarketplaceSelected: React.FC<Post> = ({ Post, clickHandler }) => {
     return map[sdg];
   };
 
+  const bannerStyle: (banner: string) => React.CSSProperties = (banner) => {
+    return { background: `url(${banner}) center/cover no-repeat` };
+  };
+
   return (
     <section className="marketplace-select">
-      <div className="marketplace-select__body">
-        <div className="marketplace-select__banner">
-          <div className="marketplace-select__back" onClick={clickHandler}>
-            <TbArrowBackUp />
-          </div>
-          <img
-            src={Post?.banner ? Post.banner : CompanyBanner}
-            alt="Company Banner"
-            className="marketplace-select__img"
-          />
-        </div>
-
-        <div className="marketplace-select__details">
-          {/* Render ep_type if project, else render service type: we need to discuss */}
-          <div className="marketplace-select__ep-type">
-            {Post?.post_category}
-          </div>
-          <div className="marketplace-select__post-name">{Post?.post_name}</div>
-          <div className="marketplace-select__company">
-            <div className="marketplace-select__company-name">
-              {Post?.company_name}
+      {Post ? (
+        <div className="marketplace-select__body">
+          <div className="marketplace-select__banner">
+            <div className="marketplace-select__back" onClick={clickHandler}>
+              <TbArrowBackUp />
             </div>
-            {Post?.verified && (
-              <div className="marketplace-select__company-verified">
-                <BiCheckShield />
-              </div>
+
+            {Post?.banner ? (
+              <div
+                className="marketplace-select__img"
+                style={bannerStyle(Post.banner)}
+              />
+            ) : (
+              <div
+                className="marketplace-select__img"
+                style={bannerStyle(CompanyBanner)}
+              />
             )}
           </div>
-          <div className="marketplace-select__location">
-            {`${Post?.location}`}
+
+          <div className="marketplace-select__details">
+            {/* Render ep_type if project, else render service type: we need to discuss */}
+            <div className="marketplace-select__ep-type">
+              {Post?.post_category}
+            </div>
+            <div className="marketplace-select__post-name">
+              {Post?.post_name}
+            </div>
+            <div className="marketplace-select__company">
+              <Link
+                to={`/company/${Post?.company_id}`}
+                className="marketplace-select__company-name"
+              >
+                {Post?.company_name}
+              </Link>
+              {Post?.verified && (
+                <div className="marketplace-select__company-verified">
+                  <BiCheckShield />
+                </div>
+              )}
+            </div>
+            <div className="marketplace-select__location">
+              {`${Post?.location}`}
+            </div>
+            <div className="marketplace-select__date-listed">
+              Listed on {Post && formatDate(Post.created_at)}
+            </div>
           </div>
-          <div className="marketplace-select__date-listed">
-            Listed on {Post && formatDate(Post.created_at)}
-          </div>
+          {Post?.description && (
+            <div className="marketplace-select__description">
+              <div className="marketplace-select__title">About</div>
+              <div className="marketplace-select__description-text">
+                {Post?.description}
+              </div>
+            </div>
+          )}
+          {(Post?.p?.vintage_year ||
+            Post?.p?.price_per_credit ||
+            Post?.p?.offset_volume ||
+            Post?.p?.offset_type ||
+            Post?.p?.methodology) && (
+            <div className="marketplace-select__certifications">
+              <div className="marketplace-select__title">Tags</div>
+              <div className="marketplace-select__certifications-display">
+                {Post?.p?.vintage_year !== "Select year" && (
+                  <div className="marketplace-select__certification">
+                    Vintage Year: {Post?.p?.vintage_year}
+                  </div>
+                )}
+                {Post?.p?.price_per_credit && (
+                  <div className="marketplace-select__certification">
+                    Price: ${Post?.p?.price_per_credit} / tCO2
+                  </div>
+                )}
+                {Post?.p?.offset_volume && (
+                  <div className="marketplace-select__certification">
+                    Volume: {Post?.p?.offset_volume}
+                  </div>
+                )}
+                {Post?.p?.offset_type && (
+                  <div className="marketplace-select__certification">
+                    Offset Type: {Post?.p?.offset_type}
+                  </div>
+                )}
+                {Post?.p?.methodology && (
+                  <div className="marketplace-select__certification">
+                    Methodology: {Post?.p?.methodology}
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
+          {Post?.sdg && (
+            <div className="marketplace-select__goals">
+              <div className="marketplace-select__title">
+                Sustainable Development Goals (SDGs)
+              </div>
+              <div className="marketplace-select__goals-display">
+                {Post?.sdg.map((goal: string) => (
+                  <div key={goal} className="marketplace-select__goal">
+                    <img
+                      src={sdgMap(goal)} // Subtract 1 from goal number to match array index
+                      alt={`Sustainable Development Goal Icon ${goal}`}
+                      className="marketplace-select__goal-icon"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {Post?.photos && (
+            <div className="marketplace-select__photos">
+              <div className="marketplace-select__title">Photos</div>
+              <div className="marketplace-select__photos-display">
+                {Post.photos.map((url: string) => (
+                  <div key={url} className="marketplace-select__photo">
+                    {" "}
+                    <img
+                      src={url}
+                      alt="Market Listing Photo"
+                      className="marketplace-select__photo-img"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
-        {Post?.description && (
-          <div className="marketplace-select__description">
-            <div className="marketplace-select__title">About</div>
-            <div className="marketplace-select__description-text">
-              {Post?.description}
-            </div>
-          </div>
-        )}
-        {(Post?.p?.vintage_year ||
-          Post?.p?.price_per_credit ||
-          Post?.p?.offset_volume ||
-          Post?.p?.offset_type ||
-          Post?.p?.methodology) && (
-          <div className="marketplace-select__certifications">
-            <div className="marketplace-select__title">Tags</div>
-            <div className="marketplace-select__certifications-display">
-              {Post?.p?.vintage_year && (
-                <div className="marketplace-select__certification">
-                  Vintage Year: {Post?.p?.vintage_year}
-                </div>
-              )}
-              {Post?.p?.price_per_credit && (
-                <div className="marketplace-select__certification">
-                  Price: ${Post?.p?.price_per_credit} / tCO2
-                </div>
-              )}
-              {Post?.p?.offset_volume && (
-                <div className="marketplace-select__certification">
-                  Volume: {Post?.p?.offset_volume}
-                </div>
-              )}
-              {Post?.p?.offset_type && (
-                <div className="marketplace-select__certification">
-                  Offset Type: {Post?.p?.offset_type}
-                </div>
-              )}
-              {Post?.p?.methodology && (
-                <div className="marketplace-select__certification">
-                  Methodology: {Post?.p?.methodology}
-                </div>
-              )}
-            </div>
-          </div>
-        )}
-
-        {Post?.sdg && (
-          <div className="marketplace-select__goals">
-            <div className="marketplace-select__title">
-              Sustainable Development Goals (SDGs)
-            </div>
-            <div className="marketplace-select__goals-display">
-              {Post?.sdg.map((goal: string) => (
-                <div key={goal} className="marketplace-select__goal">
-                  <img
-                    src={sdgMap(goal)} // Subtract 1 from goal number to match array index
-                    alt={`Sustainable Development Goal Icon ${goal}`}
-                    className="marketplace-select__goal-icon"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {Post?.photos && (
-          <div className="marketplace-select__photos">
-            <div className="marketplace-select__title">Photos</div>
-            <div className="marketplace-select__photos-display">
-              {Post.photos.map((url: string) => (
-                <div key={url} className="marketplace-select__photo">
-                  {" "}
-                  <img
-                    src={url}
-                    alt="Market Listing Photo"
-                    className="marketplace-select__photo-img"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
+      ) : (
+        <div className="marketplace-select__loading">
+          <span className="loader"></span>
+        </div>
+      )}
     </section>
   );
 };

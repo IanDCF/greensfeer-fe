@@ -1,15 +1,6 @@
 import "./ProfileHeader.scss";
-// Make sure Profile Picture and Banner are extracted from
-// ProfileData once we manage to retrieve those urls from
-// Firebase Storage Bucket
-import UserBanner from "../../assets/images/nature-banner-1.png";
-import UserPicture from "../../assets/images/headshot4.jpeg";
-import CompanyBanner from "../../assets/images/nature-banner-2.png";
-import CompanyLogo from "../../assets/images/logo1.png";
 import { ICompany, IUser } from "customTypes";
 import PlaceholderBanner from "../../assets/images/placeholder-banner.png";
-import PlaceholderPhoto from "../../assets/images/placeholder-photo.png";
-import PlaceholderLogo from "../../assets/images/placeholder-logo.png";
 import { FaUserCircle } from "react-icons/fa";
 import { AiOutlineGlobal } from "react-icons/ai";
 import { FiEdit2 } from "react-icons/fi";
@@ -23,20 +14,31 @@ interface ProfileHeaderProps {
   editHeaderHandler?: MouseEventHandler;
 }
 
-// interface UserProps {
-//   first_name: string;
-//   last_name: string;
-//   headline: string;
-//   location: {
-//     city: string;
-//     state_province: string;
-//     country: string;
-//   };
-//   profile_picture: string;
-//   profile_banner: string;
-//   about: string;
-// }
-  const formatDate = (dateStr: string) => {
+export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
+  ProfileData,
+  CompanyData,
+  user,
+  userType,
+  editing,
+  editHeaderHandler,
+}) => {
+  const headshotStyle: React.CSSProperties = {
+    background: `url(${ProfileData?.profile_picture}) center/cover no-repeat`,
+  };
+
+  const logoStyle: React.CSSProperties = {
+    background: `url(${CompanyData?.logo}) center/cover no-repeat`,
+  };
+
+  const imageStyle: (image: string) => React.CSSProperties = (image) => {
+    return { background: `url(${image}) center/cover no-repeat` };
+  };
+
+  const formatDate = (dateStr: string | undefined) => {
+    if (dateStr === undefined) {
+      // Handle the case where dateStr is undefined, e.g. return a default value or throw an error
+      return "Greensfeer";
+    }
     const date = new Date(dateStr);
     const options: Intl.DateTimeFormatOptions = {
       month: "short",
@@ -47,23 +49,6 @@ interface ProfileHeaderProps {
       hour12: true,
     };
     return date.toLocaleString("en-US", options);
-  };
-
-export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
-  ProfileData,
-  CompanyData,
-  user,
-  userType,
-  editing,
-  editHeaderHandler,
-}) => {
-  console.log(ProfileData);
-  const headshotStyle: React.CSSProperties = {
-    background: `url(${ProfileData?.profile_picture}) center/cover no-repeat`,
-  };
-
-  const logoStyle: React.CSSProperties = {
-    background: `url(${CompanyData?.logo}) center/cover no-repeat`,
   };
 
   return (
@@ -78,6 +63,24 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
           alt="User Profile Banner"
           className="header__banner"
         />
+        {user && ProfileData?.profile_banner && (
+          <div
+            className="header__banner"
+            style={imageStyle(ProfileData.profile_banner)}
+          />
+        )}
+        {CompanyData?.banner && (
+          <div
+            className="header__banner"
+            style={imageStyle(CompanyData.banner)}
+          />
+        )}
+        {!user && !ProfileData?.profile_banner && !CompanyData?.banner && (
+          <div
+            className="header__banner"
+            style={imageStyle(PlaceholderBanner)}
+          />
+        )}
       </div>
 
       <div className="header__details">
@@ -112,15 +115,31 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
             <>
               <p className="header__headline">{`${ProfileData?.headline}`}</p>
               <p className="header__location">
-                {ProfileData?.location && `${ProfileData.location}`}
+                {ProfileData?.location
+                  ? `${ProfileData.location}`
+                  : "Add Location"}
               </p>
-              <div className="header__connections">Member since {ProfileData && formatDate(ProfileData.created_at)}</div>
+              <div className="header__connections">{`Member since ${formatDate(
+                ProfileData?.created_at
+              )}`}</div>
             </>
           ) : (
             <>
-              <p className="header__headline">{`${CompanyData?.headline}`}</p>
-              <p className="header__location">{`${CompanyData?.location}`}</p>
-              <p className="header__connections">Verified</p>
+              <p className="header__headline">
+                {CompanyData?.headline
+                  ? `${CompanyData?.headline}`
+                  : "Add Headline"}
+              </p>
+              <p className="header__location">
+                {CompanyData?.location
+                  ? `${CompanyData?.location}`
+                  : "Add Location"}
+              </p>
+              <p className="header__connections">
+                {CompanyData?.verified
+                  ? "Verified"
+                  : `Joined ${formatDate(CompanyData?.created_at)}`}
+              </p>
             </>
           )}
         </div>

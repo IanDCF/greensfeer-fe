@@ -4,8 +4,6 @@ import { MdStorefront } from "react-icons/md";
 import { AiOutlineGlobal } from "react-icons/ai";
 import { BsDot } from "react-icons/bs";
 import "./Searchbar.scss";
-import companyLogo from "../../assets/images/placeholder-logo.png";
-import CompanyBanner from "../../assets/images/nature-banner-2.png";
 import { IMarketPost } from "customTypes";
 import allMarketPosts from "../../helpers/allMarketFetcher";
 
@@ -22,21 +20,6 @@ const MarketplaceSearch = () => {
   useEffect(() => {
     getPosts();
   }, []);
-
-  const sampleListings = [
-    {
-      image: CompanyBanner,
-      post_name: "sample",
-      market_post_id: "testpost",
-      methodology: "reef restoration",
-    },
-    {
-      image: "",
-      post_name: "default",
-      market_post_id: "noimage",
-      methodology: "financing",
-    },
-  ];
 
   const handleSearch = () => {
     toggleSearchDropdown();
@@ -61,16 +44,13 @@ const MarketplaceSearch = () => {
     }
   }, [marketSearch]);
 
-  const logoStyle: React.CSSProperties = {
-    background: `url(${companyLogo}) center/cover no-repeat`,
-  };
   return (
     <div className="search">
       <MdStorefront className="search__icon" />
       <input
         className="search__input"
         type="text"
-        placeholder="Search Marketplace"
+        placeholder="Search marketplace"
         onChange={(e) => {
           e.preventDefault();
           setMarketSearch(e.target.value);

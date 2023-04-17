@@ -1,7 +1,7 @@
-import GreensfeerLogo from "../../assets/logos/greensfeer-logo.svg";
+import GreensfeerLogo from "../../assets/logos/greensfeer-logo.png";
 import "./Register.scss";
 import { TbArrowBackUp } from "react-icons/tb";
-
+import { MdOutlineErrorOutline } from "react-icons/md";
 interface Props {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
   isChecked1: boolean;
@@ -20,9 +20,9 @@ const RegisterForm2 = ({
   return (
     <div className="register__wrapper">
       {/* This back arrow should send the user back to the first Form */}
-      <div onClick={clickHandler} className="register__back-btn">
+      {/* <div onClick={clickHandler} className="register__back-btn">
         <TbArrowBackUp />
-      </div>
+      </div> */}
       <div className="register__logo">
         <img
           className="register__img"
@@ -64,7 +64,7 @@ const RegisterForm2 = ({
               I am a
             </label>
             <select id="role" name="role" className="register__input">
-              <option defaultValue={''} hidden>
+              <option defaultValue={"Null"} selected disabled>
                 Tell us who you are
               </option>
               <option value="Broker">Broker</option>
@@ -74,6 +74,9 @@ const RegisterForm2 = ({
               <option value="Credit Issuer">Credit Issuer</option>
               <option value="Exchange Operator">Exchange Operator</option>
               <option value="Legal Advisor">Legal Advisor</option>
+              <option value="Life Cycle Assessment Practitioner">
+                Life Cycle Assessment Practitioner
+              </option>
               <option value="Market Analyst">Market Analyst</option>
               <option value="Offset Fund Manager">Offset Fund Manager</option>
               <option value="Offset Standard Setter">
@@ -87,15 +90,28 @@ const RegisterForm2 = ({
               <option value="Registry Operator">Registry Operator</option>
               <option value="Retailer">Retailer</option>
               <option value="Risk Manager">Risk Manager</option>
+              <option value="Saas Provider">Saas Provider</option>
               <option value="Seller">Seller</option>
               <option value="Third Party Auditor">Third Party Auditor</option>
               <option value="Third Party Validator">
                 Third Party Validator
               </option>
               <option value="Third Party Verifier">Third Party Verifier</option>
+              <option value="Other">Other</option>
             </select>
           </div>
         </div>
+
+        {error ? (
+          <div className="register__error">
+            <div className="register__error-icon">
+              <MdOutlineErrorOutline />
+            </div>
+            <div className="register__error-text">{`${error}`}</div>
+          </div>
+        ) : (
+          ""
+        )}
 
         <div className="register__preferences">
           <div className="register__boxes-push">
@@ -114,7 +130,7 @@ const RegisterForm2 = ({
             </label>
           </div>
         </div>
-        {error ? <div className="register__error">{`${error}`}</div> : ""}
+
         <button className="register__button" type="submit">
           Join Greensfeer
         </button>

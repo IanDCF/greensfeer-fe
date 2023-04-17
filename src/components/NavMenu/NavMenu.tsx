@@ -18,9 +18,9 @@ interface NavLink {
 const NavMenu: FC<NavMenuProps> = ({ open, toggle }) => {
   const navLinks: NavLink[] = [
     { name: "Discover", id: "discover" },
-    { name: "Exchange", id: "exchange" },
-    { name: "Promote", id: "promote" },
-    { name: "Collaborate", id: "collaborate" },
+    { name: "Community", id: "community" },
+    { name: "Greensfeer Beta", id: "beta" },
+    // { name: "Collaborate", id: "collaborate" },
   ];
 
   return (
@@ -53,7 +53,7 @@ const NavMenu: FC<NavMenuProps> = ({ open, toggle }) => {
 
         <div className="nav-menu__btn">
           <Link to="/register" className="nav-menu__btn-reg" onClick={toggle}>
-            Join Now
+            Register
           </Link>
           <Link to="/signin" className="nav-menu__btn-in">
             Sign In

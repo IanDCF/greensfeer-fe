@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
-import GreensfeerLogo from "../../assets/logos/greensfeer-logo.svg";
+import GreensfeerLogo from "../../assets/logos/greensfeer-logo.png";
 import "./Register.scss";
+import { MdOutlineErrorOutline } from "react-icons/md";
 
 interface Props {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
@@ -69,7 +69,16 @@ const RegisterForm1 = ({
               className="register__input"
             />
           </div>
-          {error ? <div className="register__error">{`${error}`}</div> : ""}
+          {error ? (
+            <div className="register__error">
+              <div className="register__error-icon">
+                <MdOutlineErrorOutline />
+              </div>
+              <div className="register__error-text">{`${error}`}</div>
+            </div>
+          ) : (
+            ""
+          )}
         </div>
 
         <div className="register__preferences">

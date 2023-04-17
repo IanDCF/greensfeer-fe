@@ -84,15 +84,17 @@
     margin-right: 4rem;
     overflow-wrap: break-word;
     font-size: 3rem;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
     &:hover {
       box-shadow: rgb(121, 183, 120) 0px 3px 8px;
     }
 
     @include bp.mobile {
-      padding: 1.5rem 2rem;
+      padding: 3rem 3rem;
       min-width: 51rem;
-      width: 51rem;
-      height: 27rem;
+      width: 55rem;
+      height: 33rem;
     }
 
     @include bp.tablet {

@@ -22,30 +22,80 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Protected routes based {!currentUser? <Route path={"/network" || "/messages"} element={<Landing/>}/>: "normal"} */}
+        {/* {currentUser ? (
+          <> */}
+        <Route
+          path="/network"
+          element={currentUser ? <Network /> : <SignIn />}
+        />
+        <Route
+          path="/messages"
+          element={currentUser ? <Messages /> : <SignIn />}
+        />
+        <Route
+          path={`/gs/${currentUser?.uid}`}
+          element={currentUser ? <UserProfile /> : <SignIn />}
+        />
+        <Route
+          path="/gs/:user_id"
+          element={currentUser ? <MemberProfile /> : <SignIn />}
+        />
+        <Route
+          path="/messages/chat"
+          element={currentUser ? <ChatRoom /> : <SignIn />}
+        />
+        <Route
+          path="/company/:companyId"
+          element={currentUser ? <CompanyProfile /> : <SignIn />}
+        />
+        <Route
+          path="/marketplace"
+          element={
+            currentUser ? (
+              <Navigate to="bf626374-4236-451f-874b-f61383d9361e" />
+            ) : (
+              <SignIn />
+            )
+          } // Redirect to default URL
+        />
+        <Route
+          path="/marketplace/:listing_id"
+          element={currentUser ? <Marketplace /> : <SignIn />}
+        />
+        <Route
+          path="/search-company"
+          element={currentUser ? <CreateCompany /> : <SignIn />}
+        />
+        <Route
+          path="/create-company/step1"
+          element={currentUser ? <CreateCompany /> : <SignIn />}
+        />
+        <Route
+          path="/create-company/step2"
+          element={currentUser ? <CreateCompany /> : <SignIn />}
+        />
+        <Route
+          path="/create-listing/step1"
+          element={currentUser ? <CreateListing /> : <SignIn />}
+        />
+        <Route
+          path="/create-listing/step2"
+          element={currentUser ? <CreateListing /> : <SignIn />}
+        />
+        <Route
+          path="/create-listing/step3"
+          element={currentUser ? <CreateListing /> : <SignIn />}
+        />
+        {/* </>
+        ) : (
+          ""
+        )} */}
+
         <Route path="/" element={<Landing />} />
         <Route path="/subscribe" element={<Subscribe />} />
         <Route path="/register" element={<Register />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/signin" element={<SignIn />} />
-        <Route path="/network" element={<Network />} />
-        <Route path="/messages" element={<Messages />} />
-        <Route path={`/gs/${currentUser?.uid}`} element={<UserProfile />} />
-        <Route path="/gs/:user_id" element={<MemberProfile />} />
-        <Route path="/messages/chat" element={<ChatRoom />} />
-        <Route path="/company/:companyId" element={<CompanyProfile />} />
-        {/* <Route path="/marketplace" element={<Marketplace />} /> */}
-        <Route
-          path="/marketplace"
-          element={<Navigate to="bf626374-4236-451f-874b-f61383d9361e" />} // Redirect to default URL
-        />
-        <Route path="/marketplace/:listing_id" element={<Marketplace />} />
-        <Route path="/search-company" element={<CreateCompany />} />
-        <Route path="/create-company/step1" element={<CreateCompany />} />
-        <Route path="/create-company/step2" element={<CreateCompany />} />
-        <Route path="/create-listing/step1" element={<CreateListing />} />
-        <Route path="/create-listing/step2" element={<CreateListing />} />
-        <Route path="/create-listing/step3" element={<CreateListing />} />
       </Routes>
       <Navigation />
     </BrowserRouter>

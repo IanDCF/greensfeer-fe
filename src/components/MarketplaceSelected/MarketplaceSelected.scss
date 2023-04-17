@@ -4,6 +4,7 @@
 .marketplace-select {
   display: flex;
   flex-direction: column;
+  transition: all 0.2s ease-in-out;
 
   @include bp.mobile {
     width: 100%;
@@ -63,6 +64,7 @@
     border-radius: 2.5rem;
     margin-bottom: 3rem;
     color: color.$darkgray2;
+    transition: all 0.2s ease-in-out;
     // min-height: 155rem;
   }
 
@@ -86,6 +88,18 @@
   &__img {
     width: 100%;
     border-radius: 2.5rem;
+
+    @include bp.mobile {
+      height: 25vw;
+    }
+
+    @include bp.tablet {
+      height: 12vw;
+    }
+
+    @include bp.desktop {
+      height: 38rem;
+    }
   }
 
   &__back {
@@ -189,6 +203,12 @@
 
   &__company-name {
     font-weight: 400;
+    text-decoration: none;
+    color: color.$darkgray2;
+
+    &:hover {
+      text-decoration: underline;
+    }
 
     @include bp.mobile {
       font-size: 4rem;
@@ -209,18 +229,18 @@
     color: color.$green;
 
     @include bp.mobile {
-      font-size: 4.5rem;
-      margin-left: 2rem;
+      font-size: 4rem;
+      margin-left: 1rem;
     }
 
     @include bp.tablet {
-      font-size: 4.5rem;
-      margin-left: 2rem;
+      font-size: 4em;
+      margin-left: 1rem;
     }
 
     @include bp.desktop {
-      font-size: 4.5rem;
-      margin-left: 2rem;
+      font-size: 4rem;
+      margin-left: 1rem;
     }
   }
 
@@ -407,5 +427,45 @@
   &__photo-img {
     width: 90%;
     border-radius: 2.5rem;
+  }
+}
+
+.marketplace-select__loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-block;
+  border-top: 4px solid color.$black;
+  border-right: 4px solid transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+.loader::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border-bottom: 4px solid color.$green;
+  border-left: 4px solid transparent;
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
