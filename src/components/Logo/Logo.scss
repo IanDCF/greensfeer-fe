@@ -10,6 +10,7 @@
   width: 47rem;
   display: flex;
   justify-content: space-between;
+  position: relative;
 
   &__icon {
     width: 10rem;
@@ -19,5 +20,15 @@
     color: color.$green;
     font-weight: 700;
     font-size: 6rem;
+  }
+
+  &__beta {
+    position: absolute;
+    bottom: -1.5rem;
+    right: 0;
+    color: color.$romansilver;
+    font-size: 3rem;
+    letter-spacing: 1rem;
+    font-weight: 500;
   }
 }

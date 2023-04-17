@@ -26,9 +26,21 @@
   &__banner {
     // @include mx.card;
     background-color: color.$mint;
-    max-width: 100%;
     border-radius: 0rem 0rem 2.5rem 2.5rem;
     object-fit: cover;
+    width: 100%;
+
+    @include bp.mobile {
+      max-height: 35rem;
+    }
+
+    @include bp.tablet {
+      max-height: 45rem;
+    }
+
+    @include bp.desktop {
+      max-height: 50rem;
+    }
   }
 
   &__details {

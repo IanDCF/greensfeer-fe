@@ -53,7 +53,7 @@ const NavMenu: FC<NavMenuProps> = ({ open, toggle }) => {
 
         <div className="nav-menu__btn">
           <Link to="/register" className="nav-menu__btn-reg" onClick={toggle}>
-            Join Now
+            Register
           </Link>
           <Link to="/signin" className="nav-menu__btn-in">
             Sign In

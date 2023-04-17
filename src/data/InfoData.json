@@ -5,7 +5,7 @@
     "topLine": "Discover",
     "headLine": "Build A Network",
     "description": "Showcase your projects, collaborate with trusted partners and access a network of experts - all in one place",
-    "buttonText": "Get Access",
+    "buttonText": "Register Now",
     "alt": "Greensfeer Marketplace Mockup",
     "link": "/register"
   },
@@ -15,7 +15,7 @@
     "topLine": "Community",
     "headLine": "More than a Marketplace",
     "description": "We're a community of like-minded professionals and organizations committed to making a difference",
-    "buttonText": "Join for Free",
+    "buttonText": "Join Now",
     "alt": "Online Community Image",
     "link": "/register"
   },
@@ -25,7 +25,7 @@
     "topLine": "Greensfeer Beta",
     "headLine": "Exclusive Program",
     "description": "We create a tailored experience based on your needs, you get free access to premium features. Want to learn more? Get in touch!",
-    "buttonText": "Get in Touch",
+    "buttonText": "Contact Us",
     "alt": "Greensfeer Company Profile Mockup",
     "link": "mailto:info@greensfeer.com"
   }

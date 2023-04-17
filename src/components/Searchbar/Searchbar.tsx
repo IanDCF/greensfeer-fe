@@ -4,7 +4,6 @@ import { GoSearch } from "react-icons/go";
 import { FaUserCircle } from "react-icons/fa";
 import "./Searchbar.scss";
 import { BsDot } from "react-icons/bs";
-import displayPic from "../../assets/images/Mohan-muruge.jpg";
 import getAllCompanies from "../../helpers/allCompanyFetcher";
 import { allUsers } from "../../helpers/userFetcher";
 import { ICompany, IUser } from "customTypes";
@@ -59,9 +58,11 @@ const Searchbar = () => {
     }
   }, [search]);
 
-  const displayPicture: React.CSSProperties = {
-    background: `url(${displayPic}) center/cover no-repeat`,
+  const pictureStyle: (logo: string) => React.CSSProperties = (logo) => {
+    return { background: `url(${logo}) center/cover no-repeat` };
   };
+
+  const searchResultLength = searchResult?.length || 0;
 
   return (
     <div className="search">
@@ -75,7 +76,7 @@ const Searchbar = () => {
         }}
         value={search}
       />
-      {searchDropdown && (
+      {searchDropdown && searchResultLength === searchResult?.length && (
         <div className="search__dropdown" onClick={handleSearch}>
           {searchResult?.map((profile: IUser | ICompany) => {
             if ("uid" in profile) {
@@ -86,9 +87,9 @@ const Searchbar = () => {
                   className="search__link"
                 >
                   {profile.profile_picture ? (
-                    <img
+                    <div
                       className="search__photo"
-                      src={`${profile.profile_picture}`}
+                      style={pictureStyle(profile.profile_picture)}
                     />
                   ) : (
                     <div className="search__photo">
@@ -101,7 +102,10 @@ const Searchbar = () => {
                   <div className="search__separator">
                     <BsDot />
                   </div>
-                  <div className="search__headline">{profile.role}</div>
+                  <div className="search__headline">
+                    {profile && profile.headline}
+                    {!profile.headline && profile.role}
+                  </div>
                 </Link>
               );
             } else {

@@ -17,11 +17,11 @@ import icon14 from "../../assets/icons/sdg14.png";
 import icon15 from "../../assets/icons/sdg15.png";
 import icon16 from "../../assets/icons/sdg16.png";
 import icon17 from "../../assets/icons/sdg17.png";
-import CoralReef from "../../assets/images/coralreef.png";
 import { IMarketPost } from "customTypes";
 import { BiCheckShield } from "react-icons/bi";
 import { TbArrowBackUp } from "react-icons/tb";
 import { MouseEventHandler } from "react";
+import { Link } from "react-router-dom";
 interface Post {
   Post?: IMarketPost;
   clickHandler?: MouseEventHandler<HTMLDivElement>;
@@ -65,6 +65,10 @@ const MarketplaceSelected: React.FC<Post> = ({ Post, clickHandler }) => {
     return map[sdg];
   };
 
+  const bannerStyle: (banner: string) => React.CSSProperties = (banner) => {
+    return { background: `url(${banner}) center/cover no-repeat` };
+  };
+
   return (
     <section className="marketplace-select">
       {Post ? (
@@ -73,11 +77,18 @@ const MarketplaceSelected: React.FC<Post> = ({ Post, clickHandler }) => {
             <div className="marketplace-select__back" onClick={clickHandler}>
               <TbArrowBackUp />
             </div>
-            <img
-              src={Post?.banner ? Post.banner : CompanyBanner}
-              alt="Company Banner"
-              className="marketplace-select__img"
-            />
+
+            {Post?.banner ? (
+              <div
+                className="marketplace-select__img"
+                style={bannerStyle(Post.banner)}
+              />
+            ) : (
+              <div
+                className="marketplace-select__img"
+                style={bannerStyle(CompanyBanner)}
+              />
+            )}
           </div>
 
           <div className="marketplace-select__details">
@@ -89,9 +100,12 @@ const MarketplaceSelected: React.FC<Post> = ({ Post, clickHandler }) => {
               {Post?.post_name}
             </div>
             <div className="marketplace-select__company">
-              <div className="marketplace-select__company-name">
+              <Link
+                to={`/company/${Post?.company_id}`}
+                className="marketplace-select__company-name"
+              >
                 {Post?.company_name}
-              </div>
+              </Link>
               {Post?.verified && (
                 <div className="marketplace-select__company-verified">
                   <BiCheckShield />
@@ -121,7 +135,7 @@ const MarketplaceSelected: React.FC<Post> = ({ Post, clickHandler }) => {
             <div className="marketplace-select__certifications">
               <div className="marketplace-select__title">Tags</div>
               <div className="marketplace-select__certifications-display">
-                {Post?.p?.vintage_year && (
+                {Post?.p?.vintage_year !== "Select year" && (
                   <div className="marketplace-select__certification">
                     Vintage Year: {Post?.p?.vintage_year}
                   </div>

@@ -94,37 +94,35 @@ const CompanyForm1 = ({
           <div className="create-company__input-div">
             <label className="create-company__label-text">sector*</label>
             <select id="sector" name="sector" className="create-company__input">
-              {/* FIXME: Back end currently does not handle sector */}
               <option defaultValue={"Null"} selected disabled>
                 Which sector are you in?
               </option>
               <option value="Various Sectors">Various Sectors</option>
               <option value="Agriculture">Agriculture</option>
-              <option value="Aviation and Shipping">
-                Aviation and Shipping
-              </option>
+              <option value="Aviation & Shipping">Aviation and Shipping</option>
               <option value="Biodiversity Conservation">
                 Biodiversity Conservation
               </option>
               <option value="Blue Carbon">
                 Blue Carbon (CO2 sequestration in marine and coastal ecosystems)
               </option>
-              <option value="Building and Construction">
+              <option value="Building & Construction">
                 Building and Construction
               </option>
-              <option value="Carbon Capture and Storage">
+              <option value="Carbon Capture & Storage">
                 Carbon Capture and Storage (CCS)
               </option>
               <option value="Circular Economy">Circular Economy</option>
+              <option value="Climate Tech">Climate Tech</option>
               <option value="Distributed Energy">Distributed Energy</option>
               <option value="Ecotourism">Ecotourism</option>
               <option value="Energy Efficiency">Energy Efficiency</option>
               <option value="Energy Storage">Energy Storage</option>
               <option value="Forestry">Forestry</option>
-              <option value="Industrial Processes and Manufacturing">
+              <option value="Industrial Processes & Manufacturing">
                 Industrial Processes and Manufacturing
               </option>
-              <option value="Land Use and Conservation">
+              <option value="Land Use & Conservation">
                 Land Use and Conservation
               </option>
               <option value="REDD+">
@@ -132,15 +130,15 @@ const CompanyForm1 = ({
                 Degradation)
               </option>
               <option value="Renewable Energy">Renewable Energy</option>
-              <option value="Social and Community Development">
+              <option value="Social & Community Development">
                 Social and Community Development
               </option>
               <option value="Transportation">Transportation</option>
               <option value="Waste Management">Waste Management</option>
-              <option value="Water Treatment and Supply">
+              <option value="Water Treatment & Supply">
                 Water Treatment and Supply
               </option>
-              <option value="Climate Adaptation and Resilience">
+              <option value="Climate Adaptation & Resilience">
                 Climate Adaptation and Resilience
               </option>
               <option value="Other">Other</option>
@@ -163,7 +161,7 @@ const CompanyForm1 = ({
               <option value="Carbon Consultancy">Carbon Consultancy</option>
               <option value="Credit Assurance">Credit Assurance</option>
               <option value="Exchange">Exchange</option>
-              <option value="Legal Advising">Legal Advisiing</option>
+              <option value="Legal Advising">Legal Advising</option>
               <option value="Life Cycle Assessment">
                 Life Cycle Assessment
               </option>

@@ -1,7 +1,6 @@
 import { IMarketPost } from "customTypes";
 import MarketplaceCard from "../MarketplaceCard/MarketplaceCard";
 import "./MarketplaceList.scss";
-import { MouseEvent, MouseEventHandler } from "react";
 
 interface MarketProps {
   Posts?: IMarketPost[];
