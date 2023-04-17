@@ -34,7 +34,11 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
     return { background: `url(${image}) center/cover no-repeat` };
   };
 
-  const formatDate = (dateStr: string) => {
+  const formatDate = (dateStr: string | undefined) => {
+    if (dateStr === undefined) {
+      // Handle the case where dateStr is undefined, e.g. return a default value or throw an error
+      return "Greensfeer";
+    }
     const date = new Date(dateStr);
     const options: Intl.DateTimeFormatOptions = {
       month: "short",

@@ -14,6 +14,7 @@ const Logo: FC<LogoProps> = ({ toggleHome }) => {
     <Link className="logo" to="/" onClick={toggleHome && toggleHome}>
       <img src={logo} alt="Greensfeer Logo" className="logo__icon" />
       <div className="logo__text">Greensfeer</div>
+      <span className="logo__beta">Beta</span>
     </Link>
   );
 };

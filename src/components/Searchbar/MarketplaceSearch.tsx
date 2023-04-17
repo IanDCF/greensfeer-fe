@@ -50,7 +50,7 @@ const MarketplaceSearch = () => {
       <input
         className="search__input"
         type="text"
-        placeholder="Search Marketplace"
+        placeholder="Search marketplace"
         onChange={(e) => {
           e.preventDefault();
           setMarketSearch(e.target.value);

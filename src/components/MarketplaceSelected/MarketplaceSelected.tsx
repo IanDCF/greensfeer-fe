@@ -17,7 +17,6 @@ import icon14 from "../../assets/icons/sdg14.png";
 import icon15 from "../../assets/icons/sdg15.png";
 import icon16 from "../../assets/icons/sdg16.png";
 import icon17 from "../../assets/icons/sdg17.png";
-import CoralReef from "../../assets/images/coralreef.png";
 import { IMarketPost } from "customTypes";
 import { BiCheckShield } from "react-icons/bi";
 import { TbArrowBackUp } from "react-icons/tb";
@@ -136,7 +135,7 @@ const MarketplaceSelected: React.FC<Post> = ({ Post, clickHandler }) => {
             <div className="marketplace-select__certifications">
               <div className="marketplace-select__title">Tags</div>
               <div className="marketplace-select__certifications-display">
-                {Post?.p?.vintage_year && (
+                {Post?.p?.vintage_year !== "Select year" && (
                   <div className="marketplace-select__certification">
                     Vintage Year: {Post?.p?.vintage_year}
                   </div>
