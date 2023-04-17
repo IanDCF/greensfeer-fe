@@ -127,6 +127,7 @@ export const CompanyProfile: React.FC = () => {
           <EditCompanyHeader
             openModal={headerModal}
             editHeaderHandler={editHeaderHandler}
+            CompanyData={company}
           />
           <EditCompanyAbout
             openModal={aboutModal}

@@ -10,11 +10,12 @@ import { TEditSchema } from "../../schemas/UserSchema";
 import { updateUser } from "../../helpers/userFetcher";
 import { getAuth } from "firebase/auth";
 import { set } from "firebase/database";
+import { updateCompany } from "../../helpers/companyFetcher";
 
 interface Props {
   openModal: boolean;
   editHeaderHandler: MouseEventHandler;
-  current?: ICompany;
+  CompanyData?: ICompany;
 }
 
 const populateEdit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -89,12 +90,15 @@ const upload = async (pic: File | undefined) => {
 export const EditCompanyHeader: React.FC<Props> = ({
   openModal,
   editHeaderHandler,
+  CompanyData,
 }) => {
   const [update, setUpdate] = useState();
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const updateObj = await populateEdit(e);
     setUpdate(updateObj);
+    console.log(CompanyData);
+    CompanyData && update && updateCompany(CompanyData.company_id, update);
   };
   if (!openModal) return <></>;
   return (
@@ -160,6 +164,7 @@ export const EditCompanyHeader: React.FC<Props> = ({
                 type="text"
                 id="companyName"
                 name="companyName"
+                defaultValue={CompanyData?.name}
                 className="edit-modal__input"
                 placeholder="Enter company name"
               />
@@ -170,8 +175,8 @@ export const EditCompanyHeader: React.FC<Props> = ({
               </label>
               <select id="sector" name="sector" className="edit-modal__input">
                 {/* FIXME: Back end currently does not handle sector */}
-                <option hidden={true} defaultValue={""}>
-                  Select a sector
+                <option hidden={true} defaultValue={CompanyData?.sector}>
+                  {CompanyData?.sector || "Select a sector"}
                 </option>
                 <option value="All">All</option>
                 <option value="Agriculture">Agriculture</option>
@@ -236,8 +241,8 @@ export const EditCompanyHeader: React.FC<Props> = ({
                 name="marketRole"
                 className="edit-modal__input"
               >
-                <option hidden defaultValue={""}>
-                  Select market role
+                <option hidden defaultValue={CompanyData?.market_role}>
+                  {CompanyData?.market_role || "Select a role"}
                 </option>
                 <option value="Project Developer">Project Developer</option>
                 <option value="Sponsor">Sponsor</option>
@@ -258,6 +263,7 @@ export const EditCompanyHeader: React.FC<Props> = ({
                 type="text"
                 id="headline"
                 name="headline"
+                defaultValue={CompanyData?.headline}
                 className="edit-modal__input"
                 placeholder="Enter a headline"
               />
@@ -270,6 +276,7 @@ export const EditCompanyHeader: React.FC<Props> = ({
                 id="email"
                 name="email"
                 className="edit-modal__input"
+                defaultValue={CompanyData?.email}
                 placeholder="Enter email address"
               />
             </div>
@@ -280,6 +287,7 @@ export const EditCompanyHeader: React.FC<Props> = ({
                 id="website"
                 name="website"
                 className="edit-modal__input"
+                defaultValue={CompanyData?.website}
                 placeholder="Enter company website"
               />
             </div>
@@ -289,6 +297,7 @@ export const EditCompanyHeader: React.FC<Props> = ({
                 type="text"
                 id="location"
                 name="location"
+                defaultValue={CompanyData?.location}
                 className="edit-modal__input"
                 placeholder="Where are you located?"
               />
