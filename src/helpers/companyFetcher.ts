@@ -14,7 +14,7 @@ const getCompany = async (companyId: string) => {
   }
 };
 
-const updateCompany = async (company_id: string, update: TEditSchema) => {
+const updateCompany = async (company_id: string, update:Object) => {
   const URL_BASE = import.meta.env.VITE_REACT_APP_BASE_URL;
   console.log(update);
   const res = await axios.patch(`${URL_BASE}/company/${company_id}`, {

@@ -92,7 +92,7 @@ export const EditCompanyHeader: React.FC<Props> = ({
   editHeaderHandler,
   CompanyData,
 }) => {
-  const [update, setUpdate] = useState();
+  const [update, setUpdate] = useState<Object>();
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const updateObj = await populateEdit(e);
