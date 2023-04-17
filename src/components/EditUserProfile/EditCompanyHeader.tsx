@@ -91,15 +91,15 @@ export const EditCompanyHeader: React.FC<Props> = ({
   editHeaderHandler,
 }) => {
   const [update, setUpdate] = useState();
-  const handleSubmit= async(e: React.FormEvent<HTMLFormElement>)=>{
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const updateObj = await populateEdit(e)
-    setUpdate(updateObj)
-  }
+    const updateObj = await populateEdit(e);
+    setUpdate(updateObj);
+  };
   if (!openModal) return <></>;
   return (
     <div className="edit-modal">
-      <div className="edit-modal__card">
+      <form className="edit-modal__card" onSubmit={handleSubmit}>
         <div className="edit-modal__close" onClick={editHeaderHandler}>
           <AiOutlineClose />
         </div>
@@ -305,7 +305,7 @@ export const EditCompanyHeader: React.FC<Props> = ({
           </div>
           <ControlButton dark={false} text="Save" btnType="submit" />
         </div>
-      </div>
+      </form>
     </div>
   );
 };
