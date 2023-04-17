@@ -62,6 +62,8 @@ const Searchbar = () => {
     return { background: `url(${logo}) center/cover no-repeat` };
   };
 
+  const searchResultLength = searchResult?.length || 0;
+
   return (
     <div className="search">
       <GoSearch className="search__icon" />
@@ -74,7 +76,7 @@ const Searchbar = () => {
         }}
         value={search}
       />
-      {searchDropdown && searchResult?.length > 0 && (
+      {searchDropdown && searchResultLength === searchResult?.length && (
         <div className="search__dropdown" onClick={handleSearch}>
           {searchResult?.map((profile: IUser | ICompany) => {
             if ("uid" in profile) {
@@ -101,7 +103,8 @@ const Searchbar = () => {
                     <BsDot />
                   </div>
                   <div className="search__headline">
-                    {profile?.headline ? profile?.headline : profile?.role}
+                    {profile && profile.headline}
+                    {!profile.headline && profile.role}
                   </div>
                 </Link>
               );
