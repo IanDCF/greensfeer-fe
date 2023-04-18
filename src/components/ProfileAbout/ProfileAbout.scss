@@ -51,20 +51,21 @@
     margin: 0;
     font-weight: 300;
     max-width: 92%;
+    letter-spacing: 0.3px;
 
     @include bp.mobile {
       font-size: 3rem;
-      line-height: 4.2rem;
+      line-height: 4.5rem;
     }
 
     @include bp.tablet {
       font-size: 3.5rem;
-      line-height: 4.5rem;
+      line-height: 5rem;
     }
 
     @include bp.desktop {
       font-size: 3.5rem;
-      line-height: 4.5rem;
+      line-height: 5rem;
     }
   }
 }

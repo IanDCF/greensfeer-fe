@@ -20,8 +20,9 @@ import icon17 from "../../assets/icons/sdg17.png";
 import { IMarketPost } from "customTypes";
 import { BiCheckShield } from "react-icons/bi";
 import { TbArrowBackUp } from "react-icons/tb";
-import { MouseEventHandler } from "react";
+import { MouseEventHandler, useState } from "react";
 import { Link } from "react-router-dom";
+import { AiOutlineInfoCircle } from "react-icons/ai";
 interface Post {
   Post?: IMarketPost;
   clickHandler?: MouseEventHandler<HTMLDivElement>;
@@ -41,26 +42,31 @@ const MarketplaceSelected: React.FC<Post> = ({ Post, clickHandler }) => {
     return date.toLocaleString("en-US", options);
   };
 
+  const [disclaimerToggle, setDisclaimerToggle] = useState(false);
+  const disclaimerHandler = () => {
+    setDisclaimerToggle(!disclaimerToggle);
+  };
+
   // Define the mapping of SDG numbers to icons
   const sdgMap = (sdg: string) => {
     const map: { [key: string]: string } = {
-      sdg1: icon1, // Example icon filename for SDG1
-      sdg2: icon2, // Example icon filename for SDG2
-      sdg3: icon3, // Example icon filename for SDG3
-      sdg4: icon4, // Example icon filename for SDG4
-      sdg5: icon5, // Example icon filename for SDG5
-      sdg6: icon6, // Example icon filename for SDG6
-      sdg7: icon7, // Example icon filename for SDG7
-      sdg8: icon8, // Example icon filename for SDG8
-      sdg9: icon9, // Example icon filename for SDG9
-      sdg10: icon10, // Example icon filename for SDG10
-      sdg11: icon11, // Example icon filename for SDG11
-      sdg12: icon12, // Example icon filename for SDG12
-      sdg13: icon13, // Example icon filename for SDG13
-      sdg14: icon14, // Example icon filename for SDG14
-      sdg15: icon15, // Example icon filename for SDG15
-      sdg16: icon16, // Example icon filename for SDG16
-      sdg17: icon17, // Example icon filename for SDG17
+      sdg1: icon1,
+      sdg2: icon2,
+      sdg3: icon3,
+      sdg4: icon4,
+      sdg5: icon5,
+      sdg6: icon6,
+      sdg7: icon7,
+      sdg8: icon8,
+      sdg9: icon9,
+      sdg10: icon10,
+      sdg11: icon11,
+      sdg12: icon12,
+      sdg13: icon13,
+      sdg14: icon14,
+      sdg15: icon15,
+      sdg16: icon16,
+      sdg17: icon17,
     };
     return map[sdg];
   };
@@ -92,7 +98,33 @@ const MarketplaceSelected: React.FC<Post> = ({ Post, clickHandler }) => {
           </div>
 
           <div className="marketplace-select__details">
-            {/* Render ep_type if project, else render service type: we need to discuss */}
+            {disclaimerToggle && (
+              <div className="marketplace-select__disclaimer-modal">
+                <p>
+                  This listing is created and managed by Greensfeer and is not
+                  affiliated with or endorsed by the respective company. The
+                  information displayed on this profile is gathered from
+                  publicly available sources on the web and is provided for
+                  educational purposes only.
+                </p>
+                <p>
+                  If any company listed on Greensfeer wishes to have their
+                  information removed from our platform, they can contact us and
+                  request for removal. Greensfeer reserves the right to remove
+                  or modify any company profile and associated information at
+                  its discretion. Users are advised to independently verify any
+                  information provided on these profiles before making any
+                  decisions based on it.
+                </p>
+                {/* <p>
+                  Greensfeer does not provide any consulting, financing,
+                  auditing, or other services listed on the platform. Users are
+                  solely responsible for conducting their own due diligence and
+                  engaging in any business transactions with the companies
+                  listed on Greensfeer.
+                </p> */}
+              </div>
+            )}
             <div className="marketplace-select__ep-type">
               {Post?.post_category}
             </div>
@@ -109,6 +141,14 @@ const MarketplaceSelected: React.FC<Post> = ({ Post, clickHandler }) => {
               {Post?.verified && (
                 <div className="marketplace-select__company-verified">
                   <BiCheckShield />
+                </div>
+              )}
+              {Post?.managed && (
+                <div
+                  className="marketplace-select__disclaimer-icon"
+                  onClick={() => disclaimerHandler()}
+                >
+                  <AiOutlineInfoCircle />
                 </div>
               )}
             </div>
