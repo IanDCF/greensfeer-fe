@@ -14,7 +14,9 @@ import { updateCompany } from "../../helpers/companyFetcher";
 
 interface Props {
   openModal: boolean;
-  editHeaderHandler: MouseEventHandler;
+  editHeaderHandler: (
+    e: React.FormEvent<HTMLFormElement> | React.MouseEvent
+  ) => void;
   CompanyData?: ICompany;
 }
 
@@ -99,6 +101,9 @@ export const EditCompanyHeader: React.FC<Props> = ({
     setUpdate(updateObj);
     console.log(CompanyData);
     CompanyData && update && updateCompany(CompanyData.company_id, update);
+    setTimeout(() => {
+      editHeaderHandler(e);
+    }, 1000);
   };
   if (!openModal) return <></>;
   return (

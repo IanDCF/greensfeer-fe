@@ -8,7 +8,9 @@ import populateEdit from "../../helpers/populateAbout";
 
 interface Props {
   openModal: boolean;
-  editAboutHandler: MouseEventHandler;
+  editAboutHandler: (
+    e: React.FormEvent<HTMLFormElement> | React.MouseEvent
+  ) => void;
   CompanyData: ICompany;
 }
 
@@ -25,6 +27,9 @@ export const EditCompanyAbout: React.FC<Props> = ({
     CompanyData &&
       description &&
       updateCompany(CompanyData.company_id, description);
+              setTimeout(() => {
+                editAboutHandler(e);
+              }, 1000);
   };
   if (!openModal) return <></>;
   return (
