@@ -9,7 +9,8 @@ import SearchDropdown from "../../components/SearchDropdown/SearchDropdown";
 import { useState, useEffect } from "react";
 import { ICompany } from "customTypes";
 import getAllCompanies from "../../helpers/allCompanyFetcher";
-import { Link } from "react-router-dom";
+import addAffiliation from "../../helpers/affiliationCreator";
+import { useNavigate } from "react-router-dom";
 
 const CompanySearch = () => {
   const [search, setSearch] = useState("");
@@ -17,8 +18,21 @@ const CompanySearch = () => {
   const [searchResult, setSearchResult] = useState<ICompany[]>([]);
   const [searchDropdown, setSearchDropdown] = useState(false);
   const [selected, setSelected] = useState<ICompany>();
-
   const { currentUser } = useAuth();
+  const navigate = useNavigate();
+
+  const affiliate = () => {
+    selected &&
+      addAffiliation(
+        currentUser,
+        selected?.company_id,
+        selected?.company_name,
+        selected?.logo
+      );
+    setTimeout(() => {
+      navigate(`/gs/${currentUser?.uid}`);
+    }, 2000);
+  };
 
   const handleSearch = () => {
     toggleSearchDropdown();
@@ -56,10 +70,10 @@ const CompanySearch = () => {
   }, [search]);
   const clickHandler = (e: React.MouseEvent) => {
     e.preventDefault();
-    const targetCompany = profiles.find((profile) => {
-      profile.company_id === e.currentTarget.id;
-    });
-    debugger;
+    const targetId = e.currentTarget.id;
+    const targetCompany = profiles.find(
+      (profile) => profile.company_id === targetId
+    );
     setSelected(targetCompany);
   };
   const searchResultLength = searchResult?.length || 0;
@@ -139,13 +153,15 @@ const CompanySearch = () => {
           </div>
         </div>
       </div>
-      {
-        <ControlButton
-          dark={false}
-          btnType="submit"
-          text={`Join ${"a company"}`}
-        ></ControlButton>
-      }
+      {selected && (
+        <div className="create-company__affiliate" onClick={affiliate}>
+          <ControlButton
+            dark={false}
+            btnType="submit"
+            text={`Join ${selected?.company_name}`}
+          ></ControlButton>
+        </div>
+      )}
       <div className="create-company__controls-search">
         <ControlButton
           dark={true}
