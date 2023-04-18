@@ -13,14 +13,16 @@ interface Props {
     e: React.FormEvent<HTMLFormElement> | React.MouseEvent
   ) => void;
   current: IUser;
+  setCurrent: (newCurrent: IUser) => void;
 }
 
 export const EditAboutModal: React.FC<Props> = ({
   openModal,
   editAboutHandler,
   current,
+  setCurrent,
 }) => {
-  const {currentUser} =getAuth();
+  const { currentUser } = getAuth();
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const {
@@ -43,11 +45,15 @@ export const EditAboutModal: React.FC<Props> = ({
       profile_picture,
       profile_banner,
     };
-    console.log(currentUser)
-    currentUser && update.about && updateUser(currentUser.uid, update);
-        setTimeout(() => {
+    console.log(currentUser);
+    setCurrent({ ...current, about: update.about });
+    currentUser &&
+      update.about &&
+      updateUser(currentUser.uid, update)
+        .then(() => {
           editAboutHandler(e);
-        }, 1000);
+        })
+        .catch((err) => err);
   };
   if (!openModal) return <></>;
   return (

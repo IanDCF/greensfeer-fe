@@ -12,7 +12,9 @@ import { getAuth } from "firebase/auth";
 
 interface Props {
   openModal: boolean;
-  editHeaderHandler:(e: React.FormEvent<HTMLFormElement> | React.MouseEvent)=>void;
+  editHeaderHandler: (
+    e: React.FormEvent<HTMLFormElement> | React.MouseEvent
+  ) => void;
   current?: IUser;
 }
 
@@ -87,7 +89,9 @@ export const EditHeaderModal: React.FC<Props> = ({
     e.preventDefault();
     const updateObj = await populateEdit(e);
     setUpdate(updateObj);
+    // setProfile(updateObj) state from UserProfile.tsx
     currentUser && update && updateUser(currentUser.uid, update);
+    //.then().....
     setTimeout(() => {
       editHeaderHandler(e);
     }, 1000);

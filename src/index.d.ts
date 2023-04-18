@@ -101,7 +101,7 @@ declare module "customTypes" {
     first_name: string;
     last_name: string;
     headline: string;
-    location: Location;
+    location: string;
     profile_picture: string;
     profile_banner: string;
     about: string;

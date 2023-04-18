@@ -55,6 +55,7 @@ const updateUser = async (user_id: string, update: TEditSchema) => {
   const res = await axios.patch(`${URL_BASE}/user/${user_id}`, {
     update,
   });
+  // must return confirmation
 };
 
 export { createUser, allUsers, updateUser };

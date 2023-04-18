@@ -104,6 +104,7 @@ export const UserProfile: React.FC = () => {
             openModal={aboutModal}
             editAboutHandler={editAboutHandler}
             current={profile}
+            setCurrent={setProfile}
           />
           <EditAffiliationsModal
             openModal={affiliationsModal}
