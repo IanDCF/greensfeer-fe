@@ -160,7 +160,7 @@ const CreateCompany: React.FC = () => {
       banner,
     });
 
-    if (!company_name || !sector || !market_role || !location) {
+    if (!company_name || sector==="Which sector are you in?" || market_role==="Select market role" || !location) {
       setFormErrs("Please fill in all required fields");
       return;
     }
