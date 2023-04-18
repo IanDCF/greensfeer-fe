@@ -86,7 +86,7 @@ declare module "customTypes" {
     banner: string;
     description: string;
     created_at: string;
-    location: Location;
+    location: string;
     market_role: string;
     sector: string;
     email: string;
