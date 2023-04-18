@@ -3,12 +3,18 @@ import logo from "../../assets/logos/greensfeer-logo.png";
 import ControlButton from "../../components/ControlButtons/ControlButton";
 import { useAuth } from "../../context/AuthProvider/AuthProvider";
 import { GoSearch } from "react-icons/go";
+import { BsDot } from "react-icons/bs";
+import { FaUserCircle } from "react-icons/fa";
 import SearchDropdown from "../../components/SearchDropdown/SearchDropdown";
 import { useState, useEffect } from "react";
+import { ICompany } from "customTypes";
+import getAllCompanies from "../../helpers/allCompanyFetcher";
+import { Link } from "react-router-dom";
 
 const CompanySearch = () => {
   const [search, setSearch] = useState("");
-  const [searchResult, setSearchResult] = useState([]);
+  const [profiles, setProfiles] = useState<ICompany[]>([]);
+  const [searchResult, setSearchResult] = useState<ICompany[]>([]);
   const [searchDropdown, setSearchDropdown] = useState(false);
 
   const { currentUser } = useAuth();
@@ -18,6 +24,14 @@ const CompanySearch = () => {
     setSearch("");
   };
 
+  const getCompanies = async () => {
+    const companies = await getAllCompanies();
+    setProfiles([...companies]);
+  };
+  useEffect(() => {
+    getCompanies();
+  }, []);
+
   const toggleSearchDropdown = () => {
     setSearchDropdown(!searchDropdown);
   };
@@ -25,10 +39,20 @@ const CompanySearch = () => {
   useEffect(() => {
     if (search.length > 0) {
       setSearchDropdown(true);
+      setSearchResult(
+        profiles?.filter((profile) => {
+          const regex = new RegExp(`${search}`, "i");
+          const match = (nameStr: string) => {
+            if (nameStr?.match(regex)) return true;
+          };
+          if ("name" in profile && match(profile?.name)) return true;
+        })
+      );
     } else {
       setSearchDropdown(false);
     }
   }, [search]);
+  const searchResultLength = searchResult?.length || 0;
 
   return (
     <div className="create-company__form">
@@ -62,25 +86,57 @@ const CompanySearch = () => {
               }}
               value={search}
             />
-            {searchDropdown && (
-              <SearchDropdown search={search} handleSearch={handleSearch} />
+            {searchDropdown && searchResultLength === searchResult?.length && (
+              <div className="search__dropdown" onClick={handleSearch}>
+                {searchResult?.map((profile: ICompany) => {
+                  return (
+                    <Link
+                      to={`/company/${profile.company_id}`}
+                      key={profile.company_id}
+                      className="search__link"
+                    >
+                      {profile.logo ? (
+                        <img
+                          className="search__photo"
+                          src={`${profile.logo}`}
+                        />
+                      ) : (
+                        <div className="search__photo">
+                          <FaUserCircle />
+                        </div>
+                      )}
+                      <div className="search__text">
+                        {<div className="search__name">{profile.name}</div>}
+                      </div>
+                      <div className="search__separator">
+                        <BsDot />
+                      </div>
+                      <div className="search__headline">Company</div>
+                      <div className="search__separator">
+                        <BsDot />
+                      </div>
+                      <div className="search__headline">{profile?.sector}</div>
+                    </Link>
+                  );
+                })}
+              </div>
             )}
           </div>
         </div>
-      </div>
-      <div className="create-company__controls-search">
-        <ControlButton
-          dark={true}
-          text="Cancel"
-          link={`/gs/${currentUser?.uid}`}
-          btnType="link"
-        />
-        <ControlButton
-          dark={false}
-          text="Create"
-          btnType="link"
-          link="/create-company/step1"
-        />
+        <div className="create-company__controls-search">
+          <ControlButton
+            dark={true}
+            text="Cancel"
+            link={`/gs/${currentUser?.uid}`}
+            btnType="link"
+          />
+          <ControlButton
+            dark={false}
+            text="Create"
+            btnType="link"
+            link="/create-company/step1"
+          />
+        </div>
       </div>
     </div>
   );
