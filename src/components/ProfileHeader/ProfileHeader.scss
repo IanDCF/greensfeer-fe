@@ -3,12 +3,12 @@
 @use "../../styles/partials/breakpoints.scss" as bp;
 
 .header {
-  // @include mx.card;
   background-color: color.$mint;
   width: 100%;
   border-radius: 2.5rem;
   display: flex;
   flex-direction: column;
+  position: relative;
 
   @include bp.mobile {
     margin-bottom: 2.5rem;
@@ -24,7 +24,6 @@
   }
 
   &__banner {
-    // @include mx.card;
     background-color: color.$mint;
     border-radius: 0rem 0rem 2.5rem 2.5rem;
     object-fit: cover;
@@ -229,6 +228,58 @@
     @include bp.desktop {
       font-size: 3rem;
       font-weight: 400;
+    }
+  }
+
+  &__disclaimer {
+    display: flex;
+    align-items: center;
+  }
+
+  &__disclaimer-icon {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+    font-size: 3.5rem;
+    cursor: pointer;
+
+    &:hover {
+      color: color.$charcoal;
+    }
+  }
+
+  &__disclaimer-modal {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
+      rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+    position: absolute;
+    background-color: color.$white;
+    padding: 4rem;
+    border-radius: 2.5rem;
+    z-index: 2;
+    letter-spacing: 0.3px;
+
+    @include bp.mobile {
+      font-size: 3rem;
+      line-height: 4.5rem;
+      bottom: -102rem;
+      width: 73rem;
+      margin: auto 0;
+    }
+
+    @include bp.tablet {
+      font-size: 3rem;
+      line-height: 5rem;
+      width: 100rem;
+      bottom: -74.5rem;
+      left: 35rem;
+    }
+
+    @include bp.desktop {
+      font-size: 3rem;
+      line-height: 5rem;
+      width: 150rem;
+      bottom: -51rem;
+      left: 45rem;
     }
   }
 }

@@ -44,6 +44,8 @@ const MarketplaceSearch = () => {
     }
   }, [marketSearch]);
 
+  const marketResultLength = marketResult?.length || 0;
+
   return (
     <div className="search">
       <MdStorefront className="search__icon" />
@@ -57,7 +59,7 @@ const MarketplaceSearch = () => {
         }}
         value={marketSearch}
       />
-      {marketSearchDropdown && (
+      {marketSearchDropdown && marketResultLength > 0 && (
         <div className="search__dropdown" onClick={handleSearch}>
           {marketResult.map((listing) => {
             return (
@@ -66,9 +68,8 @@ const MarketplaceSearch = () => {
                 key={listing.market_post_id}
                 className="search__link"
               >
-                {listing.image ? (
-                  // company logo not banner
-                  <img className="search__photo" src={`${listing.image}`} />
+                {listing.logo ? (
+                  <img className="search__photo" src={`${listing.logo}`} />
                 ) : (
                   <div className="search__photo">
                     <AiOutlineGlobal />
@@ -80,10 +81,7 @@ const MarketplaceSearch = () => {
                 <div className="search__separator">
                   <BsDot />
                 </div>
-                <div className="search__listing-type">
-                  {/* change to sector */}
-                  {listing.p?.ep_type}
-                </div>
+                <div className="search__listing-type">{listing.sector}</div>
               </Link>
             );
           })}
