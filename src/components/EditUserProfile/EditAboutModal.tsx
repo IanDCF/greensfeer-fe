@@ -1,21 +1,58 @@
-import { MouseEventHandler } from "react";
+import React, { MouseEventHandler } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import ControlButton from "../ControlButtons/ControlButton";
 import "./EditModal.scss";
+import { IUser } from "customTypes";
+import populateEdit from "../../helpers/populateAbout";
+import { updateUser } from "../../helpers/userFetcher";
+import { getAuth } from "firebase/auth";
 
 interface Props {
   openModal: boolean;
-  editAboutHandler: MouseEventHandler;
+  editAboutHandler: (
+    e: React.FormEvent<HTMLFormElement> | React.MouseEvent
+  ) => void;
+  current: IUser;
 }
 
 export const EditAboutModal: React.FC<Props> = ({
   openModal,
   editAboutHandler,
+  current,
 }) => {
+  const {currentUser} =getAuth();
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const {
+      first_name,
+      last_name,
+      role,
+
+      headline,
+      profile_picture,
+      profile_banner,
+    } = current;
+    const location: string = current.location || "";
+    const update = {
+      about: populateEdit(e),
+      first_name,
+      last_name,
+      role,
+      location,
+      headline,
+      profile_picture,
+      profile_banner,
+    };
+    console.log(currentUser)
+    currentUser && update.about && updateUser(currentUser.uid, update);
+        setTimeout(() => {
+          editAboutHandler(e);
+        }, 1000);
+  };
   if (!openModal) return <></>;
   return (
     <div className="edit-modal">
-      <div className="edit-modal__card">
+      <form className="edit-modal__card" onSubmit={handleSubmit}>
         <div className="edit-modal__close" onClick={editAboutHandler}>
           <AiOutlineClose />
         </div>
@@ -28,6 +65,7 @@ export const EditAboutModal: React.FC<Props> = ({
               </label>
               <textarea
                 id="about"
+                defaultValue={current?.about}
                 name="about"
                 className="edit-modal__input-textarea"
                 placeholder="Tell us who you are, such as details about your professional background and area of focus."
@@ -43,7 +81,7 @@ export const EditAboutModal: React.FC<Props> = ({
           </div>
           <ControlButton dark={false} text="Save" btnType="submit" />
         </div>
-      </div>
+      </form>
     </div>
   );
 };

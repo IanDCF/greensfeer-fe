@@ -1,4 +1,4 @@
-import { MouseEventHandler, useState } from "react";
+import React, { MouseEventHandler, useState, FormEventHandler } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { BsCamera } from "react-icons/bs";
 import ControlButton from "../../components/ControlButtons/ControlButton";
@@ -12,7 +12,7 @@ import { getAuth } from "firebase/auth";
 
 interface Props {
   openModal: boolean;
-  editHeaderHandler: MouseEventHandler;
+  editHeaderHandler:(e: React.FormEvent<HTMLFormElement> | React.MouseEvent)=>void;
   current?: IUser;
 }
 

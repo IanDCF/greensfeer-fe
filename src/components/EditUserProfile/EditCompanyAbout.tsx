@@ -4,21 +4,13 @@ import ControlButton from "../ControlButtons/ControlButton";
 import "./EditModal.scss";
 import { ICompany } from "customTypes";
 import { updateCompany } from "../../helpers/companyFetcher";
+import populateEdit from "../../helpers/populateAbout";
 
 interface Props {
   openModal: boolean;
   editAboutHandler: MouseEventHandler;
   CompanyData: ICompany;
 }
-const populateEdit = (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  const aboutInput = e.currentTarget.elements.namedItem(
-    "about"
-  ) as HTMLInputElement;
-  const about = aboutInput.value;
-
-  return about;
-};
 
 export const EditCompanyAbout: React.FC<Props> = ({
   openModal,
