@@ -123,6 +123,7 @@ const CompanySearch = () => {
             )}
           </div>
         </div>
+      </div>
         <div className="create-company__controls-search">
           <ControlButton
             dark={true}
@@ -137,7 +138,6 @@ const CompanySearch = () => {
             link="/create-company/step1"
           />
         </div>
-      </div>
     </div>
   );
 };
