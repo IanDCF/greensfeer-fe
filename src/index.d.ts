@@ -81,6 +81,7 @@ declare module "customTypes" {
   }
   export interface ICompany {
     company_id: string;
+    company_name: string
     name: string;
     logo: string;
     banner: string;

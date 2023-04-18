@@ -46,7 +46,7 @@ const CompanySearch = () => {
           const match = (nameStr: string) => {
             if (nameStr?.match(regex)) return true;
           };
-          if ("name" in profile && match(profile?.name)) return true;
+          if ("company_name" in profile && match(profile?.company_name)) return true;
         })
       );
     } else {
@@ -113,7 +113,7 @@ const CompanySearch = () => {
                         </div>
                       )}
                       <div className="search__text">
-                        {<div className="search__name">{profile.name}</div>}
+                        {<div className="search__name">{profile.company_name}</div>}
                       </div>
                       <div className="search__separator">
                         <BsDot />
