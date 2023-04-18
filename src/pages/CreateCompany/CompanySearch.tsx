@@ -16,6 +16,7 @@ const CompanySearch = () => {
   const [profiles, setProfiles] = useState<ICompany[]>([]);
   const [searchResult, setSearchResult] = useState<ICompany[]>([]);
   const [searchDropdown, setSearchDropdown] = useState(false);
+  const [selected, setSelected]=useState<ICompany>();
 
   const { currentUser } = useAuth();
 
@@ -52,6 +53,9 @@ const CompanySearch = () => {
       setSearchDropdown(false);
     }
   }, [search]);
+  const clickHandler=(e: React.MouseEvent)=>{
+    setSelected(profiles?.find((profile)=>{profile.company_id===e.currentTarget.}))
+  }
   const searchResultLength = searchResult?.length || 0;
 
   return (
@@ -90,8 +94,7 @@ const CompanySearch = () => {
               <div className="search__dropdown" onClick={handleSearch}>
                 {searchResult?.map((profile: ICompany) => {
                   return (
-                    <Link
-                      to={`/company/${profile.company_id}`}
+                    <div
                       key={profile.company_id}
                       className="search__link"
                     >
@@ -116,7 +119,7 @@ const CompanySearch = () => {
                         <BsDot />
                       </div>
                       <div className="search__headline">{profile?.sector}</div>
-                    </Link>
+                    </div>
                   );
                 })}
               </div>
@@ -124,6 +127,7 @@ const CompanySearch = () => {
           </div>
         </div>
       </div>
+      {<ControlButton dark={false} btnType="submit" text={`Join ${"a company"}`}></ControlButton>}
         <div className="create-company__controls-search">
           <ControlButton
             dark={true}
