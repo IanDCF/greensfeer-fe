@@ -15,7 +15,8 @@ interface Props {
   editHeaderHandler: (
     e: React.FormEvent<HTMLFormElement> | React.MouseEvent
   ) => void;
-  current?: IUser;
+  current: IUser;
+  setCurrent: (newCurrent: IUser) => void;
 }
 
 const populateEdit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -81,6 +82,7 @@ export const EditHeaderModal: React.FC<Props> = ({
   openModal,
   editHeaderHandler,
   current,
+  setCurrent,
 }) => {
   const { currentUser } = getAuth();
   const [update, setUpdate] = useState<TEditSchema>();
@@ -89,12 +91,22 @@ export const EditHeaderModal: React.FC<Props> = ({
     e.preventDefault();
     const updateObj = await populateEdit(e);
     setUpdate(updateObj);
-    // setProfile(updateObj) state from UserProfile.tsx
-    currentUser && update && updateUser(currentUser.uid, update);
-    //.then().....
-    setTimeout(() => {
-      editHeaderHandler(e);
-    }, 1000);
+    setCurrent({
+      ...current,
+      ...updateObj,
+      profile_banner: updateObj.profile_banner || current.profile_banner,
+      profile_picture: updateObj.profile_picture || current.profile_picture,
+      role: updateObj.role,
+      headline: updateObj.headline || current.headline,
+    });
+
+    if (currentUser && update) {
+      updateUser(currentUser.uid, update)
+        .then(() => {
+          editHeaderHandler(e);
+        })
+        .catch((err) => err);
+    }
   };
 
   if (!openModal) return <></>;
