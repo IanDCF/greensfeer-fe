@@ -46,7 +46,8 @@ const CompanySearch = () => {
           const match = (nameStr: string) => {
             if (nameStr?.match(regex)) return true;
           };
-          if ("company_name" in profile && match(profile?.company_name)) return true;
+          if ("company_name" in profile && match(profile?.company_name))
+            return true;
         })
       );
     } else {
@@ -54,9 +55,12 @@ const CompanySearch = () => {
     }
   }, [search]);
   const clickHandler = (e: React.MouseEvent) => {
-    // console.log(typeof e.currentTarget.id);
-    debugger
-    setSelected(profiles?.find((profile)=>{profile.company_id===e.currentTarget.id}))
+    e.preventDefault();
+    const targetCompany = profiles.find((profile) => {
+      profile.company_id === e.currentTarget.id;
+    });
+    debugger;
+    setSelected(targetCompany);
   };
   const searchResultLength = searchResult?.length || 0;
 
@@ -113,7 +117,11 @@ const CompanySearch = () => {
                         </div>
                       )}
                       <div className="search__text">
-                        {<div className="search__name">{profile.company_name}</div>}
+                        {
+                          <div className="search__name">
+                            {profile.company_name}
+                          </div>
+                        }
                       </div>
                       <div className="search__separator">
                         <BsDot />
