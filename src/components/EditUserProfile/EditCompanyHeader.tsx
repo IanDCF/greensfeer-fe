@@ -38,7 +38,7 @@ const populateEdit = async (e: React.FormEvent<HTMLFormElement>) => {
   ) as HTMLInputElement;
   const marketRoleInput = e.currentTarget.elements.namedItem(
     "marketRole"
-  ) as HTMLInputElement;
+  ) as HTMLSelectElement;
   const headlineInput = e.currentTarget.elements.namedItem(
     "headline"
   ) as HTMLInputElement;
@@ -102,10 +102,20 @@ export const EditCompanyHeader: React.FC<Props> = ({
     const updateObj = await populateEdit(e);
     setUpdate(updateObj);
     console.log(CompanyData);
-    CompanyData && update && updateCompany(CompanyData.company_id, update);
-    setTimeout(() => {
-      editHeaderHandler(e);
-    }, 1000);
+    setCompanyData({
+      ...CompanyData,
+      ...updateObj,
+      banner: updateObj.banner_url || CompanyData.banner,
+      logo: updateObj.logo_url || CompanyData.logo,
+      market_role: updateObj.market_role || CompanyData.market_role,
+      headline: updateObj.headline || CompanyData.headline,
+    });
+
+    updateCompany(CompanyData?.company_id, updateObj)
+      .then(() => {
+        editHeaderHandler(e);
+      })
+      .catch((err) => err);
   };
   if (!openModal) return <></>;
   return (
@@ -171,7 +181,7 @@ export const EditCompanyHeader: React.FC<Props> = ({
                 type="text"
                 id="companyName"
                 name="companyName"
-                defaultValue={CompanyData?.name}
+                defaultValue={CompanyData?.company_name}
                 className="edit-modal__input"
                 placeholder="Enter company name"
               />
@@ -185,9 +195,9 @@ export const EditCompanyHeader: React.FC<Props> = ({
                 <option hidden={true} defaultValue={CompanyData?.sector}>
                   {CompanyData?.sector || "Select a sector"}
                 </option>
-                <option value="All">All</option>
+                <option value="Various Sectors">Various Sectors</option>
                 <option value="Agriculture">Agriculture</option>
-                <option value="Aviation and Shipping">
+                <option value="Aviation & Shipping">
                   Aviation and Shipping
                 </option>
                 <option value="Biodiversity Conservation">
@@ -197,10 +207,10 @@ export const EditCompanyHeader: React.FC<Props> = ({
                   Blue Carbon (CO2 sequestration in marine and coastal
                   ecosystems)
                 </option>
-                <option value="Building and Construction">
+                <option value="Building & Construction">
                   Building and Construction
                 </option>
-                <option value="Carbon Capture and Storage">
+                <option value="Carbon Capture & Storage">
                   Carbon Capture and Storage (CCS)
                 </option>
                 <option value="Circular Economy">Circular Economy</option>
@@ -210,33 +220,29 @@ export const EditCompanyHeader: React.FC<Props> = ({
                 <option value="Energy Efficiency">Energy Efficiency</option>
                 <option value="Energy Storage">Energy Storage</option>
                 <option value="Forestry">Forestry</option>
-                <option value="Industrial Processes and Manufacturing">
+                <option value="Industrial Processes & Manufacturing">
                   Industrial Processes and Manufacturing
                 </option>
-                <option value="Land Use and Conservation">
+                <option value="Land Use & Conservation">
                   Land Use and Conservation
-                </option>
-                <option value="Other">
-                  Other (including education, research and development,
-                  advocacy, and public awareness campaigns)
                 </option>
                 <option value="REDD+">
                   REDD+ (Reducing Emissions from Deforestation and Forest
                   Degradation)
                 </option>
                 <option value="Renewable Energy">Renewable Energy</option>
-
-                <option value="Social and Community Development">
+                <option value="Social & Community Development">
                   Social and Community Development
                 </option>
                 <option value="Transportation">Transportation</option>
                 <option value="Waste Management">Waste Management</option>
-                <option value="Water Treatment and Supply">
+                <option value="Water Treatment & Supply">
                   Water Treatment and Supply
                 </option>
-                <option value="Climate Adaptation and Resilience">
+                <option value="Climate Adaptation & Resilience">
                   Climate Adaptation and Resilience
                 </option>
+                <option value="Other">Other</option>
               </select>
             </div>
             <div className="edit-modal__input-div">
@@ -251,15 +257,41 @@ export const EditCompanyHeader: React.FC<Props> = ({
                 <option hidden defaultValue={CompanyData?.market_role}>
                   {CompanyData?.market_role || "Select a role"}
                 </option>
-                <option value="Project Developer">Project Developer</option>
-                <option value="Sponsor">Sponsor</option>
+                <option value="Broker">Broker</option>
+                <option value="Buyer">Buyer</option>
                 <option value="Carbon Consultancy">Carbon Consultancy</option>
+                <option value="Credit Assurance">Credit Assurance</option>
+                <option value="Exchange">Exchange</option>
+                <option value="Legal Advising">Legal Advising</option>
+                <option value="Life Cycle Assessment">
+                  Life Cycle Assessment
+                </option>
+                <option value="Market Analysis">Market Analysis</option>
+                <option value="Offset Fund">Offset Fund</option>
+                <option value="Offset Standard Setter">
+                  Offset Standard Setter
+                </option>
+                <option value="Policy Maker">Policy Maker</option>
+                <option value="Project Aggregator">Project Aggregator</option>
+                <option value="Project Developer">Project Developer</option>
+                <option value="Project Financing">Project Financing</option>
+                <option value="Registry Operator">Registry Operator</option>
+                <option value="Retailer">Retailer</option>
+                <option value="Risk Management">Risk Management</option>
+                <option value="SaaS Provider">SaaS Provider</option>
+                <option value="Seller">Seller</option>
+                <option value="Standard Registry">Standard Registry</option>
+                <option value="Third Party Auditor">Third Party Auditor</option>
                 <option value="Third Party Validator">
-                  Third-party Validator
+                  Third Party Validator
+                </option>
+                <option value="Third Party Verifier">
+                  Third Party Verifier
                 </option>
                 <option value="Verification & Validation Body">
                   Verification & Validation Body
                 </option>
+                <option value="Other">Other</option>
               </select>
             </div>
             <div className="edit-modal__input-div">

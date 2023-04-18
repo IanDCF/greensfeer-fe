@@ -3,7 +3,7 @@ import { z } from "zod";
 const registerCompanySchema = z.object({
   banner: z.optional(z.string().trim()),
   logo: z.optional(z.string().trim()),
-  name: z.string().trim(),
+  company_name: z.string().trim(),
   sector: z.string().trim(),
   market_role: z.string().trim().min(6),
   location: z.string().trim(),

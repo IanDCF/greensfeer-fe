@@ -45,15 +45,14 @@ export const EditAboutModal: React.FC<Props> = ({
       profile_picture,
       profile_banner,
     };
-    console.log(currentUser);
+
     setCurrent({ ...current, about: update.about });
-    currentUser &&
-      update.about &&
-      updateUser(currentUser.uid, update)
-        .then(() => {
-          editAboutHandler(e);
-        })
-        .catch((err) => err);
+
+    updateUser(currentUser?.uid, update)
+      .then(() => {
+        editAboutHandler(e);
+      })
+      .catch((err) => err);
   };
   if (!openModal) return <></>;
   return (

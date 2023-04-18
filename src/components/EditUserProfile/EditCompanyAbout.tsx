@@ -27,13 +27,12 @@ export const EditCompanyAbout: React.FC<Props> = ({
     const update = { description: populateEdit(e) };
     setDescription(update);
     setCompanyData({ ...CompanyData, description: update.description });
-    // FIXME: need to double click save in order to save
-    description &&
-      updateCompany(CompanyData.company_id, description)
-        .then(() => {
-          editAboutHandler(e);
-        })
-        .catch((err) => err);
+
+    updateCompany(CompanyData?.company_id, description)
+      .then(() => {
+        editAboutHandler(e);
+      })
+      .catch((err) => err);
   };
   if (!openModal) return <></>;
   return (

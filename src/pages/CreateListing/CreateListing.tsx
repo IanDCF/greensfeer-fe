@@ -57,9 +57,10 @@ const CreateListing = () => {
   // validate post
   useEffect(() => {
     const validateAndPost = async () => {
-      console.log(newMarketPost);
       const affiliation = await getAffiliation(currentUser);
+      console.log(affiliation);
       const company = await getCompany(affiliation.company_id);
+      console.log(company);
       setCurrentCompany(affiliation.company_id);
       // FIXME: possible to visit this page with no company created
 
@@ -115,7 +116,6 @@ const CreateListing = () => {
       }
     };
     validateAndPost();
-    // if()
   }, [stepTwoDone, productDetailDone]);
 
   const validateListing = async () => {
@@ -140,7 +140,7 @@ const CreateListing = () => {
     ) as HTMLInputElement;
     const sectorInput = e.currentTarget.elements.namedItem(
       "sector"
-    ) as HTMLInputElement;
+    ) as HTMLSelectElement;
     const descriptionInput = e.currentTarget.elements.namedItem(
       "description"
     ) as HTMLInputElement;
@@ -196,14 +196,14 @@ const CreateListing = () => {
       listingType === "Project"
         ? (e.currentTarget.elements.namedItem(
             "project_type"
-          ) as HTMLInputElement)
+          ) as HTMLSelectElement)
         : null;
 
     const service_typeInput =
       listingType === "Service"
         ? (e.currentTarget.elements.namedItem(
             "service_type"
-          ) as HTMLInputElement)
+          ) as HTMLSelectElement)
         : null;
     const locationInput = e.currentTarget.elements.namedItem(
       "location"
@@ -268,13 +268,13 @@ const CreateListing = () => {
     e.preventDefault();
     const verification_standardInput = e.currentTarget.elements.namedItem(
       "verification_standard"
-    ) as HTMLInputElement;
+    ) as HTMLSelectElement;
     const methodology_idInput = e.currentTarget.elements.namedItem(
       "methodology_id"
     ) as HTMLInputElement;
     const vintage_yearInput = e.currentTarget.elements.namedItem(
       "vintage_year"
-    ) as HTMLInputElement;
+    ) as HTMLSelectElement;
     const price_per_creditInput = e.currentTarget.elements.namedItem(
       "price_per_credit"
     ) as HTMLInputElement;

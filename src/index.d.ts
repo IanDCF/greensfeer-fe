@@ -19,7 +19,7 @@ declare module "customTypes" {
     location: string | undefined;
     linkedin?: null;
     first_name: string;
-    headline?: strin | undefined;
+    headline: string;
     email: string;
     role: string;
   }
@@ -34,7 +34,7 @@ declare module "customTypes" {
     market_post_id: string;
     contact: Contact;
     post_category: string;
-    location: Location;
+    location: string;
     company_id: string;
     post_type: "Project" | "Service";
     verified: boolean;
@@ -80,7 +80,7 @@ declare module "customTypes" {
   }
   export interface ICompany {
     company_id: string;
-    name: string;
+    company_name: string;
     logo: string;
     banner: string;
     description: string;
@@ -94,17 +94,6 @@ declare module "customTypes" {
     description: string;
     verified?: boolean;
     managed?: boolean;
-  }
-
-  interface IUser {
-    first_name: string;
-    last_name: string;
-    headline: string;
-    location: string;
-    profile_picture: string;
-    profile_banner: string;
-    about: string;
-    created_at: string;
   }
 
   export interface IAffiliation {
