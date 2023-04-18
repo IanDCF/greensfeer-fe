@@ -7,6 +7,7 @@ const createMarketPost = async (newMarketPost: TNewListing) => {
     const res = await axios.post(`${URL_BASE}/market_post/`, { newMarketPost });
     return res;
   } catch (error) {
+    console.log(error);
     throw new Error();
   }
 };

@@ -94,7 +94,7 @@ const CreateCompany: React.FC = () => {
         const newUserAffi = await addAffiliation(
           currentUser,
           companyId,
-          newCompany.name,
+          newCompany.company_name,
           newCompany.logo
         );
         setTimeout(() => navigate(`/gs/${currentUser?.uid}`), 3000);
@@ -107,8 +107,8 @@ const CreateCompany: React.FC = () => {
   const handleFirstSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormErrs("");
-    const nameInput = e.currentTarget.elements.namedItem(
-      "name"
+    const companyNameInput = e.currentTarget.elements.namedItem(
+      "company_name"
     ) as HTMLInputElement;
     const sectorInput = e.currentTarget.elements.namedItem(
       "sector"
@@ -120,14 +120,14 @@ const CreateCompany: React.FC = () => {
       "location"
     ) as HTMLInputElement;
 
-    const name = nameInput.value;
+    const company_name = companyNameInput.value;
     const sector = sectorInput.value;
     const market_role = marketRoleInput.value;
     const location = locationInput.value;
     const logo = profileUrl;
     const banner = bannerUrl;
     const registerCompanySchemaValidation = registerCompanySchema.safeParse({
-      name,
+      company_name,
       sector,
       market_role,
       location,
@@ -137,7 +137,9 @@ const CreateCompany: React.FC = () => {
 
     //get request for company where form input name matches existing company name
     const companies = await getAllCompanies();
-    const found = companies.find((company) => company.name === `${name}`);
+    const found = companies.find(
+      (company) => company.company_name === `${company_name}`
+    );
     if (found) {
       setFormErrs("That company is already on Greensfeer!");
       return;
@@ -150,7 +152,7 @@ const CreateCompany: React.FC = () => {
 
     setNewCompany({
       ...newCompany,
-      name,
+      company_name,
       market_role,
       sector,
       location,
@@ -158,7 +160,7 @@ const CreateCompany: React.FC = () => {
       banner,
     });
 
-    if (!name || !sector || !market_role || !location) {
+    if (!company_name || !sector || !market_role || !location) {
       setFormErrs("Please fill in all required fields");
       return;
     }

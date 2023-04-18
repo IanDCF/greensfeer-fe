@@ -47,7 +47,7 @@ const Searchbar = () => {
           if (
             ("first_name" in profile && match(profile.first_name)) ||
             ("last_name" in profile && match(profile.last_name)) ||
-            ("name" in profile && match(profile.name))
+            ("company_name" in profile && match(profile.company_name))
             // first name match || last name match || name match
           )
             return true;
@@ -123,7 +123,7 @@ const Searchbar = () => {
                     </div>
                   )}
                   <div className="search__text">
-                    {<div className="search__name">{profile.name}</div>}
+                    {<div className="search__name">{profile.company_name}</div>}
                   </div>
                   <div className="search__separator">
                     <BsDot />

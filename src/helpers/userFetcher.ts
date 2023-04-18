@@ -50,7 +50,9 @@ const allUsers = async () => {
   }
 };
 
-const updateUser = async (user_id: string, update: TEditSchema) => {
+const updateUser = async (user_id: string | undefined, update: TEditSchema) => {
+  if (!user_id || !update) return;
+
   const URL_BASE = import.meta.env.VITE_REACT_APP_BASE_URL;
   const res = await axios.patch(`${URL_BASE}/user/${user_id}`, {
     update,

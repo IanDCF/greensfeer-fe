@@ -12,8 +12,11 @@ import { getAuth } from "firebase/auth";
 
 interface Props {
   openModal: boolean;
-  editHeaderHandler:(e: React.FormEvent<HTMLFormElement> | React.MouseEvent)=>void;
-  current?: IUser;
+  editHeaderHandler: (
+    e: React.FormEvent<HTMLFormElement> | React.MouseEvent
+  ) => void;
+  current: IUser;
+  setCurrent: (newCurrent: IUser) => void;
 }
 
 const populateEdit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -30,7 +33,7 @@ const populateEdit = async (e: React.FormEvent<HTMLFormElement>) => {
   ) as HTMLInputElement;
   const marketRoleInput = e.currentTarget.elements.namedItem(
     "marketRole"
-  ) as HTMLInputElement;
+  ) as HTMLSelectElement;
   const locationInput = e.currentTarget.elements.namedItem(
     "location"
   ) as HTMLInputElement;
@@ -79,6 +82,7 @@ export const EditHeaderModal: React.FC<Props> = ({
   openModal,
   editHeaderHandler,
   current,
+  setCurrent,
 }) => {
   const { currentUser } = getAuth();
   const [update, setUpdate] = useState<TEditSchema>();
@@ -87,10 +91,20 @@ export const EditHeaderModal: React.FC<Props> = ({
     e.preventDefault();
     const updateObj = await populateEdit(e);
     setUpdate(updateObj);
-    currentUser && update && updateUser(currentUser.uid, update);
-    setTimeout(() => {
-      editHeaderHandler(e);
-    }, 1000);
+    setCurrent({
+      ...current,
+      ...updateObj,
+      profile_banner: updateObj.profile_banner || current.profile_banner,
+      profile_picture: updateObj.profile_picture || current.profile_picture,
+      role: updateObj.role || current.role,
+      headline: updateObj.headline || current.headline,
+    });
+
+    updateUser(currentUser?.uid, updateObj)
+      .then(() => {
+        editHeaderHandler(e);
+      })
+      .catch((err) => err);
   };
 
   if (!openModal) return <></>;
@@ -200,15 +214,39 @@ export const EditHeaderModal: React.FC<Props> = ({
                 <option hidden defaultValue={current?.role}>
                   {current?.role}
                 </option>
+                <option value="Broker">Broker</option>
+                <option value="Buyer">Buyer</option>
+                <option value="Carbon Consultant">Carbon Consultant</option>
+                <option value="Credit Assurer">Credit Assurer</option>
+                <option value="Credit Issuer">Credit Issuer</option>
+                <option value="Exchange Operator">Exchange Operator</option>
+                <option value="Legal Advisor">Legal Advisor</option>
+                <option value="Life Cycle Assessment Practitioner">
+                  Life Cycle Assessment Practitioner
+                </option>
+                <option value="Market Analyst">Market Analyst</option>
+                <option value="Offset Fund Manager">Offset Fund Manager</option>
+                <option value="Offset Standard Setter">
+                  Offset Standard Setter
+                </option>
+                <option value="Project Aggregator">Project Aggregator</option>
                 <option value="Project Developer">Project Developer</option>
-                <option value="Sponsor">Sponsor</option>
-                <option value="Carbon Consultancy">Carbon Consultancy</option>
+                <option value="Project Financier">
+                  Project Financier/ Investor
+                </option>
+                <option value="Registry Operator">Registry Operator</option>
+                <option value="Retailer">Retailer</option>
+                <option value="Risk Manager">Risk Manager</option>
+                <option value="SaaS Provider">SaaS Provider</option>
+                <option value="Seller">Seller</option>
+                <option value="Third Party Auditor">Third Party Auditor</option>
                 <option value="Third Party Validator">
-                  Third-party Validator
+                  Third Party Validator
                 </option>
-                <option value="Verification & Validation Body">
-                  Verification & Validation Body
+                <option value="Third Party Verifier">
+                  Third Party Verifier
                 </option>
+                <option value="Spectator">Spectator</option>
               </select>
             </div>
             <div className="edit-modal__input-div">

@@ -99,11 +99,13 @@ export const UserProfile: React.FC = () => {
             openModal={headerModal}
             editHeaderHandler={editHeaderHandler}
             current={profile}
+            setCurrent={setProfile}
           />
           <EditAboutModal
             openModal={aboutModal}
             editAboutHandler={editAboutHandler}
             current={profile}
+            setCurrent={setProfile}
           />
           <EditAffiliationsModal
             openModal={affiliationsModal}
