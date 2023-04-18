@@ -33,11 +33,15 @@ export const CompanyProfile: React.FC = () => {
     localStorage.setItem("ListingModalSeen", "yes");
   };
 
-  const editHeaderHandler: MouseEventHandler = () => {
+  const editHeaderHandler = (
+    e: React.FormEvent<HTMLFormElement> | React.MouseEvent
+  ): void => {
     setHeaderModal(!headerModal);
   };
 
-  const editAboutHandler: MouseEventHandler = () => {
+  const editAboutHandler = (
+    e: React.FormEvent<HTMLFormElement> | React.MouseEvent
+  ): void => {
     setAboutModal(!aboutModal);
   };
 
@@ -127,10 +131,12 @@ export const CompanyProfile: React.FC = () => {
           <EditCompanyHeader
             openModal={headerModal}
             editHeaderHandler={editHeaderHandler}
+            CompanyData={company}
           />
           <EditCompanyAbout
             openModal={aboutModal}
             editAboutHandler={editAboutHandler}
+            CompanyData={company}
           />
         </div>
       ) : (

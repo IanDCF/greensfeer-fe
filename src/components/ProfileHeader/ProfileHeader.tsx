@@ -12,7 +12,9 @@ interface ProfileHeaderProps {
   user: boolean;
   userType?: string;
   editing?: boolean;
-  editHeaderHandler?: MouseEventHandler;
+  editHeaderHandler: (
+    e: React.FormEvent<HTMLFormElement> | React.MouseEvent
+  ) => void;
 }
 
 export const ProfileHeader: React.FC<ProfileHeaderProps> = ({

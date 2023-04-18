@@ -1,23 +1,114 @@
-import { MouseEventHandler } from "react";
+import { MouseEventHandler, useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { BsCamera } from "react-icons/bs";
 import ControlButton from "../../components/ControlButtons/ControlButton";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import "./EditModal.scss";
+import { ICompany } from "customTypes";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { TEditSchema } from "../../schemas/UserSchema";
+import { updateUser } from "../../helpers/userFetcher";
+import { getAuth } from "firebase/auth";
+import { set } from "firebase/database";
+import { updateCompany } from "../../helpers/companyFetcher";
 
 interface Props {
   openModal: boolean;
-  editHeaderHandler: MouseEventHandler;
+  editHeaderHandler: (
+    e: React.FormEvent<HTMLFormElement> | React.MouseEvent
+  ) => void;
+  CompanyData?: ICompany;
 }
+
+const populateEdit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  // Get values from form
+  const companyNameInput = e.currentTarget.elements.namedItem(
+    "companyName"
+  ) as HTMLInputElement;
+  const sectorInput = e.currentTarget.elements.namedItem(
+    "sector"
+  ) as HTMLSelectElement;
+  const logoPicInput = e.currentTarget.elements.namedItem(
+    "logoPic"
+  ) as HTMLInputElement;
+  const bannerPicInput = e.currentTarget.elements.namedItem(
+    "bannerPic"
+  ) as HTMLInputElement;
+  const marketRoleInput = e.currentTarget.elements.namedItem(
+    "marketRole"
+  ) as HTMLInputElement;
+  const headlineInput = e.currentTarget.elements.namedItem(
+    "headline"
+  ) as HTMLInputElement;
+  const emailInput = e.currentTarget.elements.namedItem(
+    "email"
+  ) as HTMLInputElement;
+  const websiteInput = e.currentTarget.elements.namedItem(
+    "website"
+  ) as HTMLInputElement;
+  const locationInput = e.currentTarget.elements.namedItem(
+    "location"
+  ) as HTMLInputElement;
+
+  const company_name = companyNameInput.value;
+  const sector = sectorInput.value;
+  const market_role = marketRoleInput.value;
+  const headline = headlineInput.value;
+  const email = emailInput.value;
+  const website = websiteInput.value;
+  const location = locationInput.value;
+  const logo_file = logoPicInput.files ? logoPicInput.files[0] : "";
+  const banner_file = bannerPicInput.files ? bannerPicInput.files[0] : "";
+  let logo_url;
+  let banner_url;
+  logo_file && (logo_url = await upload(logo_file));
+  banner_file && (banner_url = await upload(banner_file));
+
+  const updateObj = {
+    company_name,
+    sector,
+    market_role,
+    headline,
+    email,
+    website,
+    location,
+    logo_url,
+    banner_url,
+  };
+  return updateObj;
+};
+
+const upload = async (pic: File | undefined) => {
+  const storage = getStorage();
+  if (pic) {
+    const newPicRef = ref(storage, `${pic.name}`);
+    await uploadBytes(newPicRef, pic);
+    const url = await getDownloadURL(newPicRef);
+    return url;
+  } else return "";
+};
 
 export const EditCompanyHeader: React.FC<Props> = ({
   openModal,
   editHeaderHandler,
+  CompanyData,
 }) => {
+  const [update, setUpdate] = useState<Object>();
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const updateObj = await populateEdit(e);
+    setUpdate(updateObj);
+    console.log(CompanyData);
+    CompanyData && update && updateCompany(CompanyData.company_id, update);
+    setTimeout(() => {
+      editHeaderHandler(e);
+    }, 1000);
+  };
   if (!openModal) return <></>;
   return (
     <div className="edit-modal">
-      <div className="edit-modal__card">
+      <form className="edit-modal__card" onSubmit={handleSubmit}>
         <div className="edit-modal__close" onClick={editHeaderHandler}>
           <AiOutlineClose />
         </div>
@@ -78,6 +169,7 @@ export const EditCompanyHeader: React.FC<Props> = ({
                 type="text"
                 id="companyName"
                 name="companyName"
+                defaultValue={CompanyData?.name}
                 className="edit-modal__input"
                 placeholder="Enter company name"
               />
@@ -88,8 +180,8 @@ export const EditCompanyHeader: React.FC<Props> = ({
               </label>
               <select id="sector" name="sector" className="edit-modal__input">
                 {/* FIXME: Back end currently does not handle sector */}
-                <option hidden={true} defaultValue={""}>
-                  Select a sector
+                <option hidden={true} defaultValue={CompanyData?.sector}>
+                  {CompanyData?.sector || "Select a sector"}
                 </option>
                 <option value="All">All</option>
                 <option value="Agriculture">Agriculture</option>
@@ -154,8 +246,8 @@ export const EditCompanyHeader: React.FC<Props> = ({
                 name="marketRole"
                 className="edit-modal__input"
               >
-                <option hidden defaultValue={""}>
-                  Select market role
+                <option hidden defaultValue={CompanyData?.market_role}>
+                  {CompanyData?.market_role || "Select a role"}
                 </option>
                 <option value="Project Developer">Project Developer</option>
                 <option value="Sponsor">Sponsor</option>
@@ -176,6 +268,7 @@ export const EditCompanyHeader: React.FC<Props> = ({
                 type="text"
                 id="headline"
                 name="headline"
+                defaultValue={CompanyData?.headline}
                 className="edit-modal__input"
                 placeholder="Enter a headline"
               />
@@ -188,6 +281,7 @@ export const EditCompanyHeader: React.FC<Props> = ({
                 id="email"
                 name="email"
                 className="edit-modal__input"
+                defaultValue={CompanyData?.email}
                 placeholder="Enter email address"
               />
             </div>
@@ -198,6 +292,7 @@ export const EditCompanyHeader: React.FC<Props> = ({
                 id="website"
                 name="website"
                 className="edit-modal__input"
+                defaultValue={CompanyData?.website}
                 placeholder="Enter company website"
               />
             </div>
@@ -207,6 +302,7 @@ export const EditCompanyHeader: React.FC<Props> = ({
                 type="text"
                 id="location"
                 name="location"
+                defaultValue={CompanyData?.location}
                 className="edit-modal__input"
                 placeholder="Where are you located?"
               />
@@ -223,7 +319,7 @@ export const EditCompanyHeader: React.FC<Props> = ({
           </div>
           <ControlButton dark={false} text="Save" btnType="submit" />
         </div>
-      </div>
+      </form>
     </div>
   );
 };

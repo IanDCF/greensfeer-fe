@@ -8,7 +8,7 @@ interface Props {
     id: string;
     darkMode: boolean;
     topLine: string;
-    headLine: string;
+    headline: string;
     description: string;
     buttonText: string;
     link: string;
@@ -29,7 +29,7 @@ const Info: React.FC<Props> = ({ data }) => {
           <InfoText
             darkMode={data.darkMode}
             topLine={data.topLine}
-            headLine={data.headLine}
+            headline={data.headline}
             description={data.description}
             buttonText={data.buttonText}
             link={data.link}

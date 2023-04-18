@@ -4,7 +4,12 @@ import "./UserProfile.scss";
 import { ProfileHeader } from "../../components/ProfileHeader/ProfileHeader";
 import { useAuth } from "../../context/AuthProvider/AuthProvider";
 import axios from "axios";
-import { useState, useEffect, MouseEventHandler } from "react";
+import {
+  useState,
+  useEffect,
+  MouseEventHandler,
+  FormEventHandler,
+} from "react";
 import { IUser } from "customTypes";
 import PromptModal from "../../components/PromptModal/PromptModal";
 import { EditHeaderModal } from "../../components/EditUserProfile/EditHeaderModal";
@@ -26,15 +31,21 @@ export const UserProfile: React.FC = () => {
     localStorage.setItem("ListingModalSeen", "yes");
   };
 
-  const editHeaderHandler: MouseEventHandler = () => {
+  const editHeaderHandler = (
+    e: React.FormEvent<HTMLFormElement> | React.MouseEvent
+  ): void => {
     setHeaderModal(!headerModal);
   };
 
-  const editAboutHandler: MouseEventHandler = () => {
+  const editAboutHandler = (
+    e: React.FormEvent<HTMLFormElement> | React.MouseEvent
+  ): void => {
     setAboutModal(!aboutModal);
   };
 
-  const editAffiliationsHandler: MouseEventHandler = () => {
+  const editAffiliationsHandler = (
+    e: React.FormEvent<HTMLFormElement> | React.MouseEvent
+  ): void => {
     setAffiliationsModal(!affiliationsModal);
   };
 
@@ -87,10 +98,12 @@ export const UserProfile: React.FC = () => {
           <EditHeaderModal
             openModal={headerModal}
             editHeaderHandler={editHeaderHandler}
+            current={profile}
           />
           <EditAboutModal
             openModal={aboutModal}
             editAboutHandler={editAboutHandler}
+            current={profile}
           />
           <EditAffiliationsModal
             openModal={affiliationsModal}

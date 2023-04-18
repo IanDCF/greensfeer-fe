@@ -1,21 +1,40 @@
-import { MouseEventHandler } from "react";
+import { MouseEventHandler, useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import ControlButton from "../ControlButtons/ControlButton";
 import "./EditModal.scss";
+import { ICompany } from "customTypes";
+import { updateCompany } from "../../helpers/companyFetcher";
+import populateEdit from "../../helpers/populateAbout";
 
 interface Props {
   openModal: boolean;
-  editAboutHandler: MouseEventHandler;
+  editAboutHandler: (
+    e: React.FormEvent<HTMLFormElement> | React.MouseEvent
+  ) => void;
+  CompanyData: ICompany;
 }
 
 export const EditCompanyAbout: React.FC<Props> = ({
   openModal,
   editAboutHandler,
+  CompanyData,
 }) => {
+  const [description, setDescription] = useState<Object>();
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const update = { description: populateEdit(e) };
+    setDescription(update);
+    CompanyData &&
+      description &&
+      updateCompany(CompanyData.company_id, description);
+              setTimeout(() => {
+                editAboutHandler(e);
+              }, 1000);
+  };
   if (!openModal) return <></>;
   return (
     <div className="edit-modal">
-      <div className="edit-modal__card">
+      <form className="edit-modal__card" onSubmit={handleSubmit}>
         <div className="edit-modal__close" onClick={editAboutHandler}>
           <AiOutlineClose />
         </div>
@@ -29,6 +48,7 @@ export const EditCompanyAbout: React.FC<Props> = ({
               <textarea
                 id="about"
                 name="about"
+                defaultValue={CompanyData?.description}
                 className="edit-modal__input-textarea"
                 placeholder="Tell us about your company, such as your mission, initiatives and area of focus."
               />
@@ -43,7 +63,7 @@ export const EditCompanyAbout: React.FC<Props> = ({
           </div>
           <ControlButton dark={false} text="Save" btnType="submit" />
         </div>
-      </div>
+      </form>
     </div>
   );
 };
