@@ -132,6 +132,7 @@
   &__details {
     display: flex;
     flex-direction: column;
+    position: relative;
 
     @include bp.mobile {
       margin: 0 2rem 6rem 2rem;
@@ -244,23 +245,43 @@
     }
   }
 
-  &__verified-icon {
-    display: flex;
-    align-items: center;
+  &__disclaimer-icon {
+    @extend .marketplace-select__company-verified;
+    cursor: pointer;
+    &:hover {
+      color: color.$charcoal;
+    }
+  }
+
+  &__disclaimer-modal {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
+      rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+    position: absolute;
+    background-color: color.$white;
+    padding: 4rem;
+    border-radius: 2.5rem;
+    z-index: 2;
+    letter-spacing: 0.3px;
 
     @include bp.mobile {
-      margin-left: 2rem;
-      width: 4rem;
+      font-size: 3rem;
+      line-height: 4.5rem;
+      bottom: -103rem;
+      width: 70rem;
     }
 
     @include bp.tablet {
-      margin-left: 2rem;
-      width: 4rem;
+      font-size: 3rem;
+      line-height: 5rem;
+      bottom: -68rem;
+      width: 100%;
     }
 
     @include bp.desktop {
-      margin-left: 2.5rem;
-      width: 4.5rem;
+      font-size: 3rem;
+      line-height: 5rem;
+      bottom: -63rem;
+      width: 100%;
     }
   }
 
@@ -325,8 +346,26 @@
 
   &__description-text {
     font-size: 4rem;
-    font-weight: 300;
     color: color.$darkgray2;
+    margin: 0;
+    font-weight: 300;
+
+    letter-spacing: 0.3px;
+
+    @include bp.mobile {
+      font-size: 3rem;
+      line-height: 4.5rem;
+    }
+
+    @include bp.tablet {
+      font-size: 3.5rem;
+      line-height: 5rem;
+    }
+
+    @include bp.desktop {
+      font-size: 3.5rem;
+      line-height: 5rem;
+    }
   }
 
   &__goals {

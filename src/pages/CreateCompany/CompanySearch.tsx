@@ -16,7 +16,7 @@ const CompanySearch = () => {
   const [profiles, setProfiles] = useState<ICompany[]>([]);
   const [searchResult, setSearchResult] = useState<ICompany[]>([]);
   const [searchDropdown, setSearchDropdown] = useState(false);
-  const [selected, setSelected]=useState<ICompany>();
+  const [selected, setSelected] = useState<ICompany>();
 
   const { currentUser } = useAuth();
 
@@ -53,9 +53,11 @@ const CompanySearch = () => {
       setSearchDropdown(false);
     }
   }, [search]);
-  const clickHandler=(e: React.MouseEvent)=>{
-    setSelected(profiles?.find((profile)=>{profile.company_id===e.currentTarget.}))
-  }
+  const clickHandler = (e: React.MouseEvent) => {
+    // console.log(typeof e.currentTarget.id);
+    debugger
+    setSelected(profiles?.find((profile)=>{profile.company_id===e.currentTarget.id}))
+  };
   const searchResultLength = searchResult?.length || 0;
 
   return (
@@ -95,7 +97,9 @@ const CompanySearch = () => {
                 {searchResult?.map((profile: ICompany) => {
                   return (
                     <div
+                      onClick={clickHandler}
                       key={profile.company_id}
+                      id={profile.company_id}
                       className="search__link"
                     >
                       {profile.logo ? (
@@ -127,21 +131,27 @@ const CompanySearch = () => {
           </div>
         </div>
       </div>
-      {<ControlButton dark={false} btnType="submit" text={`Join ${"a company"}`}></ControlButton>}
-        <div className="create-company__controls-search">
-          <ControlButton
-            dark={true}
-            text="Cancel"
-            link={`/gs/${currentUser?.uid}`}
-            btnType="link"
-          />
-          <ControlButton
-            dark={false}
-            text="Create"
-            btnType="link"
-            link="/create-company/step1"
-          />
-        </div>
+      {
+        <ControlButton
+          dark={false}
+          btnType="submit"
+          text={`Join ${"a company"}`}
+        ></ControlButton>
+      }
+      <div className="create-company__controls-search">
+        <ControlButton
+          dark={true}
+          text="Cancel"
+          link={`/gs/${currentUser?.uid}`}
+          btnType="link"
+        />
+        <ControlButton
+          dark={false}
+          text="Create"
+          btnType="link"
+          link="/create-company/step1"
+        />
+      </div>
     </div>
   );
 };

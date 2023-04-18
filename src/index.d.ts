@@ -45,6 +45,7 @@ declare module "customTypes" {
     company_name: string;
     logo: string;
     banner: string;
+    managed?: boolean;
   }
   export interface P {
     offset_unit: string;
@@ -85,7 +86,7 @@ declare module "customTypes" {
     banner: string;
     description: string;
     created_at: string;
-    location: Location;
+    location: string;
     market_role: string;
     sector: string;
     email: string;
@@ -93,6 +94,7 @@ declare module "customTypes" {
     headline: string;
     description: string;
     verified?: boolean;
+    managed?: boolean;
   }
 
   interface IUser {

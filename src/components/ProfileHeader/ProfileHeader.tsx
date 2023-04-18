@@ -4,7 +4,8 @@ import PlaceholderBanner from "../../assets/images/placeholder-banner.png";
 import { FaUserCircle } from "react-icons/fa";
 import { AiOutlineGlobal } from "react-icons/ai";
 import { FiEdit2 } from "react-icons/fi";
-import { MouseEventHandler } from "react";
+import { MouseEventHandler, useState } from "react";
+import { AiOutlineInfoCircle } from "react-icons/ai";
 interface ProfileHeaderProps {
   ProfileData?: IUser;
   CompanyData?: ICompany;
@@ -24,6 +25,12 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
   editing,
   editHeaderHandler,
 }) => {
+  const [disclaimerToggle, setDisclaimerToggle] = useState(false);
+
+  const disclaimerHandler = () => {
+    setDisclaimerToggle(!disclaimerToggle);
+  };
+
   const headshotStyle: React.CSSProperties = {
     background: `url(${ProfileData?.profile_picture}) center/cover no-repeat`,
   };
@@ -137,15 +144,61 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
                   ? `${CompanyData?.location}`
                   : "Add Location"}
               </p>
-              <p className="header__connections">
-                {CompanyData?.verified
-                  ? "Verified"
-                  : `Joined ${formatDate(CompanyData?.created_at)}`}
-              </p>
+              <div className="header__connections">
+                {CompanyData?.verified && "Verified"}
+                {CompanyData?.managed && (
+                  <div className="header__disclaimer">
+                    <div className="header__connections">
+                      Disclaimer: Managed by Greensfeer
+                    </div>
+                    <div
+                      className="header__disclaimer-icon"
+                      onClick={() => disclaimerHandler()}
+                    >
+                      <AiOutlineInfoCircle />
+                    </div>
+                  </div>
+                )}
+                {!CompanyData?.verified &&
+                  !CompanyData?.managed &&
+                  `Joined ${formatDate(CompanyData?.created_at)}`}
+              </div>
             </>
           )}
         </div>
       </div>
+      {disclaimerToggle && (
+        <div className="header__disclaimer-modal">
+          <p>
+            This company profile is created and managed by Greensfeer and is not
+            affiliated with or endorsed by the respective company. The
+            information displayed on this profile is gathered from publicly
+            available sources on the web and is provided for educational
+            purposes only.
+            {/* Greensfeer does not endorse or
+            guarantee the accuracy or completeness of the information provided
+            on these profiles. */}
+          </p>
+          <p>
+            If any company listed on Greensfeer wishes to have their information
+            removed from our platform, they can contact us and request for
+            removal. Greensfeer reserves the right to remove or modify any
+            company profile and associated information at its discretion. Users
+            are advised to independently verify any information provided on
+            these profiles before making any decisions based on it.
+          </p>
+          {/* <p>
+            Greensfeer does not provide any consulting, financing, auditing, or
+            other services listed on the platform. Users are solely responsible
+            for conducting their own due diligence and engaging in any business
+            transactions with the companies listed on Greensfeer.
+            Greensfeer
+            shall not be liable for any loss, damage, or inconvenience arising
+            from the use of the information provided on the company profiles or
+            any transactions or interactions with the listed companies.
+          </p> */}
+        </div>
+      )}
     </header>
   );
 };
