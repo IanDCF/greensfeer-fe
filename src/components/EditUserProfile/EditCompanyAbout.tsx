@@ -12,24 +12,28 @@ interface Props {
     e: React.FormEvent<HTMLFormElement> | React.MouseEvent
   ) => void;
   CompanyData: ICompany;
+  setCompanyData: (newCompanydata: ICompany) => void;
 }
 
 export const EditCompanyAbout: React.FC<Props> = ({
   openModal,
   editAboutHandler,
   CompanyData,
+  setCompanyData,
 }) => {
   const [description, setDescription] = useState<Object>();
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const update = { description: populateEdit(e) };
     setDescription(update);
-    CompanyData &&
-      description &&
-      updateCompany(CompanyData.company_id, description);
-              setTimeout(() => {
-                editAboutHandler(e);
-              }, 1000);
+    setCompanyData({ ...CompanyData, description: update.description });
+    // FIXME: need to double click save in order to save
+    description &&
+      updateCompany(CompanyData.company_id, description)
+        .then(() => {
+          editAboutHandler(e);
+        })
+        .catch((err) => err);
   };
   if (!openModal) return <></>;
   return (

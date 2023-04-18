@@ -17,7 +17,8 @@ interface Props {
   editHeaderHandler: (
     e: React.FormEvent<HTMLFormElement> | React.MouseEvent
   ) => void;
-  CompanyData?: ICompany;
+  CompanyData: ICompany;
+  setCompanyData: (newCompanydata: ICompany) => void;
 }
 
 const populateEdit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -93,6 +94,7 @@ export const EditCompanyHeader: React.FC<Props> = ({
   openModal,
   editHeaderHandler,
   CompanyData,
+  setCompanyData,
 }) => {
   const [update, setUpdate] = useState<Object>();
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
