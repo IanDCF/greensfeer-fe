@@ -76,7 +76,7 @@ const Searchbar = () => {
         }}
         value={search}
       />
-      {searchDropdown && searchResultLength === searchResult?.length && (
+      {searchDropdown && searchResultLength > 0 && (
         <div className="search__dropdown" onClick={handleSearch}>
           {searchResult?.map((profile: IUser | ICompany) => {
             if ("uid" in profile) {
