@@ -110,7 +110,7 @@ const CompanySearch = () => {
               }}
               value={search}
             />
-            {searchDropdown && searchResultLength === searchResult?.length && (
+            {searchDropdown && searchResultLength > 0 && (
               <div className="search__dropdown" onClick={handleSearch}>
                 {searchResult?.map((profile: ICompany) => {
                   return (
@@ -137,14 +137,6 @@ const CompanySearch = () => {
                           </div>
                         }
                       </div>
-                      <div className="search__separator">
-                        <BsDot />
-                      </div>
-                      <div className="search__headline">Company</div>
-                      <div className="search__separator">
-                        <BsDot />
-                      </div>
-                      <div className="search__headline">{profile?.sector}</div>
                     </div>
                   );
                 })}
