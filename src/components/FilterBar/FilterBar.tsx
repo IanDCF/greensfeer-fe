@@ -8,7 +8,7 @@ const FilterBar = () => {
   return (
     <nav className="filter-bar">
       <div className="filter-bar__wrap">
-        <Link to="/create-listing/step1" className="filter-bar__add-listing">
+        <Link to="/search-affiliation" className="filter-bar__add-listing">
           <div className="filter-bar__icon">
             <AiOutlinePlus />
           </div>
