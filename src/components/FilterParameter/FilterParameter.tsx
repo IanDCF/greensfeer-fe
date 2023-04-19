@@ -8,7 +8,7 @@ interface Props {
 const FilterParameters: React.FC<Props> = ({ label }) => {
   return (
     <div className="filter-parameter">
-      <div className="filter-parameter__label">{label}</div>
+      <div className="filter-parameter__label" id="label">{label}</div>
       <div className="filter-parameter__icon">
         <BsChevronDown />
       </div>

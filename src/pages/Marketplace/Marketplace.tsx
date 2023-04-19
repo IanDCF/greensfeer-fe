@@ -3,7 +3,7 @@ import "./Marketplace.scss";
 import MarketplaceList from "../../components/MarketplaceList/MarketplaceList";
 import MarketplaceSelected from "../../components/MarketplaceSelected/MarketplaceSelected";
 import allMarketPosts from "../../helpers/allMarketFetcher";
-import { useState, useEffect, MouseEventHandler } from "react";
+import React, { useState, useEffect, MouseEventHandler } from "react";
 import { IMarketPost } from "customTypes";
 import selectMarketPost from "../../helpers/selectedMarketFetcher";
 import FilterBar from "../../components/FilterBar/FilterBar";
@@ -14,6 +14,20 @@ const Marketplace: React.FC = () => {
   const [marketPosts, setMarketPosts] = useState<IMarketPost[]>([]);
   const [selectedPost, setSelectedPost] = useState<IMarketPost | undefined>();
   const [marketplaceToggle, setMarketplaceToggle] = useState(false);
+  const [filtered, setFiltered] = useState<IMarketPost[]>([]);
+
+  const handleFilter = (e: React.MouseEvent) => {
+    const filterField = e.currentTarget.id;
+    const filterPosts = marketPosts.filter((post) => {
+      return post.post_type === filterField;
+    });
+    for(let el of document.getElementsByClassName("filter-bar__parameter--active")){
+      el.classList.remove("filter-bar__parameter--active")
+    }
+    console.log(e.currentTarget.childNodes[0])
+    e.currentTarget.classList.add("filter-bar__parameter--active");
+    setFiltered(filterPosts);
+  };
 
   useEffect(() => {
     const getData = async () => {
@@ -21,12 +35,12 @@ const Marketplace: React.FC = () => {
       setMarketPosts(posts);
     };
     getData();
-     if (!localStorage.getItem("CompanyModalSeen")) {
-       setTimeout(() => {
-         setOpenCompanyModal(true);
-       }, 3000);
-     }
-  }, []);
+    if (!localStorage.getItem("CompanyModalSeen")) {
+      setTimeout(() => {
+        setOpenCompanyModal(true);
+      }, 3000);
+    }
+  }, [filtered]);
 
   useEffect(() => {
     // Call selectMarketPost with listing_id as a dependency
@@ -42,7 +56,7 @@ const Marketplace: React.FC = () => {
   const [openCompanyModal, setOpenCompanyModal] = useState<boolean>(false);
   const clickHandler: MouseEventHandler = () => {
     setOpenCompanyModal(false);
-    localStorage.setItem("CompanyModalSeen", "yes")
+    localStorage.setItem("CompanyModalSeen", "yes");
   };
 
   const handleMarketplaceToggle = () => {
@@ -66,9 +80,9 @@ const Marketplace: React.FC = () => {
         )}
         {!marketplaceToggle && (
           <>
-            <FilterBar />
+            <FilterBar clickHandler={handleFilter} />
             <MarketplaceList
-              Posts={marketPosts}
+              Posts={filtered ? filtered : marketPosts}
               clickHandler={handleMarketplaceToggle}
               urlHandler={handleMarketplaceURL}
             />
@@ -78,13 +92,13 @@ const Marketplace: React.FC = () => {
       </section>
       <section className="marketplace-container__tablet-desktop">
         <div className="marketplace-container__filter-bar">
-          <FilterBar />
+          <FilterBar clickHandler={handleFilter} />
         </div>
 
         <div className="marketplace-container__explorer">
           {" "}
           <MarketplaceList
-            Posts={marketPosts}
+            Posts={filtered ? filtered : marketPosts}
             urlHandler={handleMarketplaceURL}
           />
           <MarketplaceSelected Post={selectedPost} />
