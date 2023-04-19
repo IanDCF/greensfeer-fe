@@ -11,7 +11,7 @@ import newListingSchema, {
   registerListingOptionalSchema,
 } from "../../schemas/ListingSchema";
 import createMarketPost from "../../helpers/marketPostCreator";
-import getAffiliation from "../../helpers/affiliationFetcher";
+import getAffiliation, {getAllAffiliations} from "../../helpers/affiliationFetcher";
 import getCompany from "../../helpers/companyFetcher";
 import { useAuth } from "../../context/AuthProvider/AuthProvider";
 import AffilationSearch from "./AffiliationSearch";
@@ -55,6 +55,9 @@ const CreateListing = () => {
       navigate("/create-listing/step2");
     }
   };
+  const company =()=>{
+    // set company to state here so form can access
+  }
 
   // validate post
   useEffect(() => {

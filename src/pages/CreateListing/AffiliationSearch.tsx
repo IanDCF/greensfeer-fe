@@ -7,21 +7,22 @@ import { BsDot } from "react-icons/bs";
 import { FaUserCircle } from "react-icons/fa";
 import SearchDropdown from "../../components/SearchDropdown/SearchDropdown";
 import { useState, useEffect } from "react";
-import { ICompany } from "customTypes";
+import { IAffiliation, ICompany } from "customTypes";
 import getAllCompanies from "../../helpers/allCompanyFetcher";
-import addAffiliation from "../../helpers/affiliationCreator";
+import {getAllAffiliations }from "../../helpers/affiliationFetcher";
 import { useNavigate } from "react-router-dom";
 
 const AffiliationSearch = () => {
-  const [profiles, setProfiles] = useState<ICompany[]>([]);
+  const [profiles, setProfiles] = useState<IAffiliation[]>([]);
   const [selected, setSelected] = useState<ICompany>();
   const { currentUser } = useAuth();
   const navigate = useNavigate();
 
 
   const getCompanies = async () => {
-    const companies = await getAllCompanies();
-    setProfiles([...companies]);
+    let companies;
+    currentUser&& (companies = await getAllAffiliations(currentUser.uid));
+   companies && setProfiles([...companies]);
   };
   useEffect(() => {
     getCompanies();
