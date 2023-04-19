@@ -1,7 +1,7 @@
 import "./AppNav.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Searchbar from "../Searchbar/Searchbar";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useActionData, useLocation } from "react-router-dom";
 import MarketplaceSearch from "../Searchbar/MarketplaceSearch";
 import Logo from "../../assets/logos/greensfeer-logo.png";
 import { FaUserCircle } from "react-icons/fa";
@@ -9,12 +9,33 @@ import { HiOutlineUserGroup } from "react-icons/hi";
 import { AiOutlineMessage } from "react-icons/ai";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import UserMenu from "../UserMenu/UserMenu";
+import { getAuth } from "firebase/auth";
+import axios from "axios";
 
 const AppNav: React.FC = () => {
+    const URL_BASE = import.meta.env.VITE_REACT_APP_BASE_URL;
   const location = useLocation();
+  const { currentUser } = getAuth();
   const isMarketplacePath = location.pathname.includes("/marketplace");
 
   const [showUserMenu, setShowUserMenu] = useState(false);
+  const[pic, setPic]=useState<string>("")
+      useEffect(() => {
+        //get call
+        const fetchProfile = async () => {
+       
+            const token = await currentUser?.getIdToken();
+            const response = await axios.get(`${URL_BASE}/user/current`, {
+              headers: {
+                bearerToken: token,
+                "Access-Control-Allow-Origin": "http://127.0.0.1:5173",
+              },
+            });
+ 
+            setPic(await response.data.profile_picture)
+          }
+        fetchProfile()
+      }, []);
 
   const handleUserMenuClick = () => {
     setShowUserMenu(!showUserMenu);
@@ -46,7 +67,14 @@ const AppNav: React.FC = () => {
           <div className="appnav__link" onClick={handleUserMenuClick}>
             {/* render conditionally: user profile picture or placeholder icon*/}
             {/* <div className="appnav__img" style={photoStyle} /> */}
-            <FaUserCircle className="appnav__icon" />
+            {currentUser ? (
+              <img
+                className="appnav__icon"
+                src={pic}
+              />
+            ) : (
+              <FaUserCircle className="appnav__icon" />
+            )}
             {showUserMenu && (
               <div className="appnav__user-menu">
                 <UserMenu />

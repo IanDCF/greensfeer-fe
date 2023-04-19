@@ -99,6 +99,10 @@
 
   &__icon {
     color: color.$charcoal;
+    max-width: 8.75rem;
+    max-height:8.75rem;
+    border-radius: 10rem;
+    aspect-ratio: 1;
 
     @include bp.mobile {
       font-size: 8.75rem;
