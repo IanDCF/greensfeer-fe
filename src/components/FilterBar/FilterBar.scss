@@ -9,6 +9,7 @@
   padding-top: 3rem;
   padding-bottom: 1.5rem;
   position: fixed;
+  z-index: 10;
 
   @include bp.mobile {
     padding-right: 3rem;
@@ -96,8 +97,9 @@
     align-items: center;
     justify-content: center;
     border-radius: 10rem;
+    margin-right: 3rem;
     &--active {
-      background-color: color.$green;
+      background-color: rgb(197, 234, 195);
     }
   }
 }
