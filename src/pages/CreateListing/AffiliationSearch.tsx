@@ -49,15 +49,19 @@ const AffiliationSearch = ({ handleSubmit }: Props) => {
         />
       </div>
       <div className="create-company__heading-search">
-        Post for an affiliated company
+        Select an affiliated company
       </div>
       <div className="create-company__input-fields">
         <div className="create-company__text-input">
           <div className="create-company__input-div">
             <label className="create-company__label-text" htmlFor="name">
-              Affiliated Companies
+              affiliated companies
             </label>
-            <select id="affiliation" name="affiliation" className="create-company__input">
+            <select
+              id="affiliation"
+              name="affiliation"
+              className="create-company__input"
+            >
               {profiles ? (
                 profiles.map((profile) => {
                   return (
