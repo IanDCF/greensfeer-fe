@@ -65,7 +65,7 @@ const CreateListing = () => {
       const affiliation = await getAffiliation(currentUser);
       console.log(affiliation);
       const company = await getCompany(affiliation.company_id);
-      console.log(company);
+      // console.log(company);
       setCurrentCompany(affiliation.company_id);
       // FIXME: possible to visit this page with no company created
 

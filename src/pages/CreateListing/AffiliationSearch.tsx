@@ -9,7 +9,7 @@ import SearchDropdown from "../../components/SearchDropdown/SearchDropdown";
 import { useState, useEffect } from "react";
 import { IAffiliation, ICompany } from "customTypes";
 import getAllCompanies from "../../helpers/allCompanyFetcher";
-import {getAllAffiliations }from "../../helpers/affiliationFetcher";
+import getaffiliation from "../../helpers/affiliationFetcher";
 import { useNavigate } from "react-router-dom";
 
 const AffiliationSearch = () => {
@@ -21,7 +21,7 @@ const AffiliationSearch = () => {
 
   const getCompanies = async () => {
     let companies;
-    currentUser&& (companies = await getAllAffiliations(currentUser.uid));
+    currentUser&& (companies = await getaffiliation(currentUser));
    companies && setProfiles([...companies]);
   };
   useEffect(() => {
@@ -57,9 +57,13 @@ const AffiliationSearch = () => {
               Affiliated Companies
             </label>
             <select id="sector" name="sector" className="create-company__input">
-              <option defaultValue={""} selected disabled>
-                Which sector are you in?
-              </option>
+              {profiles? (
+profiles.map((profile)=>{
+  return(
+    <option key={profile.company_id}>{profile.company_name}</option>
+  )
+})
+              ):<option>You have no affiliated comapnies</option>}
             </select>
 
           </div>
@@ -76,7 +80,7 @@ const AffiliationSearch = () => {
                 dark={false}
                 text="Create"
                 btnType="link"
-                link="/create-compan/step1"
+                link="/create-company/step1"
               />
             </div>
     </form>
