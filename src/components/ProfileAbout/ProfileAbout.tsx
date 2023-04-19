@@ -9,7 +9,7 @@ interface ProfileAboutProps {
   user: boolean;
   userType?: string;
   editing?: boolean;
-  editAboutHandler: (
+  editAboutHandler?: (
     e: React.FormEvent<HTMLFormElement> | React.MouseEvent
   ) => void;
 }

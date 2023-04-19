@@ -6,6 +6,17 @@ import Info from "../../components/Info/Info";
 import ProductInfo from "../../data/InfoData.json";
 import Footer from "../../components/Footer/Footer";
 
+interface LandingProps {
+  id: string;
+  darkMode: boolean;
+  topLine: string;
+  headline?: string;
+  description: string;
+  buttonText: string;
+  alt: string;
+  link: string;
+}
+
 const Landing = () => {
   const [open, setOpen] = useState(false);
   const toggle = () => {
