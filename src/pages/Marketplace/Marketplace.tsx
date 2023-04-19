@@ -21,11 +21,17 @@ const Marketplace: React.FC = () => {
     const filterPosts = marketPosts.filter((post) => {
       return post.post_type === filterField;
     });
-    for(let el of document.getElementsByClassName("filter-bar__parameter--active")){
-      el.classList.remove("filter-bar__parameter--active")
+    for (let el of document.getElementsByClassName(
+      "filter-bar__parameter--active"
+    )) {
+      el.classList.remove("filter-bar__parameter--active");
     }
     e.currentTarget.classList.add("filter-bar__parameter--active");
     setFiltered(filterPosts);
+  };
+
+  const clearFilter = () => {
+    setFiltered([]);
   };
 
   useEffect(() => {
@@ -79,9 +85,9 @@ const Marketplace: React.FC = () => {
         )}
         {!marketplaceToggle && (
           <>
-            <FilterBar clickHandler={handleFilter} />
+            <FilterBar handleFilter={handleFilter} clearFilter={clearFilter} />
             <MarketplaceList
-              Posts={filtered.length>0 ? filtered : marketPosts}
+              Posts={filtered.length > 0 ? filtered : marketPosts}
               clickHandler={handleMarketplaceToggle}
               urlHandler={handleMarketplaceURL}
             />
@@ -91,13 +97,13 @@ const Marketplace: React.FC = () => {
       </section>
       <section className="marketplace-container__tablet-desktop">
         <div className="marketplace-container__filter-bar">
-          <FilterBar clickHandler={handleFilter} />
+          <FilterBar handleFilter={handleFilter} clearFilter={clearFilter} />
         </div>
 
         <div className="marketplace-container__explorer">
           {" "}
           <MarketplaceList
-            Posts={filtered.length>0 ? filtered : marketPosts}
+            Posts={filtered.length > 0 ? filtered : marketPosts}
             urlHandler={handleMarketplaceURL}
           />
           <MarketplaceSelected Post={selectedPost} />

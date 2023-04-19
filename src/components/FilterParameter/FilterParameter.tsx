@@ -3,17 +3,17 @@ import { BsChevronDown } from "react-icons/bs";
 
 interface Props {
   label: string;
+  filter: (e: React.MouseEvent) => void;
 }
 
-const FilterParameters: React.FC<Props> = ({ label }) => {
+const FilterParameter: React.FC<Props> = ({ label, filter }) => {
   return (
-    <div className="filter-parameter">
-      <div className="filter-parameter__label" id="label">{label}</div>
-      <div className="filter-parameter__icon">
-        <BsChevronDown />
+    <div className="filter-parameter" onClick={filter}>
+      <div className="filter-parameter__label" id="label">
+        {label}
       </div>
     </div>
   );
 };
 
-export default FilterParameters;
+export default FilterParameter;

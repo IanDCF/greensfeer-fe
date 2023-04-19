@@ -95,9 +95,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    &--active{
-
-  background-color: color.$green;
-  }
+    border-radius: 10rem;
+    &--active {
+      background-color: color.$green;
+    }
   }
 }
