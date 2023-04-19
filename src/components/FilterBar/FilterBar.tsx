@@ -4,11 +4,16 @@ import { BsFilter } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import FilterParameter from "../FilterParameter/FilterParameter";
 import { RxDividerVertical } from "react-icons/rx";
-const FilterBar = () => {
+interface Props {
+  handleFilter: (e: React.MouseEvent) => void;
+  clearFilter: (e: React.MouseEvent) => void;
+}
+
+const FilterBar = ({ handleFilter, clearFilter }: Props) => {
   return (
     <nav className="filter-bar">
       <div className="filter-bar__wrap">
-        <Link to="/create-listing/step1" className="filter-bar__add-listing">
+        <Link to="/search-affiliation" className="filter-bar__add-listing">
           <div className="filter-bar__icon">
             <AiOutlinePlus />
           </div>
@@ -23,14 +28,22 @@ const FilterBar = () => {
           </div>
           <div className="filter-bar__btn-text">Filters</div>
         </div>
-        <div className="filter-bar__parameter">
-          <FilterParameter label="Project" />
+        <div
+          className="filter-bar__parameter"
+          id="Project"
+          onClick={handleFilter}
+        >
+          <FilterParameter label="Project" filter={handleFilter} />
         </div>
-        <div className="filter-bar__parameter">
-          <FilterParameter label="Service" />
+        <div
+          className="filter-bar__parameter"
+          id="Service"
+          onClick={handleFilter}
+        >
+          <FilterParameter label="Service" filter={handleFilter} />
         </div>
-        <div className="filter-bar__parameter">
-          <FilterParameter label="Location" />
+        <div className="filter-bar__parameter" id="Clear" onClick={clearFilter}>
+          <FilterParameter label="Clear" filter={handleFilter} />
         </div>
       </div>
     </nav>

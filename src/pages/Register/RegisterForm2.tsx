@@ -90,14 +90,14 @@ const RegisterForm2 = ({
               <option value="Registry Operator">Registry Operator</option>
               <option value="Retailer">Retailer</option>
               <option value="Risk Manager">Risk Manager</option>
-              <option value="Saas Provider">Saas Provider</option>
+              <option value="SaaS Provider">SaaS Provider</option>
               <option value="Seller">Seller</option>
               <option value="Third Party Auditor">Third Party Auditor</option>
               <option value="Third Party Validator">
                 Third Party Validator
               </option>
               <option value="Third Party Verifier">Third Party Verifier</option>
-              <option value="Other">Other</option>
+              <option value="Spectator">Spectator</option>
             </select>
           </div>
         </div>

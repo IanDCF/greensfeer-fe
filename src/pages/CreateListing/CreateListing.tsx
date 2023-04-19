@@ -11,9 +11,12 @@ import newListingSchema, {
   registerListingOptionalSchema,
 } from "../../schemas/ListingSchema";
 import createMarketPost from "../../helpers/marketPostCreator";
-import getAffiliation from "../../helpers/affiliationFetcher";
+import getAffiliation, {
+  getAllAffiliations,
+} from "../../helpers/affiliationFetcher";
 import getCompany from "../../helpers/companyFetcher";
 import { useAuth } from "../../context/AuthProvider/AuthProvider";
+import AffilationSearch from "./AffiliationSearch";
 
 const CreateListing = () => {
   // create market post as current user
@@ -26,6 +29,7 @@ const CreateListing = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const path = location.pathname;
+  const searchAffiliation = matchPath(path, "/search-affiliation");
   const createListing1 = matchPath(path, "/create-listing/step1");
   const createListing2 = matchPath(path, "/create-listing/step2");
   const createListing3 = matchPath(path, "/create-listing/step3");
@@ -53,14 +57,24 @@ const CreateListing = () => {
       navigate("/create-listing/step2");
     }
   };
+  const handleChooseCompany = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setCurrentCompany(e.currentTarget.affiliation.value);
+    setTimeout(() => {
+      navigate("/create-listing/step1");
+    }, 1500);
+
+    // set company to state here so form can access
+  };
 
   // validate post
   useEffect(() => {
     const validateAndPost = async () => {
-      console.log(newMarketPost);
-      const affiliation = await getAffiliation(currentUser);
-      const company = await getCompany(affiliation.company_id);
-      setCurrentCompany(affiliation.company_id);
+      // const affiliation = await getAffiliation(currentUser);
+      // console.log(affiliation);
+      // const company = await getCompany(affiliation.company_id);
+      // console.log(company);
+      // setCurrentCompany(affiliation.company_id);
       // FIXME: possible to visit this page with no company created
 
       if (newMarketPost.post_type === "Service") {
@@ -77,17 +91,21 @@ const CreateListing = () => {
           description: newListing?.description,
           link: newListing?.link,
           location: newListing?.location,
-          user_id: affiliation.user_id,
-          company_id: affiliation.company_id,
-          contact: company?.email,
+          user_id: currentUser?.uid,
+          company_id: currentCompany,
+          contact: currentUser?.email,
           sector: newListing?.sector,
         };
         //post service
-        createMarketPost(service);
-        setFormErrs("Service Listing Created, navigating to marketplace");
-        setTimeout(() => {
-          navigate(`/marketplace/}`);
-        }, 3000);
+        if (!currentCompany) {
+          return;
+        } if(currentCompany) {
+          createMarketPost(service);
+          setFormErrs("Service Listing Created, navigating to marketplace");
+          setTimeout(() => {
+            navigate(`/marketplace/}`);
+          }, 3000);
+        }
       }
       if (productDetailDone && newMarketPost.post_type === "Project") {
         //validate & run axios.post
@@ -99,9 +117,9 @@ const CreateListing = () => {
           description: newListing?.description,
           link: newListing?.link,
           location: newListing?.location,
-          user_id: affiliation.user_id,
-          company_id: affiliation.company_id,
-          contact: company?.email,
+          user_id: currentUser?.uid,
+          company_id: currentCompany,
+          contact: currentUser?.email,
           sector: newListing?.sector,
           p: {
             ep_type: newListing?.project_type,
@@ -111,11 +129,16 @@ const CreateListing = () => {
             price_per_credit: newListing?.price_per_credit,
           },
         };
-        createMarketPost(project);
+        if (!currentCompany) {
+          return;
+        } if(currentCompany) {
+    
+          createMarketPost(project);
+        }
       }
     };
+
     validateAndPost();
-    // if()
   }, [stepTwoDone, productDetailDone]);
 
   const validateListing = async () => {
@@ -140,7 +163,7 @@ const CreateListing = () => {
     ) as HTMLInputElement;
     const sectorInput = e.currentTarget.elements.namedItem(
       "sector"
-    ) as HTMLInputElement;
+    ) as HTMLSelectElement;
     const descriptionInput = e.currentTarget.elements.namedItem(
       "description"
     ) as HTMLInputElement;
@@ -170,7 +193,7 @@ const CreateListing = () => {
       setFormErrs("Please title your listing");
       return;
     }
-    if (sector === "Select a sector") {
+    if (sector === "Which sector are you in?") {
       setFormErrs("Please select a sector");
       return;
     }
@@ -196,14 +219,14 @@ const CreateListing = () => {
       listingType === "Project"
         ? (e.currentTarget.elements.namedItem(
             "project_type"
-          ) as HTMLInputElement)
+          ) as HTMLSelectElement)
         : null;
 
     const service_typeInput =
       listingType === "Service"
         ? (e.currentTarget.elements.namedItem(
             "service_type"
-          ) as HTMLInputElement)
+          ) as HTMLSelectElement)
         : null;
     const locationInput = e.currentTarget.elements.namedItem(
       "location"
@@ -268,13 +291,13 @@ const CreateListing = () => {
     e.preventDefault();
     const verification_standardInput = e.currentTarget.elements.namedItem(
       "verification_standard"
-    ) as HTMLInputElement;
+    ) as HTMLSelectElement;
     const methodology_idInput = e.currentTarget.elements.namedItem(
       "methodology_id"
     ) as HTMLInputElement;
     const vintage_yearInput = e.currentTarget.elements.namedItem(
       "vintage_year"
-    ) as HTMLInputElement;
+    ) as HTMLSelectElement;
     const price_per_creditInput = e.currentTarget.elements.namedItem(
       "price_per_credit"
     ) as HTMLInputElement;
@@ -314,6 +337,9 @@ const CreateListing = () => {
 
   return (
     <section className="create-listing">
+      {searchAffiliation && (
+        <AffilationSearch handleSubmit={handleChooseCompany} />
+      )}
       {!stepOneDone && createListing1 && (
         <ListingForm1
           handleSubmit={handleFirstSubmit}

@@ -1,5 +1,6 @@
 import axios, { AxiosError } from "axios";
 import { IUser } from "customTypes";
+import { TEditSchema } from "src/schemas/UserSchema";
 
 const entryForSignUp = async (idToken: string) => {
   const URL_BASE = import.meta.env.VITE_REACT_APP_BASE_URL;
@@ -48,5 +49,15 @@ const allUsers = async () => {
     throw new Error(error as string);
   }
 };
-export { createUser, allUsers };
+
+const updateUser = async (user_id: string | undefined, update: TEditSchema) => {
+  if (!user_id || !update) return;
+
+  const URL_BASE = import.meta.env.VITE_REACT_APP_BASE_URL;
+  const res = await axios.patch(`${URL_BASE}/user/${user_id}`, {
+    update,
+  });
+};
+
+export { createUser, allUsers, updateUser };
 export default entryForSignUp;
