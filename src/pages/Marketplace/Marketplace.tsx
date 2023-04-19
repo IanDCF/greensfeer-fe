@@ -24,7 +24,6 @@ const Marketplace: React.FC = () => {
     for(let el of document.getElementsByClassName("filter-bar__parameter--active")){
       el.classList.remove("filter-bar__parameter--active")
     }
-    console.log(e.currentTarget.childNodes[0])
     e.currentTarget.classList.add("filter-bar__parameter--active");
     setFiltered(filterPosts);
   };
@@ -40,7 +39,7 @@ const Marketplace: React.FC = () => {
         setOpenCompanyModal(true);
       }, 3000);
     }
-  }, [filtered]);
+  }, []);
 
   useEffect(() => {
     // Call selectMarketPost with listing_id as a dependency
@@ -82,7 +81,7 @@ const Marketplace: React.FC = () => {
           <>
             <FilterBar clickHandler={handleFilter} />
             <MarketplaceList
-              Posts={filtered ? filtered : marketPosts}
+              Posts={filtered.length>0 ? filtered : marketPosts}
               clickHandler={handleMarketplaceToggle}
               urlHandler={handleMarketplaceURL}
             />
@@ -98,7 +97,7 @@ const Marketplace: React.FC = () => {
         <div className="marketplace-container__explorer">
           {" "}
           <MarketplaceList
-            Posts={filtered ? filtered : marketPosts}
+            Posts={filtered.length>0 ? filtered : marketPosts}
             urlHandler={handleMarketplaceURL}
           />
           <MarketplaceSelected Post={selectedPost} />
