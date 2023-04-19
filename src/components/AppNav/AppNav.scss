@@ -97,8 +97,30 @@
     }
   }
 
+  &__display-picture {
+    border-radius: 50%;
+    @include bp.mobile {
+      width: 9rem;
+      height: 9rem;
+    }
+
+    @include bp.tablet {
+      width: 9rem;
+      height: 9rem;
+    }
+
+    @include bp.desktop {
+      width: 9.25rem;
+      height: 9.25rem;
+    }
+  }
+
   &__icon {
     color: color.$charcoal;
+    max-width: 8.75rem;
+    max-height: 8.75rem;
+    border-radius: 10rem;
+    aspect-ratio: 1;
 
     @include bp.mobile {
       font-size: 8.75rem;
