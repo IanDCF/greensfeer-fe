@@ -3,7 +3,7 @@ declare module "customTypes" {
     id: string;
     darkMode: boolean;
     topLine: string;
-    headLine: string;
+    headline: string;
     description: string;
     buttonText: string;
     link: string;
@@ -11,15 +11,15 @@ declare module "customTypes" {
   }
   export interface IUser {
     uid: string;
-    profile_banner?: undefined;
+    profile_banner?: string | undefined;
     about?: string;
     last_name: string;
     created_at: string;
-    profile_picture?: undefined;
-    location: Location;
+    profile_picture?: string | undefined;
+    location: string | undefined;
     linkedin?: null;
     first_name: string;
-    headline?: null;
+    headline: string;
     email: string;
     role: string;
   }
@@ -34,7 +34,7 @@ declare module "customTypes" {
     market_post_id: string;
     contact: Contact;
     post_category: string;
-    location: Location;
+    location: string;
     company_id: string;
     post_type: "Project" | "Service";
     verified: boolean;
@@ -80,12 +80,12 @@ declare module "customTypes" {
   }
   export interface ICompany {
     company_id: string;
-    name: string;
+    company_name: string;
     logo: string;
     banner: string;
     description: string;
     created_at: string;
-    location: Location;
+    location: string;
     market_role: string;
     sector: string;
     email: string;
@@ -94,17 +94,6 @@ declare module "customTypes" {
     description: string;
     verified?: boolean;
     managed?: boolean;
-  }
-
-  interface IUser {
-    first_name: string;
-    last_name: string;
-    headline: string;
-    location: Location;
-    profile_picture: string;
-    profile_banner: string;
-    about: string;
-    created_at: string;
   }
 
   export interface IAffiliation {

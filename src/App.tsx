@@ -75,6 +75,9 @@ const App = () => {
           element={currentUser ? <CreateCompany /> : <SignIn />}
         />
         <Route
+          path="/search-affiliation"
+          element={currentUser ? <CreateListing /> : <SignIn />}/>
+        <Route
           path="/create-listing/step1"
           element={currentUser ? <CreateListing /> : <SignIn />}
         />

@@ -88,10 +88,16 @@
     font-size: 3.75rem;
     margin-right: 3rem;
     white-space: nowrap;
+    cursor: pointer;
   }
   &__parameter {
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 10rem;
+    &--active {
+      background-color: color.$green;
+    }
   }
 }

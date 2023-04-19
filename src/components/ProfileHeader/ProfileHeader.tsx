@@ -12,7 +12,9 @@ interface ProfileHeaderProps {
   user: boolean;
   userType?: string;
   editing?: boolean;
-  editHeaderHandler?: MouseEventHandler;
+  editHeaderHandler?: (
+    e: React.FormEvent<HTMLFormElement> | React.MouseEvent
+  ) => void;
 }
 
 export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
@@ -115,7 +117,7 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
         <div className="header__info">
           <h1 className="header__name">
             {user && `${ProfileData?.first_name} ${ProfileData?.last_name}`}
-            {!user && `${CompanyData?.name}`}
+            {!user && `${CompanyData?.company_name}`}
           </h1>
 
           {user ? (
