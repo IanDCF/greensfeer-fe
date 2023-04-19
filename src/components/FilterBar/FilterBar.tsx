@@ -4,7 +4,10 @@ import { BsFilter } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import FilterParameter from "../FilterParameter/FilterParameter";
 import { RxDividerVertical } from "react-icons/rx";
-const FilterBar = () => {
+interface Props {
+  clickHandler: (e: React.MouseEvent) => void;
+}
+const FilterBar = ({ clickHandler }: Props) => {
   return (
     <nav className="filter-bar">
       <div className="filter-bar__wrap">
@@ -23,10 +26,10 @@ const FilterBar = () => {
           </div>
           <div className="filter-bar__btn-text">Filters</div>
         </div>
-        <div className="filter-bar__parameter">
+        <div className="filter-bar__parameter" id="Project"onClick={clickHandler}>
           <FilterParameter label="Project" />
         </div>
-        <div className="filter-bar__parameter">
+        <div className="filter-bar__parameter" id="Service"onClick={clickHandler}>
           <FilterParameter label="Service" />
         </div>
         <div className="filter-bar__parameter">
