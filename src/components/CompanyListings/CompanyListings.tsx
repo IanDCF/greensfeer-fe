@@ -86,7 +86,7 @@ export const CompanyListings: React.FC<MarketThumbnailsProps> = ({
                 */}
         {companyProfileType === "affiliated" && (
           <div className="listings__card">
-            <Link to="/create-listing/step1" className="listings__add-new">
+            <Link to="/search-affiliation" className="listings__add-new">
               <IoIosAddCircleOutline />
             </Link>
           </div>

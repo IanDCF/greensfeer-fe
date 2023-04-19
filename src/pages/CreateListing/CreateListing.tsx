@@ -14,6 +14,7 @@ import createMarketPost from "../../helpers/marketPostCreator";
 import getAffiliation from "../../helpers/affiliationFetcher";
 import getCompany from "../../helpers/companyFetcher";
 import { useAuth } from "../../context/AuthProvider/AuthProvider";
+import AffilationSearch from "./AffiliationSearch";
 
 const CreateListing = () => {
   // create market post as current user
@@ -26,6 +27,7 @@ const CreateListing = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const path = location.pathname;
+  const searchAffiliation = matchPath(path, "/search-affiliation");
   const createListing1 = matchPath(path, "/create-listing/step1");
   const createListing2 = matchPath(path, "/create-listing/step2");
   const createListing3 = matchPath(path, "/create-listing/step3");
@@ -314,6 +316,7 @@ const CreateListing = () => {
 
   return (
     <section className="create-listing">
+      {searchAffiliation && <AffilationSearch />}
       {!stepOneDone && createListing1 && (
         <ListingForm1
           handleSubmit={handleFirstSubmit}
