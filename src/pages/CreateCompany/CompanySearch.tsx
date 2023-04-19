@@ -3,20 +3,49 @@ import logo from "../../assets/logos/greensfeer-logo.png";
 import ControlButton from "../../components/ControlButtons/ControlButton";
 import { useAuth } from "../../context/AuthProvider/AuthProvider";
 import { GoSearch } from "react-icons/go";
+import { BsDot } from "react-icons/bs";
+import { FaUserCircle } from "react-icons/fa";
 import SearchDropdown from "../../components/SearchDropdown/SearchDropdown";
 import { useState, useEffect } from "react";
+import { ICompany } from "customTypes";
+import getAllCompanies from "../../helpers/allCompanyFetcher";
+import addAffiliation from "../../helpers/affiliationCreator";
+import { useNavigate } from "react-router-dom";
 
 const CompanySearch = () => {
   const [search, setSearch] = useState("");
-  const [searchResult, setSearchResult] = useState([]);
+  const [profiles, setProfiles] = useState<ICompany[]>([]);
+  const [searchResult, setSearchResult] = useState<ICompany[]>([]);
   const [searchDropdown, setSearchDropdown] = useState(false);
-
+  const [selected, setSelected] = useState<ICompany>();
   const { currentUser } = useAuth();
+  const navigate = useNavigate();
+
+  const affiliate = () => {
+    selected &&
+      addAffiliation(
+        currentUser,
+        selected?.company_id,
+        selected?.company_name,
+        selected?.logo
+      );
+    setTimeout(() => {
+      navigate(`/gs/${currentUser?.uid}`);
+    }, 2000);
+  };
 
   const handleSearch = () => {
     toggleSearchDropdown();
     setSearch("");
   };
+
+  const getCompanies = async () => {
+    const companies = await getAllCompanies();
+    setProfiles([...companies]);
+  };
+  useEffect(() => {
+    getCompanies();
+  }, []);
 
   const toggleSearchDropdown = () => {
     setSearchDropdown(!searchDropdown);
@@ -25,10 +54,29 @@ const CompanySearch = () => {
   useEffect(() => {
     if (search.length > 0) {
       setSearchDropdown(true);
+      setSearchResult(
+        profiles?.filter((profile) => {
+          const regex = new RegExp(`${search}`, "i");
+          const match = (nameStr: string) => {
+            if (nameStr?.match(regex)) return true;
+          };
+          if ("company_name" in profile && match(profile?.company_name))
+            return true;
+        })
+      );
     } else {
       setSearchDropdown(false);
     }
   }, [search]);
+  const clickHandler = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const targetId = e.currentTarget.id;
+    const targetCompany = profiles.find(
+      (profile) => profile.company_id === targetId
+    );
+    setSelected(targetCompany);
+  };
+  const searchResultLength = searchResult?.length || 0;
 
   return (
     <div className="create-company__form">
@@ -62,12 +110,58 @@ const CompanySearch = () => {
               }}
               value={search}
             />
-            {searchDropdown && (
-              <SearchDropdown search={search} handleSearch={handleSearch} />
+            {searchDropdown && searchResultLength === searchResult?.length && (
+              <div className="search__dropdown" onClick={handleSearch}>
+                {searchResult?.map((profile: ICompany) => {
+                  return (
+                    <div
+                      onClick={clickHandler}
+                      key={profile.company_id}
+                      id={profile.company_id}
+                      className="search__link"
+                    >
+                      {profile.logo ? (
+                        <img
+                          className="search__photo"
+                          src={`${profile.logo}`}
+                        />
+                      ) : (
+                        <div className="search__photo">
+                          <FaUserCircle />
+                        </div>
+                      )}
+                      <div className="search__text">
+                        {
+                          <div className="search__name">
+                            {profile.company_name}
+                          </div>
+                        }
+                      </div>
+                      <div className="search__separator">
+                        <BsDot />
+                      </div>
+                      <div className="search__headline">Company</div>
+                      <div className="search__separator">
+                        <BsDot />
+                      </div>
+                      <div className="search__headline">{profile?.sector}</div>
+                    </div>
+                  );
+                })}
+              </div>
             )}
           </div>
         </div>
       </div>
+      {selected && (
+        <div className="create-company__affiliate" onClick={affiliate}>
+          <ControlButton
+            dark={false}
+            btnType="submit"
+            text={`Join ${selected?.company_name}`}
+          ></ControlButton>
+        </div>
+      )}
       <div className="create-company__controls-search">
         <ControlButton
           dark={true}

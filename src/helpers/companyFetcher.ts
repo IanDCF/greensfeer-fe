@@ -14,4 +14,16 @@ const getCompany = async (companyId: string) => {
   }
 };
 
+const updateCompany = async (
+  company_id: string | undefined,
+  update: Object | undefined
+) => {
+  if (!company_id || !update) return;
+  const URL_BASE = import.meta.env.VITE_REACT_APP_BASE_URL;
+  const res = await axios.patch(`${URL_BASE}/company/${company_id}`, {
+    update,
+  });
+};
+
+export { updateCompany };
 export default getCompany;
