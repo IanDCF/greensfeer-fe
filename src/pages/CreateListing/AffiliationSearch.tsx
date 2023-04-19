@@ -11,18 +11,20 @@ import { IAffiliation, ICompany } from "customTypes";
 import getAllCompanies from "../../helpers/allCompanyFetcher";
 import getaffiliation from "../../helpers/affiliationFetcher";
 import { useNavigate } from "react-router-dom";
+interface Props {
+  handleSubmit: React.FormEventHandler<HTMLFormElement>;
+}
 
-const AffiliationSearch = () => {
-  const [profiles, setProfiles] = useState<IAffiliation[]>([]);
+const AffiliationSearch = ({ handleSubmit }: Props) => {
+  const [profiles, setProfiles] = useState<ICompany[]>([]);
   const [selected, setSelected] = useState<ICompany>();
   const { currentUser } = useAuth();
   const navigate = useNavigate();
 
-
   const getCompanies = async () => {
     let companies;
-    currentUser&& (companies = await getaffiliation(currentUser));
-   companies && setProfiles([...companies]);
+    currentUser && (companies = await getaffiliation(currentUser));
+    companies && setProfiles([...companies]);
   };
   useEffect(() => {
     getCompanies();
@@ -37,9 +39,8 @@ const AffiliationSearch = () => {
     setSelected(targetCompany);
   };
 
-
   return (
-    <form className="create-company__form">
+    <form className="create-company__form" onSubmit={handleSubmit}>
       <div className="create-company__logo">
         <img
           src={logo}
@@ -56,33 +57,31 @@ const AffiliationSearch = () => {
             <label className="create-company__label-text" htmlFor="name">
               Affiliated Companies
             </label>
-            <select id="sector" name="sector" className="create-company__input">
-              {profiles? (
-profiles.map((profile)=>{
-  return(
-    <option key={profile.company_id}>{profile.company_name}</option>
-  )
-})
-              ):<option>You have no affiliated comapnies</option>}
+            <select id="affiliation" name="affiliation" className="create-company__input">
+              {profiles ? (
+                profiles.map((profile) => {
+                  return (
+                    <option value={profile.company_id} key={profile.company_id}>
+                      {profile.company_name}
+                    </option>
+                  );
+                })
+              ) : (
+                <option>You have no affiliated comapnies</option>
+              )}
             </select>
-
           </div>
         </div>
       </div>
-            <div className="create-company__controls-search">
-              <ControlButton
-                dark={true}
-                text="Cancel"
-                link={`/gs/${currentUser?.uid}`}
-                btnType="link"
-              />
-              <ControlButton
-                dark={false}
-                text="Create"
-                btnType="link"
-                link="/create-company/step1"
-              />
-            </div>
+      <div className="create-company__controls-search">
+        <ControlButton
+          dark={true}
+          text="Cancel"
+          link={`/gs/${currentUser?.uid}`}
+          btnType="link"
+        />
+        <ControlButton dark={false} text="Create" btnType="submit" />
+      </div>
     </form>
   );
 };

@@ -11,7 +11,9 @@ import newListingSchema, {
   registerListingOptionalSchema,
 } from "../../schemas/ListingSchema";
 import createMarketPost from "../../helpers/marketPostCreator";
-import getAffiliation, {getAllAffiliations} from "../../helpers/affiliationFetcher";
+import getAffiliation, {
+  getAllAffiliations,
+} from "../../helpers/affiliationFetcher";
 import getCompany from "../../helpers/companyFetcher";
 import { useAuth } from "../../context/AuthProvider/AuthProvider";
 import AffilationSearch from "./AffiliationSearch";
@@ -55,18 +57,24 @@ const CreateListing = () => {
       navigate("/create-listing/step2");
     }
   };
-  const company =()=>{
+  const handleChooseCompany = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setCurrentCompany(e.currentTarget.affiliation.value);
+    setTimeout(() => {
+      navigate("/create-listing/step1");
+    }, 1500);
+
     // set company to state here so form can access
-  }
+  };
 
   // validate post
   useEffect(() => {
     const validateAndPost = async () => {
-      const affiliation = await getAffiliation(currentUser);
-      console.log(affiliation);
-      const company = await getCompany(affiliation.company_id);
+      // const affiliation = await getAffiliation(currentUser);
+      // console.log(affiliation);
+      // const company = await getCompany(affiliation.company_id);
       // console.log(company);
-      setCurrentCompany(affiliation.company_id);
+      // setCurrentCompany(affiliation.company_id);
       // FIXME: possible to visit this page with no company created
 
       if (newMarketPost.post_type === "Service") {
@@ -83,17 +91,21 @@ const CreateListing = () => {
           description: newListing?.description,
           link: newListing?.link,
           location: newListing?.location,
-          user_id: affiliation.user_id,
-          company_id: affiliation.company_id,
-          contact: company?.email,
+          user_id: currentUser?.uid,
+          company_id: currentCompany,
+          contact: currentUser?.email,
           sector: newListing?.sector,
         };
         //post service
-        createMarketPost(service);
-        setFormErrs("Service Listing Created, navigating to marketplace");
-        setTimeout(() => {
-          navigate(`/marketplace/}`);
-        }, 3000);
+        if (!currentCompany) {
+          return;
+        } if(currentCompany) {
+          createMarketPost(service);
+          setFormErrs("Service Listing Created, navigating to marketplace");
+          setTimeout(() => {
+            navigate(`/marketplace/}`);
+          }, 3000);
+        }
       }
       if (productDetailDone && newMarketPost.post_type === "Project") {
         //validate & run axios.post
@@ -105,9 +117,9 @@ const CreateListing = () => {
           description: newListing?.description,
           link: newListing?.link,
           location: newListing?.location,
-          user_id: affiliation.user_id,
-          company_id: affiliation.company_id,
-          contact: company?.email,
+          user_id: currentUser?.uid,
+          company_id: currentCompany,
+          contact: currentUser?.email,
           sector: newListing?.sector,
           p: {
             ep_type: newListing?.project_type,
@@ -117,9 +129,15 @@ const CreateListing = () => {
             price_per_credit: newListing?.price_per_credit,
           },
         };
-        createMarketPost(project);
+        if (!currentCompany) {
+          return;
+        } if(currentCompany) {
+    
+          createMarketPost(project);
+        }
       }
     };
+
     validateAndPost();
   }, [stepTwoDone, productDetailDone]);
 
@@ -175,7 +193,7 @@ const CreateListing = () => {
       setFormErrs("Please title your listing");
       return;
     }
-    if (sector === "Select a sector") {
+    if (sector === "Which sector are you in?") {
       setFormErrs("Please select a sector");
       return;
     }
@@ -319,7 +337,9 @@ const CreateListing = () => {
 
   return (
     <section className="create-listing">
-      {searchAffiliation && <AffilationSearch />}
+      {searchAffiliation && (
+        <AffilationSearch handleSubmit={handleChooseCompany} />
+      )}
       {!stepOneDone && createListing1 && (
         <ListingForm1
           handleSubmit={handleFirstSubmit}
