@@ -10,8 +10,8 @@ const getAffiliation = async (currentUser: User | null) => {
     const response = await axios.get(`${URL_BASE}/affiliation`, {
       headers: { token },
     });
-    const companyAndUser = response.data.message;
-    return companyAndUser;
+    const {affils} = response.data.message;
+    return affils;
     //back end return uid, affiliation, contact
   } else {
     return console.log("User must be logged in");
