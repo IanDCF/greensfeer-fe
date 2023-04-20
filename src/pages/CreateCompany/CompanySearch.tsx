@@ -146,12 +146,10 @@ const CompanySearch = () => {
         </div>
       </div>
       {selected && (
-        <div className="create-company__affiliate" onClick={affiliate}>
-          <ControlButton
-            dark={false}
-            btnType="submit"
-            text={`Join ${selected?.company_name}`}
-          ></ControlButton>
+        <div className="create-company__affiliate-btn" onClick={affiliate}>
+          <div className="create-company__affiliate-text">
+            {`Join ${selected?.company_name}`}
+          </div>
         </div>
       )}
       <div className="create-company__controls-search">

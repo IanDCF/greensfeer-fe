@@ -22,12 +22,12 @@ const FilterBar = ({ handleFilter, clearFilter }: Props) => {
         <div className="filter-bar__separator">
           <RxDividerVertical />
         </div>
-        <div className="filter-bar__filters-btn">
+        {/* <div className="filter-bar__filters-btn">
           <div className="filter-bar__icon">
             <BsFilter />
           </div>
           <div className="filter-bar__btn-text">Filters</div>
-        </div>
+        </div> */}
         <div
           className="filter-bar__parameter"
           id="Project"
