@@ -358,6 +358,44 @@
     }
   }
 
+  &__affiliate-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid color.$charcoal;
+    color: color.$charcoal;
+    border-radius: 2.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background-color: aliceblue;
+    }
+
+    @include bp.mobile {
+      margin-top: 2rem;
+      height: 20rem;
+      width: 60rem;
+      padding: 2rem 4rem;
+    }
+
+    @include bp.tablet {
+      height: 20rem;
+      width: 60rem;
+      padding: 2rem 4rem;
+    }
+
+    @include bp.desktop {
+      height: 20rem;
+      width: 60rem;
+      padding: 2rem 4rem;
+    }
+  }
+
+  &__affiliate-text {
+    font-size: 4rem;
+  }
+
   &__offering {
     @extend .create-company__input;
     color: color.$charcoal;
