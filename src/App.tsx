@@ -76,7 +76,8 @@ const App = () => {
         />
         <Route
           path="/search-affiliation"
-          element={currentUser ? <CreateListing /> : <SignIn />}/>
+          element={currentUser ? <CreateListing /> : <SignIn />}
+        />
         <Route
           path="/create-listing/step1"
           element={currentUser ? <CreateListing /> : <SignIn />}
@@ -94,7 +95,16 @@ const App = () => {
           ""
         )} */}
 
-        <Route path="/" element={<Landing />} />
+        <Route
+          path="/"
+          element={
+            currentUser ? (
+              <Navigate to="marketplace/bf626374-4236-451f-874b-f61383d9361e" />
+            ) : (
+              <Landing />
+            )
+          }
+        />
         <Route path="/subscribe" element={<Subscribe />} />
         <Route path="/register" element={<Register />} />
         <Route path="*" element={<NotFound />} />
