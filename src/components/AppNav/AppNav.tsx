@@ -70,7 +70,7 @@ const AppNav: React.FC = () => {
           <div className="appnav__link" onClick={handleUserMenuClick}>
             {/* render conditionally: user profile picture or placeholder icon*/}
             {/* <div className="appnav__img" style={photoStyle} /> */}
-            {currentUser ? (
+            {pic ? (
               <div
                 className="appnav__display-picture"
                 style={pictureStyle(pic)}
