@@ -35,9 +35,9 @@ const MarketplaceSelected: React.FC<Post> = ({ Post, clickHandler }) => {
       month: "short",
       day: "numeric",
       year: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-      hour12: true,
+      // hour: "numeric",
+      // minute: "numeric",
+      // hour12: true,
     };
     return date.toLocaleString("en-US", options);
   };
