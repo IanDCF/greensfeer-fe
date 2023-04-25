@@ -99,11 +99,12 @@ const CreateListing = () => {
         //post service
         if (!currentCompany) {
           return;
-        } if(currentCompany) {
+        }
+        if (currentCompany) {
           createMarketPost(service);
           setFormErrs("Service Listing Created, navigating to marketplace");
           setTimeout(() => {
-            navigate(`/marketplace/}`);
+            navigate(`/marketplace`);
           }, 3000);
         }
       }
@@ -131,8 +132,8 @@ const CreateListing = () => {
         };
         if (!currentCompany) {
           return;
-        } if(currentCompany) {
-    
+        }
+        if (currentCompany) {
           createMarketPost(project);
         }
       }

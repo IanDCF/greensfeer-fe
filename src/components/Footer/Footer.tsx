@@ -64,7 +64,7 @@ const Footer = (): JSX.Element => {
           </div>
           <div className="footer__socials">
             <a
-              href="mailto:info@greensfeer.com"
+              href="mailto:greensfeer@gmail.com"
               aria-label="Email"
               className="footer__icon"
             >
