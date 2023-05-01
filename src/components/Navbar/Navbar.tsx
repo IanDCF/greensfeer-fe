@@ -6,6 +6,7 @@ import { FaBars } from "react-icons/fa";
 import "./Navbar.scss";
 import Logo from "../Logo/Logo";
 import { v4 as uuidv4 } from "uuid";
+import { useAuth0 } from "@auth0/auth0-react";
 
 interface LinkItem {
   name: string;
@@ -17,6 +18,7 @@ interface NavbarProps {
 }
 
 const Navbar: FC<NavbarProps> = ({ toggle }) => {
+  const {loginWithRedirect}=useAuth0();
   const navLinks: LinkItem[] = [
     { name: "Discover", id: "discover" },
     { name: "Community", id: "community" },
@@ -61,9 +63,9 @@ const Navbar: FC<NavbarProps> = ({ toggle }) => {
           <Link to="/register" className="nav__btn-reg">
             Register
           </Link>
-          <Link to="/signin" className="nav__btn-in">
+          <button onClick={()=>loginWithRedirect()} className="nav__btn-in">
             Sign In
-          </Link>
+          </button>
         </nav>
       </div>
     </nav>
