@@ -11,7 +11,10 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       domain="dev-cp450dzxvexxezfz.us.auth0.com"
       clientId="bhx7pZIVzMNXFfzptwgqckIOCwrAWEEK"
       authorizationParams={{
-        redirect_uri: "https://greensfeer.com/marketplace"
+        //dev redirect
+        redirect_uri: "http://localhost:5173/marketplace",
+        // production redirect
+        // redirect_uri: "https://greensfeer.com/marketplace"
       }}
     >
       <AuthProvider>
