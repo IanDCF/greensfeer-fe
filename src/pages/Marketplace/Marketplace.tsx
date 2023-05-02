@@ -8,6 +8,7 @@ import { IMarketPost } from "customTypes";
 import selectMarketPost from "../../helpers/selectedMarketFetcher";
 import FilterBar from "../../components/FilterBar/FilterBar";
 import PromptModal from "../../components/PromptModal/PromptModal";
+import MarketFilterMenu from "../../components/MarketFilterMenu/MarketFilterMenu";
 
 const Marketplace: React.FC = () => {
   const { listing_id } = useParams(); // Retrieve the listingId from URL pathname directly
@@ -73,16 +74,16 @@ const Marketplace: React.FC = () => {
   const handleMarketplaceURL = (listingId: string) => {
     navigate(`/marketplace/${listingId}`);
   };
-
+  
   return (
     <div className="marketplace-container">
       <section className="marketplace-container__mobile">
         {marketplaceToggle && (
           <MarketplaceSelected
-            Post={selectedPost}
-            clickHandler={handleMarketplaceToggle}
+          Post={selectedPost}
+          clickHandler={handleMarketplaceToggle}
           />
-        )}
+          )}
         {!marketplaceToggle && (
           <>
             <FilterBar handleFilter={handleFilter} clearFilter={clearFilter} />
@@ -91,6 +92,7 @@ const Marketplace: React.FC = () => {
               clickHandler={handleMarketplaceToggle}
               urlHandler={handleMarketplaceURL}
             />
+          <MarketFilterMenu />
             <PromptModal open={openCompanyModal} clickHandler={clickHandler} />
           </>
         )}

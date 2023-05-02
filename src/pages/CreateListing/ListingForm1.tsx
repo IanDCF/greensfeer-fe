@@ -52,7 +52,7 @@ const ListingForm1 = ({ handleSubmit, errors, company }: Props) => {
           <div className="create-company__input-div">
             <label className="create-company__label-text">sector*</label>
             <select id="sector" name="sector" className="create-company__input">
-              <option defaultValue={"Null"} selected disabled>
+              <option defaultValue={"Null"} disabled>
                 Which sector are you in?
               </option>
               <option value="Various Sectors">Various Sectors</option>
