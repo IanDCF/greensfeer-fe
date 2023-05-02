@@ -1,36 +1,42 @@
-import { ReactElement } from "react";
+import { ReactElement, useState } from "react";
 import "./MarketFilterMenu.scss";
+import { ICompany } from "customTypes";
 
-const sectors:string[] =[
-
-"Which sector are you in?",
-"Various Sectors",
-"Agriculture",
-"Aviation and Shipping",
-"Biodiversity Conservation",
-"Blue Carbon (CO2 sequestration in marine and coastal ecosystems)",
-"Building and Construction",
-"Carbon Capture and Storage (CCS)",
-"Circular Economy",
-"Climate Tech",
-"Distributed Energy",
-"Ecotourism",
-"Energy Efficiency",
-"Energy Storage",
-"Forestry",
-"Industrial Processes and Manufacturing",
-"Land Use and Conservation",
-"REDD+ (Reducing Emissions from Deforestation and Forest Degradation)",
-"Renewable Energy",
-"Social and Community Development",
-"Transportation",
-"Waste Management",
-"Water Treatment and Supply",
-"Climate Adaptation and Resilience",
-"Other"
-]
+const sectors: string[] = [
+  "Which sector are you in?",
+  "Various Sectors",
+  "Agriculture",
+  "Aviation and Shipping",
+  "Biodiversity Conservation",
+  "Blue Carbon (CO2 sequestration in marine and coastal ecosystems)",
+  "Building and Construction",
+  "Carbon Capture and Storage (CCS)",
+  "Circular Economy",
+  "Climate Tech",
+  "Distributed Energy",
+  "Ecotourism",
+  "Energy Efficiency",
+  "Energy Storage",
+  "Forestry",
+  "Industrial Processes and Manufacturing",
+  "Land Use and Conservation",
+  "REDD+ (Reducing Emissions from Deforestation and Forest Degradation)",
+  "Renewable Energy",
+  "Social and Community Development",
+  "Transportation",
+  "Waste Management",
+  "Water Treatment and Supply",
+  "Climate Adaptation and Resilience",
+  "Other",
+];
 
 const MarketFilterMenu = (): ReactElement => {
+  const [companies, setCompanies] = useState<ICompany[]>();
+  const [compSearch, setCompSearch] = useState<String>();
+  const [selectedCompanies, setSelectedCompanies] = useState<ICompany[]>();
+
+  const [locationSearch, setLocationSearch] = useState<String[]>([]);
+  const [selectedLocations, setSelectedLocations] = useState<String[]>();
   return (
     <div className="filter-menu">
       <form action="submit">
@@ -47,22 +53,52 @@ const MarketFilterMenu = (): ReactElement => {
           </label>
         </fieldset>
         <label htmlFor="type">
-            <select id="type">
-                <option defaultValue="" disabled>
-                    Type
-                </option>
-                <option value="Broker">Broker</option>
-            </select>
+          <select id="type">
+            <option defaultValue="" disabled>
+              Type
+            </option>
+            <option value="Broker">Broker</option>
+          </select>
         </label>
         <fieldset>
-            <legend>Sector</legend>
-{sectors.map(sector=>{
-    return(
-        <label key={sector}>{sector}
-            <input type="checkbox" name={sector}/>
-        </label>
-    )
-})}
+          <legend>Select Sectors:</legend>
+          {sectors.map((sector) => {
+            return (
+              <label key={sector}>
+                {sector}
+                <input type="checkbox" name={sector} />
+              </label>
+            );
+          })}
+        </fieldset>
+        <fieldset>
+          <legend>Search Companies:</legend>
+          <input type="text" />
+          {/* get all companies, set search input to state, filter companies */}
+        </fieldset>
+      </form>
+      <form
+        action="submit"
+        onSubmit={(e) => {
+          e.preventDefault();
+          const location = e.currentTarget.elements.namedItem(
+            "search"
+          ) as HTMLInputElement;
+          // e.
+          console.log(location.value);
+          location &&
+            setLocationSearch([location?.value, ...locationSearch]);
+        }}
+      >
+        <fieldset>
+          <legend>Search Locations:</legend>
+          <input id="filter-menu__location" name="search" type="search" />
+          <button type="submit">Add to filters</button>
+          {locationSearch
+            ? locationSearch.map((filter, i) => {
+                return <div key={i}>{filter}</div>;
+              })
+            : ""}
         </fieldset>
       </form>
     </div>
