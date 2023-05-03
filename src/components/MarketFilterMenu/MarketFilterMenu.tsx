@@ -31,12 +31,18 @@ const sectors: string[] = [
 ];
 
 const MarketFilterMenu = (): ReactElement => {
+  const changeHandler = (e: React.FormEvent) => {
+    const radio = e.currentTarget as HTMLInputElement;
+    setListingType(radio.value);
+  };
   const [companies, setCompanies] = useState<ICompany[]>();
   const [compSearch, setCompSearch] = useState<String>();
   const [selectedCompanies, setSelectedCompanies] = useState<ICompany[]>();
 
   const [locationSearch, setLocationSearch] = useState<String[]>([]);
   const [selectedLocations, setSelectedLocations] = useState<String[]>();
+
+  const [listingType, setListingType] = useState<string>("");
   return (
     <div className="filter-menu">
       <form action="submit">
@@ -45,21 +51,41 @@ const MarketFilterMenu = (): ReactElement => {
           {/* TODO: add clickhandler that displays proj/service type on radio change */}
           <label htmlFor="Project">
             Project
-            <input type="radio" id="Project" value={"Project"} />
+            <input
+              type="radio"
+              id="Project"
+              name="type"
+              value={"Project"}
+              onChange={changeHandler}
+            />
           </label>
           <label htmlFor="Service">
             Service
-            <input type="radio" id="Service" value={"Service"} />
+            <input
+              type="radio"
+              id="Service"
+              name="type"
+              value={"Service"}
+              onChange={changeHandler}
+            />
           </label>
         </fieldset>
-        <label htmlFor="type">
-          <select id="type">
-            <option defaultValue="" disabled>
-              Type
-            </option>
-            <option value="Broker">Broker</option>
-          </select>
-        </label>
+        {listingType ? (
+          listingType === "Project" ? (
+            <label htmlFor="type">
+              <select id="type">
+                <option defaultValue="" disabled>
+                  Type
+                </option>
+                <option value="Broker">Broker</option>
+              </select>
+            </label>
+          ) : (
+            "Service list"
+          )
+        ) : (
+          <div>When filtering by Project/Service, refine by type here</div>
+        )}
         <fieldset>
           <legend>Select Sectors:</legend>
           {sectors.map((sector) => {
@@ -86,8 +112,7 @@ const MarketFilterMenu = (): ReactElement => {
           ) as HTMLInputElement;
           // e.
           console.log(location.value);
-          location &&
-            setLocationSearch([location?.value, ...locationSearch]);
+          location && setLocationSearch([location?.value, ...locationSearch]);
         }}
       >
         <fieldset>
