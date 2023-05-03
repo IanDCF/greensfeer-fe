@@ -49,8 +49,9 @@ const ListingForm2 = ({
                 id="project_type"
                 name="project_type"
                 className="create-company__input"
+                defaultValue={"Select Project Type"}
               >
-                <option hidden={true} defaultValue={"Select Project Type"}>
+                <option hidden={true} defaultValue={undefined}>
                   Select Project Type
                 </option>
                 <option disabled>Project Types:</option>
@@ -138,8 +139,9 @@ const ListingForm2 = ({
                 id="service_type"
                 name="service_type"
                 className="create-company__input"
+                defaultValue={"Select Service Type"}
               >
-                <option hidden={true} defaultValue={"Select Service Type"}>
+                <option hidden={true} defaultValue={undefined}>
                   Select Service Type
                 </option>
                 <option value="API Provider">API Provider</option>

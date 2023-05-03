@@ -210,6 +210,7 @@ export const EditHeaderModal: React.FC<Props> = ({
                 id="marketRole"
                 name="marketRole"
                 className="edit-modal__input"
+                defaultValue={current?.role}
               >
                 <option hidden defaultValue={current?.role}>
                   {current?.role}

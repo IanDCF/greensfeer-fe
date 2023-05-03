@@ -3,7 +3,6 @@ import "./MarketFilterMenu.scss";
 import { ICompany } from "customTypes";
 
 const sectors: string[] = [
-  "Which sector are you in?",
   "Various Sectors",
   "Agriculture",
   "Aviation and Shipping",
@@ -73,8 +72,8 @@ const MarketFilterMenu = (): ReactElement => {
         {listingType ? (
           listingType === "Project" ? (
             <label htmlFor="type">
-              <select id="type">
-                <option defaultValue="" disabled>
+              <select id="type" defaultValue={"Type"}>
+                <option defaultValue={undefined} disabled>
                   Type
                 </option>
                 <option value="Broker">Broker</option>

@@ -93,8 +93,13 @@ const CompanyForm1 = ({
           </div>
           <div className="create-company__input-div">
             <label className="create-company__label-text">sector*</label>
-            <select id="sector" name="sector" className="create-company__input">
-              <option defaultValue={""} disabled>
+            <select
+              id="sector"
+              name="sector"
+              defaultValue={"Which sector are you in?"}
+              className="create-company__input"
+            >
+              <option defaultValue={undefined} disabled>
                 Which sector are you in?
               </option>
               <option value="Various Sectors">Various Sectors</option>
@@ -152,8 +157,9 @@ const CompanyForm1 = ({
               id="marketRole"
               name="marketRole"
               className="create-company__input"
+              defaultValue={"Select market role"}
             >
-              <option defaultValue={"Null"} disabled>
+              <option defaultValue={undefined} disabled>
                 Select market role
               </option>
               <option value="Broker">Broker</option>
