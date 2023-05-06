@@ -3,8 +3,13 @@ import "./Marketplace.scss";
 import MarketplaceList from "../../components/MarketplaceList/MarketplaceList";
 import MarketplaceSelected from "../../components/MarketplaceSelected/MarketplaceSelected";
 import allMarketPosts from "../../helpers/allMarketFetcher";
-import React, { useState, useEffect, MouseEventHandler } from "react";
-import { IMarketPost } from "customTypes";
+import React, {
+  useState,
+  useEffect,
+  MouseEventHandler,
+  FormEvent,
+} from "react";
+import { IMarketPost, IFilter } from "customTypes";
 import selectMarketPost from "../../helpers/selectedMarketFetcher";
 import FilterBar from "../../components/FilterBar/FilterBar";
 import PromptModal from "../../components/PromptModal/PromptModal";
@@ -16,6 +21,45 @@ const Marketplace: React.FC = () => {
   const [selectedPost, setSelectedPost] = useState<IMarketPost | undefined>();
   const [marketplaceToggle, setMarketplaceToggle] = useState(false);
   const [filtered, setFiltered] = useState<IMarketPost[]>([]);
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    let filt: IFilter;
+    const refine = (array: IMarketPost[], propToEval: string) => {
+      const matches = [
+        ...array.filter((item) => {
+          for (let i = 0; i < filt[propToEval].length; i++) {
+            if (item[propToEval] === filt[propToEval][i]) return true;
+          }
+        }),
+      ];
+      return matches;
+    };
+    for (let el of e.currentTarget.elements) {
+      //if fieldset check children
+      if (el.tagName === "FIELDSET") {
+        //fieldset classnames match market post properties
+        filt[`${el.className}`] = [];
+        const inputs = el.querySelectorAll("input");
+        inputs.forEach((input) => {
+          if (input.checked) {
+            //add checked filter inputs to the field they would match on market post
+            filt[`${el.className}`].push(input.value);
+          }
+        });
+      }
+    }
+    let matches = marketPosts;
+
+    for (const key in filt) {
+      if (filt[key].length) {
+        matches = refine(matches, key);
+      }
+    }
+    setFiltered(matches);
+
+    //array of properties from filter, can compare to nested market post props?
+  };
 
   const handleFilter = (e: React.MouseEvent) => {
     const filterField = e.currentTarget.id;
@@ -74,16 +118,16 @@ const Marketplace: React.FC = () => {
   const handleMarketplaceURL = (listingId: string) => {
     navigate(`/marketplace/${listingId}`);
   };
-  
+
   return (
     <div className="marketplace-container">
       <section className="marketplace-container__mobile">
         {marketplaceToggle && (
           <MarketplaceSelected
-          Post={selectedPost}
-          clickHandler={handleMarketplaceToggle}
+            Post={selectedPost}
+            clickHandler={handleMarketplaceToggle}
           />
-          )}
+        )}
         {!marketplaceToggle && (
           <>
             <FilterBar handleFilter={handleFilter} clearFilter={clearFilter} />
@@ -92,7 +136,7 @@ const Marketplace: React.FC = () => {
               clickHandler={handleMarketplaceToggle}
               urlHandler={handleMarketplaceURL}
             />
-          <MarketFilterMenu />
+            <MarketFilterMenu handleSubmit={handleSubmit} />
             <PromptModal open={openCompanyModal} clickHandler={clickHandler} />
           </>
         )}

@@ -1,9 +1,13 @@
-import { ReactElement, useEffect, useState } from "react";
+import { FormEvent, ReactElement, useEffect, useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { BsDot } from "react-icons/bs";
 import "./MarketFilterMenu.scss";
 import { ICompany } from "customTypes";
 import getAllCompanies from "../../helpers/allCompanyFetcher";
+import ControlButton from "../ControlButtons/ControlButton";
+interface Props {
+  handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
+}
 
 const sectors: string[] = [
   "Various Sectors",
@@ -77,7 +81,7 @@ const servtype: string[] = [
   "Verification & Validation Body",
 ];
 
-const MarketFilterMenu = (): ReactElement => {
+const MarketFilterMenu: React.FC<Props> = ({ handleSubmit }) => {
   const changeHandler = (e: React.FormEvent) => {
     const radio = e.currentTarget as HTMLInputElement;
     setListingType(radio.value);
@@ -133,12 +137,13 @@ const MarketFilterMenu = (): ReactElement => {
   const [listingType, setListingType] = useState<string>("");
   return (
     <div className="filter-menu">
-      <form action="submit">
-        <fieldset>
+      <form action="submit" onSubmit={handleSubmit}>
+        <fieldset className="post_type">
           <legend>Post Type:</legend>
           <label htmlFor="Project">
             Project
             <input
+              //   className="post_type"
               type="radio"
               id="Project"
               name="type"
@@ -149,6 +154,7 @@ const MarketFilterMenu = (): ReactElement => {
           <label htmlFor="Service">
             Service
             <input
+              //   className="post_type"
               type="radio"
               id="Service"
               name="type"
@@ -157,27 +163,53 @@ const MarketFilterMenu = (): ReactElement => {
             />
           </label>
         </fieldset>
+        <fieldset className="sector">
+          <legend>Select Sectors:</legend>
+          {sectors.map((sector) => {
+            return (
+              <label key={sector}>
+                {sector}
+                <input
+                  type="checkbox"
+                  name={sector}
+                  value={sector}
+                  //   className="sector"
+                />
+              </label>
+            );
+          })}
+        </fieldset>
         {listingType ? (
           listingType === "Project" ? (
-            <fieldset>
+            <fieldset className="post_category">
               <legend>Project types:</legend>
               {projtypes.map((proj) => {
                 return (
                   <label key={proj}>
                     {proj}
-                    <input type="checkbox" name={proj} />
+                    <input
+                      type="checkbox"
+                      name={proj}
+                      value={proj}
+                      //   className="post_category"
+                    />
                   </label>
                 );
               })}
             </fieldset>
           ) : (
-            <fieldset>
+            <fieldset className="post_category">
               <legend>Service types:</legend>
               {servtype.map((serv) => {
                 return (
                   <label key={serv}>
                     {serv}
-                    <input type="checkbox" name={serv} />
+                    <input
+                      type="checkbox"
+                      name={serv}
+                      value={serv}
+                      //   className="post_category"
+                    />
                   </label>
                 );
               })}
@@ -186,18 +218,7 @@ const MarketFilterMenu = (): ReactElement => {
         ) : (
           <div>When filtering by Project/Service, refine by type here</div>
         )}
-        <fieldset>
-          <legend>Select Sectors:</legend>
-          {sectors.map((sector) => {
-            return (
-              <label key={sector}>
-                {sector}
-                <input type="checkbox" name={sector} />
-              </label>
-            );
-          })}
-        </fieldset>
-        <fieldset>
+        <div>
           <legend>Search Companies:</legend>
           <input
             type="text"
@@ -208,15 +229,12 @@ const MarketFilterMenu = (): ReactElement => {
             value={compSearch}
           />
           {/* get all companies, set search input to state, filter companies */}
-        </fieldset>
+        </div>
         {searchDropdown && searchResultLength > 0 && (
           <div className="search__dropdown" onClick={handleSearch}>
             {compResult?.map((profile: ICompany) => {
               return (
-                <div
-                  key={profile.company_id}
-                  className="search__link"
-                >
+                <div key={profile.company_id} className="search__link">
                   {profile.logo ? (
                     <img className="search__photo" src={`${profile.logo}`} />
                   ) : (
@@ -240,6 +258,8 @@ const MarketFilterMenu = (): ReactElement => {
             })}
           </div>
         )}
+        <ControlButton dark={false} text="Apply" btnType="submit" />
+        {/* ensure each selected companay has classname="company_name" */}
       </form>
       {/* <form
         action="submit"

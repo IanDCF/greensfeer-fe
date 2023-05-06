@@ -110,7 +110,14 @@ declare module "customTypes" {
     _seconds: number;
     _nanoseconds: number;
   }
+  export interface IFilter {
+    post_type: ["Project" | "Service" | undefined];
+    sector: [string | undefined];
+    post_category: [string | undefined];
+    company_name: [string | undefined];
+  }
 }
+
 
 module.exports = {
   Props,
