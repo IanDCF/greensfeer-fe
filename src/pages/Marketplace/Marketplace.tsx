@@ -41,17 +41,13 @@ const Marketplace: React.FC = () => {
       //if fieldset check children
       if (el.tagName === "FIELDSET") {
         //fieldset classnames match market post properties
-        if (
-          el.className ===
-          ("post_type" || "post_category" || "sector" || "company_name")
-        ) {
-          filt[`${el.className}`] = [];
-        }
+        filt[el.className] = [];
+
         const inputs = el.querySelectorAll("input");
         inputs.forEach((input) => {
           if (input.checked) {
             //add checked filter inputs to the field they would match on market post
-            filt[`${el.className}`].push(input.value);
+            filt[el.className] && filt[el.className].push(input.value);
           }
         });
       }
@@ -61,8 +57,10 @@ const Marketplace: React.FC = () => {
     for (const key in filt) {
       if (filt[key].length) {
         matches = refine(matches, key as FilterProps);
+        console.log(matches);
       }
     }
+
     setFiltered(matches);
 
     //array of properties from filter, can compare to nested market post props?
