@@ -15,6 +15,8 @@ import FilterBar from "../../components/FilterBar/FilterBar";
 import PromptModal from "../../components/PromptModal/PromptModal";
 import MarketFilterMenu from "../../components/MarketFilterMenu/MarketFilterMenu";
 
+type FilterProps = "post_type" | "post_category" | "sector" | "company_name";
+
 const Marketplace: React.FC = () => {
   const { listing_id } = useParams(); // Retrieve the listingId from URL pathname directly
   const [marketPosts, setMarketPosts] = useState<IMarketPost[]>([]);
@@ -24,8 +26,8 @@ const Marketplace: React.FC = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    let filt: IFilter;
-    const refine = (array: IMarketPost[], propToEval: string) => {
+    let filt = {} as IFilter;
+    const refine = (array: IMarketPost[], propToEval: FilterProps) => {
       const matches = [
         ...array.filter((item) => {
           for (let i = 0; i < filt[propToEval].length; i++) {
@@ -39,7 +41,12 @@ const Marketplace: React.FC = () => {
       //if fieldset check children
       if (el.tagName === "FIELDSET") {
         //fieldset classnames match market post properties
-        filt[`${el.className}`] = [];
+        if (
+          el.className ===
+          ("post_type" || "post_category" || "sector" || "company_name")
+        ) {
+          filt[`${el.className}`] = [];
+        }
         const inputs = el.querySelectorAll("input");
         inputs.forEach((input) => {
           if (input.checked) {
@@ -53,7 +60,7 @@ const Marketplace: React.FC = () => {
 
     for (const key in filt) {
       if (filt[key].length) {
-        matches = refine(matches, key);
+        matches = refine(matches, key as FilterProps);
       }
     }
     setFiltered(matches);

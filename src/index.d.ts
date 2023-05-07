@@ -111,7 +111,7 @@ declare module "customTypes" {
     _nanoseconds: number;
   }
   export interface IFilter {
-    post_type: ["Project" | "Service" | undefined];
+    [post_type:string]: string[];
     sector: [string | undefined];
     post_category: [string | undefined];
     company_name: [string | undefined];
