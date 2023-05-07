@@ -15,6 +15,7 @@ import FilterBar from "../../components/FilterBar/FilterBar";
 import PromptModal from "../../components/PromptModal/PromptModal";
 import MarketFilterMenu from "../../components/MarketFilterMenu/MarketFilterMenu";
 
+
 type FilterProps = "post_type" | "post_category" | "sector" | "company_name";
 
 const Marketplace: React.FC = () => {
@@ -23,6 +24,7 @@ const Marketplace: React.FC = () => {
   const [selectedPost, setSelectedPost] = useState<IMarketPost | undefined>();
   const [marketplaceToggle, setMarketplaceToggle] = useState(false);
   const [filtered, setFiltered] = useState<IMarketPost[]>([]);
+  const [openFilter, setOpenFilter]=useState<boolean>(true)
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -62,6 +64,7 @@ const Marketplace: React.FC = () => {
     }
 
     setFiltered(matches);
+    setOpenFilter(!openFilter)
 
     //array of properties from filter, can compare to nested market post props?
   };
@@ -141,7 +144,7 @@ const Marketplace: React.FC = () => {
               clickHandler={handleMarketplaceToggle}
               urlHandler={handleMarketplaceURL}
             />
-            <MarketFilterMenu handleSubmit={handleSubmit} open/>
+            <MarketFilterMenu handleSubmit={handleSubmit} open={openFilter}/>
             <PromptModal open={openCompanyModal} clickHandler={clickHandler} />
           </>
         )}
