@@ -141,7 +141,7 @@ const Marketplace: React.FC = () => {
               clickHandler={handleMarketplaceToggle}
               urlHandler={handleMarketplaceURL}
             />
-            <MarketFilterMenu handleSubmit={handleSubmit} />
+            <MarketFilterMenu handleSubmit={handleSubmit} open/>
             <PromptModal open={openCompanyModal} clickHandler={clickHandler} />
           </>
         )}

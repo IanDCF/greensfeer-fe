@@ -7,6 +7,7 @@ import getAllCompanies from "../../helpers/allCompanyFetcher";
 import ControlButton from "../ControlButtons/ControlButton";
 interface Props {
   handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
+  open:boolean
 }
 
 const sectors: string[] = [
@@ -81,7 +82,7 @@ const servtype: string[] = [
   "Verification & Validation Body",
 ];
 
-const MarketFilterMenu: React.FC<Props> = ({ handleSubmit }) => {
+const MarketFilterMenu: React.FC<Props> = ({open, handleSubmit }) => {
   const changeHandler = (e: React.FormEvent) => {
     const radio = e.currentTarget as HTMLInputElement;
     setListingType(radio.value);
@@ -135,133 +136,140 @@ const MarketFilterMenu: React.FC<Props> = ({ handleSubmit }) => {
   //   const [selectedLocations, setSelectedLocations] = useState<String[]>();
 
   const [listingType, setListingType] = useState<string>("");
+  if(!open) return <></>;
   return (
-    <div className="filter-menu">
-      <form action="submit" onSubmit={handleSubmit}>
-        <fieldset className="post_type">
-          <legend>Post Type:</legend>
-          <label htmlFor="Project">
-            Project
-            <input
-              //   className="post_type"
-              type="radio"
-              id="Project"
-              name="type"
-              value={"Project"}
-              onChange={changeHandler}
-            />
-          </label>
-          <label htmlFor="Service">
-            Service
-            <input
-              //   className="post_type"
-              type="radio"
-              id="Service"
-              name="type"
-              value={"Service"}
-              onChange={changeHandler}
-            />
-          </label>
-        </fieldset>
-        <fieldset className="sector">
-          <legend>Select Sectors:</legend>
-          {sectors.map((sector) => {
-            return (
-              <label key={sector}>
-                {sector}
-                <input
-                  type="checkbox"
-                  name={sector}
-                  value={sector}
-                  //   className="sector"
-                />
-              </label>
-            );
-          })}
-        </fieldset>
-        {listingType ? (
-          listingType === "Project" ? (
-            <fieldset className="post_category">
-              <legend>Project types:</legend>
-              {projtypes.map((proj) => {
-                return (
-                  <label key={proj}>
-                    {proj}
-                    <input
-                      type="checkbox"
-                      name={proj}
-                      value={proj}
-                      //   className="post_category"
-                    />
-                  </label>
-                );
-              })}
-            </fieldset>
-          ) : (
-            <fieldset className="post_category">
-              <legend>Service types:</legend>
-              {servtype.map((serv) => {
-                return (
-                  <label key={serv}>
-                    {serv}
-                    <input
-                      type="checkbox"
-                      name={serv}
-                      value={serv}
-                      //   className="post_category"
-                    />
-                  </label>
-                );
-              })}
-            </fieldset>
-          )
-        ) : (
-          <div>When filtering by Project/Service, refine by type here</div>
-        )}
-        <div>
-          <legend>Search Companies:</legend>
-          <input
-            type="text"
-            placeholder="Search"
-            onChange={(e) => {
-              setCompSearch(e.target.value);
-            }}
-            value={compSearch}
-          />
-          {/* get all companies, set search input to state, filter companies */}
-        </div>
-        {searchDropdown && searchResultLength > 0 && (
-          <div className="search__dropdown" onClick={handleSearch}>
-            {compResult?.map((profile: ICompany) => {
+    <div className="modal">
+        <div className="modal__card">
+      <div className="filter-menu">
+        <form action="submit" onSubmit={handleSubmit}>
+          <fieldset className="post_type">
+            <legend>Post Type:</legend>
+            <label htmlFor="Project">
+              Project
+              <input
+                //   className="post_type"
+                type="radio"
+                id="Project"
+                name="type"
+                value={"Project"}
+                onChange={changeHandler}
+              />
+            </label>
+            <label htmlFor="Service">
+              Service
+              <input
+                //   className="post_type"
+                type="radio"
+                id="Service"
+                name="type"
+                value={"Service"}
+                onChange={changeHandler}
+              />
+            </label>
+          </fieldset>
+          <fieldset className="sector">
+            <legend>Select Sectors:</legend>
+            {sectors.map((sector) => {
               return (
-                <div key={profile.company_id} className="search__link">
-                  {profile.logo ? (
-                    <img className="search__photo" src={`${profile.logo}`} />
-                  ) : (
-                    <div className="search__photo">
-                      <FaUserCircle />
-                    </div>
-                  )}
-                  <div className="search__text">
-                    {<div className="search__name">{profile.company_name}</div>}
-                  </div>
-                  <div className="search__separator">
-                    <BsDot />
-                  </div>
-                  <div className="search__headline">Company</div>
-                  <div className="search__separator">
-                    <BsDot />
-                  </div>
-                  <div className="search__headline">{profile?.sector}</div>
-                </div>
+                <label key={sector}>
+                  {sector}
+                  <input
+                    type="checkbox"
+                    name={sector}
+                    value={sector}
+                    //   className="sector"
+                  />
+                </label>
               );
             })}
+          </fieldset>
+          {listingType ? (
+            listingType === "Project" ? (
+              <fieldset className="post_category">
+                <legend>Project types:</legend>
+                {projtypes.map((proj) => {
+                  return (
+                    <label key={proj}>
+                      {proj}
+                      <input
+                        type="checkbox"
+                        name={proj}
+                        value={proj}
+                        //   className="post_category"
+                      />
+                    </label>
+                  );
+                })}
+              </fieldset>
+            ) : (
+              <fieldset className="post_category">
+                <legend>Service types:</legend>
+                {servtype.map((serv) => {
+                  return (
+                    <label key={serv}>
+                      {serv}
+                      <input
+                        type="checkbox"
+                        name={serv}
+                        value={serv}
+                        //   className="post_category"
+                      />
+                    </label>
+                  );
+                })}
+              </fieldset>
+            )
+          ) : (
+            <div>When filtering by Project/Service, refine by type here</div>
+          )}
+          <div>
+            <legend>Search Companies:</legend>
+            <input
+              type="text"
+              placeholder="Search"
+              onChange={(e) => {
+                setCompSearch(e.target.value);
+              }}
+              value={compSearch}
+            />
+            {/* get all companies, set search input to state, filter companies */}
           </div>
-        )}
-        <ControlButton dark={false} text="Apply" btnType="submit" />
-        {/* ensure each selected companay has classname="company_name" */}
-      </form>
-      {/* <form
+          {searchDropdown && searchResultLength > 0 && (
+            <div className="search__dropdown" onClick={handleSearch}>
+              {compResult?.map((profile: ICompany) => {
+                return (
+                  <div key={profile.company_id} className="search__link">
+                    {profile.logo ? (
+                      <img className="search__photo" src={`${profile.logo}`} />
+                    ) : (
+                      <div className="search__photo">
+                        <FaUserCircle />
+                      </div>
+                    )}
+                    <div className="search__text">
+                      {
+                        <div className="search__name">
+                          {profile.company_name}
+                        </div>
+                      }
+                    </div>
+                    <div className="search__separator">
+                      <BsDot />
+                    </div>
+                    <div className="search__headline">Company</div>
+                    <div className="search__separator">
+                      <BsDot />
+                    </div>
+                    <div className="search__headline">{profile?.sector}</div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+          <ControlButton dark={false} text="Apply" btnType="submit" />
+          {/* ensure each selected companay has classname="company_name" */}
+        </form>
+        {/* <form
         action="submit"
         onSubmit={(e) => {
           e.preventDefault();
@@ -284,7 +292,9 @@ const MarketFilterMenu: React.FC<Props> = ({ handleSubmit }) => {
             : ""}
         </fieldset>
       </form> */}
+      </div>
     </div>
+     </div>
   );
 };
 
