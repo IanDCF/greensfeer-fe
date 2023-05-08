@@ -17,3 +17,7 @@
     min-width: 60vw;
     min-height: 60vw;
   }
+  legend, label{
+    cursor: pointer;
+    user-select: none;
+  }
