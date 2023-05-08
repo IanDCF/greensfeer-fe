@@ -1,4 +1,4 @@
-import { FormEvent, ReactElement, useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { BsDot } from "react-icons/bs";
 import "./MarketFilterMenu.scss";
@@ -7,7 +7,7 @@ import getAllCompanies from "../../helpers/allCompanyFetcher";
 import ControlButton from "../ControlButtons/ControlButton";
 interface Props {
   handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
-  open:boolean
+  open: boolean;
 }
 
 const sectors: string[] = [
@@ -82,7 +82,12 @@ const servtype: string[] = [
   "Verification & Validation Body",
 ];
 
-const MarketFilterMenu: React.FC<Props> = ({open, handleSubmit }) => {
+const hideOptions = (e: React.MouseEvent) => {
+  e.preventDefault();
+  e.currentTarget.classList.toggle("list--hidden");
+};
+
+const MarketFilterMenu: React.FC<Props> = ({ open, handleSubmit }) => {
   const changeHandler = (e: React.FormEvent) => {
     const radio = e.currentTarget as HTMLInputElement;
     setListingType(radio.value);
@@ -136,140 +141,150 @@ const MarketFilterMenu: React.FC<Props> = ({open, handleSubmit }) => {
   //   const [selectedLocations, setSelectedLocations] = useState<String[]>();
 
   const [listingType, setListingType] = useState<string>("");
-  if(!open) return <></>;
+  if (!open) return <></>;
   return (
     <div className="modal">
-        <div className="modal__card">
-      <div className="filter-menu">
-        <form action="submit" onSubmit={handleSubmit}>
-          <fieldset className="post_type">
-            <legend>Post Type:</legend>
-            <label htmlFor="Project">
-              Project
-              <input
-                //   className="post_type"
-                type="radio"
-                id="Project"
-                name="type"
-                value={"Project"}
-                onChange={changeHandler}
-              />
-            </label>
-            <label htmlFor="Service">
-              Service
-              <input
-                //   className="post_type"
-                type="radio"
-                id="Service"
-                name="type"
-                value={"Service"}
-                onChange={changeHandler}
-              />
-            </label>
-          </fieldset>
-          <fieldset className="sector">
-            <legend>Select Sectors:</legend>
-            {sectors.map((sector) => {
-              return (
-                <label key={sector}>
-                  {sector}
-                  <input
-                    type="checkbox"
-                    name={sector}
-                    value={sector}
-                    //   className="sector"
-                  />
-                </label>
-              );
-            })}
-          </fieldset>
-          {listingType ? (
-            listingType === "Project" ? (
-              <fieldset className="post_category">
-                <legend>Project types:</legend>
-                {projtypes.map((proj) => {
+      <div className="modal__card">
+        <div className="filter-menu">
+          <form action="submit" onSubmit={handleSubmit}>
+            <fieldset className="post_type">
+              <legend>Post Type:</legend>
+              <label className="modal__text" htmlFor="Project">
+                <input
+                  type="radio"
+                  id="Project"
+                  name="type"
+                  value={"Project"}
+                  onChange={changeHandler}
+                />
+                Project
+              </label>
+              <label className="modal__text" htmlFor="Service">
+                <input
+                  type="radio"
+                  id="Service"
+                  name="type"
+                  value={"Service"}
+                  onChange={changeHandler}
+                />
+                Service
+              </label>
+            </fieldset>
+            <fieldset className="sector">
+              <legend className="modal__text" onClick={hideOptions}>
+                Filter by Sector \/
+              </legend>
+              <div className="list">
+                {sectors.map((sector) => {
                   return (
-                    <label key={proj}>
-                      {proj}
-                      <input
-                        type="checkbox"
-                        name={proj}
-                        value={proj}
-                        //   className="post_category"
-                      />
-                    </label>
+                    <div key={sector} id="list-item">
+                      <input type="checkbox" id={sector} value={sector} />
+                      <label className="modal__text" htmlFor={sector}>
+                        {sector}
+                        <br></br>
+                      </label>
+                    </div>
                   );
                 })}
-              </fieldset>
-            ) : (
-              <fieldset className="post_category">
-                <legend>Service types:</legend>
-                {servtype.map((serv) => {
-                  return (
-                    <label key={serv}>
-                      {serv}
-                      <input
-                        type="checkbox"
-                        name={serv}
-                        value={serv}
-                        //   className="post_category"
-                      />
-                    </label>
-                  );
-                })}
-              </fieldset>
-            )
-          ) : (
-            <div>When filtering by Project/Service, refine by type here</div>
-          )}
-          <div>
-            <legend>Search Companies:</legend>
-            <input
-              type="text"
-              placeholder="Search"
-              onChange={(e) => {
-                setCompSearch(e.target.value);
-              }}
-              value={compSearch}
-            />
-            {/* get all companies, set search input to state, filter companies */}
-          </div>
-          {searchDropdown && searchResultLength > 0 && (
-            <div className="search__dropdown" onClick={handleSearch}>
-              {compResult?.map((profile: ICompany) => {
-                return (
-                  <div key={profile.company_id} className="search__link">
-                    {profile.logo ? (
-                      <img className="search__photo" src={`${profile.logo}`} />
-                    ) : (
-                      <div className="search__photo">
-                        <FaUserCircle />
-                      </div>
-                    )}
-                    <div className="search__text">
-                      {
-                        <div className="search__name">
-                          {profile.company_name}
+              </div>
+            </fieldset>
+            {listingType ? (
+              listingType === "Project" ? (
+                <fieldset className="post_category">
+                  <legend className="modal__text" onClick={hideOptions}>
+                    Filter by Project Type \/
+                  </legend>
+                  <div className="list">
+                    {projtypes.map((proj) => {
+                      return (
+                        <div key={proj}>
+                          <input type="checkbox" id={proj} value={proj} />
+                          <label className="modal__text" htmlFor={proj}>
+                            {proj}
+                            <br></br>
+                          </label>
                         </div>
-                      }
-                    </div>
-                    <div className="search__separator">
-                      <BsDot />
-                    </div>
-                    <div className="search__headline">Company</div>
-                    <div className="search__separator">
-                      <BsDot />
-                    </div>
-                    <div className="search__headline">{profile?.sector}</div>
+                      );
+                    })}{" "}
                   </div>
-                );
-              })}
+                </fieldset>
+              ) : (
+                <fieldset className="post_category">
+                  <legend className="modal__text" onClick={hideOptions}>
+                    Filter by Service Type \/
+                  </legend>
+                  <div className="list">
+                    {servtype.map((serv) => {
+                      return (
+                        <div key={serv}>
+                          <input type="checkbox" id={serv} value={serv} />
+                          <label className="modal__text" htmlFor={serv}>
+                            {serv}
+                            <br></br>
+                          </label>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </fieldset>
+              )
+            ) : (
+              <div>When filtering by Project/Service, refine by type here</div>
+            )}
+
+            <div>
+              <legend className="modal__text" onClick={hideOptions}>
+                Filter by Company \/
+              </legend>
+              <input
+                type="text"
+                placeholder="Search"
+                onChange={(e) => {
+                  setCompSearch(e.target.value);
+                }}
+                value={compSearch}
+              />
+              {/* get all companies, set search input to state, filter companies */}
             </div>
-          )}
-          <ControlButton dark={false} text="Apply" btnType="submit" />
-          {/* ensure each selected companay has classname="company_name" */}
-        </form>
-        {/* <form
+            {searchDropdown && searchResultLength > 0 && (
+              <div className="search__dropdown" onClick={handleSearch}>
+                {compResult?.map((profile: ICompany) => {
+                  return (
+                    <div key={profile.company_id} className="search__link">
+                      {profile.logo ? (
+                        <img
+                          className="search__photo"
+                          src={`${profile.logo}`}
+                        />
+                      ) : (
+                        <div className="search__photo">
+                          <FaUserCircle />
+                        </div>
+                      )}
+                      <div className="search__text">
+                        {
+                          <div className="search__name">
+                            {profile.company_name}
+                          </div>
+                        }
+                      </div>
+                      <div className="search__separator">
+                        <BsDot />
+                      </div>
+                      <div className="search__headline">Company</div>
+                      <div className="search__separator">
+                        <BsDot />
+                      </div>
+                      <div className="search__headline">{profile?.sector}</div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+            <ControlButton dark={false} text="Apply" btnType="submit" />
+            {/* ensure each selected companay has classname="company_name" */}
+          </form>
+          {/* <form
         action="submit"
         onSubmit={(e) => {
           e.preventDefault();
@@ -292,9 +307,9 @@ const MarketFilterMenu: React.FC<Props> = ({open, handleSubmit }) => {
             : ""}
         </fieldset>
       </form> */}
+        </div>
       </div>
     </div>
-     </div>
   );
 };
 
