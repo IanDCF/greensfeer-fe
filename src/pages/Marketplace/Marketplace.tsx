@@ -71,17 +71,7 @@ const Marketplace: React.FC = () => {
 
   const handleFilter = (e: React.MouseEvent) => {
     setOpenFilter(!openFilter)
-    // const filterField = e.currentTarget.id;
-    // const filterPosts = marketPosts.filter((post) => {
-    //   return post.post_type === filterField;
-    // });
-    // for (let el of document.getElementsByClassName(
-    //   "filter-bar__parameter--active"
-    // )) {
-    //   el.classList.remove("filter-bar__parameter--active");
-    // }
-    // e.currentTarget.classList.add("filter-bar__parameter--active");
-    // setFiltered(filterPosts);
+
   };
 
   const clearFilter = () => {
@@ -145,7 +135,7 @@ const Marketplace: React.FC = () => {
               clickHandler={handleMarketplaceToggle}
               urlHandler={handleMarketplaceURL}
             />
-            <MarketFilterMenu handleSubmit={handleSubmit} open={openFilter}/>
+            <MarketFilterMenu handleSubmit={handleSubmit} handleFilter={handleFilter} open={openFilter}/>
             <PromptModal open={openCompanyModal} clickHandler={clickHandler} />
           </>
         )}

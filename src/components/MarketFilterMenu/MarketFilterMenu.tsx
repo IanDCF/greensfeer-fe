@@ -1,6 +1,4 @@
 import { FormEvent, useEffect, useState } from "react";
-import { FaUserCircle } from "react-icons/fa";
-import { BsDot } from "react-icons/bs";
 import "./MarketFilterMenu.scss";
 import { ICompany } from "customTypes";
 import getAllCompanies from "../../helpers/allCompanyFetcher";
@@ -8,6 +6,7 @@ import ControlButton from "../ControlButtons/ControlButton";
 interface Props {
   handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
   open: boolean;
+  handleFilter: (e: React.MouseEvent)=>void
 }
 
 const sectors: string[] = [
@@ -87,16 +86,13 @@ const hideOptions = (e: React.MouseEvent) => {
   e.currentTarget.classList.toggle("list--hidden");
 };
 
-const MarketFilterMenu: React.FC<Props> = ({ open, handleSubmit }) => {
+const MarketFilterMenu: React.FC<Props> = ({ open, handleSubmit, handleFilter }) => {
   const changeHandler = (e: React.FormEvent) => {
     const radio = e.currentTarget as HTMLInputElement;
     setListingType(radio.value);
   };
   const [companies, setCompanies] = useState<ICompany[]>([]);
-  const [compSearch, setCompSearch] = useState<string>("");
-  const [searchDropdown, setSearchDropdown] = useState(false);
-  const [compResult, setCompResult] = useState<ICompany[]>([]);
-  const searchResultLength = compResult?.length || 0;
+
   const getCom = async () => {
     const companies = await getAllCompanies();
     setCompanies(companies);
@@ -104,41 +100,6 @@ const MarketFilterMenu: React.FC<Props> = ({ open, handleSubmit }) => {
   useEffect(() => {
     getCom();
   }, []);
-
-  const handleSearch = () => {
-    toggleSearchDropdown();
-    setCompSearch("");
-  };
-
-  const toggleSearchDropdown = () => {
-    setSearchDropdown(!searchDropdown);
-  };
-
-  useEffect(() => {
-    if (compSearch.length > 0) {
-      setSearchDropdown(true);
-      setCompResult(
-        companies?.filter((company) => {
-          const regex = new RegExp(`${compSearch}`, "i");
-          const match = (nameStr: string | undefined) => {
-            if (nameStr?.match(regex)) return true;
-          };
-          if (
-            "company_name" in company &&
-            match(company.company_name)
-            // first name match || last name match || name match
-          )
-            return true;
-        })
-      );
-    } else {
-      setSearchDropdown(false);
-    }
-  }, [compSearch]);
-  //   const [selectedCompanies, setSelectedCompanies] = useState<ICompany[]>();
-
-  //   const [locationSearch, setLocationSearch] = useState<String[]>([]);
-  //   const [selectedLocations, setSelectedLocations] = useState<String[]>();
 
   const [listingType, setListingType] = useState<string>("");
   if (!open) return <></>;
@@ -171,7 +132,10 @@ const MarketFilterMenu: React.FC<Props> = ({ open, handleSubmit }) => {
               </label>
             </fieldset>
             <fieldset className="sector">
-              <legend className="modal__text" onClick={hideOptions}>
+              <legend
+                className="modal__text list--hidden"
+                onClick={hideOptions}
+              >
                 Filter by Sector \/
               </legend>
               <div className="list">
@@ -191,7 +155,10 @@ const MarketFilterMenu: React.FC<Props> = ({ open, handleSubmit }) => {
             {listingType ? (
               listingType === "Project" ? (
                 <fieldset className="post_category">
-                  <legend className="modal__text" onClick={hideOptions}>
+                  <legend
+                    className="modal__text list--hidden"
+                    onClick={hideOptions}
+                  >
                     Filter by Project Type \/
                   </legend>
                   <div className="list">
@@ -210,7 +177,10 @@ const MarketFilterMenu: React.FC<Props> = ({ open, handleSubmit }) => {
                 </fieldset>
               ) : (
                 <fieldset className="post_category">
-                  <legend className="modal__text" onClick={hideOptions}>
+                  <legend
+                    className="modal__text list--hidden"
+                    onClick={hideOptions}
+                  >
                     Filter by Service Type \/
                   </legend>
                   <div className="list">
@@ -229,84 +199,46 @@ const MarketFilterMenu: React.FC<Props> = ({ open, handleSubmit }) => {
                 </fieldset>
               )
             ) : (
-              <div>When filtering by Project/Service, refine by type here</div>
+              <div className="modal__text">
+                When filtering by Project/Service, refine by type here
+              </div>
             )}
 
-            <div>
-              <legend className="modal__text" onClick={hideOptions}>
+            <fieldset className="company_name">
+              <legend
+                className="modal__text list--hidden"
+                onClick={hideOptions}
+              >
                 Filter by Company \/
               </legend>
-              <input
-                type="text"
-                placeholder="Search"
-                onChange={(e) => {
-                  setCompSearch(e.target.value);
-                }}
-                value={compSearch}
-              />
-              {/* get all companies, set search input to state, filter companies */}
-            </div>
-            {searchDropdown && searchResultLength > 0 && (
-              <div className="search__dropdown" onClick={handleSearch}>
-                {compResult?.map((profile: ICompany) => {
+              <div className="list">
+                {companies?.map((profile: ICompany) => {
                   return (
-                    <div key={profile.company_id} className="search__link">
-                      {profile.logo ? (
-                        <img
-                          className="search__photo"
-                          src={`${profile.logo}`}
-                        />
-                      ) : (
-                        <div className="search__photo">
-                          <FaUserCircle />
-                        </div>
-                      )}
-                      <div className="search__text">
-                        {
-                          <div className="search__name">
-                            {profile.company_name}
-                          </div>
-                        }
-                      </div>
-                      <div className="search__separator">
-                        <BsDot />
-                      </div>
-                      <div className="search__headline">Company</div>
-                      <div className="search__separator">
-                        <BsDot />
-                      </div>
-                      <div className="search__headline">{profile?.sector}</div>
+                    <div key={profile.company_name}>
+                      <input
+                        type="checkbox"
+                        id={profile.company_name}
+                        value={profile.company_name}
+                      />
+                      <label
+                        className="modal__text"
+                        htmlFor={profile.company_name}
+                      >
+                        {profile.company_name}
+                        <br></br>
+                      </label>
                     </div>
                   );
                 })}
               </div>
-            )}
-            <ControlButton dark={false} text="Apply" btnType="submit" />
+              {/* get all companies, set search input to state, filter companies */}
+            </fieldset>
+            <div className="create-company__controls">
+              <div className="control-btn control-btn--black" onClick={handleFilter}>Cancel</div>
+              <ControlButton dark={false} text="Apply" btnType="submit" />
+            </div>
             {/* ensure each selected companay has classname="company_name" */}
           </form>
-          {/* <form
-        action="submit"
-        onSubmit={(e) => {
-          e.preventDefault();
-          const location = e.currentTarget.elements.namedItem(
-            "search"
-          ) as HTMLInputElement;
-          // e.
-          console.log(location.value);
-          location && setLocationSearch([location?.value, ...locationSearch]);
-        }}
-      >
-        <fieldset>
-          <legend>Search Locations:</legend>
-          <input id="filter-menu__location" name="search" type="search" />
-          <button type="submit">Add to filters</button>
-          {locationSearch
-            ? locationSearch.map((filter, i) => {
-                return <div key={i}>{filter}</div>;
-              })
-            : ""}
-        </fieldset>
-      </form> */}
         </div>
       </div>
     </div>

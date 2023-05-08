@@ -1,5 +1,5 @@
 import "./FilterParameter.scss";
-import { BsChevronDown } from "react-icons/bs";
+import { BsChevronDown, BsFilter } from "react-icons/bs";
 import { AiOutlineClose } from "react-icons/ai";
 interface Props {
   label: string;
@@ -15,6 +15,11 @@ const FilterParameter: React.FC<Props> = ({ label, filter }) => {
       {label === "Clear" && (
         <div className="filter-parameter__icon">
           <AiOutlineClose />
+        </div>
+      )}
+      {label === "Filters"&&(
+        <div className="filter-parameter__icon">
+          <BsFilter/>
         </div>
       )}
     </div>
