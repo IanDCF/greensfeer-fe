@@ -15,6 +15,7 @@ import CreateCompany from "./pages/CreateCompany/CreateCompany";
 import CreateListing from "./pages/CreateListing/CreateListing";
 import Navigation from "./pages/Navigation/Navigation";
 import MemberProfile from "./pages/MemberProfile/MemberProfile";
+import Protected from "./components/Protected/Protected";
 
 const App = () => {
   const { currentUser } = useAuth();
@@ -22,77 +23,126 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        {/* {currentUser ? (
-          <> */}
         <Route
           path="/network"
-          element={currentUser ? <Network /> : <SignIn />}
+          element={
+            <Protected currentUser={currentUser}>
+              <Network />
+            </Protected>
+          }
         />
         <Route
           path="/messages"
-          element={currentUser ? <Messages /> : <SignIn />}
+          element={
+            <Protected currentUser={currentUser}>
+              <Messages />
+            </Protected>
+          }
         />
         <Route
           path={`/gs/${currentUser?.uid}`}
-          element={currentUser ? <UserProfile /> : <SignIn />}
+          element={
+            <Protected currentUser={currentUser}>
+              <UserProfile />
+            </Protected>
+          }
         />
         <Route
           path="/gs/:user_id"
-          element={currentUser ? <MemberProfile /> : <SignIn />}
+          element={
+            <Protected currentUser={currentUser}>
+              <MemberProfile />
+            </Protected>
+          }
         />
         <Route
           path="/messages/chat"
-          element={currentUser ? <ChatRoom /> : <SignIn />}
+          element={
+            <Protected currentUser={currentUser}>
+              <ChatRoom />
+            </Protected>
+          }
         />
         <Route
           path="/company/:companyId"
-          element={currentUser ? <CompanyProfile /> : <SignIn />}
+          element={
+            <Protected currentUser={currentUser}>
+              <CompanyProfile />
+            </Protected>
+          }
         />
         <Route
           path="/marketplace"
           element={
-            currentUser ? (
+            <Protected currentUser={currentUser}>
               <Navigate to="bf626374-4236-451f-874b-f61383d9361e" />
-            ) : (
-              <SignIn />
-            )
+            </Protected>
           } // Redirect to default URL
         />
         <Route
           path="/marketplace/:listing_id"
-          element={currentUser ? <Marketplace /> : <SignIn />}
+          element={
+            <Protected currentUser={currentUser}>
+              <Marketplace />
+            </Protected>
+          }
         />
         <Route
           path="/search-company"
-          element={currentUser ? <CreateCompany /> : <SignIn />}
+          element={
+            <Protected currentUser={currentUser}>
+              <CreateCompany />
+            </Protected>
+          }
         />
         <Route
           path="/create-company/step1"
-          element={currentUser ? <CreateCompany /> : <SignIn />}
+          element={
+            <Protected currentUser={currentUser}>
+              <CreateCompany />
+            </Protected>
+          }
         />
         <Route
           path="/create-company/step2"
-          element={currentUser ? <CreateCompany /> : <SignIn />}
+          element={
+            <Protected currentUser={currentUser}>
+              <CreateCompany />
+            </Protected>
+          }
         />
         <Route
           path="/search-affiliation"
-          element={currentUser ? <CreateListing /> : <SignIn />}/>
+          element={
+            <Protected currentUser={currentUser}>
+              <CreateListing />
+            </Protected>
+          }
+        />
         <Route
           path="/create-listing/step1"
-          element={currentUser ? <CreateListing /> : <SignIn />}
+          element={
+            <Protected currentUser={currentUser}>
+              <CreateListing />
+            </Protected>
+          }
         />
         <Route
           path="/create-listing/step2"
-          element={currentUser ? <CreateListing /> : <SignIn />}
+          element={
+            <Protected currentUser={currentUser}>
+              <CreateListing />
+            </Protected>
+          }
         />
         <Route
           path="/create-listing/step3"
-          element={currentUser ? <CreateListing /> : <SignIn />}
+          element={
+            <Protected currentUser={currentUser}>
+              <CreateListing />
+            </Protected>
+          }
         />
-        {/* </>
-        ) : (
-          ""
-        )} */}
 
         <Route path="/" element={<Landing />} />
         <Route path="/subscribe" element={<Subscribe />} />
