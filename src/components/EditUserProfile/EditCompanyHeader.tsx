@@ -191,7 +191,6 @@ export const EditCompanyHeader: React.FC<Props> = ({
                 sector*
               </label>
               <select id="sector" name="sector" className="edit-modal__input">
-                {/* FIXME: Back end currently does not handle sector */}
                 <option hidden={true} defaultValue={CompanyData?.sector}>
                   {CompanyData?.sector || "Select a sector"}
                 </option>

@@ -11,20 +11,12 @@ import newListingSchema, {
   registerListingOptionalSchema,
 } from "../../schemas/ListingSchema";
 import createMarketPost from "../../helpers/marketPostCreator";
-import getAffiliation, {
-  getAllAffiliations,
-} from "../../helpers/affiliationFetcher";
-import getCompany from "../../helpers/companyFetcher";
+
 import { useAuth } from "../../context/AuthProvider/AuthProvider";
 import AffilationSearch from "./AffiliationSearch";
 
 const CreateListing = () => {
-  // create market post as current user
-  /* FIXME: Market post tied to a company mechanism
-  solutions: 
-  check user afiliation from company page, show 'create post' button to affiliated user?
-  send company id to params when create post button clicked, validate current user on backend using auth token?
-  */
+
   const { currentUser } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
