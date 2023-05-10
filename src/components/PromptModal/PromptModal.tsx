@@ -26,16 +26,17 @@ const PromptModal: React.FC<Props> = ({ open, clickHandler }) => {
         </div>
         <div className="modal__text">
           {onMarketplace
-            ? "Are you affiliated with a company? Join your organization now!"
+            ? "Are you affiliated with a company? Join your organization or create a new one!"
             : "Ready to list your offering on the marketplace?"}
         </div>
         <div className="modal__controls">
           <div className="modal__decline" onClick={clickHandler}>
             Maybe later
           </div>
-          <Link onClick={clickHandler}
+          <Link
+            onClick={clickHandler}
             className="modal__accept"
-            to={onMarketplace ? "/search-company" : "/create-listing/step1"}
+            to={onMarketplace ? "/search-company" : "/search-affiliation"}
           >
             {`${onMarketplace ? "Search Company" : "Create Listing"}`}
           </Link>

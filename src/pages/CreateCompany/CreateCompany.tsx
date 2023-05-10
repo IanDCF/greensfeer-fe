@@ -160,7 +160,12 @@ const CreateCompany: React.FC = () => {
       banner,
     });
 
-    if (!company_name || sector==="Which sector are you in?" || market_role==="Select market role" || !location) {
+    if (
+      !company_name ||
+      sector === "Which sector are you in?" ||
+      market_role === "Select market role" ||
+      !location
+    ) {
       setFormErrs("Please fill in all required fields");
       return;
     }
@@ -203,11 +208,14 @@ const CreateCompany: React.FC = () => {
         website,
       });
 
+    if (!email || !website) {
+      setFormErrs("Please fill in all required fields");
+      return;
+    }
     if (!registerCompanyDetailValidation.success) {
       const error = registerCompanyDetailValidation.error.errors;
       return;
     }
-
     setNewCompany({
       ...newCompany,
       headline,
@@ -215,12 +223,6 @@ const CreateCompany: React.FC = () => {
       email,
       website,
     });
-
-    if (!email || !website) {
-      // FIXME: the error message does not display
-      setFormErrs("Please fill in all required fields");
-      return;
-    }
 
     setStepTwoDone(true);
     // Perform the necessary actions for form 2 submission
