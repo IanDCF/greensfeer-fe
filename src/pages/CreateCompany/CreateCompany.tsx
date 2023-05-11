@@ -239,7 +239,7 @@ const CreateCompany: React.FC = () => {
   return (
     <section className="create-company">
       {/* 
-      // FIXME: add upload image thumbnail to inputs to show user successful upload?
+      // TODO: add upload image thumbnail to inputs to show user successful upload?
       <div
         style={{
           backgroundImage: `url(${bannerUrl})`,

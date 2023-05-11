@@ -16,7 +16,6 @@ import { useAuth } from "../../context/AuthProvider/AuthProvider";
 import AffilationSearch from "./AffiliationSearch";
 
 const CreateListing = () => {
-
   const { currentUser } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -67,7 +66,7 @@ const CreateListing = () => {
       // const company = await getCompany(affiliation.company_id);
       // console.log(company);
       // setCurrentCompany(affiliation.company_id);
-      // FIXME: possible to visit this page with no company created
+      // TODO: possible to visit this page with no company created
 
       if (newMarketPost.post_type === "Service") {
         // validate & run axios.post
@@ -357,7 +356,7 @@ const CreateListing = () => {
           company={currentCompany}
         />
       )}
-      {/* FIXME: ensure to parseint vintage_year & price_per_credit */}
+      {/* TODO: ensure to parseint vintage_year & price_per_credit */}
       {productDetailDone && (
         <div className="create-listing__form" style={{ fontSize: "4rem" }}>
           {listingType === "Project" &&

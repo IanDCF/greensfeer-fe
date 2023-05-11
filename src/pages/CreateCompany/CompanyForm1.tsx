@@ -25,7 +25,7 @@ const CompanyForm1 = ({
   profileUrl,
   bannerUrl,
 }: Props) => {
-  // FIXME: update to controlled form inputs; set to state so values are not missing on submit
+  // TODO: update to controlled form inputs; set to state so values are not missing on submit
   return (
     <form className="create-company__form" onSubmit={handleSubmit}>
       <div className="create-company__logo">
