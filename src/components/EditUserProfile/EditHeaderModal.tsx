@@ -173,7 +173,7 @@ export const EditHeaderModal: React.FC<Props> = ({
                 name="firstName"
                 className="edit-modal__input"
                 placeholder="Enter your first name"
-                defaultValue={current?.first_name}
+                defaultValue={current.first_name}
               />
             </div>
             <div className="edit-modal__input-div">
@@ -186,7 +186,7 @@ export const EditHeaderModal: React.FC<Props> = ({
                 name="lastName"
                 className="edit-modal__input"
                 placeholder="Enter your last name"
-                defaultValue={current?.last_name}
+                defaultValue={current.last_name}
               />
             </div>
             <div className="edit-modal__input-div">
@@ -199,7 +199,7 @@ export const EditHeaderModal: React.FC<Props> = ({
                 name="headline"
                 className="edit-modal__input"
                 placeholder="Please enter a tagline"
-                defaultValue={current?.headline}
+                defaultValue={current.headline}
               />
             </div>
             <div className="edit-modal__input-div">
@@ -210,9 +210,10 @@ export const EditHeaderModal: React.FC<Props> = ({
                 id="marketRole"
                 name="marketRole"
                 className="edit-modal__input"
+                defaultValue={current.role}
               >
-                <option hidden defaultValue={current?.role}>
-                  {current?.role}
+                <option hidden defaultValue={current.role}>
+                  {current.role}
                 </option>
                 <option value="Broker">Broker</option>
                 <option value="Buyer">Buyer</option>
@@ -257,7 +258,7 @@ export const EditHeaderModal: React.FC<Props> = ({
                 name="location"
                 className="edit-modal__input"
                 placeholder="Where are you located?"
-                defaultValue={current?.location}
+                defaultValue={current.location}
               />
             </div>
           </div>
