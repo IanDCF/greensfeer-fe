@@ -135,6 +135,11 @@ const CreateCompany: React.FC = () => {
       banner,
     });
 
+    const required = () => {
+      if(company_name && sector && market_role && location) return true 
+      else return false;
+    };
+
     //get request for company where form input name matches existing company name
     const companies = await getAllCompanies();
     const found = companies.find(
@@ -147,6 +152,7 @@ const CreateCompany: React.FC = () => {
 
     if (!registerCompanySchemaValidation.success) {
       const error = registerCompanySchemaValidation.error.errors;
+      console.log(error)
       return;
     }
 
@@ -160,7 +166,7 @@ const CreateCompany: React.FC = () => {
       banner,
     });
 
-    if (!company_name || sector==="Which sector are you in?" || market_role==="Select market role" || !location) {
+    if (!required()) {
       setFormErrs("Please fill in all required fields");
       return;
     }
@@ -203,11 +209,14 @@ const CreateCompany: React.FC = () => {
         website,
       });
 
+    if (!email || !website) {
+      setFormErrs("Please fill in all required fields");
+      return;
+    }
     if (!registerCompanyDetailValidation.success) {
       const error = registerCompanyDetailValidation.error.errors;
       return;
     }
-
     setNewCompany({
       ...newCompany,
       headline,
@@ -215,12 +224,6 @@ const CreateCompany: React.FC = () => {
       email,
       website,
     });
-
-    if (!email || !website) {
-      // FIXME: the error message does not display
-      setFormErrs("Please fill in all required fields");
-      return;
-    }
 
     setStepTwoDone(true);
     // Perform the necessary actions for form 2 submission
@@ -237,7 +240,7 @@ const CreateCompany: React.FC = () => {
   return (
     <section className="create-company">
       {/* 
-      // FIXME: add upload image thumbnail to inputs to show user successful upload?
+      // TODO: add upload image thumbnail to inputs to show user successful upload?
       <div
         style={{
           backgroundImage: `url(${bannerUrl})`,

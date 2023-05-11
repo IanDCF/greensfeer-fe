@@ -94,7 +94,6 @@ const ListingForm3 = ({ handleSubmit, clickHandler, company }: Props) => {
             />
           </div>
           <div className="create-listing__input-div">
-            {/* FIXME: current back end design doesn't have place for vintage_year */}
             <label
               className="create-listing__label-text"
               htmlFor="vintage_year"
@@ -130,7 +129,6 @@ const ListingForm3 = ({ handleSubmit, clickHandler, company }: Props) => {
           </div>
           <div className="create-listing__price-inputs">
             <div className="create-listing__currency">
-              {/* FIXME: current back end does not have field for currency */}
               <label className="create-listing__label" htmlFor="currency">
                 currency
               </label>
