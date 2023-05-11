@@ -96,6 +96,8 @@ export const EditCompanyHeader: React.FC<Props> = ({
   CompanyData,
   setCompanyData,
 }) => {
+  const sectorText = CompanyData?.sector || "Select a sector";
+  const marketRoleText = CompanyData?.market_role || "Select a role";
   const [update, setUpdate] = useState<Object>();
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -192,7 +194,7 @@ export const EditCompanyHeader: React.FC<Props> = ({
               </label>
               <select id="sector" name="sector" className="edit-modal__input">
                 <option hidden={true} defaultValue={CompanyData?.sector}>
-                  {CompanyData?.sector || "Select a sector"}
+                  {sectorText}
                 </option>
                 <option value="Various Sectors">Various Sectors</option>
                 <option value="Agriculture">Agriculture</option>
@@ -254,7 +256,7 @@ export const EditCompanyHeader: React.FC<Props> = ({
                 className="edit-modal__input"
               >
                 <option hidden defaultValue={CompanyData?.market_role}>
-                  {CompanyData?.market_role || "Select a role"}
+                  {marketRoleText}
                 </option>
                 <option value="Broker">Broker</option>
                 <option value="Buyer">Buyer</option>
