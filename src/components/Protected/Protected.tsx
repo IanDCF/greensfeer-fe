@@ -8,10 +8,7 @@ interface Props {
 
 const Protected = ({ children }: Props): JSX.Element => {
   const { currentUser } = useAuth();
-  if (!currentUser) {
-    return <Navigate to="/" replace />;
-  }
-  return <>{children}</>;
+  return !currentUser ? <Navigate to="/" replace /> : <>{children}</>;
 };
 
 export default Protected;
