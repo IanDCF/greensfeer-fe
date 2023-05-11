@@ -155,6 +155,7 @@ const CompanyForm1 = ({
               id="marketRole"
               name="marketRole"
               className="create-company__input"
+              defaultValue={"Select market role"}
             >
               <option defaultValue={""} disabled>
                 Select market role
