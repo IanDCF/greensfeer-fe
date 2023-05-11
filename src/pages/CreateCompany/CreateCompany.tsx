@@ -135,6 +135,11 @@ const CreateCompany: React.FC = () => {
       banner,
     });
 
+    const required = () => {
+      if(company_name && sector && market_role && location) return true 
+      else return false;
+    };
+
     //get request for company where form input name matches existing company name
     const companies = await getAllCompanies();
     const found = companies.find(
@@ -147,6 +152,7 @@ const CreateCompany: React.FC = () => {
 
     if (!registerCompanySchemaValidation.success) {
       const error = registerCompanySchemaValidation.error.errors;
+      console.log(error)
       return;
     }
 
@@ -160,12 +166,7 @@ const CreateCompany: React.FC = () => {
       banner,
     });
 
-    if (
-      !company_name ||
-      sector === "Which sector are you in?" ||
-      market_role === "Select market role" ||
-      !location
-    ) {
+    if (!required()) {
       setFormErrs("Please fill in all required fields");
       return;
     }
