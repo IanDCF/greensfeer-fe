@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { matchPath, useLocation, useNavigate } from "react-router-dom";
 import "./CreateListing.scss";
 import ListingForm1 from "./ListingForm1";
@@ -48,7 +48,8 @@ const CreateListing = () => {
       navigate("/create-listing/step2");
     }
   };
-  const handleChooseCompany = (e: React.FormEvent<HTMLFormElement>) => {
+  const chooseCompanyCallback = useCallback(
+    (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setCurrentCompany(e.currentTarget.affiliation.value);
     setTimeout(() => {
@@ -56,16 +57,21 @@ const CreateListing = () => {
     }, 1500);
 
     // set company to state here so form can access
-  };
+  },[]
+  )
+  // const handleChooseCompany = (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   setCurrentCompany(e.currentTarget.affiliation.value);
+  //   setTimeout(() => {
+  //     navigate("/create-listing/step1");
+  //   }, 1500);
+
+  //   // set company to state here so form can access
+  // };
 
   // validate post
   useEffect(() => {
     const validateAndPost = async () => {
-      // const affiliation = await getAffiliation(currentUser);
-      // console.log(affiliation);
-      // const company = await getCompany(affiliation.company_id);
-      // console.log(company);
-      // setCurrentCompany(affiliation.company_id);
       // TODO: possible to visit this page with no company created
 
       if (newMarketPost.post_type === "Service") {
@@ -330,7 +336,7 @@ const CreateListing = () => {
   return (
     <section className="create-listing">
       {searchAffiliation && (
-        <AffilationSearch handleSubmit={handleChooseCompany} />
+        <AffilationSearch handleSubmit={chooseCompanyCallback} />
       )}
       {!stepOneDone && createListing1 && (
         <ListingForm1
