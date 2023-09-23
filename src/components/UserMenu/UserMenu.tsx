@@ -1,6 +1,5 @@
 import "./UserMenu.scss";
 import { Link, useNavigate } from "react-router-dom";
-import { auth } from "../../firebase/firebase";
 import { useAuth } from "../../context/AuthProvider/AuthProvider";
 
 const UserMenu = () => {

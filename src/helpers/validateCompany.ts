@@ -9,7 +9,6 @@ const validateCompany = async (company: TNewCompany) => {
   }
   if (companyValidation.success) {
     try {
-      //send post req?
       companyCreator(company)
         .then((res) => {
           return res.data.message;

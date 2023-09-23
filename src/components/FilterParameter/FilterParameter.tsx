@@ -1,5 +1,4 @@
 import "./FilterParameter.scss";
-import { BsChevronDown } from "react-icons/bs";
 import { AiOutlineClose } from "react-icons/ai";
 interface Props {
   label: string;

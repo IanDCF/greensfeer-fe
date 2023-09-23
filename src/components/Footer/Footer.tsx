@@ -12,47 +12,6 @@ const Footer = (): JSX.Element => {
   return (
     <footer className="footer-container">
       <div className="footer">
-        {/* <div className="footer__links">
-          <div className="footer__links-obj">
-            <div className="footer__links-title">About Us</div>
-            <a
-              className="footer__link"
-              href="https://www.youtube.com/@greensfeer/playlists"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Mission
-            </a>
-          </div>
-          <div className="footer__links-obj">
-            <div className="footer__links-title">Stakeholders</div>
-            <a
-              className="footer__link"
-              href="https://www.youtube.com/@greensfeer/playlists"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Product
-            </a>
-          </div>
-          <div className="footer__links-obj">
-            <div className="footer__links-title">Resources</div>
-            <a
-              className="footer__link"
-              href="https://www.youtube.com/@greensfeer/playlists"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Blog
-            </a>
-          </div>
-          <div className="footer__links-obj">
-            <div className="footer__links-title">Contact</div>
-            <a className="footer__link" href="mailto:info@greensfeer.com">
-              info@greensfeer.com
-            </a>
-          </div>
-        </div> */}
         <div className="footer__div">
           <div className="footer__logo">
             <Link to="/" onClick={toggleHome}>

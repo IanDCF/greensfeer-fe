@@ -1,4 +1,3 @@
-import axios from "axios";
 import { IUser } from "customTypes";
 import {
   createUserWithEmailAndPassword,

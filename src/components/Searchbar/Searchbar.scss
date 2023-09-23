@@ -3,9 +3,6 @@
 
 .search {
   border: 0.25rem solid color.$romansilver;
-  // background-color: rgb(231, 237, 241);
-  // background-color: color.$mint;
-  // background-color: #eef2fb;
   height: 9rem;
   border-radius: 15rem;
   padding: 0 4rem;
@@ -36,9 +33,6 @@
     font-weight: 300;
     width: 100%;
     color: color.$charcoal;
-    // background-color: rgb(231, 237, 241);
-    // background-color: color.$mint;
-    // background-color: #eef2fb;
   }
 
   &__input::placeholder {

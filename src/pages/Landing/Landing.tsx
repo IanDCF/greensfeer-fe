@@ -3,7 +3,7 @@ import Hero from "../../components/Hero/Hero";
 import Navbar from "../../components/Navbar/Navbar";
 import NavMenu from "../../components/NavMenu/NavMenu";
 import Info from "../../components/Info/Info";
-import ProductInfo from "../../data/InfoData.json";
+import ProductInfo from "../../data/LandingPageData.json";
 import Footer from "../../components/Footer/Footer";
 
 interface LandingProps {

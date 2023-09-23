@@ -2,17 +2,15 @@ import "./MemberProfile.scss";
 import { ProfileAbout } from "../../components/ProfileAbout/ProfileAbout";
 import { ProfileAffiliations } from "../../components/ProfileAffiliations/ProfileAffiliations";
 import { ProfileHeader } from "../../components/ProfileHeader/ProfileHeader";
-import { useAuth } from "../../context/AuthProvider/AuthProvider";
 import axios from "axios";
-import { useState, useEffect, MouseEventHandler } from "react";
+import { useState, useEffect } from "react";
 import { IUser } from "customTypes";
-import PromptModal from "../../components/PromptModal/PromptModal";
 import { useParams } from "react-router-dom";
 
 export const MemberProfile: React.FC = () => {
   const URL_BASE = import.meta.env.VITE_REACT_APP_BASE_URL;
   const [profile, setProfile] = useState<IUser>();
-  const { user_id } = useParams(); // Get userId from the URL path
+  const { user_id } = useParams();
 
   useEffect(() => {
     const fetchProfile = async () => {

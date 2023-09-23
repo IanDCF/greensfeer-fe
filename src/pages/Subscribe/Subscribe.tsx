@@ -144,7 +144,10 @@ const SubscribePage: React.FC = () => {
           <button className="subscribe__form-button" type="submit">
             Continue
           </button>
-          <a href="mailto:info@greensfeer.com" className="subscribe__form-link">
+          <a
+            href="mailto:greensfeer@gmail.com"
+            className="subscribe__form-link"
+          >
             Trouble Subscribeing? Contact Us
           </a>
         </form>

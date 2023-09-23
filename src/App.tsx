@@ -77,7 +77,7 @@ const App = () => {
             <Protected currentUser={currentUser}>
               <Navigate to="bf626374-4236-451f-874b-f61383d9361e" />
             </Protected>
-          } // Redirect to default URL
+          }
         />
         <Route
           path="/marketplace/:listing_id"
