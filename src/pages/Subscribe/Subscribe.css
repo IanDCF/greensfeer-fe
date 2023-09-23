@@ -1,0 +1,261 @@
+/* Primary Colors */
+/* From Pallete */
+/* Secondary Colors */
+/* From Pallete 2*/
+/* media query for mobile */
+/* media query for tablet */
+/* media query for desktop */
+/* Thin */
+@font-face {
+  font-family: "Encode Sans Expanded";
+  src: url("/src/assets/fonts/encode-sans-expanded-100.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+}
+/* Extar Light */
+@font-face {
+  font-family: "Encode Sans Expanded";
+  src: url("/src/assets/fonts/encode-sans-expanded-200.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal;
+}
+/* Light */
+@font-face {
+  font-family: "Encode Sans Expanded";
+  src: url("/src/assets/fonts/encode-sans-expanded-300.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+/* Regular */
+@font-face {
+  font-family: "Encode Sans Expanded";
+  src: url("/src/assets/fonts/encode-sans-expanded-400.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+/* Medium */
+@font-face {
+  font-family: "Encode Sans Expanded";
+  src: url("/src/assets/fonts/encode-sans-expanded-500.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+/* Semi Bold */
+@font-face {
+  font-family: "Encode Sans Expanded";
+  src: url("/src//assets/fonts/encode-sans-expanded-600.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+/* Bold */
+@font-face {
+  font-family: "Encode Sans Expanded";
+  src: url("/src/assets/fonts/encode-sans-expanded-700.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+/* Extra Bold */
+@font-face {
+  font-family: "Encode Sans Expanded";
+  src: url("/src/assets/fonts/encode-sans-expanded-800.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+/* Black */
+@font-face {
+  font-family: "Encode Sans Expanded";
+  src: url("/src/assets/fonts/encode-sans-expanded-900.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+.subscribe {
+  background-color: #07020d;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.subscribe bp.mobile {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.subscribe bp.tablet {
+  overflow: scroll;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+.subscribe__success {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+  height: 100vh;
+  background: rgba(19, 24, 44, 0.8);
+  width: 100vw;
+  overflow: hidden;
+}
+.subscribe__success img {
+  overflow: hidden;
+  border-radius: 15px;
+}
+@media only screen and (min-width: 1024px) {
+  .subscribe__success img {
+    width: 160rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .subscribe__success img {
+    width: 160rem;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .subscribe__success img {
+    width: 80rem;
+  }
+}
+.subscribe__logo {
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: center;
+  height: 20rem;
+  width: 100%;
+  padding: 0 6rem;
+  max-width: 275rem;
+}
+.subscribe__wrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 20rem;
+  color: #ffffff;
+  font-size: 5rem;
+  padding: 0 6rem;
+  max-width: 275rem;
+  height: 100vh;
+}
+@media only screen and (max-width: 767px) {
+  .subscribe__wrapper {
+    justify-content: center;
+    min-height: 150rem;
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .subscribe__wrapper {
+    min-height: 175rem;
+    justify-content: center;
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .subscribe__wrapper {
+    min-height: none;
+    justify-content: center;
+    width: 100%;
+  }
+}
+.subscribe__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 15px;
+  margin-bottom: 30rem;
+  max-width: 130rem;
+}
+@media only screen and (max-width: 767px) {
+  .subscribe__form {
+    margin-top: 8rem;
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .subscribe__form {
+    margin-top: 8rem;
+    width: 100%;
+    padding: 8rem 10rem;
+    border: 0.1px solid rgba(1, 191, 112, 0.773);
+    box-shadow: rgba(1, 191, 112, 0.405) 0px 22px 70px 4px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .subscribe__form {
+    margin-top: none;
+  }
+}
+.subscribe__form-title-div {
+  display: flex;
+  justify-content: center;
+}
+.subscribe__form-title {
+  font-weight: 500;
+  margin: 0 0 7rem 0;
+}
+@media only screen and (max-width: 767px) {
+  .subscribe__form-title {
+    font-size: 6.5rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .subscribe__form-title {
+    font-size: 7.5rem;
+  }
+}
+.subscribe__form-label {
+  margin: 0 0 1rem 5rem;
+}
+@media only screen and (max-width: 767px) {
+  .subscribe__form-label {
+    font-size: 3.5rem;
+    font-weight: 400;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .subscribe__form-label {
+    font-size: 4rem;
+    font-weight: 400;
+  }
+}
+.subscribe__form-input {
+  border-radius: 20px;
+  padding: 2rem 4rem;
+  border: 3px solid #01bf71;
+  margin-bottom: 4rem;
+}
+.subscribe__form-input:focus {
+  outline-color: purple;
+  outline-width: 3px;
+}
+.subscribe__form-button {
+  background-color: #01bf71;
+  color: #ffffff;
+  font-size: 5rem;
+  padding: 2rem 3rem;
+  border-radius: 20px;
+  border: none;
+  margin: 3rem 0 3rem 0;
+  transition: 0.2s ease-in-out;
+}
+.subscribe__form-button:hover {
+  background-color: #07020d;
+  color: #01bf71;
+  outline: 3px solid #01bf71;
+  transition: 0.2s ease-in-out;
+}
+.subscribe__form-link {
+  text-align: center;
+  text-decoration: none;
+  color: #01bf71;
+  font-size: 3.5rem;
+}
+.subscribe__form-link:hover {
+  color: purple;
+}/*# sourceMappingURL=Subscribe.css.map */

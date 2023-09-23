@@ -1,0 +1,26 @@
+/* Primary Colors */
+/* From Pallete */
+/* Secondary Colors */
+/* From Pallete 2*/
+/* media query for mobile */
+/* media query for tablet */
+/* media query for desktop */
+.network-container {
+  margin-top: 12rem;
+}
+
+.network {
+  padding: 3rem 3rem 0 3rem;
+  display: flex;
+  flex-direction: column;
+}
+.network__contacts {
+  display: flex;
+  flex-direction: column;
+}
+.network__title {
+  font-size: 3.5rem;
+  font-weight: 500;
+  color: #343434;
+  margin-bottom: 1rem;
+}/*# sourceMappingURL=Network.css.map */

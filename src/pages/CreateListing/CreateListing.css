@@ -1,0 +1,391 @@
+/* Primary Colors */
+/* From Pallete */
+/* Secondary Colors */
+/* From Pallete 2*/
+/* media query for mobile */
+/* media query for tablet */
+/* media query for desktop */
+.create-listing {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+@media only screen and (min-width: 1024px) {
+  .create-listing {
+    background-image: url("../../assets/images/trees.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+  .create-listing::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+.create-listing__error {
+  font-size: 4rem;
+}
+.create-listing__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+}
+@media only screen and (max-width: 767px) {
+  .create-listing__form {
+    width: 100%;
+    height: 100vh;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .create-listing__form {
+    width: 95rem;
+    height: 175rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .create-listing__form {
+    position: relative;
+    width: 146rem;
+    height: 165.5rem;
+    border-radius: 8px;
+  }
+}
+.create-listing__back-btn {
+  position: absolute;
+}
+@media only screen and (max-width: 767px) {
+  .create-listing__back-btn {
+    font-size: 6rem;
+    top: 2rem;
+    left: 2.5rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .create-listing__back-btn {
+    font-size: 8rem;
+    top: 6rem;
+    left: 2.5rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .create-listing__back-btn {
+    font-size: 8rem;
+    top: 2rem;
+    left: 2rem;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .create-listing__logo {
+    margin-bottom: 2.5rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .create-listing__logo {
+    margin-bottom: 10rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .create-listing__logo {
+    margin-bottom: 3.5rem;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .create-listing__logo-img {
+    width: 9.25rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .create-listing__logo-img {
+    width: 28rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .create-listing__logo-img {
+    width: 9.25rem;
+  }
+}
+.create-listing__heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 300;
+  text-align: center;
+}
+@media only screen and (max-width: 767px) {
+  .create-listing__heading {
+    font-size: 4.5rem;
+    width: 62rem;
+    margin-bottom: 8rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .create-listing__heading {
+    font-size: 5.5rem;
+    width: 70rem;
+    margin-bottom: 14rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .create-listing__heading {
+    font-size: 5rem;
+    width: 62rem;
+    margin-bottom: 8rem;
+  }
+}
+.create-listing__img-upload, .create-listing__price-inputs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+@media only screen and (max-width: 767px) {
+  .create-listing__img-upload, .create-listing__price-inputs {
+    margin-bottom: 5rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .create-listing__img-upload, .create-listing__price-inputs {
+    margin-bottom: 10rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .create-listing__img-upload, .create-listing__price-inputs {
+    margin-bottom: 5rem;
+  }
+}
+.create-listing__company-logo, .create-listing__currency, .create-listing__company-banner, .create-listing__price {
+  border: 1.25px solid #01bf71;
+  border-radius: 2.5rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+@media only screen and (max-width: 767px) {
+  .create-listing__company-logo, .create-listing__currency, .create-listing__company-banner, .create-listing__price {
+    width: 18.25rem;
+    height: 15.75rem;
+    margin-right: 3rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .create-listing__company-logo, .create-listing__currency, .create-listing__company-banner, .create-listing__price {
+    width: 35.5rem;
+    height: 18rem;
+    margin-right: 7rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .create-listing__company-logo, .create-listing__currency, .create-listing__company-banner, .create-listing__price {
+    width: 18.25rem;
+    height: 15.75rem;
+    margin-right: 3rem;
+  }
+}
+.create-listing__company-banner, .create-listing__price {
+  margin-right: 0;
+}
+@media only screen and (max-width: 767px) {
+  .create-listing__company-banner, .create-listing__price {
+    width: 39.25rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .create-listing__company-banner, .create-listing__price {
+    width: 52rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .create-listing__company-banner, .create-listing__price {
+    width: 39.25rem;
+  }
+}
+.create-listing__input-fields {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 3rem;
+}
+.create-listing__label, .create-listing__label-text {
+  position: absolute;
+  background-color: #ffffff;
+  padding: 0 0.75rem;
+}
+@media only screen and (max-width: 767px) {
+  .create-listing__label, .create-listing__label-text {
+    top: -2rem;
+    left: 2rem;
+    font-size: 2.5rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .create-listing__label, .create-listing__label-text {
+    top: -2.5rem;
+    left: 2rem;
+    font-size: 3.2rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .create-listing__label, .create-listing__label-text {
+    top: -2rem;
+    left: 2rem;
+    font-size: 2.5rem;
+  }
+}
+.create-listing__text-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.create-listing__input-div, .create-listing__input-div-textarea {
+  position: relative;
+  border: 1px solid #01bf71;
+  border-radius: 12rem;
+  display: flex;
+  align-items: center;
+  padding: 0 4rem 0 6rem;
+}
+@media only screen and (max-width: 767px) {
+  .create-listing__input-div, .create-listing__input-div-textarea {
+    height: 11rem;
+    width: 61rem;
+    margin-bottom: 4rem;
+  }
+  .create-listing__input-div:last-child, .create-listing__input-div-textarea:last-child {
+    margin-bottom: 2rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .create-listing__input-div, .create-listing__input-div-textarea {
+    height: 15rem;
+    width: 100%;
+    margin-bottom: 8rem;
+  }
+  .create-listing__input-div:last-child, .create-listing__input-div-textarea:last-child {
+    margin-bottom: 4rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .create-listing__input-div, .create-listing__input-div-textarea {
+    height: 11rem;
+    width: 61rem;
+    margin-bottom: 4rem;
+  }
+}
+.create-listing__input-div-textarea {
+  border-radius: 5rem;
+  height: 30rem;
+}
+@media only screen and (max-width: 767px) {
+  .create-listing__label-text {
+    left: 6rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .create-listing__label-text {
+    left: 6rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .create-listing__label-text {
+    left: 6rem;
+  }
+}
+.create-listing__input, .create-listing__offering, .create-listing__input-textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+  color: #6d7275;
+  background-color: none;
+}
+@media only screen and (max-width: 767px) {
+  .create-listing__input, .create-listing__offering, .create-listing__input-textarea {
+    font-size: 3.5rem;
+    font-weight: 300;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .create-listing__input, .create-listing__offering, .create-listing__input-textarea {
+    font-size: 4rem;
+    font-weight: 300;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .create-listing__input, .create-listing__offering, .create-listing__input-textarea {
+    font-size: 3.5rem;
+    font-weight: 300;
+  }
+}
+.create-listing__input-textarea {
+  resize: none;
+  width: 95%;
+  height: 80%;
+  display: flex;
+  align-items: center;
+}
+.create-listing__offering {
+  color: #373f51;
+}
+.create-listing__price-inputs {
+  margin-bottom: 3.5rem;
+}
+.create-listing__currency {
+  padding: 0 2rem;
+}
+@media only screen and (max-width: 767px) {
+  .create-listing__currency {
+    width: 28.75rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .create-listing__currency {
+    width: 30rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .create-listing__currency {
+    width: 28.75rem;
+  }
+}
+.create-listing__price {
+  padding: 0 2rem;
+}
+@media only screen and (max-width: 767px) {
+  .create-listing__price {
+    width: 28.75rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .create-listing__price {
+    width: 60rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .create-listing__price {
+    width: 28.75rem;
+  }
+}
+.create-listing__required-text {
+  font-size: 3rem;
+  margin-bottom: 5rem;
+}
+.create-listing__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}/*# sourceMappingURL=CreateListing.css.map */

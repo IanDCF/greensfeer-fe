@@ -1,0 +1,53 @@
+/* Primary Colors */
+/* From Pallete */
+/* Secondary Colors */
+/* From Pallete 2*/
+/* media query for mobile */
+/* media query for tablet */
+/* media query for desktop */
+.user-menu {
+  background-color: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+@media only screen and (max-width: 767px) {
+  .user-menu {
+    font-size: 4rem;
+    width: 40rem;
+    padding: 2rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .user-menu {
+    font-size: 4.1rem;
+    width: 40rem;
+    padding: 2.5rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .user-menu {
+    font-size: 4.1rem;
+    width: 40rem;
+    padding: 2.5rem;
+  }
+}
+.user-menu__item {
+  text-decoration: none;
+  color: #343434;
+  text-align: center;
+  border-bottom: 2px solid #eef6ef;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.user-menu__item:hover {
+  color: #01bf71;
+}
+.user-menu__item:last-child {
+  border-bottom: none;
+  padding-bottom: 2rem;
+}/*# sourceMappingURL=UserMenu.css.map */

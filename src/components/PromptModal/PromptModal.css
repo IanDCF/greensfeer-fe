@@ -1,0 +1,141 @@
+/* Primary Colors */
+/* From Pallete */
+/* Secondary Colors */
+/* From Pallete 2*/
+/* media query for mobile */
+/* media query for tablet */
+/* media query for desktop */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(19, 24, 44, 0.7);
+  z-index: 11;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3.5rem;
+}
+.modal__card {
+  position: relative;
+  background-color: #ffffff;
+  border-radius: 2.5rem;
+  display: flex;
+  flex-direction: column;
+}
+@media only screen and (max-width: 767px) {
+  .modal__card {
+    padding: 4rem;
+    max-width: 90rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .modal__card {
+    padding: 4rem;
+    max-width: 100rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .modal__card {
+    padding: 5rem;
+    max-width: 115rem;
+  }
+}
+.modal__close {
+  position: absolute;
+  top: 2.5rem;
+  right: 2.5rem;
+  color: #343434;
+}
+@media only screen and (max-width: 767px) {
+  .modal__close {
+    font-size: 5rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .modal__close {
+    font-size: 6rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .modal__close {
+    font-size: 6rem;
+  }
+}
+.modal__text {
+  text-align: center;
+  width: 100%;
+  color: #343434;
+}
+@media only screen and (max-width: 767px) {
+  .modal__text {
+    margin-top: 5.5rem;
+    line-height: 5.5rem;
+    font-size: 4.5rem;
+    margin-bottom: 4.5rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .modal__text {
+    margin-top: 7rem;
+    line-height: 6.5rem;
+    font-size: 5rem;
+    margin-bottom: 5.5rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .modal__text {
+    margin-top: 6rem;
+    line-height: 7rem;
+    font-size: 5.5rem;
+    margin-bottom: 6.5rem;
+  }
+}
+.modal__controls {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.modal__decline, .modal__accept {
+  color: #343434;
+  border: 1px solid #01bf71;
+  text-decoration: none;
+  margin: 0;
+  white-space: nowrap;
+  outline: none;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+@media only screen and (max-width: 767px) {
+  .modal__decline, .modal__accept {
+    font-size: 4rem;
+    padding: 2.5rem 4rem;
+    margin-bottom: 2rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .modal__decline, .modal__accept {
+    font-size: 4.5rem;
+    padding: 2.5rem 5.5rem;
+    margin-bottom: 3rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .modal__decline, .modal__accept {
+    font-size: 4.5rem;
+    padding: 2.5rem 5.5rem;
+    margin-bottom: 3rem;
+  }
+}
+.modal__accept {
+  color: #343434;
+  border: none;
+  background-color: #01bf71;
+}/*# sourceMappingURL=PromptModal.css.map */

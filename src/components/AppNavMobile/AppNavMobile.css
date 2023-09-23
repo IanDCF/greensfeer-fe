@@ -1,0 +1,66 @@
+/* Primary Colors */
+/* From Pallete */
+/* Secondary Colors */
+/* From Pallete 2*/
+/* media query for mobile */
+/* media query for tablet */
+/* media query for desktop */
+.nav-mobile-bottom {
+  height: 14rem;
+  display: flex;
+  padding: 1.5rem 2.3rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 10;
+  background-color: #ffffff;
+}
+
+.nav-mobile {
+  display: flex;
+  padding: 2.5rem 3.5rem 1.5rem 3.5rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  background-color: #ffffff;
+}
+.nav-mobile__wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+.nav-mobile__link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+}
+.nav-mobile__img {
+  width: 9rem;
+  height: 9rem;
+  border-radius: 10rem;
+  font-size: 8.5rem;
+  color: #373f51;
+}
+.nav-mobile__user-menu {
+  position: absolute;
+  top: 14rem;
+  right: 3.5rem;
+}
+.nav-mobile__icon, .nav-mobile__icon-newmsg {
+  font-size: 8.75rem;
+  color: #373f51;
+}
+.nav-mobile__icon-newmsg {
+  font-size: 6rem;
+}
+.nav-mobile__searchbar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}/*# sourceMappingURL=AppNavMobile.css.map */

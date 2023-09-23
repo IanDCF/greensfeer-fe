@@ -1,0 +1,18 @@
+/* Primary Colors */
+/* From Pallete */
+/* Secondary Colors */
+/* From Pallete 2*/
+/* media query for mobile */
+/* media query for tablet */
+/* media query for desktop */
+.image-container {
+  display: flex;
+  width: 100%;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin: 0;
+}/*# sourceMappingURL=InfoImg.css.map */

@@ -1,0 +1,305 @@
+/* Primary Colors */
+/* From Pallete */
+/* Secondary Colors */
+/* From Pallete 2*/
+/* media query for mobile */
+/* media query for tablet */
+/* media query for desktop */
+.header {
+  background-color: #eef6ef;
+  width: 100%;
+  border-radius: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+@media only screen and (max-width: 767px) {
+  .header {
+    margin-bottom: 2.5rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .header {
+    margin-bottom: 3rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .header {
+    margin-bottom: 3rem;
+    max-width: 1024px;
+  }
+}
+.header__banner {
+  background-color: #eef6ef;
+  border-radius: 0rem 0rem 2.5rem 2.5rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+}
+@media only screen and (max-width: 767px) {
+  .header__banner {
+    max-height: 35rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .header__banner {
+    max-height: 45rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .header__banner {
+    max-height: 50rem;
+  }
+}
+.header__details {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+@media only screen and (max-width: 767px) {
+  .header__details {
+    padding: 1.5rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .header__details {
+    padding: 2.5rem 3rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .header__details {
+    padding: 2.5rem 4.5rem;
+  }
+}
+.header__edit-btn {
+  position: absolute;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #373f51;
+  cursor: pointer;
+}
+@media only screen and (max-width: 767px) {
+  .header__edit-btn {
+    top: 1.5rem;
+    right: 2rem;
+    width: 5rem;
+    height: 5rem;
+    font-size: 4rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .header__edit-btn {
+    top: 3rem;
+    right: 4rem;
+    width: 6rem;
+    height: 6rem;
+    font-size: 4.5rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .header__edit-btn {
+    top: 3rem;
+    right: 4rem;
+    width: 7.5rem;
+    height: 7.5rem;
+    font-size: 4.5rem;
+  }
+}
+.header__photo, .header__photo-icon {
+  border-radius: 50%;
+  position: relative;
+}
+@media only screen and (max-width: 767px) {
+  .header__photo, .header__photo-icon {
+    width: 19.5rem;
+    height: 19.5rem;
+    margin-right: 2rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .header__photo, .header__photo-icon {
+    width: 27.5rem;
+    height: 27.5rem;
+    margin-right: 4.5rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .header__photo, .header__photo-icon {
+    width: 35rem;
+    height: 35rem;
+    margin-right: 5rem;
+  }
+}
+.header__photo-icon {
+  color: #373f51;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media only screen and (max-width: 767px) {
+  .header__photo-icon {
+    font-size: 19.5rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .header__photo-icon {
+    font-size: 27.5rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .header__photo-icon {
+    font-size: 35rem;
+  }
+}
+.header__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #343434;
+}
+.header__name {
+  margin: 0;
+}
+@media only screen and (max-width: 767px) {
+  .header__name {
+    font-size: 4.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .header__name {
+    font-size: 7rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .header__name {
+    font-size: 7rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+}
+.header__headline {
+  margin: 0;
+}
+@media only screen and (max-width: 767px) {
+  .header__headline {
+    font-size: 3.3rem;
+    font-weight: 300;
+    margin-bottom: 0.75rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .header__headline {
+    font-size: 4rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .header__headline {
+    font-size: 4rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+}
+.header__location {
+  margin: 0;
+}
+@media only screen and (max-width: 767px) {
+  .header__location {
+    font-size: 2.8rem;
+    font-weight: 200;
+    margin-bottom: 0.5rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .header__location {
+    font-size: 3.3rem;
+    font-weight: 200;
+    margin-bottom: 0.75rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .header__location {
+    font-size: 3.3rem;
+    font-weight: 200;
+    margin-bottom: 0.75rem;
+  }
+}
+.header__connections {
+  margin: 0;
+  color: #01bf71;
+}
+@media only screen and (max-width: 767px) {
+  .header__connections {
+    font-size: 2.7rem;
+    font-weight: 400;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .header__connections {
+    font-size: 3rem;
+    font-weight: 400;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .header__connections {
+    font-size: 3rem;
+    font-weight: 400;
+  }
+}
+.header__disclaimer {
+  display: flex;
+  align-items: center;
+}
+.header__disclaimer-icon {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+  font-size: 3.5rem;
+  cursor: pointer;
+}
+.header__disclaimer-icon:hover {
+  color: #373f51;
+}
+.header__disclaimer-modal {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+  position: absolute;
+  background-color: #ffffff;
+  padding: 4rem;
+  border-radius: 2.5rem;
+  z-index: 2;
+  letter-spacing: 0.3px;
+}
+@media only screen and (max-width: 767px) {
+  .header__disclaimer-modal {
+    font-size: 3rem;
+    line-height: 4.5rem;
+    bottom: -102rem;
+    width: 73rem;
+    margin: auto 0;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .header__disclaimer-modal {
+    font-size: 3rem;
+    line-height: 5rem;
+    width: 100rem;
+    bottom: -74.5rem;
+    left: 35rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .header__disclaimer-modal {
+    font-size: 3rem;
+    line-height: 5rem;
+    width: 150rem;
+    bottom: -51rem;
+    left: 45rem;
+  }
+}/*# sourceMappingURL=ProfileHeader.css.map */

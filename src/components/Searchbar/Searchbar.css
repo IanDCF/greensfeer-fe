@@ -1,0 +1,199 @@
+/* Primary Colors */
+/* From Pallete */
+/* Secondary Colors */
+/* From Pallete 2*/
+/* media query for mobile */
+/* media query for tablet */
+/* media query for desktop */
+.search {
+  border: 0.25rem solid #828a95;
+  height: 9rem;
+  border-radius: 15rem;
+  padding: 0 4rem;
+  display: flex;
+  align-items: center;
+}
+@media only screen and (max-width: 767px) {
+  .search {
+    width: 94%;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .search {
+    position: relative;
+    width: 95%;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .search {
+    position: relative;
+    width: 95%;
+  }
+}
+.search__icon {
+  font-size: 4rem;
+  color: #828a95;
+  margin-right: 0.75rem;
+}
+.search__input {
+  border: none;
+  outline: none;
+  font-size: 3.5rem;
+  font-weight: 300;
+  width: 100%;
+  color: #373f51;
+}
+.search__input::-moz-placeholder {
+  color: #828a95;
+}
+.search__input::placeholder {
+  color: #828a95;
+}
+.search__dropdown {
+  position: absolute;
+  background-color: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 2.5rem;
+  padding: 1rem 2rem;
+}
+@media only screen and (max-width: 767px) {
+  .search__dropdown {
+    top: 14rem;
+    left: 3.5rem;
+    right: 3.5rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .search__dropdown {
+    top: 12rem;
+    left: 0;
+    right: 0;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .search__dropdown {
+    width: 100%;
+    top: 12rem;
+    left: 0;
+    right: 0;
+  }
+}
+.search__link {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid #eef6ef;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+  text-decoration: none;
+}
+.search__link:last-child {
+  border-bottom: none;
+  padding-bottom: 2rem;
+}
+.search__photo {
+  display: flex;
+  align-items: center;
+  color: #373f51;
+  margin-right: 2rem;
+  border-radius: 50%;
+}
+@media only screen and (max-width: 767px) {
+  .search__photo {
+    font-size: 10rem;
+    width: 10rem;
+    height: 10rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .search__photo {
+    font-size: 11rem;
+    width: 11rem;
+    height: 11rem;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .search__photo {
+    font-size: 11rem;
+    width: 11rem;
+    height: 11rem;
+  }
+}
+.search__photo-img {
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+  margin-right: 2rem;
+}
+@media only screen and (max-width: 767px) {
+  .search__photo-img {
+    width: 10rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .search__photo-img {
+    width: 12rem;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .search__photo-img {
+    width: 12rem;
+  }
+}
+.search__text {
+  display: flex;
+  align-items: center;
+}
+.search__name {
+  color: #343434;
+  font-weight: 500;
+  white-space: nowrap; /* Prevents text from wrapping to new lines */
+  overflow: hidden; /* Hides any overflowing text */
+  text-overflow: ellipsis; /* Adds an ellipsis at the end of the truncated text */
+}
+@media only screen and (max-width: 767px) {
+  .search__name {
+    font-size: 3.75rem;
+    max-width: 45rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .search__name {
+    font-size: 4rem;
+    max-width: 60rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .search__name {
+    max-width: 90rem;
+    font-size: 4rem;
+  }
+}
+.search__separator {
+  display: flex;
+  align-items: center;
+  margin: 0 0.5rem;
+  font-size: 3rem;
+  color: #828a95;
+}
+.search__headline, .search__listing-type {
+  color: #6d7275;
+  font-weight: 300;
+  white-space: nowrap; /* Prevents text from wrapping to new lines */
+  overflow: hidden; /* Hides any overflowing text */
+  text-overflow: ellipsis; /* Adds an ellipsis at the end of the truncated text */
+}
+@media only screen and (max-width: 767px) {
+  .search__headline, .search__listing-type {
+    font-size: 3.4rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .search__headline, .search__listing-type {
+    font-size: 3.5rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .search__headline, .search__listing-type {
+    font-size: 3.75rem;
+  }
+}/*# sourceMappingURL=Searchbar.css.map */

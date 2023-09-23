@@ -1,0 +1,26 @@
+/* Primary Colors */
+/* From Pallete */
+/* Secondary Colors */
+/* From Pallete 2*/
+/* media query for mobile */
+/* media query for tablet */
+/* media query for desktop */
+.filter-parameter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #373f51;
+  border-radius: 10rem;
+  padding: 2rem 4rem 2.5rem 4rem;
+  min-width: 25rem;
+  font-size: 3.75rem;
+  white-space: nowrap;
+}
+.filter-parameter__icon {
+  font-size: 4rem;
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+  margin-top: 0.25rem;
+  justify-content: center;
+}/*# sourceMappingURL=FilterParameter.css.map */
