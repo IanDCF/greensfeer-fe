@@ -35,9 +35,6 @@ const MarketplaceSelected: React.FC<Post> = ({ Post, clickHandler }) => {
       month: "short",
       day: "numeric",
       year: "numeric",
-      // hour: "numeric",
-      // minute: "numeric",
-      // hour12: true,
     };
     return date.toLocaleString("en-US", options);
   };
@@ -116,13 +113,6 @@ const MarketplaceSelected: React.FC<Post> = ({ Post, clickHandler }) => {
                   information provided on these profiles before making any
                   decisions based on it.
                 </p>
-                {/* <p>
-                  Greensfeer does not provide any consulting, financing,
-                  auditing, or other services listed on the platform. Users are
-                  solely responsible for conducting their own due diligence and
-                  engaging in any business transactions with the companies
-                  listed on Greensfeer.
-                </p> */}
               </div>
             )}
             <div className="marketplace-select__ep-type">

@@ -1,7 +1,6 @@
 import "./AppNavMobile.scss";
 import { useState } from "react";
 import Searchbar from "../Searchbar/Searchbar";
-import PlaceholderPhoto from "../../assets/images/placeholder-photo.png";
 import { Link, useLocation } from "react-router-dom";
 import MarketplaceSearch from "../Searchbar/MarketplaceSearch";
 import Logo from "../../assets/logos/greensfeer-logo.png";
@@ -9,10 +8,6 @@ import { FaUserCircle } from "react-icons/fa";
 import UserMenu from "../UserMenu/UserMenu";
 
 const AppNavMobile: React.FC = () => {
-  const photoStyle = {
-    background: `url(${PlaceholderPhoto}) center/cover no-repeat`,
-  };
-
   const location = useLocation();
   const isMarketplacePath = location.pathname.includes("/marketplace");
 
@@ -34,8 +29,6 @@ const AppNavMobile: React.FC = () => {
           {isMarketplacePath ? <MarketplaceSearch /> : <Searchbar />}
         </div>
         <div className="nav-mobile__link">
-          {/* render conditionally */}
-          {/* <div className="nav-mobile__img" style={photoStyle} /> */}
           <div className="nav-mobile__img" onClick={toggleUserMenu}>
             <FaUserCircle />
             {showUserMenu && (

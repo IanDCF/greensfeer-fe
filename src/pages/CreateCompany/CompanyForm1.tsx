@@ -25,7 +25,7 @@ const CompanyForm1 = ({
   profileUrl,
   bannerUrl,
 }: Props) => {
-  // FIXME: update to controlled form inputs; set to state so values are not missing on submit
+  // TODO: update to controlled form inputs; set to state so values are not missing on submit
   return (
     <form className="create-company__form" onSubmit={handleSubmit}>
       <div className="create-company__logo">
@@ -94,7 +94,10 @@ const CompanyForm1 = ({
           <div className="create-company__input-div">
             <label className="create-company__label-text">sector*</label>
             <select id="sector" name="sector" className="create-company__input">
-              <option defaultValue={""} selected disabled>
+              <option defaultValue={""} disabled>
+                Which sector are you in?
+              </option>
+              <option defaultValue={""} hidden>
                 Which sector are you in?
               </option>
               <option value="Various Sectors">Various Sectors</option>
@@ -152,9 +155,13 @@ const CompanyForm1 = ({
               id="marketRole"
               name="marketRole"
               className="create-company__input"
+              defaultValue={"Select market role"}
             >
-              <option defaultValue={"Null"} selected disabled>
+              <option defaultValue={""} disabled>
                 Select market role
+              </option>
+              <option value="" hidden>
+                Select Market Role
               </option>
               <option value="Broker">Broker</option>
               <option value="Buyer">Buyer</option>

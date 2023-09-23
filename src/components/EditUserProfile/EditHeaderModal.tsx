@@ -1,8 +1,7 @@
-import React, { MouseEventHandler, useState, FormEventHandler } from "react";
+import React, { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { BsCamera } from "react-icons/bs";
 import ControlButton from "../../components/ControlButtons/ControlButton";
-import { BsFillCheckCircleFill } from "react-icons/bs";
 import "./EditModal.scss";
 import { IUser } from "customTypes";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
@@ -118,11 +117,6 @@ export const EditHeaderModal: React.FC<Props> = ({
         <div className="edit-modal__input-fields">
           <div className="edit-modal__img-upload">
             <div className="edit-modal__pic1">
-              {/* {profileUrl && (
-                <div className="edit-modal__upload-check">
-                  <BsFillCheckCircleFill />
-                </div>
-              )} */}
               <label htmlFor="profilePic" className="edit-modal__label">
                 profile picture
               </label>
@@ -134,17 +128,11 @@ export const EditHeaderModal: React.FC<Props> = ({
                 id="profilePic"
                 name="profilePic"
                 accept="image/*"
-                // onChange={handlePic}
                 style={{ opacity: 0 }}
                 className="edit-modal__input-file"
               />
             </div>
             <div className="edit-modal__pic2">
-              {/* {bannerUrl && (
-                <div className="edit-modal__upload-check">
-                  <BsFillCheckCircleFill />
-                </div>
-              )} */}
               <label htmlFor="bannerPic" className="edit-modal__label">
                 profile banner
               </label>
@@ -155,7 +143,6 @@ export const EditHeaderModal: React.FC<Props> = ({
                 type="file"
                 name="bannerPic"
                 id="bannerPic"
-                // onChange={handleBanner}
                 accept="image/*"
                 style={{ opacity: 0 }}
                 className="edit-modal__input-file"
@@ -173,7 +160,7 @@ export const EditHeaderModal: React.FC<Props> = ({
                 name="firstName"
                 className="edit-modal__input"
                 placeholder="Enter your first name"
-                defaultValue={current?.first_name}
+                defaultValue={current.first_name}
               />
             </div>
             <div className="edit-modal__input-div">
@@ -186,7 +173,7 @@ export const EditHeaderModal: React.FC<Props> = ({
                 name="lastName"
                 className="edit-modal__input"
                 placeholder="Enter your last name"
-                defaultValue={current?.last_name}
+                defaultValue={current.last_name}
               />
             </div>
             <div className="edit-modal__input-div">
@@ -199,7 +186,7 @@ export const EditHeaderModal: React.FC<Props> = ({
                 name="headline"
                 className="edit-modal__input"
                 placeholder="Please enter a tagline"
-                defaultValue={current?.headline}
+                defaultValue={current.headline}
               />
             </div>
             <div className="edit-modal__input-div">
@@ -210,9 +197,10 @@ export const EditHeaderModal: React.FC<Props> = ({
                 id="marketRole"
                 name="marketRole"
                 className="edit-modal__input"
+                defaultValue={current.role}
               >
-                <option hidden defaultValue={current?.role}>
-                  {current?.role}
+                <option hidden defaultValue={current.role}>
+                  {current.role}
                 </option>
                 <option value="Broker">Broker</option>
                 <option value="Buyer">Buyer</option>
@@ -257,7 +245,7 @@ export const EditHeaderModal: React.FC<Props> = ({
                 name="location"
                 className="edit-modal__input"
                 placeholder="Where are you located?"
-                defaultValue={current?.location}
+                defaultValue={current.location}
               />
             </div>
           </div>

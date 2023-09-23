@@ -4,7 +4,7 @@ import PlaceholderBanner from "../../assets/images/placeholder-banner.png";
 import { FaUserCircle } from "react-icons/fa";
 import { AiOutlineGlobal } from "react-icons/ai";
 import { FiEdit2 } from "react-icons/fi";
-import { MouseEventHandler, useState } from "react";
+import { useState } from "react";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 interface ProfileHeaderProps {
   ProfileData?: IUser;
@@ -51,11 +51,7 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
     const date = new Date(dateStr);
     const options: Intl.DateTimeFormatOptions = {
       month: "short",
-      // day: "numeric",
       year: "numeric",
-      // hour: "numeric",
-      // minute: "numeric",
-      // hour12: true,
     };
     return date.toLocaleString("en-US", options);
   };
@@ -175,9 +171,6 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
             information displayed on this profile is gathered from publicly
             available sources on the web and is provided for educational
             purposes only.
-            {/* Greensfeer does not endorse or
-            guarantee the accuracy or completeness of the information provided
-            on these profiles. */}
           </p>
           <p>
             If any company listed on Greensfeer wishes to have their information
@@ -187,16 +180,6 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
             are advised to independently verify any information provided on
             these profiles before making any decisions based on it.
           </p>
-          {/* <p>
-            Greensfeer does not provide any consulting, financing, auditing, or
-            other services listed on the platform. Users are solely responsible
-            for conducting their own due diligence and engaging in any business
-            transactions with the companies listed on Greensfeer.
-            Greensfeer
-            shall not be liable for any loss, damage, or inconvenience arising
-            from the use of the information provided on the company profiles or
-            any transactions or interactions with the listed companies.
-          </p> */}
         </div>
       )}
     </header>

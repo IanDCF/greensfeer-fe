@@ -2,7 +2,7 @@ import ContactCard from "../../components/ContactCard/ContactCard";
 
 import "./Network.scss";
 
-const Network = () => {
+const Network = (): JSX.Element => {
   return (
     <div className="network-container">
       <div className="network">
