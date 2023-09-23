@@ -8,15 +8,15 @@ Greensfeer is an innovative online marketplace that addresses the challenges ass
 
 ### Web Developers
 
-- Travis Martin
-- Miguel Lopez
-- Vincent Luciano
+- [Travis Martin](https://www.linkedin.com/in/travis-j-martin/)
+- [Miguel Lopez](https://www.linkedin.com/in/lopezpedres/)
+- [Vincent Luciano](https://www.linkedin.com/in/vincent-luciano-profile/)
 
 ### UX Designers
 
-- Allecia Verheire
-- Estefania Millan
-- Niamh Fahey
+- [Allecia Verheire](https://www.linkedin.com/in/alleciaverheire/)
+- [Estefania Millan](https://www.linkedin.com/in/emillanr/)
+- [Niamh Fahey](https://www.linkedin.com/in/niamh-fahey/)
 
 ## Table of Contents
 
