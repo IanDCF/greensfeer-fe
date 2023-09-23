@@ -1,5 +1,3 @@
-// I am not sure if we need this
-// Delete if not
 declare module NodeJS {
   interface ProcessEnv {
     NODE_ENV: "development" | "production" | "test";

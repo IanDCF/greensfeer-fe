@@ -1,7 +1,5 @@
 import axios from "axios";
 import { User } from "firebase/auth";
-import { useAuth } from "../context/AuthProvider/AuthProvider";
-import { IAffiliation } from "customTypes";
 
 const addAffiliation = async (
   currentUser: User | null,

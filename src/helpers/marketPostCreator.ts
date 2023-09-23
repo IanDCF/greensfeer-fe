@@ -1,4 +1,4 @@
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 import { TNewListing } from "../schemas/ListingSchema";
 
 const createMarketPost = async (newMarketPost: TNewListing) => {

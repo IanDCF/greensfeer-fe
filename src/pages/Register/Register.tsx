@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import RegisterForm1 from "./RegisterForm1";
 import RegisterForm2 from "./RegisterForm2";

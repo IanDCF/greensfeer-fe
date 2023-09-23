@@ -1,15 +1,10 @@
-import { MouseEventHandler, useState } from "react";
+import { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { BsCamera } from "react-icons/bs";
 import ControlButton from "../../components/ControlButtons/ControlButton";
-import { BsFillCheckCircleFill } from "react-icons/bs";
 import "./EditModal.scss";
 import { ICompany } from "customTypes";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { TEditSchema } from "../../schemas/UserSchema";
-import { updateUser } from "../../helpers/userFetcher";
-import { getAuth } from "firebase/auth";
-import { set } from "firebase/database";
 import { updateCompany } from "../../helpers/companyFetcher";
 
 interface Props {
@@ -130,11 +125,6 @@ export const EditCompanyHeader: React.FC<Props> = ({
         <div className="edit-modal__input-fields">
           <div className="edit-modal__img-upload">
             <div className="edit-modal__pic1">
-              {/* {logoUrl && (
-                <div className="edit-modal__upload-check">
-                  <BsFillCheckCircleFill />
-                </div>
-              )} */}
               <label htmlFor="logoPic" className="edit-modal__label">
                 logo
               </label>
@@ -146,17 +136,11 @@ export const EditCompanyHeader: React.FC<Props> = ({
                 id="logoPic"
                 name="logoPic"
                 accept="image/*"
-                // onChange={handlePic}
                 style={{ opacity: 0 }}
                 className="edit-modal__input-file"
               />
             </div>
             <div className="edit-modal__pic2">
-              {/* {bannerUrl && (
-                <div className="edit-modal__upload-check">
-                  <BsFillCheckCircleFill />
-                </div>
-              )} */}
               <label htmlFor="bannerPic" className="edit-modal__label">
                 company banner
               </label>
@@ -167,7 +151,6 @@ export const EditCompanyHeader: React.FC<Props> = ({
                 type="file"
                 name="bannerPic"
                 id="bannerPic"
-                // onChange={handleBanner}
                 accept="image/*"
                 style={{ opacity: 0 }}
                 className="edit-modal__input-file"

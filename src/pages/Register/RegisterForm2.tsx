@@ -1,6 +1,6 @@
 import GreensfeerLogo from "../../assets/logos/greensfeer-logo.png";
 import "./Register.scss";
-import { TbArrowBackUp } from "react-icons/tb";
+// import { TbArrowBackUp } from "react-icons/tb";
 import { MdOutlineErrorOutline } from "react-icons/md";
 interface Props {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
@@ -139,9 +139,6 @@ const RegisterForm2 = ({
         <button className="register__button" type="submit">
           Join Greensfeer
         </button>
-        {/* <Link to="#" className="register__link">
-          Welcome!
-        </Link> */}
       </form>
     </div>
   );
