@@ -1,4 +1,4 @@
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 import { IUser } from "customTypes";
 import { TEditSchema } from "src/schemas/UserSchema";
 

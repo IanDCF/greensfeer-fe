@@ -1,4 +1,4 @@
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 import { ICompany } from "customTypes";
 
 const getCompany = async (companyId: string) => {

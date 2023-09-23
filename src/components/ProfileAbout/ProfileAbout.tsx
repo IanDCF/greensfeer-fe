@@ -1,7 +1,6 @@
 import { ICompany, IUser } from "customTypes";
 import "./ProfileAbout.scss";
 import { FiEdit2 } from "react-icons/fi";
-import { MouseEventHandler } from "react";
 
 interface ProfileAboutProps {
   ProfileData?: IUser;

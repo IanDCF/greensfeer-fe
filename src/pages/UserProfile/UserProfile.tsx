@@ -4,12 +4,7 @@ import "./UserProfile.scss";
 import { ProfileHeader } from "../../components/ProfileHeader/ProfileHeader";
 import { useAuth } from "../../context/AuthProvider/AuthProvider";
 import axios from "axios";
-import {
-  useState,
-  useEffect,
-  MouseEventHandler,
-  FormEventHandler,
-} from "react";
+import { useState, useEffect, MouseEventHandler } from "react";
 import { IUser } from "customTypes";
 import PromptModal from "../../components/PromptModal/PromptModal";
 import { EditHeaderModal } from "../../components/EditUserProfile/EditHeaderModal";

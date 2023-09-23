@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { matchPath, useLocation, useNavigate } from "react-router-dom";
 import "./CreateListing.scss";
 import ListingForm1 from "./ListingForm1";
@@ -11,20 +11,11 @@ import newListingSchema, {
   registerListingOptionalSchema,
 } from "../../schemas/ListingSchema";
 import createMarketPost from "../../helpers/marketPostCreator";
-import getAffiliation, {
-  getAllAffiliations,
-} from "../../helpers/affiliationFetcher";
-import getCompany from "../../helpers/companyFetcher";
+
 import { useAuth } from "../../context/AuthProvider/AuthProvider";
 import AffilationSearch from "./AffiliationSearch";
 
 const CreateListing = () => {
-  // create market post as current user
-  /* FIXME: Market post tied to a company mechanism
-  solutions: 
-  check user afiliation from company page, show 'create post' button to affiliated user?
-  send company id to params when create post button clicked, validate current user on backend using auth token?
-  */
   const { currentUser } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -57,7 +48,8 @@ const CreateListing = () => {
       navigate("/create-listing/step2");
     }
   };
-  const handleChooseCompany = (e: React.FormEvent<HTMLFormElement>) => {
+  const chooseCompanyCallback = useCallback(
+    (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setCurrentCompany(e.currentTarget.affiliation.value);
     setTimeout(() => {
@@ -65,17 +57,22 @@ const CreateListing = () => {
     }, 1500);
 
     // set company to state here so form can access
-  };
+  },[]
+  )
+  // const handleChooseCompany = (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   setCurrentCompany(e.currentTarget.affiliation.value);
+  //   setTimeout(() => {
+  //     navigate("/create-listing/step1");
+  //   }, 1500);
+
+  //   // set company to state here so form can access
+  // };
 
   // validate post
   useEffect(() => {
     const validateAndPost = async () => {
-      // const affiliation = await getAffiliation(currentUser);
-      // console.log(affiliation);
-      // const company = await getCompany(affiliation.company_id);
-      // console.log(company);
-      // setCurrentCompany(affiliation.company_id);
-      // FIXME: possible to visit this page with no company created
+      // TODO: possible to visit this page with no company created
 
       if (newMarketPost.post_type === "Service") {
         // validate & run axios.post
@@ -339,7 +336,7 @@ const CreateListing = () => {
   return (
     <section className="create-listing">
       {searchAffiliation && (
-        <AffilationSearch handleSubmit={handleChooseCompany} />
+        <AffilationSearch handleSubmit={chooseCompanyCallback} />
       )}
       {!stepOneDone && createListing1 && (
         <ListingForm1
@@ -365,7 +362,7 @@ const CreateListing = () => {
           company={currentCompany}
         />
       )}
-      {/* FIXME: ensure to parseint vintage_year & price_per_credit */}
+      {/* TODO: ensure to parseint vintage_year & price_per_credit */}
       {productDetailDone && (
         <div className="create-listing__form" style={{ fontSize: "4rem" }}>
           {listingType === "Project" &&

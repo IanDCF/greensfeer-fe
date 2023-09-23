@@ -13,6 +13,12 @@ interface Props {
 // navigate to proper destination
 const PromptModal: React.FC<Props> = ({ open, clickHandler }) => {
   const onMarketplace = location.pathname.includes("/marketplace/");
+  const modalText = onMarketplace
+    ? "Are you affiliated with a company? Join your organization or create a new one!"
+    : "Ready to list your offering on the marketplace?";
+  const acceptPath = onMarketplace ? "/search-company" : "/search-affiliation";
+  const acceptText = `${onMarketplace ? "Search Company" : "Create Listing"}`;
+
   if (!open) return <></>;
   return (
     <div className="modal">
@@ -24,20 +30,17 @@ const PromptModal: React.FC<Props> = ({ open, clickHandler }) => {
         >
           <AiOutlineClose />
         </div>
-        <div className="modal__text">
-          {onMarketplace
-            ? "Are you affiliated with a company? Join your organization now!"
-            : "Ready to list your offering on the marketplace?"}
-        </div>
+        <div className="modal__text">{modalText}</div>
         <div className="modal__controls">
           <div className="modal__decline" onClick={clickHandler}>
             Maybe later
           </div>
           <Link
+            onClick={clickHandler}
             className="modal__accept"
-            to={onMarketplace ? "/search-company" : "/create-listing/step1"}
+            to={acceptPath}
           >
-            {`${onMarketplace ? "Search Company" : "Create Listing"}`}
+            {acceptText}
           </Link>
         </div>
       </div>

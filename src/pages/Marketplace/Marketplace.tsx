@@ -10,7 +10,7 @@ import FilterBar from "../../components/FilterBar/FilterBar";
 import PromptModal from "../../components/PromptModal/PromptModal";
 
 const Marketplace: React.FC = () => {
-  const { listing_id } = useParams(); // Retrieve the listingId from URL pathname directly
+  const { listing_id } = useParams();
   const [marketPosts, setMarketPosts] = useState<IMarketPost[]>([]);
   const [selectedPost, setSelectedPost] = useState<IMarketPost | undefined>();
   const [marketplaceToggle, setMarketplaceToggle] = useState(false);

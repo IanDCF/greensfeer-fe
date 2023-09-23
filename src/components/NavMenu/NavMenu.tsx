@@ -20,7 +20,6 @@ const NavMenu: FC<NavMenuProps> = ({ open, toggle }) => {
     { name: "Discover", id: "discover" },
     { name: "Community", id: "community" },
     { name: "Greensfeer Beta", id: "beta" },
-    // { name: "Collaborate", id: "collaborate" },
   ];
 
   return (
@@ -40,7 +39,6 @@ const NavMenu: FC<NavMenuProps> = ({ open, toggle }) => {
                   smooth={true}
                   duration={400}
                   spy={true}
-                  // exact={true}
                   offset={-79}
                   onClick={toggle}
                 >

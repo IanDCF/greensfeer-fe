@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IAffiliation, ICompany } from "customTypes";
+import { IAffiliation } from "customTypes";
 import { User } from "firebase/auth";
 
 const getAffiliation = async (currentUser: User | null) => {
@@ -10,7 +10,7 @@ const getAffiliation = async (currentUser: User | null) => {
     const response = await axios.get(`${URL_BASE}/affiliation`, {
       headers: { token },
     });
-    const {affils} = response.data.message;
+    const { affils } = response.data.message;
     return affils;
     //back end return uid, affiliation, contact
   } else {

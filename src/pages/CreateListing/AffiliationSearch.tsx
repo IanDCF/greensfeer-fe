@@ -2,11 +2,9 @@ import "./CreateListing.scss";
 import logo from "../../assets/logos/greensfeer-logo.png";
 import ControlButton from "../../components/ControlButtons/ControlButton";
 import { useAuth } from "../../context/AuthProvider/AuthProvider";
-import SearchDropdown from "../../components/SearchDropdown/SearchDropdown";
 import { useState, useEffect } from "react";
-import { IAffiliation, ICompany } from "customTypes";
+import { ICompany } from "customTypes";
 import getaffiliation from "../../helpers/affiliationFetcher";
-import { useNavigate } from "react-router-dom";
 interface Props {
   handleSubmit: React.FormEventHandler<HTMLFormElement>;
 }
@@ -15,7 +13,6 @@ const AffiliationSearch = ({ handleSubmit }: Props) => {
   const [profiles, setProfiles] = useState<ICompany[]>([]);
   const [selected, setSelected] = useState<ICompany>();
   const { currentUser } = useAuth();
-  const navigate = useNavigate();
 
   const getCompanies = async () => {
     let companies;

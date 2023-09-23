@@ -21,7 +21,6 @@ const Navbar: FC<NavbarProps> = ({ toggle }) => {
     { name: "Discover", id: "discover" },
     { name: "Community", id: "community" },
     { name: "Greensfeer Beta", id: "beta" },
-    // { name: "Collaborate", id: "collaborate" },
   ];
 
   const toggleHome = () => {
@@ -47,7 +46,6 @@ const Navbar: FC<NavbarProps> = ({ toggle }) => {
                   smooth={true}
                   duration={400}
                   spy={true}
-                  // exact={true}
                   offset={-79}
                 >
                   {link.name}

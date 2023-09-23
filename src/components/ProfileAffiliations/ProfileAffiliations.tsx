@@ -1,12 +1,10 @@
 import "./ProfileAffiliations.scss";
 import { IoIosAdd } from "react-icons/io";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { MouseEventHandler, useEffect, useState } from "react";
-import { IAffiliation, ICompany } from "customTypes";
+import { IAffiliation } from "customTypes";
 import { getAllAffiliations } from "../../helpers/affiliationFetcher";
 import { AiOutlineGlobal } from "react-icons/ai";
-import { FiEdit2 } from "react-icons/fi";
-import { AiOutlineClose } from "react-icons/ai";
 interface ProfileAffiliationProps {
   userType?: string;
   editing?: boolean;
@@ -42,12 +40,7 @@ export const ProfileAffiliations: React.FC<ProfileAffiliationProps> = ({
     };
     affiliations();
   }, []);
-  // const logoStyle1: React.CSSProperties = {
-  //   background: `url(${companyLogo1}) center/cover no-repeat`,
-  // };
-  // const logoStyle2: React.CSSProperties = {
-  //   background: `url(${companyLogo2}) center/cover no-repeat`,
-  // };
+
   const logoStyle: (logo: string) => React.CSSProperties = (logo) => {
     return { background: `url(${logo}) center/cover no-repeat` };
   };
@@ -55,11 +48,6 @@ export const ProfileAffiliations: React.FC<ProfileAffiliationProps> = ({
   return (
     <div className="affiliations">
       <h3 className="affiliations__title">Affiliations</h3>
-      {/* {editing && (
-        <div className="header__edit-btn" onClick={editAffiliationsHandler}>
-          <FiEdit2 />
-        </div>
-      )} */}
       <div className="affiliations__list">
         {userAfilliations &&
           userAfilliations?.length > 0 &&
@@ -79,11 +67,6 @@ export const ProfileAffiliations: React.FC<ProfileAffiliationProps> = ({
                     <AiOutlineGlobal />
                   </div>
                 )}
-                {/* {editing && (
-                  <div className="affiliations__delete">
-                    <AiOutlineClose />
-                  </div>
-                )} */}
               </Link>
               <p className="affiliations__name">{aff.company_name}</p>
             </div>

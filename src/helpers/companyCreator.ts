@@ -1,4 +1,4 @@
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 import { type TNewCompany } from "../schemas/CompanySchema";
 
 const createCompany = async (newCompany: TNewCompany) => {

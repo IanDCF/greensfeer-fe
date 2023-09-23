@@ -5,7 +5,7 @@ const registerCompanySchema = z.object({
   logo: z.optional(z.string().trim()),
   company_name: z.string().trim(),
   sector: z.string().trim(),
-  market_role: z.string().trim().min(6),
+  market_role: z.string().trim(),
   location: z.string().trim(),
 });
 

@@ -1,6 +1,5 @@
 import { IMarketPost } from "customTypes";
 import "./MarketplaceCard.scss";
-import { MouseEventHandler } from "react";
 interface Post {
   Post?: IMarketPost;
   clickHandler?: () => void;
@@ -26,7 +25,6 @@ const MarketplaceCard: React.FC<Post> = ({
         <div className="marketplace-card__company-name">
           {Post?.company_name}
         </div>
-        {/* <div className="marketplace-card__company-name">{Post?.sector}</div> */}
         <div className="marketplace-card__location">{`${Post?.location}`}</div>
       </div>
 

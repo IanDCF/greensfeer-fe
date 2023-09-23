@@ -1,4 +1,4 @@
-import React, { MouseEventHandler } from "react";
+import React from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import ControlButton from "../ControlButtons/ControlButton";
 import "./EditModal.scss";
